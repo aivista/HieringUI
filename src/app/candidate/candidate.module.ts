@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './pages/login/login.component';
+
+import { CandidateLoginComponent } from './components/pages/candidate-login/candidate-login.component';
 
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+   
+    CandidateLoginComponent
   ],
   imports: [
     CommonModule

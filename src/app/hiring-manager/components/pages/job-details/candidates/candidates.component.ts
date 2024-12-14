@@ -11,28 +11,28 @@ export class CandidatesComponent {
     {
       name: 'John Doe',
       rating: 4.5,
-      status: 'Shortlisted',
+      status: 'Interview Scheduled',
       experience: '5 years of experience',
       skills: ['Angular', 'TypeScript', 'SCSS']
     },
     {
       name: 'Jane Smith',
       rating: 4.8,
-      status: 'Shortlisted',
+      status: 'Interview Complited',
       experience: '3 years of experience',
       skills: ['React', 'JavaScript', 'CSS']
     },
     {
       name: 'John Doe',
       rating: 4.5,
-      status: 'Shortlisted',
+      status: 'AI Based Screening Pending',
       experience: '5 years of experience',
       skills: ['Angular', 'TypeScript', 'SCSS']
     },
     {
       name: 'Jane Smith',
       rating: 4.8,
-      status: 'Shortlisted',
+      status: 'Selected',
       experience: '3 years of experience',
       skills: ['React', 'JavaScript', 'CSS']
     }
@@ -41,29 +41,21 @@ export class CandidatesComponent {
   appliedCandidates = [
     {
       name: 'Alice Johnson',
-      rating: 4.2,
-      status: 'Applied',
       experience: '2 years of experience',
       skills: ['HTML', 'CSS', 'JavaScript']
     },
     {
       name: 'Bob Brown',
-      rating: 4.7,
-      status: 'Applied',
       experience: '4 years of experience',
       skills: ['Vue', 'JavaScript', 'SCSS']
     },
     {
       name: 'Alice Johnson',
-      rating: 4.2,
-      status: 'Applied',
       experience: '2 years of experience',
       skills: ['HTML', 'CSS', 'JavaScript']
     },
     {
       name: 'Bob Brown',
-      rating: 4.7,
-      status: 'Applied',
       experience: '4 years of experience',
       skills: ['Vue', 'JavaScript', 'SCSS']
     }
@@ -72,4 +64,20 @@ export class CandidatesComponent {
   setActiveTab(tab: string): void {
     this.activeTab = tab;
   }
+  
+  getStatusClass(status: string): string {
+    switch (status) {
+      case 'Interview Scheduled':
+        return 'status-interview-scheduled';
+      case 'Interview Complited':
+        return 'status-interview-completed';
+      case 'AI Based Screening Pending':
+        return 'status-ai-screening-pending';
+      case 'Selected':
+        return 'status-selected';
+      default:
+        return ''; 
+    }
+  }
+
 }

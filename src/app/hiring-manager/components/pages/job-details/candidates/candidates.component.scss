@@ -46,14 +46,15 @@ body {
     border-bottom: 2px solid rgba(118, 127, 255, 1)
 }
 
-.nav-item:hover {
-    // color: #00bcd4;
+.main-candisate-card {
+    height: 600px;
+    overflow-y: auto;
 }
 
 .candidate-card {
     background: linear-gradient(137.88deg, #1D212A 21.56%, #272C37 100%);
-    border: 0.5px solid;
-    border-image-source: linear-gradient(138.76deg, rgba(91, 91, 91, 0.72) 3.02%, rgba(193, 193, 193, 0.72) 100%);
+    border: .01rem solid grey;
+    // border-image-source: linear-gradient(138.76deg, rgba(91, 91, 91, 0.72) 3.02%, rgba(193, 193, 193, 0.72) 100%);
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 8px;
@@ -61,6 +62,7 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
 
 
 .candidate-info {
@@ -72,7 +74,7 @@ body {
 .left-part {
     display: flex;
     align-items: center;
-    justify-content: center;
+    // justify-content: center;
     flex-direction: row;
     gap: 1rem;
 
@@ -88,7 +90,7 @@ body {
     flex-direction: row;
     gap: .5rem;
     border-radius: 1rem;
-    border: 1px solid rgba(15, 108, 189, 1);
+    border: 1px solid rgb(86 67 180);
     padding: .2rem .5rem;
     text-align: center;
     align-items: center;
@@ -99,9 +101,10 @@ body {
     }
 
     .rating {
-        color: gold;
-        // height: 1rem;
-        // width: 1rem;
+        img {
+            height: 1rem;
+            width: 1rem;
+        }
     }
 }
 
@@ -114,6 +117,28 @@ body {
     padding: 5px 10px;
     border-radius: 5px;
     margin: 5px 0;
+}
+
+.status-interview-scheduled {
+    background: rgba(255, 196, 101, 0.2);
+    color: rgba(255, 196, 101, 1);
+
+}
+
+.status-interview-completed {
+    background: rgba(29, 161, 242, 0.26);
+    color: rgba(171, 176, 255, 1);
+
+}
+
+.status-ai-screening-pending {
+    background: rgba(255, 196, 101, 0.2);
+    color: rgba(255, 196, 101, 1);
+}
+
+.status-selected {
+    background: rgba(74, 222, 128, 0.2);
+    color: rgba(89, 217, 145, 1);
 }
 
 .experience {

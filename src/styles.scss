@@ -39,8 +39,9 @@ figure,
 figcaption,
 blockquote,
 dl,
-dd {
-  margin: 0;
+dd,
+p {
+  margin: 0 !important;
 }
 
 /* Set core body defaults */

@@ -15,13 +15,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./candidate/candidate.module').then((m) => m.CandidateModule),
   },
-  // {
-  //   path: 'hiring-manager',
-  //   loadChildren: () =>
-  //     import('./hiring-manager/hiring-manager.module').then(
-  //       (m) => m.HiringManagerModule
-  //     ),
-  // },
+
   { path: '**', redirectTo: '' }, // Redirect any unknown routes to the default route
 ];
 

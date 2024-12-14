@@ -4,7 +4,8 @@ import { CandidateLoginComponent } from './components/pages/candidate-login/cand
 import { ProfileDetailsComponent } from './components/pages/profile-details/profile-details.component';
 
 const routes: Routes = [
-  { path: '', component: CandidateLoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: CandidateLoginComponent },
   { path: 'profile', component: ProfileDetailsComponent },
 ];
 

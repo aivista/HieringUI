@@ -4,7 +4,8 @@ import { HiringManagerLoginComponent } from './components/pages/hiring-manager-l
 import { JobDetailsComponent } from './components/pages/job-details/job-details.component';
 
 const routes: Routes = [
-  { path: '', component: HiringManagerLoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: HiringManagerLoginComponent },
   { path: 'job-details', component: JobDetailsComponent },
 ];
 

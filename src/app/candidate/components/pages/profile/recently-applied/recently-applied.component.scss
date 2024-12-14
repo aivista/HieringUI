@@ -1,0 +1,136 @@
+.recently-applied {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .heading {
+    font-size: 24px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  // Variables
+  $card-bg-color: #181b2b;
+  $primary-text-color: #ffffff;
+  $secondary-text-color: #b0b0b0;
+  $status-tag-bg: #b2335b;
+  $button-bg: #8b04f5;
+  $button-hover-bg: #8b04f5;
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    // Card Container
+    .card-container {
+      width: 400px;
+      background-color: $card-bg-color;
+      color: $primary-text-color;
+      border-radius: 12px;
+      padding: 20px;
+      font-family: "Arial", sans-serif;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      // Header Section
+      .header {
+        display: flex;
+        flex-direction: column;
+
+        .brand-name {
+          font-size: 20px;
+          font-weight: bold;
+
+          .company-highlight {
+            color: #48a2f8;
+          }
+
+          .company-name {
+            color: $primary-text-color;
+          }
+        }
+
+        .tagline {
+          font-size: 12px;
+          color: $secondary-text-color;
+          margin-top: 4px;
+        }
+      }
+
+      // Role Title Section
+      .role-title {
+        //styleName: Body/XL/500;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 32px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+      }
+
+      // Status Section
+      .status {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        span {
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 32px;
+          text-align: left;
+          text-underline-position: from-font;
+          text-decoration-skip-ink: none;
+          color: #bdbdbd;
+        }
+
+        .status-tag {
+          width: Hug (135px) px;
+          height: Hug (26px) px;
+          padding: 5px 12px;
+          border-radius: 50px;
+          font-size: 12px;
+        }
+
+        .ai-screening {
+          background-color: #6a2a43;
+        }
+
+        .inactive-status {
+          background-color: #4d4d4d;
+        }
+      }
+
+      // Action Section
+      .action {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+
+        .take-test-btn {
+          background-color: $button-bg;
+          color: $primary-text-color;
+          border: none;
+          padding: 10px 16px;
+          font-size: 14px;
+          border-radius: 8px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $button-hover-bg;
+          }
+        }
+      }
+    }
+  }
+}

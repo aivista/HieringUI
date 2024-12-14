@@ -21,7 +21,7 @@
 // }
 
 
-.profile-details-container {
+.main-strac-container {
   // padding: 1% 15%;
   height: 100%;
   background-image: url(https://s3-alpha-sig.figma.com/img/2e8b/9139/045a64f481bdbd80496749ca6940e1f7?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=h7H-ir0ans3xqRUlBnT4YEn6iqoNfxzeuD2gH6fXro7DrjnVVlp8WOoEypRweL2uQFdMX4ZPIFA~lkPwh51dvaAqL7gq3FvI5-oVFjbQzTuPTswO~17992RIsGa0ontRRuE04C59N436ITR9~GSl2Rc4hI81EHeXeTLCAUExKxRVa8W0GMSV~ZjkYNnO10BfjwgSSt4GeM0UgzAm40uqjDuSYbuTHXa3uY-SiK-BLi1iwMtffCXRrnE4aRwiTsGzKvpkP7hSMJnkpZ894TOqU5MVXs9edj57u5R4FjP4pfS8KAwoV7vF-y4a1B55KfrScA15i6wrOsO5ZVwi1m7WMw__);
@@ -32,31 +32,220 @@
   background-color: rgba(0, 0, 0, 0.358);
 
   .main-contain {
-    // display: flex;
+ 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
     height: 100%;
+    position: relative;
 
 
     .top-portion{
       width: 127.5px;
       height: 29px;
-      top: 56px;
+      top: 6px;
       left: 50px;
       position: absolute;
     }
     .previouspage-title{
       color: white;
       position: absolute;
+      display: flex;
     }
 
     .bottom{
-      height: 35em;
-    width: 73em;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 20px;
+      // height: 32em;
+      // width: 79em;
+      // background-color: white;
+      height: 81vh;
+      width: 94.83vw;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin: 20px;
+      top: 36px;
+      position: absolute;
+      background-image: linear-gradient(to bottom right, #1d212a, #272c37);
+      border-radius: 20px;
+      color: #f5f5f5;
+      border: 2px solid linear-gradient(to bottom right, #5b5b5b52, #c1c1c152);
+
+
+     
+
+      .card-header {
+        color: #f5f5f5;
+        padding: 0rem 1rem 1rem 1rem;
+        font-size: 1.2rem;
+        border-bottom: 1px solid #444;
+        display: flex;
+        justify-content: space-between;
+      }
+      .card-header h4 {
+        font-size: 26px;
+        font-weight: 700;
+        line-height: 32px;
+      }
+      
+       .card-header .location {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+      
+        color: #767f8c;
+      }
+
     }
 
+  // }
+
+
+  .job-details .header {
+    //  background-color: #0d0d0d;
+      padding: 1rem;
+    }
+    
+    .job-details .header h5 {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    .job-details .header a {
+      color: #6d00f0;
+      text-decoration: none;
+    }
+    
+    .job-details .header a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Job Card */
+    .job-card .card {
+      border: none;
+      // background-color: #252a34;
+      background-image: linear-gradient(to bottom right, #1d212a, #272c37);
+      border-radius: 20px;
+      color: #f5f5f5;
+      border: 2px solid linear-gradient(to bottom right, #5b5b5b52, #c1c1c152);
+    }
+    
+    .job-card .card-header {
+      color: #f5f5f5;
+      padding: 1rem;
+      font-size: 1.2rem;
+      border-bottom: 1px solid #444;
+      display: flex;
+      justify-content: space-between;
+    }
+    .job-card .card-header h4 {
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 32px;
+    }
+    
+    .job-card .card-header .location {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 400;
+    
+      color: #767f8c;
+    }
+    .timeline{
+        justify-content: center;
+    }
+    .round{
+        border-radius: 50%;
+        height: 36px;
+        width: 36px;
+        background-color: #8B04F5;
+        align-items: center;
+        
+        display: flex;
+        justify-content: center;
+    }
+    
+    .round img {
+        height: 40px;
+        width: 40px;
+    }
+    
+    .line{
+        margin-top: 16px;
+        border-top:3px dotted white ;
+        width: 10rem;
+    }
+    
+    .card-msg {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      max-width: 100%;
+      //   border: 1px solid red !important;
+    }
+    .card-box {
+      width: 80%;
+    }
+    
+    .call {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .call img {
+      height: 34px;
+      width: 35px;
+    }
+    .call .h5 {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 32px;
+    }
+    
+    
+    /* Instructions Section */
+    .instructions {
+      margin-left: 2.89rem;
+    }
+    
+    .instructions h6 {
+      font-weight: 500;
+      font-size: 20px;
+      color: #7086fd;
+      line-height: 32px;
+      margin-top: 1rem;
+    }
+    
+    .instructions ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+    }
+    
+    .instructions ul li {
+      margin-bottom: 0.5rem;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 27px;
+    }
+    
+    /* Button */
+    .btn-primary {
+      width: 191px;
+      height: 50px;
+      background-color: #6d00f0;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    
+    .btn-primary:hover {
+      background-color: #5500c8;
+    }
   }
 }

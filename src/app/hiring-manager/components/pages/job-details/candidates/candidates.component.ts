@@ -93,4 +93,8 @@ export class CandidatesComponent {
     return this.selectedCandidate === candidate; // Check if the candidate is selected
   }
 
+
+  closeModall(event: Event): void {
+    this.selectedCandidate = null;// Closes the modal
+  }
 }

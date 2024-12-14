@@ -9,12 +9,12 @@
       <div class="body">
         <!-- Loop through interview days -->
         <div *ngFor="let group of interviews">
-          <div class="day"><img src="assets/Icon.svg" alt="">{{ group.day }}</div>
+          <div class="day"><img src="assets/icons/calender.svg" alt="">{{ group.day }}</div>
           
           <!-- Loop through interview rows for each day -->
           <div *ngFor="let interview of group.interviews">
             <div class="int-time" *ngIf="group.day === 'Today' && interview.timeRelative">
-              <div class="icon"><img src="assets/Clock.svg" alt=""></div>
+              <div class="icon"><img src="assets/icons/clock.svg" alt=""></div>
               <div class="time-text">{{ interview.timeRelative }}</div>
             </div>
             <div class="interview-row">

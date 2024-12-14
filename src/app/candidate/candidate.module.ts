@@ -6,6 +6,7 @@ import { CandidateLoginComponent } from './components/pages/candidate-login/cand
 import { ProfileDetailsComponent } from './components/pages/profile/profile-details/profile-details.component';
 import { ProfileComponent } from './components/pages/profile/profile.component';
 import { InterviewInstructionComponent } from './components/pages/interview-instruction/interview-instruction.component';
+import { RecentlyAppliedComponent } from './components/pages/profile/recently-applied/recently-applied.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { InterviewInstructionComponent } from './components/pages/interview-inst
     ProfileDetailsComponent,
     ProfileComponent,
     InterviewInstructionComponent,
+    RecentlyAppliedComponent,
   ],
   imports: [CommonModule, CandidateRoutingModule],
 })

@@ -1,0 +1,42 @@
+.profile-details-container {
+  padding: 1% 15%;
+  height: 100%;
+  background-image: url(https://s3-alpha-sig.figma.com/img/2e8b/9139/045a64f481bdbd80496749ca6940e1f7?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=h7H-ir0ans3xqRUlBnT4YEn6iqoNfxzeuD2gH6fXro7DrjnVVlp8WOoEypRweL2uQFdMX4ZPIFA~lkPwh51dvaAqL7gq3FvI5-oVFjbQzTuPTswO~17992RIsGa0ontRRuE04C59N436ITR9~GSl2Rc4hI81EHeXeTLCAUExKxRVa8W0GMSV~ZjkYNnO10BfjwgSSt4GeM0UgzAm40uqjDuSYbuTHXa3uY-SiK-BLi1iwMtffCXRrnE4aRwiTsGzKvpkP7hSMJnkpZ894TOqU5MVXs9edj57u5R4FjP4pfS8KAwoV7vF-y4a1B55KfrScA15i6wrOsO5ZVwi1m7WMw__);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  opacity: 0.95;
+  background-color: rgba(0, 0, 0, 0.358);
+
+  .main-contain {
+    display: flex;
+    height: 100%;
+
+    .profile-details-left {
+      .profile-details-left-header {
+        color: #ffffff;
+
+        p {
+          font-size: 24px;
+          font-weight: 500;
+        }
+        .edit-btn {
+          padding: 12px 24px 12px 24px;
+          border-radius: 12px;
+          border: 1px solid #8b04f5;
+          font-size: 16px;
+        }
+      }
+    }
+
+    hr {
+      border-left: 2px solid #ffffff !important;
+      border-top: 0 !important;
+      margin: 0 1rem;
+      opacity: 0.8;
+    }
+
+    .profile-details-right {
+    }
+  }
+}

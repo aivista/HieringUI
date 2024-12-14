@@ -44,7 +44,7 @@ export class CandidateLoginComponent {
     if (otpInput) {
       const enteredOtp = otpInput.value;
       if (enteredOtp === this.generatedOtp) {
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/candidate/profile']);
       } else {
         alert('Invalid OTP. Please try again.');
       }

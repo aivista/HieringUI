@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas: "left middle middle right";
-  gap: 1rem;
+  // gap: 1rem;
 
   .left {
     grid-area: left;

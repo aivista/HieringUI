@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -37,7 +37,8 @@
         .body {
             margin-top: 20px;
             // width: 449px;
-            // height: 854px;
+            height: 700px;
+            overflow-y: auto;
             border-radius: 20px;
             padding: 5px 0;
             border-image-source: linear-gradient(138.76deg, rgba(91, 91, 91, 0.32) 3.02%, rgba(193, 193, 193, 0.32) 100%);
@@ -71,7 +72,8 @@
                 .icon {
                     color: white;
 
-                    img, svg {
+                    img,
+                    svg {
                         vertical-align: baseline;
                     }
                 }
@@ -119,5 +121,5 @@
                 }
             }
         }
-    } 
+    }
 }

@@ -16,6 +16,7 @@ body {
         align-items: center;
         text-align: center;
         gap: 1rem;
+        padding-bottom: 1rem;
 
         h2 {
             font-weight: 600;
@@ -24,81 +25,6 @@ body {
     }
 }
 
-// .navbar {
-//   display: flex;
-//   gap: 15px;
-//   margin-bottom: 20px;
-// }
-
-// .nav-item {
-//   text-decoration: none;
-//   padding: 10px 15px;
-//   border-radius: 5px;
-//   color: white;
-//   background-color: #333;
-//   cursor: pointer;
-//   transition: background-color 0.3s;
-// }
-
-// .nav-item:hover {
-//   background-color: #555;
-// }
-
-// .active-tab {
-//   background-color: #27308f;
-// }
-//   .nav-bar {
-//     display: flex;
-//     justify-content: flex-start;
-//     gap: 2rem;
-//     padding: .13rem 0rem;
-//     border-bottom: 2px solid rgba(66, 75, 87, 1)
-//   }
-
-// .nav-item {
-//   position: relative;
-//   font-size: 0.9rem;
-//   text-transform: uppercase;
-//   cursor: pointer;
-//   background: rgba(255, 255, 255, 0.6);
-//   padding-bottom: 1rem;
-//   transition: color 0.3s ease-in-out; 
-// }
-
-// .nav-item.active {
-//   color: rgba(255, 255, 255, 1);
-// }
-
-// .nav-item::after {
-//   content: '';
-//   position: absolute;
-//   bottom: -3px;
-//   left: 0;
-//   width: 0;
-//   height: 2px;
-//   // background-color: #00bcd4;
-//   transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out; 
-// }
-
-// .nav-item.active::after {
-//   width: 100%; 
-//   background-color: #00bcd4;
-// }
-
-// // .nav-item:hover::after {
-// //   width: 100%;
-// //   background-color: #00bcd4;
-// // } 
-
-
-// // .nav-item:hover {
-// //   color: #00bcd4; 
-// // } 
-
-
-// .nav-item:not(.active)::after {
-//   background-color: #f0f0f0;
-// }
 .nav-bar {
     display: flex;
     justify-content: flex-start;
@@ -125,7 +51,9 @@ body {
 }
 
 .candidate-card {
-    background-color: #2a2a2a;
+    background: linear-gradient(137.88deg, #1D212A 21.56%, #272C37 100%);
+    border: 0.5px solid;
+    border-image-source: linear-gradient(138.76deg, rgba(91, 91, 91, 0.72) 3.02%, rgba(193, 193, 193, 0.72) 100%);
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 8px;
@@ -133,6 +61,7 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
 
 .candidate-info {
     h3 {

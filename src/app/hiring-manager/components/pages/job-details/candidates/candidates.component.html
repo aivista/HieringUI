@@ -16,10 +16,10 @@
 
   <!-- Candidate List -->
   <div *ngIf="activeTab === 'Shortlisted'" class="main-candisate-card">
-    <div *ngFor="let candidate of shortlistedCandidates" class="candidate-card">
+    <div *ngFor="let candidate of shortlistedCandidates" class="candidate-card" (click)="openModal(candidate)">
       <div class="candidate-info">
         <div class="left-part">
-          <h3 [ngClass]="{'active-name': isCandidateSelected(candidate)}" (click)="openModal(candidate)">{{
+          <h3 [ngClass]="{'active-name': isCandidateSelected(candidate)}" >{{
             candidate.name }}</h3>
           <div class="star">
             <div class="rating">

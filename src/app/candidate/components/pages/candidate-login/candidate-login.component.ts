@@ -18,6 +18,7 @@ export class CandidateLoginComponent {
 
   constructor(private router: Router, private cdRef: ChangeDetectorRef) {}
 
+
   requestOtp() {
     const emailInput = document.getElementById('email') as HTMLInputElement;
     if (emailInput) {

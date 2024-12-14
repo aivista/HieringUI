@@ -1,0 +1,142 @@
+.profile-details-left-header {
+  color: #ffffff;
+
+  p {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .edit-btn {
+    padding: 12px 24px 12px 24px;
+    border-radius: 12px;
+    border: 1px solid #8b04f5;
+    font-size: 16px;
+  }
+}
+
+.candidate-details {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  .candidate-img {
+    border-radius: 50%;
+    padding: 1rem;
+    border: 2px solid #868686;
+    img {
+      height: 6rem;
+    }
+  }
+
+  .candidate-details-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .candidate-details-info-top {
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 30px;
+
+      .chip {
+        font-size: 16px;
+        font-weight: 400;
+        padding: 0.5rem 1rem;
+        border-radius: 5rem;
+
+        &.ccna {
+          background-color: #8b04f566;
+        }
+        &.mis {
+          background-color: #ea4c8966;
+        }
+        &.mc {
+          background-color: #0077b566;
+        }
+      }
+    }
+
+    .candidate-details-info-bottom {
+      display: flex;
+      gap: 1rem;
+
+      p {
+        font-size: 14px;
+        font-weight: 400;
+        display: flex;
+        gap: 0.5rem;
+      }
+    }
+  }
+}
+.candidate-experience {
+  background: linear-gradient(90deg, #2c2c2c 0%, #1a1822 100%);
+  padding: 16px 24px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+
+  p {
+    color: #8358ff;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .company {
+    p {
+      font-size: 20px;
+      font-weight: 500;
+      color: #ffffff;
+    }
+    .sub-text {
+      color: #bdbdbd;
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    .no-data {
+      font-size: 18px;
+      font-weight: 400;
+    }
+  }
+
+  .job-position {
+    .big-dot {
+      height: 10px;
+      width: 10px;
+      background-color: #636a80;
+      border-radius: 50%;
+    }
+    p {
+      color: #ffffff;
+    }
+    .job-desc {
+      .sub-text {
+        color: #bdbdbd;
+        font-size: 16px;
+        font-weight: 400;
+      }
+    }
+    .sub-text1 {
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+}
+
+hr {
+  border-left: 2px solid #ffffff !important;
+  border-top: 0 !important;
+  margin: 0 1rem;
+  opacity: 0.8;
+}
+
+.profile-details-right {
+}
+
+.dot {
+  height: 6px;
+  width: 6px;
+  background-color: #636a80;
+  border-radius: 50%;
+}

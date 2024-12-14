@@ -1,59 +1,54 @@
 <div class="candidates-container">
-    <div class="header">
-      <img [src]="'assets/icons/profile-logo.svg'" alt="My Image">
-      <h2>Candidates</h2>
-    </div>
-  
-    <!-- Navbar -->
-    <nav class="nav-bar mb-4">
-      <span
-        class="nav-item"
-        [class.activeTab]="activeTab === 'Shortlisted'"
-        (click)="setActiveTab('Shortlisted')"
-      >
-        Shortlisted
-      </span>
-      <span
-        class="nav-item"
-        [class.activeTab]="activeTab === 'Applied'"
-        (click)="setActiveTab('Applied')"
-      >
-        Applied
-      </span>
-    </nav>
-  
-    <!-- Candidate List -->
-    <div *ngIf="activeTab === 'Shortlisted'">
-      <div *ngFor="let candidate of shortlistedCandidates" class="candidate-card">
-        <div class="candidate-info">
-          <div class="left-part">
-            <h3>{{ candidate.name }}</h3>
-            <div class="star">
-              <div class="rating">⭐</div>
-              <div class="text">{{ candidate.rating }}</div>
+  <div class="header">
+    <img [src]="'assets/icons/profile-logo.svg'" alt="My Image">
+    <h2>Candidates</h2>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="nav-bar mb-4">
+    <span class="nav-item" [class.activeTab]="activeTab === 'Shortlisted'" (click)="setActiveTab('Shortlisted')">
+      Shortlisted
+    </span>
+    <span class="nav-item" [class.activeTab]="activeTab === 'Applied'" (click)="setActiveTab('Applied')">
+      Applied
+    </span>
+  </nav>
+
+  <!-- Candidate List -->
+  <div *ngIf="activeTab === 'Shortlisted'" class="main-candisate-card">
+    <div *ngFor="let candidate of shortlistedCandidates" class="candidate-card">
+      <div class="candidate-info">
+        <div class="left-part">
+          <h3>{{ candidate.name }}</h3>
+          <div class="star">
+            <div class="rating">
+              <img [src]="'assets/icons/starIcon.svg'" alt="My Image">
             </div>
-            <div class="status">{{ candidate.status }}</div>
+            <div class="text">{{ candidate.rating }}</div>
           </div>
-          <div class="experience">{{ candidate.experience }}</div>
+          <div class="status" [ngClass]="getStatusClass(candidate.status)">
+            {{ candidate.status }}
+          </div>
         </div>
-        <div class="skills">
-          <span *ngFor="let skill of candidate.skills" class="skill">{{ skill }}</span>
-        </div>
+        <div class="experience">{{ candidate.experience }}</div>
       </div>
-    </div>
-  
-    <div *ngIf="activeTab === 'Applied'">
-      <div *ngFor="let candidate of appliedCandidates" class="candidate-card">
-        <div class="candidate-info">
-          <div class="left-part">
-            <h3>{{ candidate.name }}</h3>
-          </div>
-          <div class="experience">{{ candidate.experience }}</div>
-        </div>
-        <div class="skills">
-          <span *ngFor="let skill of candidate.skills" class="skill">{{ skill }}</span>
-        </div>
+      <div class="skills">
+        <span *ngFor="let skill of candidate.skills" class="skill">{{ skill }}</span>
       </div>
     </div>
   </div>
-  
+
+  <div *ngIf="activeTab === 'Applied'">
+    <div *ngFor="let candidate of appliedCandidates" class="candidate-card">
+      <div class="candidate-info">
+        <div class="left-part">
+          <h3>{{ candidate.name }}</h3>
+        </div>
+        <div class="experience">{{ candidate.experience }}</div>
+      </div>
+      <div class="skills">
+        <span *ngFor="let skill of candidate.skills" class="skill">{{ skill }}</span>
+      </div>
+    </div>
+  </div>
+</div>

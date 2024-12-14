@@ -75,7 +75,7 @@ export class CandidatesComponent {
       case 'Selected':
         return 'status-selected';
       default:
-        return ''; // Default class or no class
+        return ''; 
     }
   }
 
@@ -87,6 +87,10 @@ export class CandidatesComponent {
 
   closeModal() {
     this.selectedCandidate = null;
+  }
+
+  isCandidateSelected(candidate: any): boolean {
+    return this.selectedCandidate === candidate; // Check if the candidate is selected
   }
 
 }

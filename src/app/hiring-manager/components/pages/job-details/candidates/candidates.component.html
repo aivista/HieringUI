@@ -1,0 +1,64 @@
+<div class="candidates-container">
+    <div class="header">
+      <img alt="img">
+      <h2>Candidates</h2>
+    </div>
+  
+    <!-- Navbar -->
+    <nav class="nav-bar mb-4">
+      <span
+        class="nav-item"
+        [class.activeTab]="activeTab === 'Shortlisted'"
+        (click)="setActiveTab('Shortlisted')"
+      >
+        Shortlisted
+      </span>
+      <span
+        class="nav-item"
+        [class.activeTab]="activeTab === 'Applied'"
+        (click)="setActiveTab('Applied')"
+      >
+        Applied
+      </span>
+    </nav>
+  
+    <!-- Candidate List -->
+    <div *ngIf="activeTab === 'Shortlisted'">
+      <div *ngFor="let candidate of shortlistedCandidates" class="candidate-card">
+        <div class="candidate-info">
+          <div class="left-part">
+            <h3>{{ candidate.name }}</h3>
+            <div class="star">
+              <div class="rating">⭐</div>
+              <div class="text">{{ candidate.rating }}</div>
+            </div>
+            <div class="status">{{ candidate.status }}</div>
+          </div>
+          <div class="experience">{{ candidate.experience }}</div>
+        </div>
+        <div class="skills">
+          <span *ngFor="let skill of candidate.skills" class="skill">{{ skill }}</span>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="activeTab === 'Applied'">
+      <div *ngFor="let candidate of appliedCandidates" class="candidate-card">
+        <div class="candidate-info">
+          <div class="left-part">
+            <h3>{{ candidate.name }}</h3>
+            <!-- <div class="star">
+              <div class="rating">⭐</div>
+              <div class="text">{{ candidate.rating }}</div>
+            </div>
+            <div class="status">{{ candidate.status }}</div> -->
+          </div>
+          <div class="experience">{{ candidate.experience }}</div>
+        </div>
+        <div class="skills">
+          <span *ngFor="let skill of candidate.skills" class="skill">{{ skill }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  

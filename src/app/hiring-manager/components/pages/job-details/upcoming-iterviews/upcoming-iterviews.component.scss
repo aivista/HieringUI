@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    // height: 100vh;
+    // background-color: #272C37;
+
+    .interview-container {
+        padding: 20px;
+
+        .header {
+            h4 {
+                color: #fff;
+                // font-family: Inter;
+                font-size: 24px;
+                font-weight: 600;
+                text-align: left;
+                text-underline-position: from-font;
+                text-decoration-skip-ink: none;
+            }
+
+            p {
+                color: #BDBDBD;
+                // font-family: Inter;
+                font-size: 12px;
+                line-height: 18px;
+                font-weight: 400;
+                text-align: left;
+                text-underline-position: from-font;
+                text-decoration-skip-ink: none;
+            }
+        }
+
+        .body {
+            margin-top: 20px;
+            // width: 449px;
+            // height: 854px;
+            border-radius: 20px;
+            padding: 5px 0;
+            border-image-source: linear-gradient(138.76deg, rgba(91, 91, 91, 0.32) 3.02%, rgba(193, 193, 193, 0.32) 100%);
+            background: linear-gradient(137.88deg, #1D212A 21.56%, #272C37 100%);
+
+            hr {
+                border: 1px solid #575757;
+                margin: 10px 0 20px 0;
+            }
+
+            .day {
+                color: white;
+                margin: 20px 0 30px 0;
+                padding: 0 20px;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .int-time {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                align-items: center;
+                background-color: #0F6CBD;
+                width: fit-content;
+                padding: 2px 5px;
+                border-radius: 5px;
+                margin: 10px 20px;
+
+                .icon {
+                    color: white;
+
+                    img, svg {
+                        vertical-align: baseline;
+                    }
+                }
+
+                .time-text {
+                    color: white;
+                    font-size: 12px;
+                }
+            }
+
+            .interview-row {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                margin: 0 20px;
+
+                .time-1 {
+                    color: white;
+                    font-size: 14px;
+                }
+
+                .time-2 {
+                    color: #BDBDBD;
+                    font-size: 12px;
+                }
+            }
+
+            .devider {
+                width: 5px;
+                height: 40px;
+                border-radius: 5px;
+                background-color: rgb(123, 186, 240);
+                margin: 0 20px;
+            }
+
+            .details {
+                .name {
+                    color: white;
+                    font-size: 14px;
+                }
+
+                .role {
+                    color: #BDBDBD;
+                    font-size: 12px;
+                }
+            }
+        }
+    } 
+}

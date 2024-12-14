@@ -1,0 +1,36 @@
+<!-- app.component.html -->
+<div class="body">
+    <div class="interview-container">
+      <div class="header">
+        <h4>Upcoming Interviews</h4>
+        <p>Last updated Thursday, Oct 30 at 11:11 AM (PT)</p>
+      </div>
+  
+      <div class="body">
+        <!-- Loop through interview days -->
+        <div *ngFor="let group of interviews">
+          <div class="day"><img src="assets/Icon.svg" alt="">{{ group.day }}</div>
+          
+          <!-- Loop through interview rows for each day -->
+          <div *ngFor="let interview of group.interviews">
+            <div class="int-time" *ngIf="group.day === 'Today' && interview.timeRelative">
+              <div class="icon"><img src="assets/Clock.svg" alt=""></div>
+              <div class="time-text">{{ interview.timeRelative }}</div>
+            </div>
+            <div class="interview-row">
+              <div class="time-container">
+                <p class="time-1">{{ interview.startTime }}</p>
+                <p class="time-2">{{ interview.duration }}</p>
+              </div>
+              <div class="devider"></div>
+              <div class="details">
+                <div class="name">{{ interview.name }}</div>
+                <div class="role">{{ interview.role }}</div>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #121212 !important;
+    color: white;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: auto;
+    padding: 16px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  
+    h1 {
+      font-size: 26px;
+      font-weight: 500;
+      line-height: 28px;
+      color: #ffffff;
+    }
+  }
+  
+  .add-button {
+    background-color: #8b04f5;
+    color: white;
+    border: 1px #8b04f5;
+    padding: 10.5px 17.5px;
+    gap: 7px;
+    border-radius: 8px;
+    width: 57px;
+    height: 50px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  
+    .add-icon {
+      width: 20.7px !important;
+      height: 20.68px !important;
+      color: #ffffff;
+    }
+  }
+  
+  .job-container {
+    // width: 400px; 
+    height: 700px; 
+    overflow-y: auto; 
+    background: linear-gradient(137.88deg, #1d212a 21.56%, #272c37 100%);
+    border-radius: 10px;
+    border: 0.5px solid;
+    border-image-source: linear-gradient(
+      138.76deg,
+      rgba(91, 91, 91, 0.72) 3.02%,
+      rgba(193, 193, 193, 0.72) 100%
+    );
+    padding: 10px 0;
+  }
+  
+  .job-details {
+    padding: 16px 0 0;
+    border-radius: 8px;
+  
+    h2 {
+      margin-bottom: 8px;
+      font-size: 18px;
+      line-height: 20px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+  
+    p {
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 400;
+      color: #bdbdbd;
+    }
+  }
+  
+  .job-list {
+    padding: 8px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .job-item {
+    padding: 12px 26px;
+    position: relative;
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
+  
+    &:after {
+      content: '';
+      position: absolute;
+      left: 26px;
+      right: 26px;
+      bottom: 0;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  
+    &:first-child {
+      border-bottom: none;
+    }
+  
+    h3 {
+      font-size: 16px;
+      line-height: 32px;
+      font-weight: 500;
+      color: white;
+    }
+  
+    p {
+      font-size: 14px;
+      color: #bbbbbb;
+    }
+  
+    &.active {
+      background-color: #2a3e5b;
+      border-radius: 4px;
+      padding: 12px 26px;
+  
+      h3 {
+        color: #ffffff;
+      }
+  
+      p {
+        color: #bbbbbb;
+      }
+    }
+  }

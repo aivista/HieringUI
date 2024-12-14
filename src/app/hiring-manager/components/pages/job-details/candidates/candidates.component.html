@@ -51,7 +51,10 @@
       </div>
     </div>
   </div>
-</div>
-<app-candidate-info *ngIf="selectedCandidate" 
+<div class="position-absolute top-0 end-0">
+  <app-candidate-info *ngIf="selectedCandidate" 
   [candidate]="selectedCandidate" 
   (close)="closeModal()"></app-candidate-info>
+</div>
+ 
+</div>

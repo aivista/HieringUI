@@ -19,7 +19,8 @@
     <div *ngFor="let candidate of shortlistedCandidates" class="candidate-card">
       <div class="candidate-info">
         <div class="left-part">
-          <h3 (click)="openModal(candidate)">{{ candidate.name }}</h3>
+          <h3 [ngClass]="{'active-name': isCandidateSelected(candidate)}" (click)="openModal(candidate)">{{
+            candidate.name }}</h3>
           <div class="star">
             <div class="rating">
               <img [src]="'assets/icons/starIcon.svg'" alt="My Image">
@@ -51,7 +52,9 @@
       </div>
     </div>
   </div>
+  <div class="position-absolute top-0 end-0">
+    <app-candidate-info *ngIf="selectedCandidate" [candidate]="selectedCandidate"
+      (close)="closeModal()"></app-candidate-info>
+  </div>
+
 </div>
-<app-candidate-info *ngIf="selectedCandidate" 
-  [candidate]="selectedCandidate" 
-  (close)="closeModal()"></app-candidate-info>

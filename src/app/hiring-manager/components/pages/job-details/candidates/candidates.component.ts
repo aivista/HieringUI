@@ -64,7 +64,6 @@ export class CandidatesComponent {
   setActiveTab(tab: string): void {
     this.activeTab = tab;
   }
-  
   getStatusClass(status: string): string {
     switch (status) {
       case 'Interview Scheduled':
@@ -76,8 +75,18 @@ export class CandidatesComponent {
       case 'Selected':
         return 'status-selected';
       default:
-        return ''; 
+        return ''; // Default class or no class
     }
+  }
+
+  selectedCandidate: any = null;
+
+  openModal(candidate: any) {
+    this.selectedCandidate = candidate;
+  }
+
+  closeModal() {
+    this.selectedCandidate = null;
   }
 
 }

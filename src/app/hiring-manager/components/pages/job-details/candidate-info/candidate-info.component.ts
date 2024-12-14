@@ -10,7 +10,7 @@ export class CandidateInfoComponent {
   @Output() close = new EventEmitter<void>();
 
   isInterviewScheduled: boolean = true;
-  isSelected : boolean = false;
+  isSelected : boolean = true;
 
   closeModal() {
     this.close.emit();
@@ -30,11 +30,20 @@ export class CandidateInfoComponent {
     if (this.candidateStatus === 'Interview Scheduled') {
 
        this.isInterviewScheduled = true;
-       this.isSelected = false;
+       
     } else {
       this.isInterviewScheduled = false;
-      this.isSelected = true;
+      
     }
+
+    if (this.candidateStatus === 'Interview Complited') {
+
+     
+      this.isSelected = true;
+   } else {
+    
+     this.isSelected = false;
+   }
     // this.isInterviewScheduled = this.candidateStatus !== 'Interview Complited';
   }
 

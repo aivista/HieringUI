@@ -1,8 +1,29 @@
+// app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CandidateLoginComponent } from './candidate/components/pages/candidate-login/candidate-login.component';
 
-const routes: Routes = [{ path: '', component: CandidateLoginComponent }];
+const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () =>
+      import('./hiring-manager/hiring-manager.module').then(
+        (m) => m.HiringManagerModule
+      ), // Default landing page is the Hiring Manager module
+  },
+  {
+    path: 'candidate',
+    loadChildren: () =>
+      import('./candidate/candidate.module').then((m) => m.CandidateModule),
+  },
+  // {
+  //   path: 'hiring-manager',
+  //   loadChildren: () =>
+  //     import('./hiring-manager/hiring-manager.module').then(
+  //       (m) => m.HiringManagerModule
+  //     ),
+  // },
+  { path: '**', redirectTo: '' }, // Redirect any unknown routes to the default route
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

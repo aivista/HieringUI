@@ -1,17 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { Router } from '@angular/router'; 
+import { Observable } from 'rxjs';
+import { GETurl } from '../../config';
+import { Router } from '@angular/router';
 import { POSTurl } from '../../config';
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HiringManagerService {
-
-  constructor(
-    private http: HttpClient, 
-    private route: Router, 
-  ) {}
+  constructor(private http: HttpClient) {}
 
   setData(key:string,data:any){
 
@@ -27,5 +24,10 @@ export class HiringManagerService {
 
   login(data: any) {
     return this.http.post(POSTurl.login, data);
+  }
+
+  getHiringManagerJobs(hiringManagerID: string) {
+    const url = `${GETurl.jobDetails}${hiringManagerID}`;
+    return this.http.get(url);
   }
 }

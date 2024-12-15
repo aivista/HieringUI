@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { HiringManagerService } from '../../../../service/hiring-manager.service';
 
 @Component({
   selector: 'app-candidate-info',
@@ -14,7 +15,7 @@ export class CandidateInfoComponent {
 
   isInterviewScheduled: boolean = true;
   isSelected: boolean = true;
-
+constructor(private hiringManagerService:HiringManagerService){}
   closeModal() {
     this.close.emit();
   }
@@ -23,7 +24,7 @@ export class CandidateInfoComponent {
 
   ngOnInit() {
     console.log('Hello World', this.candidate);
-
+    this.getcandidateStatus(this.candidate)
     // Store the status in a variable
     if (this.candidate && this.candidate.status) {
       this.candidateStatus = this.candidate.status;
@@ -40,6 +41,15 @@ export class CandidateInfoComponent {
     } else {
       this.isSelected = false;
     }
+
     // this.isInterviewScheduled = this.candidateStatus !== 'Interview Complited';
+  }
+  getcandidateStatus(candidate:any){
+this.hiringManagerService.candidateStatus(candidate.jobId,candidate.candidateId).subscribe((res:any)=>{
+  if(res.isSuccess){
+    console.log("response--->",res);
+    
+  }
+})
   }
 }

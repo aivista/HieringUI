@@ -1,5 +1,6 @@
+import { Component,EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import {  OnInit } from '@angular/core';
 
 interface Profile {
   name: string;
@@ -34,7 +35,11 @@ interface Profile {
 })
 export class ProfileDetailsComponent implements OnInit {
   profile: Profile | undefined;
+  @Output() edit = new EventEmitter<void>();
 
+  onEdit(): void {
+    this.edit.emit(); // Emit event to trigger edit mode
+  }
   ngOnInit() {
     this.profile = {
       name: 'Rajesh Tapadia',

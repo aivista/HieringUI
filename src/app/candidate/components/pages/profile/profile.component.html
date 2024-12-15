@@ -3,7 +3,13 @@
     <div
       class="profile-details-left d-flex align-items-start flex-column gap-4"
     >
-      <app-profile-details class="w-100" />
+      <!-- <app-profile-details class="w-100" /> -->
+      <ng-container *ngIf="isEditMode; else showDetails">
+        <app-edit-profile class="w-100" (cancelEdit)="toggleEditMode(false)" />
+      </ng-container>
+      <ng-template #showDetails>
+        <app-profile-details class="w-100" (edit)="toggleEditMode(true)" />
+      </ng-template>
     </div>
     <hr />
     <div class="profile-details-right">

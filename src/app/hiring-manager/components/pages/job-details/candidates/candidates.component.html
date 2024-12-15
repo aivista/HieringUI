@@ -32,22 +32,22 @@
       <div class="candidate-info">
         <div class="left-part">
           <h3 [ngClass]="{ 'active-name': isCandidateSelected(candidate) }">
-            {{ candidate.name }}
+            {{ candidate?.first_name +' ' + candidate?.last_name}}
           </h3>
           <div class="star">
             <div class="rating">
               <img [src]="'assets/icons/starIcon.svg'" alt="My Image" />
             </div>
-            <div class="text">{{ candidate.rating }}</div>
+            <div class="text">{{ candidate.star }}</div>
           </div>
-          <div class="status" [ngClass]="getStatusClass(candidate.status)">
-            {{ candidate.status }}
+          <div class="status" [ngClass]="getStatusClass(candidate?.latestStatus)">
+            {{ candidate?.latestStatus }}
           </div>
         </div>
-        <div class="experience">{{ candidate.experience }}</div>
+        <div class="experience">{{ candidate?.experience }}</div>
       </div>
       <div class="skills">
-        <span *ngFor="let skill of candidate.skills" class="skill">{{
+        <span *ngFor="let skill of candidate?.skills?.split(',')" class="skill">{{
           skill
         }}</span>
       </div>

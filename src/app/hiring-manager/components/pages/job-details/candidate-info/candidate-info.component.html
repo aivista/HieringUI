@@ -84,10 +84,10 @@
           <h5 class="mb-0 ms-2">Skills</h5>
         </div>
 
-        <div class="d-flex">
+        <div class="d-flex flex-wrap gap-1">
           <div
             *ngFor="let skill of candidate?.skills?.split(','); let i = index"
-            class="skill-pill bg-primary me-2"
+            class="skill-pill bg-primary me-2 mb-2"
           >
             {{ skill }}
           </div>

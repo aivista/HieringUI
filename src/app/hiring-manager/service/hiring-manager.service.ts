@@ -46,7 +46,7 @@ export class HiringManagerService {
   }
 
   getAppliedJobs(id: string) {
-    return this.http.get(this.jobservice + 'Jobs/LatestStatus/jobs/applied_candidates/' + id)
+    return this.http.get(this.jobservice + 'Jobs/LatestStatus/jobs/applied_jobs/' + id)
   }
 
 

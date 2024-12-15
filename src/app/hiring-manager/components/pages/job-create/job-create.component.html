@@ -13,87 +13,117 @@
 
     </div>
     <div class="jcd-body">
-      <div class="jcd-main-body">
-        <div class="row">
-          <div class="col-6 right-section">
-            <div>
-              <label class="text-t1">Please follow the instructions and fill the details accordingly</label> <br>
-              <label class="text-t2"><label class="aristick">* </label> &nbsp;Indicates required</label>
-            </div>
-            <div class="right-field-box">
-              <div class="row">
-                <div class="col-12">
-                  <label class="field-text">Job Title <label class="aristick">*</label></label> <br>
-                  <!-- <input type="text" pInputText class="w-100" /> -->
-                  <p-dropdown id="jobTitle" [options]="jobTitles" placeholder="Select" [(ngModel)]="selectedJobTitle"
-                    name="jobTitle" [filter]="true" class="w-100"></p-dropdown>
-                </div>
+      <form [formGroup]="profileForm" (ngSubmit)="addUser()">
+        <div class="jcd-main-body">
+          <div class="row">
+            <div class="col-6 right-section">
+              <div>
+                <label class="text-t1">Please follow the instructions and fill the details accordingly</label> <br>
+                <label class="text-t2"><label class="aristick">* </label> &nbsp;Indicates required</label>
               </div>
-              <div class="row mt-2">
-                <div class="col-4">
-                  <label class="field-text">Experience</label> <br>
-                  <p-dropdown id="experience" [options]="experienceOptions" placeholder="Select"
-                    [(ngModel)]="selectedExperience" name="experience" [filter]="true" class="w-100"></p-dropdown>
-                </div>
-                <div class="col-4">
-                  <label class="field-text">Location <label class="aristick">*</label></label> <br>
-                  <p-dropdown id="location" [options]="locationOptions" placeholder="Select"
-                    [(ngModel)]="selectedLocation" name="location" [filter]="true" class="w-100"></p-dropdown>
-                </div>
-                <div class="col-4">
-                  <label class="field-text">Role <label class="aristick">*</label></label> <br>
-                  <p-dropdown id="role" [options]="roleOptions" placeholder="Select" [(ngModel)]="selectedRole"
-                    name="role" [filter]="true" class="w-100"></p-dropdown>
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col-12">
-                  <label class="field-text">Primary Skills <label class="aristick">*</label></label> <br>
-                  <p-multiSelect id="primarySkills" [options]="primarySkills" placeholder="Select"
-                    [(ngModel)]="selectedPrimarySkills" name="primarySkills" class="w-50"></p-multiSelect>
-
-                  <div class="chip-container flex items-center gap-2 flex-wrap jcd">
-                    <p-chip *ngFor="let genre of selectedPrimarySkills" [label]="genre" [removable]="true"
-                      (onRemove)="removeFromSelection(genre)" class="custom-p-chip mt-1">
-                    </p-chip>
+              <div class="right-field-box">
+                <div class="row">
+                  <div class="col-12">
+                    <label class="field-text">Job Title <label class="aristick">*</label></label> <br>
+                    <input type="text" pInputText id="jobTitle" class="w-100" formControlName="jobTitle"/>
+                    <small class="p-error block" style="color: red; font-size: 10px;"
+                      *ngIf="profileForm.get('jobTitle')?.invalid && profileForm.get('jobTitle')?.touched">
+                      Job Title is required.
+                    </small>
+                    
                   </div>
                 </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col-12">
-                  <label class="field-text">Secondary Skills <label class="aristick">*</label></label> <br>
-                  <p-multiSelect id="primarySkills" [options]="secondarySkills" placeholder="Select"
-                    [(ngModel)]="selectedSecondarySkills" name="primarySkills" class="w-50"></p-multiSelect>
-
-                  <div class="chip-container flex items-center gap-2 flex-wrap jcd">
-                    <p-chip *ngFor="let genre of selectedSecondarySkills" [label]="genre" [removable]="true"
-                      (onRemove)="removeFromSelectionSecondary(genre)" class="custom-p-chip mt-1">
-                    </p-chip>
+                <div class="row mt-2">
+                  <div class="col-4">
+                    <label class="field-text">Experience</label> <br>
+                    <p-dropdown id="experience" formControlName="experience" [options]="experienceOptions" placeholder="Select" name="experience"
+                      [filter]="true" class="w-100"></p-dropdown>
+                      <small class="p-error block" style="color: red; font-size: 10px;"
+                      *ngIf="profileForm.get('experience')?.invalid && profileForm.get('experience')?.touched">
+                      Experience is required.
+                    </small>
+                  </div>
+                  <div class="col-4">
+                    <label class="field-text">Location <label class="aristick">*</label></label> <br>
+                    <p-dropdown id="location" formControlName="location" [options]="locationOptions" placeholder="Select" name="location"
+                      [filter]="true" class="w-100"></p-dropdown>
+                      <small class="p-error block" style="color: red; font-size: 10px;"
+                      *ngIf="profileForm.get('location')?.invalid && profileForm.get('location')?.touched">
+                      Location is required.
+                    </small>
+                  </div>
+                  <div class="col-4">
+                    <label class="field-text">Role <label class="aristick">*</label></label> <br>
+                    <p-dropdown id="role" formControlName="role" [options]="roleOptions" placeholder="Select" name="role" [filter]="true"
+                      class="w-100"></p-dropdown>
+                      <small class="p-error block" style="color: red; font-size: 10px;"
+                      *ngIf="profileForm.get('role')?.invalid && profileForm.get('role')?.touched">
+                      Role is required.
+                    </small>
                   </div>
                 </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col-12">
-                  <label class="field-text">Business Dependencies <label class="aristick">*</label></label> <br>
-                  <textarea pInputTextarea rows="2" id="businessDependencies" placeholder="Write business dependencies"
-                    [(ngModel)]="businessDependencies" name="businessDependencies" class="w-100"></textarea>
+                <div class="row mt-2">
+                  <div class="col-12">
+                    <label class="field-text">Primary Skills <label class="aristick">*</label></label> <br>
+                    <p-multiSelect id="primarySkills" formControlName="primarySkills"  [(ngModel)]="selectedPrimarySkills" [options]="primarySkills" placeholder="Select"
+                      name="primarySkills" class="w-50"></p-multiSelect>
+
+                    <div class="chip-container flex items-center gap-2 flex-wrap jcd">
+                      <p-chip *ngFor="let genre of selectedPrimarySkills" [label]="genre" [removable]="true"
+                        (onRemove)="removeFromSelection(genre)" class="custom-p-chip mt-1">
+                      </p-chip>
+                    </div>
+                    <small class="p-error block" style="color: red; font-size: 10px;"
+                    *ngIf="profileForm.get('primarySkills')?.invalid && profileForm.get('primarySkills')?.touched">
+                    Primary Skills is required.
+                  </small>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-12">
+                    <label class="field-text">Secondary Skills <label class="aristick">*</label></label> <br>
+                    <p-multiSelect id="secondarySkills" formControlName="secondarySkills" 
+                     [(ngModel)]="selectedSecondarySkills"
+                    [options]="secondarySkills" placeholder="Select"
+                      name="secondarySkills" class="w-50"></p-multiSelect>
+
+                    <div class="chip-container flex items-center gap-2 flex-wrap jcd">
+                      <p-chip *ngFor="let genre of selectedSecondarySkills" [label]="genre" [removable]="true"
+                        (onRemove)="removeFromSelectionSecondary(genre)" class="custom-p-chip mt-1">
+                      </p-chip>
+                    </div>
+                    <small class="p-error block" style="color: red; font-size: 10px;"
+                    *ngIf="profileForm.get('secondarySkills')?.invalid && profileForm.get('secondarySkills')?.touched">
+                    Secondary Skills is required.
+                  </small>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-12">
+                    <label class="field-text">Business Dependencies <label class="aristick">*</label></label> <br>
+                    <textarea pInputTextarea rows="2" id="businessDependencies" formControlName="businessDependencies"
+                      placeholder="Write business dependencies" name="businessDependencies" class="w-100"></textarea>
+                      <small class="p-error block" style="color: red; font-size: 10px;"
+                      *ngIf="profileForm.get('businessDependencies')?.invalid && profileForm.get('businessDependencies')?.touched">
+                      Business Dependencies is required.
+                    </small>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="d-flex align-items-center justify-content-center mt-4">
+                    <button class="generate-jd-btn" type="button" (click)="getJobDetails()">
+                      <img src="/assets/icons/generate-jd.svg" alt="icon"> &nbsp;
+                      Generate JD
+                    </button>
+                  </span>
                 </div>
               </div>
-              <div class="row">
-                <span class="d-flex align-items-center justify-content-center mt-4">
-                  <button class="generate-jd-btn" (click)="getJobDetails()">
-                    <img src="/assets/icons/generate-jd.svg" alt="icon"> &nbsp;
-                    Generate JD
-                  </button>
-                </span>
-              </div>
-            </div>
 
-          </div>
-          <div class="col-6 left-section">
-            <label class="job-desc-text">Job Description</label>
-            <div class="job-desc-section">
-              <!-- <div class="row">
+            </div>
+            <div class="col-6 left-section">
+              <label class="job-desc-text">Job Description</label>
+              <div class="job-desc-section">
+                <!-- <div class="row">
                 <div class="col-12">
                   <div class="role-overview">
                     <label class="field-text-small">Role overview <label class="aristick">*</label></label> <br>
@@ -101,57 +131,31 @@
                       class="w-100 jd-cutom-textarea"></textarea>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="role-overview">
-                    <label class="field-text-small">Minimum Experience<label class="aristick">*</label></label> <br>
-                    <textarea pInputTextarea rows="6" id="roleoverview" [(ngModel)]="roleOverView" name="roleoverview"
-                      class="w-100 jd-cutom-textarea"></textarea>
+              </div>-->
+                <div class="job-desc-section-sub">
+                  <div class="col-12" *ngFor="let item of JDData">
+                    <div class="role-overview">
+                      <label class="field-text-small">{{ item.key }}<label class="aristick">*</label></label>
+                      <br>
+                      <textarea pInputTextarea rows={{getRowSize(item.value.length)}} [(ngModel)]="item.value" [ngModelOptions]="{standalone: true}"
+                        class="w-100 jd-cutom-textarea"></textarea>
+                    </div>
                   </div>
                 </div>
-              </div> -->
-              <!-- <div class="row">
-                <div class="col-12">
-                  <div class="role-overview">
-                    <label class="field-text-small">Non negotiable for COO role<label class="aristick">*</label></label> <br>
-                    <textarea pInputTextarea rows="6" id="roleoverview"
-                      [(ngModel)]="roleOverView" name="roleoverview" class="w-100 jd-cutom-textarea"></textarea>
-                  </div>
-                </div>
-              </div> -->
-              <div  class="job-desc-section-sub">
-                <div class="col-12" *ngFor="let item of JDData">
-                  <!-- <div class="form-group">
-                    <label class="field-text-small">{{ item.key }}</label> <br />
-                    <textarea pInputTextarea rows="6" [(ngModel)]="item.value" class="w-100 jd-cutom-textarea">
-                    </textarea>
-                  </div> -->
-                  <div class="role-overview">
-                    <label class="field-text-small">{{ item.key }}<label class="aristick">*</label></label>
-                    <br>
-                    <textarea pInputTextarea rows="6" [(ngModel)]="item.value" 
-                      class="w-100 jd-cutom-textarea"></textarea>
-                  </div>
-                </div>
-              </div>
-             
-            </div>
 
-            <div>
+              </div>
+
               <div>
-                <span class="d-flex align-items-center justify-content-end mt-4">
-                  <button class="save-jd-btn" (click)="saveJobDetails()">
-                    <!-- <img src="/assets/icons/generate-jd.svg" alt="icon"> &nbsp; -->
-                    Save
-                  </button>
-                </span>
+                <div>
+                  <span class="d-flex align-items-center justify-content-end mt-4">
+                    <button class="save-jd-btn" type="submit">Save</button>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
+      </form>
     </div>
 
   </div>

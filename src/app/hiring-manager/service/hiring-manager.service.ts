@@ -49,7 +49,11 @@ export class HiringManagerService {
     const url = this.jobDetails + 'Job/GetJobDescription';
     return this.http.get(url);
   }
-  
+  createJobs(data: any) {
+    const url = this.jobDetails + 'Job/CreatedJob';
+    return this.http.post(url, data);
+  }
+
   candidateStatus(jobId: string, CandidateId: string) {
     return this.http.get(this.assessment + 'ASSESSMENTSERVICE/JOB/' + jobId + '/CANDIDATE/' + CandidateId + '/ASSESSMENTSTATE')
 

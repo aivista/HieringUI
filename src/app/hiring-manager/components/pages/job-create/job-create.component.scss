@@ -1,10 +1,11 @@
 .main-section {
-  background-image: url("/public/assets/png/create-job-bg.png");
+  background-image: url("/assets/png/create-job-bg.png");
   background-repeat: no-repeat;
   height: 93vh;
   width: 98vw;
   background-position: center;
   background-size: cover;
+  overflow: auto;
 
 }
 
@@ -13,6 +14,7 @@
   margin-top: 20px;
   margin-left: 100px;
   margin-right: 100px;
+  margin-bottom: 20px;
 }
 
 
@@ -103,27 +105,17 @@
 
   .job-desc-section {
     margin-top: 10px;
-    min-height: 58vh;
-    max-height: 58vh;
-    // background: #131313;
-    // color: #FFFFFF00;
+    min-height: 56vh;
+    max-height: 56vh;
     border-radius: 10px !important;
-    // padding-left: 15px;
-    // padding-top: 10px;
-    // padding-right: 15px;
-    // border-bottom-left-radius:10px ;
-    // border-bottom-right-radius: 10px;
     overflow: auto;
-    // position: relative;
-
-
   }
 
 
 }
 
 .job-desc-section-sub {
-  min-height: 58vh;
+  min-height: 56vh;
   height: 100%;
   background: #131313;
   color: #FFFFFF00;
@@ -132,8 +124,6 @@
   padding-top: 10px;
   padding-right: 15px;
   margin-right: 10px;
-  // position: absolute;
-  // overflow: auto;
 }
 
 ::ng-deep .p-chip {
@@ -179,9 +169,10 @@
 
 }
 
+
 .jd-cutom-textarea {
   border: none;
   font-size: 14px;
   text-align: justify;
-  // resize: none !important;
+  resize: none !important;
 }

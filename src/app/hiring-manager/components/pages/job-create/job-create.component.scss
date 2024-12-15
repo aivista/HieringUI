@@ -2,7 +2,7 @@
   background-image: url("/assets/png/create-job-bg.png");
   background-repeat: no-repeat;
   height: 93vh;
-  width: 98vw;
+  width: 100vw;
   background-position: center;
   background-size: cover;
   overflow: auto;
@@ -12,8 +12,8 @@
 
 .main-contain {
   margin-top: 20px;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: 140px;
+  margin-right: 120px;
   margin-bottom: 20px;
 }
 
@@ -85,11 +85,12 @@
 
 .right-field-box {
   margin-top: 15px;
+  margin-right: 20px;
 
   .field-text {
     font-size: 14px;
     color: #FFFFFF;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 
 }
@@ -105,8 +106,8 @@
 
   .job-desc-section {
     margin-top: 10px;
-    min-height: 56vh;
-    max-height: 56vh;
+    min-height: 60vh;
+    max-height: 60vh;
     border-radius: 10px !important;
     overflow: auto;
   }
@@ -115,7 +116,7 @@
 }
 
 .job-desc-section-sub {
-  min-height: 56vh;
+  min-height: 60vh;
   height: 100%;
   background: #131313;
   color: #FFFFFF00;
@@ -135,6 +136,9 @@
   padding: 4px 10px 4px 10px !important;
   font-size: 12px !important;
   margin-right: 8px !important;
+}
+.jcd-chip-section{
+  min-height: 40px;
 }
 
 .generate-jd-btn {

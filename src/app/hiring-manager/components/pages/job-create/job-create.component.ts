@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { Chip } from 'primeng/chip';
+import { HiringManagerService } from '../../../service/hiring-manager.service';
 
 @Component({
   selector: 'app-job-create',
@@ -40,7 +41,7 @@ export class JobCreateComponent {
   selectedPrimarySkills: string[] = [];
   selectedSecondarySkills: string[] = [];
   businessDependencies: string | undefined;
-
+  JDData: any = [];
   // Job description placeholder
   jobDescription: string = `
     The Chief Operating Officer (COO) will be responsible for overall operations, management, and execution...
@@ -48,6 +49,8 @@ export class JobCreateComponent {
 
   roleOverView: any = 'The Chief Operating Officer (COO) will be responsible for the overall operations, management, and execution of strategies for AdaniConneX’s data centers. The COO will play a critical role in ensuring that the data center operates efficiently, meets the highest standards of uptime, and delivers exceptional service to clients. The ideal candidate will have extensive experience in data center operations, a strong background in leadership, and the ability to drive operational excellence in a fast-growing environment.'
   // Selected Skills Logic
+
+  constructor(private apiService: HiringManagerService) { }
   addPrimarySkill(event: Event): void {
     const selectElement = event.target as HTMLSelectElement;
     const selectedSkill = selectElement.value;
@@ -62,5 +65,18 @@ export class JobCreateComponent {
   }
   removeFromSelectionSecondary(genre: string): void {
     this.selectedSecondarySkills = this.selectedSecondarySkills.filter(item => item !== genre);
+  }
+
+  getJobDetails() {
+    this.apiService.getJobsDesc().subscribe((res: any) => {
+      if (res.isSuccess === true) {
+        console.log('response', res.result);
+        this.JDData = res.result
+      }
+
+    })
+  }
+  saveJobDetails(){
+    
   }
 }

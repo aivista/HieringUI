@@ -86,10 +86,11 @@ constructor(private hiringManagerService:HiringManagerService){}
 ngOnInit(){
  const response=this.hiringManagerService.getData("hiringManagerDetails");
  if(response){
-  console.log(response);
+  
   
  }
 }
+
   selectedCandidate: any = null;
 
   openModal(candidate: any) {

@@ -1,14 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GETurl } from '../../config';
+
 import { Router } from '@angular/router';
 import { POSTurl } from '../../config';
+import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class HiringManagerService {
-  constructor(private http: HttpClient) {}
+  url = environment.apiBaseUrl;
+  constructor(private http: HttpClient) {
+ 
+  }
 
   setData(key:string,data:any){
 
@@ -23,11 +27,11 @@ export class HiringManagerService {
   }
 
   login(data: any) {
-    return this.http.post(POSTurl.login, data);
+    return this.http.post(this.url+'login/hiringmanager', data);
   }
 
   getHiringManagerJobs(hiringManagerID: string) {
-    const url = `${GETurl.jobDetails}${hiringManagerID}`;
+    const url = `${this.url+'Jobs'}${hiringManagerID}`;
     return this.http.get(url);
   }
 }

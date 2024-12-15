@@ -35,7 +35,8 @@ export class HiringManagerLoginComponent {
         console.log("response",response);
         
         if (response && response.isSuccess) {
-          alert('Login successful!');
+          // alert('Login successful!');
+          this.hiringManagerService.setData("hiringManagerDetails",response.result);
           this.router.navigate(['/job-details']); 
         } else {
           alert(response.message || 'Login failed. Please try again.');

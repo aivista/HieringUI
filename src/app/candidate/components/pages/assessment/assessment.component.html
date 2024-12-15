@@ -1,0 +1,105 @@
+<div class="assessment-container">
+    <!-- Start Screen -->
+    <div *ngIf="!testStarted" class="start-screen">
+
+        <div class="upperrwap">
+            
+                <img
+                src="assets/icons/simcard.svg"
+                alt="Adani Logo"
+                class="logo position-absolute "
+              /> 
+              <p class="title">Technical Assessment</p>
+            
+           
+        </div>
+        
+
+      <div class="instructions">
+        <div>Instructions</div>
+        
+        <p>
+           
+            1. Technical Setup:Ensure you have a stable internet connection and a quiet environment to complete the assessment without interruptions.
+        </p>
+            
+          <p>
+            2. Complete the Assessment:
+            Allocate sufficient time to complete the assessment without rushing. Follow the instructions provided for each section carefully.
+          </p>
+           
+         
+      </div>
+      
+      <div class="button-div">
+      <button (click)="startTest()" class="take-test-button">Take Test</button>
+      </div>
+    </div>
+  
+    <!-- Quiz Screen -->
+    <div *ngIf="testStarted" class="quiz-screen">
+      <!-- Question Number -->
+      <div class="question-header">
+        <p>{{ currentQuestionIndex + 1 }} / {{ questions.length }}</p>
+      </div>
+  
+      <!-- Question Text -->
+      <div class="question-text">
+        <p>{{ questions[currentQuestionIndex].question }}</p>
+      </div>
+  
+      <!-- Options -->
+      <div class="options">
+        <div *ngFor="let option of questions[currentQuestionIndex]?.options; let i = index">
+          <label>
+            <input
+              type="radio"
+              [name]="'question' + currentQuestionIndex"
+              [checked]="selectedAnswers[currentQuestionIndex] === i"
+              (change)="selectOption(i)"
+            />
+            
+            {{ option }}
+          </label>
+        </div>
+      </div>
+  
+      <!-- Navigation Buttons -->
+      <div class="navigation-buttons">
+        <button 
+        (click)="prevQuestion()" 
+        class="nav-button" 
+        [disabled]="currentQuestionIndex === 0"
+        [ngClass]="{'disabled-button': currentQuestionIndex === 0}"
+        >
+        <img
+                src="assets/icons/left_arrow.svg"
+              /> 
+        </button>
+        
+        <!-- Next Button -->
+        <button 
+        (click)="nextQuestion()" 
+        class="nav-button" 
+        [disabled]="currentQuestionIndex === questions.length - 1"
+        [ngClass]="{'disabled-button': currentQuestionIndex === questions.length - 1}"
+        >
+        <img
+                src="assets/icons/right_arrow.svg"
+                
+              
+              /> 
+        </button>
+      </div>
+
+      <!-- Previous Button -->
+
+
+  
+      <!-- Submit Button (Visible on Last Question) -->
+      <div *ngIf="currentQuestionIndex === questions.length - 1" class="submit-button">
+        <button (click)="submitTest()" class="submit-test-button">Submit</button>
+      </div>
+    </div>
+  </div>
+  

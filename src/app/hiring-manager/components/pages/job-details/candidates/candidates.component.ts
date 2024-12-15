@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { CandidateInfoComponent } from '../candidate-info/candidate-info.component';
+import { HiringManagerService } from '../../../../service/hiring-manager.service';
 
 @Component({
   selector: 'app-candidates',
@@ -64,7 +65,7 @@ export class CandidatesComponent {
       skills: ['Vue', 'JavaScript', 'SCSS'],
     },
   ];
-
+constructor(private hiringManagerService:HiringManagerService){}
   setActiveTab(tab: string): void {
     this.activeTab = tab;
   }
@@ -82,7 +83,23 @@ export class CandidatesComponent {
         return '';
     }
   }
+ngOnInit(){
+ const response=this.hiringManagerService.getData("hiringManagerDetails");
+ if(response){
+ this.getJobDetails(response.email)
+  
+ }
+}
+getJobDetails(email:string){
+ 
+  this.hiringManagerService.getHiringManagerJobs(email).subscribe((res:any)=>{
+    console.log("rews",res)
+  },
+  (e)=>{
 
+  }
+)
+}
   selectedCandidate: any = null;
 
   openModal(candidate: any) {

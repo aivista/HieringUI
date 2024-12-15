@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recently-applied',
@@ -9,6 +10,8 @@ import { Component } from '@angular/core';
   styleUrl: './recently-applied.component.scss',
 })
 export class RecentlyAppliedComponent {
+
+  constructor(private router: Router) {}
   jobs = [
     {
       headerImage: 'assets/icons/adanicon.svg',
@@ -30,4 +33,8 @@ export class RecentlyAppliedComponent {
       buttonVisible: false,
     },
   ];
+
+  navigateToInterview() {
+    this.router.navigate(['/candidate/interview']); 
+  }
 }

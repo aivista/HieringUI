@@ -10,9 +10,13 @@ import { environment } from '../../../environments/environment';
 })
 export class HiringManagerService {
   url = environment.apiBaseUrl;
+
   jobservice = environment.jobService
   jobDetails = environment.jobDetails
   jobSubscribe = new Subject()
+
+  assessment = environment.assessment
+
   constructor(private http: HttpClient) {
 
   }
@@ -44,5 +48,10 @@ export class HiringManagerService {
   getJobsDesc() {
     const url = this.jobDetails + 'Job/GetJobDescription';
     return this.http.get(url);
+  }
+  
+  candidateStatus(jobId: string, CandidateId: string) {
+    return this.http.get(this.assessment + 'ASSESSMENTSERVICE/JOB/' + jobId + '/CANDIDATE/' + CandidateId + '/ASSESSMENTSTATE')
+
   }
 }

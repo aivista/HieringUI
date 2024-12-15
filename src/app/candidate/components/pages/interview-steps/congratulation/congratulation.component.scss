@@ -1,0 +1,79 @@
+/* Main Content */
+.content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Popup Background with Blur */
+  .popup-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    backdrop-filter: blur(8px); /* Blur effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Popup Container */
+  .popup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  /* Popup Content */
+  .popup-content {
+    background: #282828;
+    color: #F9F9F9;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    width: 595px;
+    height: 307px;
+    text-align: center;
+  }
+  
+  /* Close Button */
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    color: #000;
+    cursor: pointer;
+  }
+  
+  
+  /* Success Icon */
+  .icon  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .headd{
+    font-size: 1.375rem;
+    font-weight: 600;
+    align-items: center;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .subheadd{
+    font-size: 1.125rem;
+    font-weight: 400;
+    align-items: center;
+  }
+
+  .subsubhead{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 33px;
+  }
+  

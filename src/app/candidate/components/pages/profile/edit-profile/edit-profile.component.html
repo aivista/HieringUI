@@ -1,0 +1,114 @@
+<div class="profile-preview-header-container">
+  <h2 class="profile-preview-header">
+    <img src="assets/icons/profileIcon.svg" alt="" class="profile-icon"> Profile Preview
+  </h2>
+  <div class="profile-preview-button-row">
+    <button class="profile-preview-cancel-btn" (click)="onCancel()">Cancel</button>
+    <button class="profile-preview-save-btn" (click)="onSave()">Save</button>
+  </div>
+</div>
+
+<div class="profile-preview-container">
+  <div class="profile-preview-left">
+      <!-- Personal Details -->
+      <h3 class="profile-preview-subheader blue-line">Personal Details</h3>
+      <h4 class="subheader">Basic Details</h4>
+      <div class="profile-preview-section">
+          <!-- Row 1: Title and First Name -->
+          <div class="profile-preview-row">
+              <div class="profile-preview-form-group title-width">
+                  <label>Title <span>*</span></label>
+                  <p-dropdown 
+                      [options]="titleOptions" 
+                      [(ngModel)]="selectedTitle" 
+                      [autoWidth]="false" 
+                      class="profile-preview-dropdown"
+                  ></p-dropdown>
+              </div>
+              <div class="profile-preview-form-group first-width">
+                  <label>First Name <span>*</span></label>
+                  <input type="text" value="Rajesh" />
+              </div>
+          </div>
+
+          <!-- Row 2: Middle Name and Last Name -->
+          <div class="profile-preview-row">
+              <div class="profile-preview-form-group middle-width">
+                  <label>Middle Name</label>
+                  <input type="text" placeholder="Enter your middle name" />
+              </div>
+              <div class="profile-preview-form-group last-width">
+                  <label>Last Name <span>*</span></label>
+                  <input type="text" value="Tapadia" />
+              </div>
+          </div>
+
+          <!-- Row 3: Email ID and Phone No -->
+          <div class="profile-preview-row">
+              <div class="profile-preview-form-group middle-width">
+                  <label>Email ID <span>*</span></label>
+                  <input type="email" value="rajesh.tapadia@gmail.com" />
+              </div>
+              <div class="profile-preview-form-group last-width">
+                  <label>Phone No. <span>*</span></label>
+                  <input type="text" value="9832192091" />
+              </div>
+          </div>
+      </div>
+
+      <!-- Address Section -->
+      <div class="profile-preview-section">
+          <h3 class="profile-preview-subheader subheader">Address</h3>
+          <p>Please enter your home address</p>
+          <textarea rows="2">Sector 45, Faridabad, Haryana 121003</textarea>
+      </div>
+
+      <!-- Experience Details Section -->
+      <div class="profile-preview-section">
+          <h3 class="profile-preview-subheader blue-line">Experience Details</h3>
+          <textarea rows="2">Executive director at Nxtra Data Ltd. (A Bharti Airtel Group Company).</textarea>
+      </div>
+
+      <!-- Educational Details Section -->
+      <div class="profile-preview-section">
+          <h3 class="profile-preview-subheader blue-line">Educational Details</h3>
+          <textarea rows="2">Bachelor of Engineering in computer science from Pune University</textarea>
+      </div>
+
+      <!-- Certification & Skills Section -->
+      <h3 class="profile-preview-subheader blue-line">Certification & Skill Details</h3>
+      <div class="profile-preview-section">
+          <div class="profile-preview-form-group">
+              <h4 class="subheader">Certification</h4>
+              <textarea placeholder="Details goes here"></textarea>
+          </div>
+          <div class="profile-preview-form-group">
+              <h4 class="subheader">Skills</h4>
+              <h5 class="skill">Add your skills (maximum 10)</h5>
+              <input 
+                  id="skillsInput" 
+                  type="text" 
+                  [(ngModel)]="searchTerm" 
+                  (input)="filterSkills()" 
+                  placeholder="Type and add skills" 
+                  autocomplete="off"
+              />
+              <!-- Dropdown Suggestions -->
+              <ul *ngIf="filteredSkills.length" class="skills-dropdown">
+                  <li class="skill-li"
+                      *ngFor="let skill of filteredSkills" 
+                      (click)="addSkill(skill)"
+                  >
+                      {{ skill }}
+                  </li>
+              </ul>
+              <!-- Selected Skills -->
+              <div class="profile-preview-skills">
+                  <span *ngFor="let skill of selectedSkills" class="skill-tag">
+                      {{ skill }} <button (click)="removeSkill(skill)" class="remove-skill">&times;</button>
+                  </span>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

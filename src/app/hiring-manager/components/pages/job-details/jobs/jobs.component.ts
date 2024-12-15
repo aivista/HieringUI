@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { HiringManagerService } from '../../../../service/hiring-manager.service';
 
 @Component({
   selector: 'app-jobs',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 export class JobsComponent {
   private router = inject(Router);
   title = 'resourcemanagement';
+  JobDetails:any=[]
   jobs = [
     {
       title: 'SAS & Communication Manager',
@@ -59,16 +61,33 @@ export class JobsComponent {
       active: false,
     },
   ];
-
-  setActiveJob(index: number): void {
+  activeIndex: number = 0;
+constructor(private hiringManagerService:HiringManagerService){}
+  setActiveJob(index: number,job:any): void {
     // Reset all jobs to inactive
-    this.jobs.forEach((job, i) => {
-      job.active = false;
-    });
-    // Set clicked job to active
-    this.jobs[index].active = true;
-  }
+   this.activeIndex=index
+   this.hiringManagerService.jobSubscribe.next(job)
 
+  }
+  ngOnInit(){
+    const response=this.hiringManagerService.getData("hiringManagerDetails");
+    if(response){
+    this.getJobDetails(response.email)
+     
+    }
+   }
+   getJobDetails(email:string){
+    
+     this.hiringManagerService.getHiringManagerJobs(email).subscribe((res:any)=>{
+       console.log("rews",res)
+       this.JobDetails=res.result
+       this.hiringManagerService.jobSubscribe.next(this.JobDetails[0])
+     },
+     (e)=>{
+   
+     }
+   )
+   }
   openCreateJob() {
     this.router.navigate(['/create-job']);
   }

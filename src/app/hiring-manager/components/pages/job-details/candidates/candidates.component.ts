@@ -65,7 +65,10 @@ export class CandidatesComponent {
       skills: ['Vue', 'JavaScript', 'SCSS'],
     },
   ];
-constructor(private hiringManagerService:HiringManagerService){}
+  jobSucribe:any
+constructor(private hiringManagerService:HiringManagerService){
+  this.getShortlisted()
+}
   setActiveTab(tab: string): void {
     this.activeTab = tab;
   }
@@ -84,21 +87,16 @@ constructor(private hiringManagerService:HiringManagerService){}
     }
   }
 ngOnInit(){
- const response=this.hiringManagerService.getData("hiringManagerDetails");
- if(response){
- this.getJobDetails(response.email)
-  
- }
-}
-getJobDetails(email:string){
- 
-  this.hiringManagerService.getHiringManagerJobs(email).subscribe((res:any)=>{
-    console.log("rews",res)
-  },
-  (e)=>{
 
-  }
-)
+}
+getShortlisted(){
+ this.jobSucribe= this.hiringManagerService.jobSubscribe.subscribe((res:any)=>{
+    console.log("res--->",res);
+    this.hiringManagerService.getShortlistedJobs(res.id).subscribe((res:any)=>{
+
+    })
+    
+  })
 }
   selectedCandidate: any = null;
 
@@ -116,5 +114,11 @@ getJobDetails(email:string){
 
   closeModall(event: Event): void {
     this.selectedCandidate = null; // Closes the modal
+  }
+
+  ngOnDestroy(){
+    if(this.jobSucribe){
+      this.jobSucribe.unsubscribe()
+    }
   }
 }

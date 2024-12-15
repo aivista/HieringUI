@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 import { Router } from '@angular/router';
 import { POSTurl } from '../../config';
@@ -10,6 +10,8 @@ import { environment } from '../../../environments/environment';
 })
 export class HiringManagerService {
   url = environment.apiBaseUrl;
+  jobservice=environment.jobService
+  jobSubscribe=new Subject()
   constructor(private http: HttpClient) {
  
   }
@@ -31,7 +33,10 @@ export class HiringManagerService {
   }
 
   getHiringManagerJobs(data: string) {
-    const url = this.url+'Jobs/hiringmanager/'+data;
+    const url = this.jobservice+'jobs/'+data;
     return this.http.get(url);
   }
+getShortlistedJobs(id:string){
+return this.http.get(this.jobservice+'Jobs/LatestStatus/ShortListed/'+id)
+}
 }

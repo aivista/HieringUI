@@ -6,7 +6,6 @@ import { AssessmentComponent } from './components/pages/assessment/assessment.co
 import { CongratulationComponent } from './components/pages/interview-steps/congratulation/congratulation.component';
 
 @NgModule({
-  // declarations: [AssessmentComponent],
   imports: [CommonModule, CandidateRoutingModule, CongratulationComponent],
 })
 export class CandidateModule {}

@@ -44,28 +44,8 @@ export class CandidatesComponent {
   // ];
   shortlistedCandidates:any=[]
 
-  appliedCandidates = [
-    {
-      name: 'Alice Johnson',
-      experience: '2 years of experience',
-      skills: ['HTML', 'CSS', 'JavaScript'],
-    },
-    {
-      name: 'Bob Brown',
-      experience: '4 years of experience',
-      skills: ['Vue', 'JavaScript', 'SCSS'],
-    },
-    {
-      name: 'Alice Johnson',
-      experience: '2 years of experience',
-      skills: ['HTML', 'CSS', 'JavaScript'],
-    },
-    {
-      name: 'Bob Brown',
-      experience: '4 years of experience',
-      skills: ['Vue', 'JavaScript', 'SCSS'],
-    },
-  ];
+ 
+  appliedCandidates:any=[]
   jobSucribe:any
 constructor(private hiringManagerService:HiringManagerService){
   this.getShortlisted()
@@ -98,7 +78,14 @@ getShortlisted(){
       this.shortlistedCandidates=result.result
      }
      
-    }
+    })
+    this.hiringManagerService.getAppliedJobs(res.id).subscribe((result:any)=>{
+      if(result.isSuccess){
+       this.appliedCandidates=result.result
+      }
+      
+     }
+     
   )
     
   })

@@ -43,4 +43,7 @@ return this.http.get(this.jobservice+'Jobs/LatestStatus/ShortListed/'+id)
 candidateStatus(jobId:string,CandidateId:string){
   return this.http.get(this.assessment+'ASSESSMENTSERVICE/JOB/'+jobId+'/CANDIDATE/'+CandidateId+'/ASSESSMENTSTATE')
 }
+getAppliedJobs(id:string){
+  return this.http.get(this.jobservice+'Jobs/LatestStatus/jobs/applied_candidates/'+id)
+  }
 }

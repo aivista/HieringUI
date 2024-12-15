@@ -16,12 +16,12 @@
 
     <div class="job-list">
       <div
-        *ngFor="let job of jobs; let i = index"
-        [class.active]="job.active"
-        (click)="setActiveJob(i)"
+        *ngFor="let job of JobDetails; let i = index"
+        [class.active]="i===activeIndex"
+        (click)="setActiveJob(i,job)"
         class="job-item"
       >
-        <h3>{{ job.title }}</h3>
+        <h3>{{ job.jd }}</h3>
         <p>{{ job.location }}</p>
       </div>
     </div>

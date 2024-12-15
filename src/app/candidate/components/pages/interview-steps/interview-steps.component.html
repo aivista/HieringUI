@@ -50,6 +50,9 @@
         </div>
       </div>
 
+      <app-introductory-call (showPopupEvent)="showPopup()"></app-introductory-call>
+      <app-congratulation [isPopupVisible]="isPopupVisible" (close)="closePopup()"></app-congratulation>
+       <!-- <app-ai-avatar-interview></app-ai-avatar-interview> -->
       <!-- content -->
     </div>
   </div>

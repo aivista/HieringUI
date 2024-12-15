@@ -44,7 +44,7 @@ export class InterviewStepsComponent {
           {
             flag=1;
             // this.comoponent=item.assessmentName;
-            this.comoponent='Interview Scheduled'
+            this.comoponent='AI Based Interview'
           }
           console.log('component name',this.comoponent);
           

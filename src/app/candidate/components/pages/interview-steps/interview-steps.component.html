@@ -91,7 +91,8 @@
         <app-ai-avatar-interview *ngIf="comoponent === 'Aiavatar'"
           (showPopupEvent)="showPopup()"></app-ai-avatar-interview>
       </div>
-      <app-congratulation [isPopupVisible]="isPopupVisible" (close)="closePopup()"></app-congratulation>
+      <app-congratulation [isPopupVisible]="isPopupVisible" (close)="closePopup()" [subHeader]="'You have successfully completed the screening round'"
+      [subSubHeader]="'Be ready for assessment!'"></app-congratulation>
 
       <!-- <app-introductory-call *ngIf="comoponent === 'AI Based Interview'" (showPopupEvent)="showPopup()" ></app-introductory-call>
       <app-assessment *ngIf="comoponent === 'AI Based MCQ'" ></app-assessment>

@@ -37,6 +37,8 @@ export class CandidateLoginComponent {
         this.candidateService.Candidatelogin({ email: this.userEmail }).subscribe(
           (response: any) => {
             if (response.isSuccess) {
+              // console.log("response",response);
+              this.candidateService.setData("candidateServiceDetails",response.result);
             console.log('successfully!', response.message);
             this.isLoginPage = false;
             this.startTimer();

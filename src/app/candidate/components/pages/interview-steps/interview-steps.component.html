@@ -28,7 +28,7 @@
         </div>
 
         <!-- staper -->
-        <div class="timeline d-flex">
+        <!-- <div class="timeline d-flex">
           <div class="timeline-item">
             <div class="round">
               <img src="../../../../../assets/icons/call.svg" alt="" />
@@ -44,6 +44,42 @@
           <div class="timeline-item">
             <div class="round">
               <img src="../../../../../assets/icons/video.svg" alt="" />
+            </div>
+          </div>
+        </div> -->
+        <div class="stapper px-4">
+          <div class="timeline row px-5">
+            <div class="timeline-item col-md-1 p-0">
+              <div class="round">
+                <img src="/assets/icons/call-calling.svg" alt="" />
+              </div>
+            </div>
+            <div class="line col-md-4 p-0"></div>
+            <div class="timeline-item col-md-1 p-0">
+              <div class="round">
+                <img src="/assets/icons/simcard.svg" alt="" />
+              </div>
+            </div>
+            <div class="line col-md-4 p-0"></div>
+            <div class="timeline-item col-md-1 p-0">
+              <div class="round">
+                <img src="/assets/icons/video.svg" alt="" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 text-center pe-5">
+              <p class="mb-0 interview-status">AI Screening</p>
+              <p class=" interview-status2">Pending</p>
+            </div>
+            <div class="col-md-4 text-center">
+              <p class="mb-0 interview-status">Assessment</p>
+              <p class=" interview-status2">Pending</p>
+            </div>
+            <div class="col-md-4 text-center ps-5">
+              <p class="mb-0 interview-status">Interview 1</p>
+              <p class=" interview-status2">Not Scheduled</p>
             </div>
           </div>
         </div>
@@ -64,11 +100,11 @@
       <!-- <app-congratulation [isPopupVisible]="isPopupVisible" (close)="closePopup()"></app-congratulation> -->
       <!-- <app-ai-avatar-interview></app-ai-avatar-interview> -->
       <!-- content -->
-       <div>
+      <div>
         <div>
           <app-meating-shedule *ngIf="comoponent === 'Interview Scheduled'"></app-meating-shedule>
         </div>
-       </div>
+      </div>
     </div>
   </div>
 </div>

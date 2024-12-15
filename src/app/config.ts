@@ -4,4 +4,6 @@ export const GETurl = {};
 
 export const POSTurl = {
     login: baseUrl + "login/hiringmanager",
+    Candidatelogin: baseUrl + "login/candidate",
 };
+

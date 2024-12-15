@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-:root {
-}
+
 
 :root {
   --font-size-x-large: 2rem;
@@ -105,3 +104,23 @@ select {
 // ::-webkit-scrollbar-track {
 //   background: var(--color-secondary);
 // }
+
+
+//-------added by rabi-----------------
+textarea {
+  resize: vertical;
+  background: #131313;
+  border-radius: 4px;
+  border: 1px solid #424B57;
+ 
+}
+
+textarea:focus {
+  outline: none;
+  border: 1px solid #424B57
+}
+textarea::placeholder {
+  color: #BDBDBD;
+  padding-left: 5px;
+  font-size: 14px;
+}

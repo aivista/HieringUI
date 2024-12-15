@@ -9,11 +9,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class IntroductoryCallComponent {
 
-  @Output() showPopupEvent = new EventEmitter<void>();
+  @Output() showAiAvatar = new EventEmitter<void>();
 
   // Emit event to show popup
   onButtonClick(): void {
-    this.showPopupEvent.emit();
+    this.showAiAvatar.emit();
   }
 
 }

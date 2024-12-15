@@ -13,6 +13,18 @@ export class HiringManagerService {
     private route: Router, 
   ) {}
 
+  setData(key:string,data:any){
+
+    sessionStorage.setItem(key,JSON.stringify(data));
+  }
+  getData(key:string){
+    const data=sessionStorage.getItem(key)
+    if(data){
+      return JSON.parse(data)
+    }
+    return []
+  }
+
   login(data: any) {
     return this.http.post(POSTurl.login, data);
   }

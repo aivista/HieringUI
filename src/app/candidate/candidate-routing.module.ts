@@ -4,11 +4,13 @@ import { CandidateLoginComponent } from './components/pages/candidate-login/cand
 import { InterviewStepsComponent } from './components/pages/interview-steps/interview-steps.component';
 import { ProfileComponent } from './components/pages/profile/profile.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: CandidateLoginComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'interview', component: InterviewStepsComponent },
+
 ];
 
 @NgModule({

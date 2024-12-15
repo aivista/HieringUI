@@ -41,21 +41,23 @@ export class HiringManagerService {
     const url = this.jobservice + 'jobs/' + data;
     return this.http.get(url);
   }
-getShortlistedJobs(id:string){
-return this.http.get(this.jobservice+'Jobs/LatestStatus/ShortListed/'+id)
-}
-candidateStatus(jobId:string,CandidateId:string){
-  return this.http.get(this.assessment+'ASSESSMENTSERVICE/JOB/'+jobId+'/CANDIDATE/'+CandidateId+'/ASSESSMENTSTATE')
-}
-getAppliedJobs(id:string){
-  return this.http.get(this.jobservice+'Jobs/LatestStatus/jobs/applied_candidates/'+id)
-}
- 
+  getShortlistedJobs(id: string) {
+    return this.http.get(this.jobservice + 'Jobs/LatestStatus/ShortListed/' + id)
+  }
+  candidateStatus(jobId: string, CandidateId: string) {
+    return this.http.get(this.assessment + 'ASSESSMENTSERVICE/JOB/' + jobId + '/CANDIDATE/' + CandidateId + '/ASSESSMENTSTATE')
+  }
+  getAppliedJobs(id: string) {
+    return this.http.get(this.jobservice + 'Jobs/LatestStatus/jobs/applied_jobs/' + id)
+  }
+
 
   getJobsDesc() {
     const url = this.jobDetails + 'Job/GetJobDescription';
     return this.http.get(url);
   }
-  
+getUpcomingInterview(jobId:string,managerId:string){
+  return this.http.get(this.jobservice+'Jobs/LatestStatus/upcoming_interview/'+jobId+'/'+managerId)
+}
 
 }

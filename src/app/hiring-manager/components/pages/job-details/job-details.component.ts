@@ -12,6 +12,7 @@ import { HiringManagerService } from '../../../service/hiring-manager.service';
   styleUrl: './job-details.component.scss',
 })
 export class JobDetailsComponent {
+  jobSucribe: any;
   constructor(private hiringManagerService: HiringManagerService) {}
   // fetchJobs(){
   //   this.hiringManagerService.getHiringManagerJobs(hiringManagerID)
@@ -26,4 +27,16 @@ export class JobDetailsComponent {
   //     }
   //   });
   // }
+
+  ngOnInit(){
+    const userdata=this.hiringManagerService.getData("hiringManagerDetails")
+    this.jobSucribe= this.hiringManagerService.jobSubscribe.subscribe((res:any)=>{
+      this.hiringManagerService.getUpcomingInterview(res.id,userdata.email).subscribe((result:any)=>{
+        if(result.isSuccess){
+          console.log("upcoming--->",result);
+          
+        }
+      })
+    })
+  }
 }

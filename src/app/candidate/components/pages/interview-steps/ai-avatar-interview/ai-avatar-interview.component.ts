@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-ai-avatar-interview',
@@ -9,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AiAvatarInterviewComponent {
 
+    @Output() showPopupEvent = new EventEmitter<void>();
+  
+    // Emit event to show popup
+    onButtonClick(): void {
+      this.showPopupEvent.emit();
+    }
 }

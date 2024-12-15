@@ -49,9 +49,18 @@
           </div>
         </div>
       </div>
+<div>
+  <app-introductory-call *ngIf="comoponent === 'AI Based Interview'" (showAiAvatar)="showAiavatar()" ></app-introductory-call>
+  <app-assessment *ngIf="comoponent === 'AI Based MCQ'" ></app-assessment>
+  <app-ai-avatar-interview *ngIf="comoponent === 'Aiavatar'" (showPopupEvent)="showPopup()" ></app-ai-avatar-interview>
+</div>
+<app-congratulation [isPopupVisible]="isPopupVisible" (close)="closePopup()"></app-congratulation> 
 
-      <app-introductory-call (showPopupEvent)="showPopup()"></app-introductory-call>
-      <app-congratulation [isPopupVisible]="isPopupVisible" (close)="closePopup()"></app-congratulation>
+      <!-- <app-introductory-call *ngIf="comoponent === 'AI Based Interview'" (showPopupEvent)="showPopup()" ></app-introductory-call>
+      <app-assessment *ngIf="comoponent === 'AI Based MCQ'" ></app-assessment>
+      <app-ai-avatar-interview *ngIf="comoponent === 'Teams Meeting'" ></app-ai-avatar-interview> -->
+
+      <!-- <app-congratulation [isPopupVisible]="isPopupVisible" (close)="closePopup()"></app-congratulation> -->
        <!-- <app-ai-avatar-interview></app-ai-avatar-interview> -->
       <!-- content -->
     </div>

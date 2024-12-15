@@ -1,16 +1,16 @@
 <!-- Popup Background -->
 <div *ngIf="isPopupVisible" class="popup-background" (click)="closePopup()">
-    <div class="popup-container" (click)="$event.stopPropagation()">
-      <div class="popup-content text-center">
-        <span class="close-btn" (click)="closePopup()"><img src="/assets/icons/crosscircle.svg" alt=""></span>
-        <div class="icon">
-          <img src="/assets/icons/Tickmark.svg" alt="">
-        </div>
-        <p class="headd">Congratulations!</p>
-        <p class="subheadd">You have successfully completed the screening round</p>
-        <p class="subsubhead">Be ready for assessment!</p>
+  <div class="popup-container" (click)="$event.stopPropagation()">
+    <div class="popup-content text-center">
+      <span class="close-btn" (click)="closePopup()"><img src="/assets/icons/crosscircle.svg" alt=""></span>
+      <div class="icon">
+        <img src="/assets/icons/Tickmark.svg" alt="">
       </div>
+      <p class="headd">Congratulations!</p>
+      <p class="subheadd">You have successfully completed the screening round</p>
+      <p class="subsubhead">Be ready for assessment!</p>
     </div>
+  </div>
 </div>
-  
+
 

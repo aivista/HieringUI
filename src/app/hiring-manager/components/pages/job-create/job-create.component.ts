@@ -73,7 +73,7 @@ export class JobCreateComponent {
 
     const getHRID: any = sessionStorage.getItem('hiringManagerDetails')
     this.hiringManagerDetails = getHRID ? JSON.parse(getHRID) : null
-    console.log('getHRID', this.hiringManagerDetails);
+    // console.log('getHRID', this.hiringManagerDetails);
 
 
   }
@@ -114,7 +114,7 @@ export class JobCreateComponent {
     });
 
     if (this.profileForm.valid) {
-      console.log('Form Value: ', this.profileForm.value);
+      // console.log('Form Value: ', this.profileForm.value);
       const jsonBody = {
         "jd": this.profileForm.value.jobTitle,
         "experience": this.profileForm.value.experience,
@@ -126,7 +126,7 @@ export class JobCreateComponent {
         "createdBy": "",
         "hiringManagerId": this.hiringManagerDetails.email
       }
-      console.log('json body', jsonBody);
+      // console.log('json body', jsonBody);
       this.apiService.createJobs(jsonBody).subscribe((res: any) => {
         if (res.isSuccess === true) {
           this.router.navigate(['/job-details']);
@@ -139,7 +139,7 @@ export class JobCreateComponent {
   }
 
   getRowSize(value: any) {
-    const rowSize = Math.round(value / 65) + 1
+    const rowSize = Math.round(value / 80) + 1
     return rowSize
   }
 

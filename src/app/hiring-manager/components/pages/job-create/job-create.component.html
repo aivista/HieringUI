@@ -16,7 +16,7 @@
       <form [formGroup]="profileForm" (ngSubmit)="addUser()">
         <div class="jcd-main-body">
           <div class="row">
-            <div class="col-6 right-section">
+            <div class="col-6 right-section mt-1">
               <div>
                 <label class="text-t1">Please follow the instructions and fill the details accordingly</label> <br>
                 <label class="text-t2"><label class="aristick">* </label> &nbsp;Indicates required</label>
@@ -33,7 +33,7 @@
                     
                   </div>
                 </div>
-                <div class="row mt-2">
+                <div class="row mt-3">
                   <div class="col-4">
                     <label class="field-text">Experience</label> <br>
                     <p-dropdown id="experience" formControlName="experience" [options]="experienceOptions" placeholder="Select" name="experience"
@@ -62,15 +62,15 @@
                     </small>
                   </div>
                 </div>
-                <div class="row mt-2">
+                <div class="row mt-3">
                   <div class="col-12">
                     <label class="field-text">Primary Skills <label class="aristick">*</label></label> <br>
                     <p-multiSelect id="primarySkills" formControlName="primarySkills"  [(ngModel)]="selectedPrimarySkills" [options]="primarySkills" placeholder="Select"
                       name="primarySkills" class="w-50"></p-multiSelect>
 
-                    <div class="chip-container flex items-center gap-2 flex-wrap jcd">
+                    <div class="chip-container flex items-center gap-2 flex-wrap jcd-chip-section">
                       <p-chip *ngFor="let genre of selectedPrimarySkills" [label]="genre" [removable]="true"
-                        (onRemove)="removeFromSelection(genre)" class="custom-p-chip mt-1">
+                        (onRemove)="removeFromSelection(genre)" class="mt-1">
                       </p-chip>
                     </div>
                     <small class="p-error block" style="color: red; font-size: 10px;"
@@ -87,7 +87,7 @@
                     [options]="secondarySkills" placeholder="Select"
                       name="secondarySkills" class="w-50"></p-multiSelect>
 
-                    <div class="chip-container flex items-center gap-2 flex-wrap jcd">
+                    <div class="chip-container flex items-center gap-2 flex-wrap jcd-chip-section">
                       <p-chip *ngFor="let genre of selectedSecondarySkills" [label]="genre" [removable]="true"
                         (onRemove)="removeFromSelectionSecondary(genre)" class="custom-p-chip mt-1">
                       </p-chip>
@@ -98,7 +98,7 @@
                   </small>
                   </div>
                 </div>
-                <div class="row mt-2">
+                <div class="row mt-3">
                   <div class="col-12">
                     <label class="field-text">Business Dependencies <label class="aristick">*</label></label> <br>
                     <textarea pInputTextarea rows="2" id="businessDependencies" formControlName="businessDependencies"

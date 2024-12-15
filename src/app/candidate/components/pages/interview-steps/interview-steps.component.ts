@@ -6,11 +6,12 @@ import { CandidateService } from '../../../service/candidate.service';
 import { CommonModule } from '@angular/common';
 import { AssessmentComponent } from '../assessment/assessment.component';
 import { Router } from '@angular/router';
+import { MeatingSheduleComponent } from './meating-shedule/meating-shedule.component';
 
 @Component({
   selector: 'app-interview-steps',
   standalone: true,
-  imports: [IntroductoryCallComponent, AiAvatarInterviewComponent, CommonModule, AssessmentComponent, CongratulationComponent],
+  imports: [IntroductoryCallComponent, AiAvatarInterviewComponent, CommonModule, AssessmentComponent, CongratulationComponent,MeatingSheduleComponent],
   templateUrl:'./interview-steps.component.html',
   styleUrl:'./interview-steps.component.scss'
 })
@@ -43,7 +44,7 @@ export class InterviewStepsComponent {
           {
             flag=1;
             // this.comoponent=item.assessmentName;
-            this.comoponent='AI Based Interview'
+            this.comoponent='Interview Scheduled'
           }
           console.log('component name',this.comoponent);
           

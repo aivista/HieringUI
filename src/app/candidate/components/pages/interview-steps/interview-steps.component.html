@@ -3,8 +3,7 @@
     <div class="top-portion">
       <span class="previouspage-title">
         <img src="../../../../../assets/icons/fi_arrow-left.svg" />
-        Job Details</span
-      >
+        Job Details</span>
       <br />
       <span>Home / COO-Data center assessment</span>
       <!-- <nav>
@@ -49,20 +48,27 @@
           </div>
         </div>
       </div>
-<div>
-  <app-introductory-call *ngIf="comoponent === 'AI Based Interview'" (showAiAvatar)="showAiavatar()" ></app-introductory-call>
-  <app-assessment *ngIf="comoponent === 'AI Based MCQ'" ></app-assessment>
-  <app-ai-avatar-interview *ngIf="comoponent === 'Aiavatar'" (showPopupEvent)="showPopup()" ></app-ai-avatar-interview>
-</div>
-<app-congratulation [isPopupVisible]="isPopupVisible" (close)="closePopup()"></app-congratulation> 
+      <div>
+        <app-introductory-call *ngIf="comoponent === 'AI Based Interview'"
+          (showAiAvatar)="showAiavatar()"></app-introductory-call>
+        <app-assessment *ngIf="comoponent === 'AI Based MCQ'"></app-assessment>
+        <app-ai-avatar-interview *ngIf="comoponent === 'Aiavatar'"
+          (showPopupEvent)="showPopup()"></app-ai-avatar-interview>
+      </div>
+      <app-congratulation [isPopupVisible]="isPopupVisible" (close)="closePopup()"></app-congratulation>
 
       <!-- <app-introductory-call *ngIf="comoponent === 'AI Based Interview'" (showPopupEvent)="showPopup()" ></app-introductory-call>
       <app-assessment *ngIf="comoponent === 'AI Based MCQ'" ></app-assessment>
       <app-ai-avatar-interview *ngIf="comoponent === 'Teams Meeting'" ></app-ai-avatar-interview> -->
 
       <!-- <app-congratulation [isPopupVisible]="isPopupVisible" (close)="closePopup()"></app-congratulation> -->
-       <!-- <app-ai-avatar-interview></app-ai-avatar-interview> -->
+      <!-- <app-ai-avatar-interview></app-ai-avatar-interview> -->
       <!-- content -->
+       <div>
+        <div>
+          <app-meating-shedule *ngIf="comoponent === 'Interview Scheduled'"></app-meating-shedule>
+        </div>
+       </div>
     </div>
   </div>
 </div>

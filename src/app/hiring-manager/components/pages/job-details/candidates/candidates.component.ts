@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { CandidateInfoComponent } from '../candidate-info/candidate-info.component';
+import { HiringManagerService } from '../../../../service/hiring-manager.service';
 
 @Component({
   selector: 'app-candidates',
@@ -64,7 +65,10 @@ export class CandidatesComponent {
       skills: ['Vue', 'JavaScript', 'SCSS'],
     },
   ];
-
+  jobSucribe:any
+constructor(private hiringManagerService:HiringManagerService){
+  this.getShortlisted()
+}
   setActiveTab(tab: string): void {
     this.activeTab = tab;
   }
@@ -82,7 +86,18 @@ export class CandidatesComponent {
         return '';
     }
   }
+ngOnInit(){
 
+}
+getShortlisted(){
+ this.jobSucribe= this.hiringManagerService.jobSubscribe.subscribe((res:any)=>{
+    console.log("res--->",res);
+    this.hiringManagerService.getShortlistedJobs(res.id).subscribe((res:any)=>{
+
+    })
+    
+  })
+}
   selectedCandidate: any = null;
 
   openModal(candidate: any) {
@@ -99,5 +114,11 @@ export class CandidatesComponent {
 
   closeModall(event: Event): void {
     this.selectedCandidate = null; // Closes the modal
+  }
+
+  ngOnDestroy(){
+    if(this.jobSucribe){
+      this.jobSucribe.unsubscribe()
+    }
   }
 }

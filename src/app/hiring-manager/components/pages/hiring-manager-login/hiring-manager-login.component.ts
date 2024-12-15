@@ -2,38 +2,51 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HiringManagerService } from '../../../service/hiring-manager.service';
+
 
 @Component({
   selector: 'app-hiring-manager-login',
   standalone: true,
   imports: [CommonModule, FormsModule],
+
   templateUrl: './hiring-manager-login.component.html',
   styleUrl: './hiring-manager-login.component.scss',
 })
 export class HiringManagerLoginComponent {
-  email: string = ''; // To store the entered email
+  email: string = ''; 
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+    private hiringManagerService: HiringManagerService
+  ) {}
 
+ 
   login() {
-    // **1. Dummy Email Check:**
-    const dummyEmail = 'test@example.com'; // Replace with your actual dummy email
-    if (this.email !== dummyEmail) {
-      // Handle invalid email (e.g., show an error message)
-      alert('Invalid email. Please enter the correct email.');
+    if (!this.email) {
       return;
-    } else {
-      this.router.navigate(['/job-details']);
     }
 
-    // **2. Simulate OTP Validation (Since you don't want a form):**
-    // In a real scenario, you would send an OTP to the email and validate it.
-    const isValidOTP = true; // Replace with actual OTP validation logic
+    const loginData = {
+      email: this.email
+    };
 
-    if (isValidOTP) {
-      this.router.navigate(['/job-details']);
-    } else {
-      // Handle invalid OTP
-    }
+    this.hiringManagerService.login(loginData).subscribe(
+      (response: any) => {
+        console.log("response",response);
+        
+        if (response && response.isSuccess) {
+          // alert('Login successful!');
+          this.hiringManagerService.setData("hiringManagerDetails",response.result);
+          this.router.navigate(['/job-details']); 
+        } else {
+          alert(response.message || 'Login failed. Please try again.');
+        }
+      },
+      (error: any) => {
+        console.error('Login error:', error);
+        alert('An error occurred during login. Please try again later.');
+      }
+    );
   }
+
 }

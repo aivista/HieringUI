@@ -86,11 +86,20 @@ constructor(private hiringManagerService:HiringManagerService){}
 ngOnInit(){
  const response=this.hiringManagerService.getData("hiringManagerDetails");
  if(response){
-  
+ this.getJobDetails(response.email)
   
  }
 }
+getJobDetails(email:string){
+ 
+  this.hiringManagerService.getHiringManagerJobs(email).subscribe((res:any)=>{
+    console.log("rews",res)
+  },
+  (e)=>{
 
+  }
+)
+}
   selectedCandidate: any = null;
 
   openModal(candidate: any) {

@@ -30,8 +30,8 @@ export class HiringManagerService {
     return this.http.post(this.url+'login/hiringmanager', data);
   }
 
-  getHiringManagerJobs(hiringManagerID: string) {
-    const url = `${this.url+'Jobs'}${hiringManagerID}`;
+  getHiringManagerJobs(data: string) {
+    const url = this.url+'Jobs/hiringmanager/'+data;
     return this.http.get(url);
   }
 }

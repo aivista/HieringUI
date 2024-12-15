@@ -11,6 +11,7 @@ import { environment } from '../../../environments/environment';
 export class HiringManagerService {
   url = environment.apiBaseUrl;
   jobservice=environment.jobService
+  assessment=environment.assessment
   jobSubscribe=new Subject()
   constructor(private http: HttpClient) {
  
@@ -38,5 +39,8 @@ export class HiringManagerService {
   }
 getShortlistedJobs(id:string){
 return this.http.get(this.jobservice+'Jobs/LatestStatus/ShortListed/'+id)
+}
+candidateStatus(jobId:string,CandidateId:string){
+  return this.http.get(this.assessment+'ASSESSMENTSERVICE/JOB/'+jobId+'/CANDIDATE/'+CandidateId+'/ASSESSMENTSTATE')
 }
 }

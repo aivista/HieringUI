@@ -3,12 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { POSTurl } from '../../config';
 import { environment } from '../../../environments/environment';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CandidateService {
   url = environment.apiBaseUrl;
+  jobservice=environment.jobService
+  jobSubscribe=new Subject()
   constructor(private http: HttpClient, private route: Router) {}
 
   setData(key: string, data: any) {
@@ -21,7 +24,9 @@ export class CandidateService {
     }
     return [];
   }
+
   Candidatelogin(data: any) {
-    return this.http.post(POSTurl.Candidatelogin, data);
+    return this.http.post(this.url+'login/candidate', data);
   }
+
 }

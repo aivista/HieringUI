@@ -10,7 +10,6 @@ import { CandidateService } from '../../../service/candidate.service';
   imports: [CommonModule],
   templateUrl: './candidate-login.component.html',
   styleUrl: './candidate-login.component.scss',
-  
 })
 export class CandidateLoginComponent {
   isLoginPage: boolean = true;
@@ -21,7 +20,11 @@ export class CandidateLoginComponent {
 
   isOtpExpired: boolean = false;
 
-  constructor(private router: Router, private cdRef: ChangeDetectorRef, private candidateService: CandidateService) {}
+  constructor(
+    private router: Router,
+    private cdRef: ChangeDetectorRef,
+    private candidateService: CandidateService
+  ) {}
 
   requestOtp() {
     const emailInput = document.getElementById('email') as HTMLInputElement;
@@ -32,26 +35,30 @@ export class CandidateLoginComponent {
         this.userEmail = enteredEmail;
         // this.generatedOtp = this.generateOtp();
         // console.log('Generated OTP:', this.generatedOtp);
-        
+
         // Call the API to send OTP to the user
-        this.candidateService.Candidatelogin({ email: this.userEmail }).subscribe(
-          (response: any) => {
-            if (response.isSuccess) {
-              // console.log("response",response);
-              this.candidateService.setData("candidateServiceDetails",response.result);
-            console.log('successfully!', response.message);
-            this.isLoginPage = false;
-            this.startTimer();
-          }
-          else {
-            console.error('Failed to send OTP:', response.message);
-          }
-        },
-          (error) => {
-            console.error('Error sending OTP:', error);
-            alert('Failed to send OTP. Please try again.');
-          }
-        );
+        this.candidateService
+          .Candidatelogin({ email: this.userEmail })
+          .subscribe(
+            (response: any) => {
+              if (response.isSuccess) {
+                // console.log("response",response);
+                this.candidateService.setData(
+                  'candidateServiceDetails',
+                  response.result
+                );
+                console.log('successfully!', response.message);
+                this.isLoginPage = false;
+                this.startTimer();
+              } else {
+                console.error('Failed to send OTP:', response.message);
+              }
+            },
+            (error) => {
+              console.error('Error sending OTP:', error);
+              alert('Failed to send OTP. Please try again.');
+            }
+          );
       } else {
         alert('Please enter a valid email address.');
       }
@@ -63,7 +70,7 @@ export class CandidateLoginComponent {
     if (otpInput) {
       const enteredOtp = otpInput.value;
       // if (enteredOtp === this.generatedOtp) {
-        if (enteredOtp) {
+      if (enteredOtp) {
         this.router.navigate(['/candidate/profile']);
       } else {
         alert('Invalid OTP. Please try again.');

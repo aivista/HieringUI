@@ -10,8 +10,8 @@ import { Subject } from 'rxjs';
 })
 export class CandidateService {
   url = environment.apiBaseUrl;
-  jobservice=environment.jobService
-  jobSubscribe=new Subject()
+  jobservice = environment.jobService;
+  jobSubscribe = new Subject();
   constructor(private http: HttpClient, private route: Router) {}
 
   setData(key: string, data: any) {
@@ -26,7 +26,9 @@ export class CandidateService {
   }
 
   Candidatelogin(data: any) {
-    return this.http.post(this.url+'login/candidate', data);
+    return this.http.post(this.url + 'login/candidate', data);
   }
-
+  CandidateDetails(data: any) {
+    return this.http.post(this.url + 'login/candidatedetails', data);
+  }
 }

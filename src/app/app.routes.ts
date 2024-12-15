@@ -1,6 +1,10 @@
-import { Routes } from '@angular/router';
+// import { Routes } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { HiringManagerLoginComponent } from './hiring-manager/components/pages/hiring-manager-login/hiring-manager-login.component';
 
 export const routes: Routes = [
+  { path: "login", component: HiringManagerLoginComponent },
   {
     path: '',
     loadChildren: () =>
@@ -16,3 +20,10 @@ export const routes: Routes = [
 
   { path: '**', redirectTo: '' },
 ];
+
+// @NgModule({
+//   imports: [RouterModule.forRoot(routes)],
+//   exports: [RouterModule],
+// })
+
+// export class AppRoutingModule {}

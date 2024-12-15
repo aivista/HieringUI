@@ -1,0 +1,110 @@
+<div class="job-details-container">
+  <div class="form-section">
+    <!-- Icon with Header -->
+    <div class="header-with-icon">
+      <i class="pi pi-briefcase header-icon"></i>
+      <h3>Create Job Description</h3>
+    </div>
+    <form>
+      <!-- Form Fields -->
+      <div class="p-fluid grid">
+        <!-- Job Title -->
+        <div class="col-12 field">
+          <label for="jobTitle">Job Title*</label>
+          <p-dropdown
+            id="jobTitle"
+            [options]="jobTitles"
+            placeholder="Select Job Title"
+            [(ngModel)]="selectedJobTitle"
+            name="jobTitle"
+          ></p-dropdown>
+        </div>
+
+        <!-- Experience -->
+        <div class="col-6 field">
+          <label for="experience">Experience*</label>
+          <p-dropdown
+            id="experience"
+            [options]="experienceOptions"
+            placeholder="Select Experience"
+            [(ngModel)]="selectedExperience"
+            name="experience"
+          ></p-dropdown>
+        </div>
+
+        <!-- Location -->
+        <div class="col-6 field">
+          <label for="location">Location*</label>
+          <p-dropdown
+            id="location"
+            [options]="locationOptions"
+            placeholder="Select Location"
+            [(ngModel)]="selectedLocation"
+            name="location"
+          ></p-dropdown>
+        </div>
+
+        <!-- Primary Skills -->
+        <div class="col-6 field">
+          <label for="primarySkills">Primary Skills*</label>
+          <p-multiSelect
+            id="primarySkills"
+            [options]="primarySkills"
+            placeholder="Select Primary Skills"
+            [(ngModel)]="selectedPrimarySkills"
+            name="primarySkills"
+          ></p-multiSelect>
+        </div>
+
+        <!-- Secondary Skills -->
+        <div class="col-6 field">
+          <label for="secondarySkills">Secondary Skills</label>
+          <p-multiSelect
+            id="secondarySkills"
+            [options]="secondarySkills"
+            placeholder="Select Secondary Skills"
+            [(ngModel)]="selectedSecondarySkills"
+            name="secondarySkills"
+          ></p-multiSelect>
+        </div>
+
+        <!-- Business Dependencies -->
+        <div class="col-12 field">
+          <label for="businessDependencies">Business Dependencies*</label>
+          <textarea
+            pInputTextarea
+            rows="3"
+            id="businessDependencies"
+            placeholder="Write business dependencies"
+            [(ngModel)]="businessDependencies"
+            name="businessDependencies"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="button-section">
+        <button
+          pButton
+          type="button"
+          label="Generate JD"
+          class="p-button-rounded"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Save"
+          class="p-button-rounded p-button-secondary"
+        ></button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Job Description Preview -->
+  <div class="job-preview">
+    <h4>Job Description</h4>
+    <div class="preview-content">
+      <p>{{ jobDescription }}</p>
+    </div>
+  </div>
+</div>

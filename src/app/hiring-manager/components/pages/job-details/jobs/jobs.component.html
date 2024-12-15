@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="header">
+    <h1>Jobs</h1>
+    <button class="add-button" (click)="openCreateJob()">
+      <img class="add-icon" src="/assets/icons/+.svg" />
+    </button>
+  </div>
+
+  <div class="job-container">
+    <div class="job-details">
+      <div class="job-item1">
+        <h2>Job Details</h2>
+        <p>Last updated Thursday, Oct 30 at 11:11 AM (PT)</p>
+      </div>
+    </div>
+
+    <div class="job-list">
+      <div
+        *ngFor="let job of jobs; let i = index"
+        [class.active]="job.active"
+        (click)="setActiveJob(i)"
+        class="job-item"
+      >
+        <h3>{{ job.title }}</h3>
+        <p>{{ job.location }}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,112 @@
+<div class="container1 d-flex justify-content-end align-items-center vh-100">
+  <div class="candidate-card p-4 h-100">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="star-pill">
+        <h4 class="m-0">{{ candidate.name }}</h4>
+        <span class="rating d-flex"
+          ><img src="/assets/icons/starIcon.svg" alt="" />
+          {{ candidate.rating }}</span
+        >
+      </div>
+      <img (click)="closeModal()" src="/assets/icons/+ (1).svg" alt="" />
+    </div>
+    <p class="contact-info mb-1 d-flex">
+      <img src="/assets/icons/Phone.svg" alt="" class="me-2" /> 780018112
+      <img src="/assets/icons/Email.svg" alt="" class="ms-4 me-2" />
+      sanjay.d89.com
+    </p>
+
+    <div class="progress-status d-flex justify-content-around my-4">
+      <div>
+        <p class="text-success fw-bold">AI Screening</p>
+        <p>✔ Completed</p>
+      </div>
+      <div>
+        <p class="text-success fw-bold">Assessment</p>
+        <p>✔ Completed</p>
+      </div>
+      <div>
+        <p class="text-muted fw-bold">Interview 1</p>
+        <p>🕒 Scheduled</p>
+      </div>
+    </div>
+
+    <div *ngIf="isInterviewScheduled" class="interview-schedule my-4">
+      <div>
+        <p class="mb-0">Interview scheduled on -</p>
+        <p class="text-date mb-0">20 August, 2024, 12:30 PM</p>
+      </div>
+      <div>
+        <button class="btn button">Join</button>
+      </div>
+    </div>
+
+    <div class="skill-card mb-4">
+      <hr />
+      <div class="mb-3">
+        <div class="d-flex file-icon mb-3">
+          <div class="icon">
+            <img src="/assets/icons/copy-alt 1.svg" alt="" />
+          </div>
+          <h5 class="mb-0 ms-2">Latest Experience Details</h5>
+        </div>
+        <h6 class="mb-1">Executive Director & COO</h6>
+        <p class="mb-1">Nxtra Data Ltd. (A Bharti Airtel Group Company)</p>
+        <div class="d-flex date-place">
+          <p>September, 2022 - Present • Maharashtra, Mumbai, India</p>
+        </div>
+      </div>
+      <hr />
+
+      <div class="mb-3">
+        <div class="d-flex file-icon mb-3">
+          <div class="icon">
+            <img src="/assets/icons/copy-alt 1.svg" alt="" />
+          </div>
+          <h5 class="mb-0 ms-2">Highest Qualification Details</h5>
+        </div>
+        <h6 class="fw-bold mb-1">Pune University, Maharashtra</h6>
+
+        <div class="date-place">
+          <p>
+            Bachelor of Engineering • Computer Science • Aug 1990 - Jun 1994
+          </p>
+        </div>
+        <p>Activities and societies: Football team head</p>
+      </div>
+
+      <hr />
+      <div>
+        <div class="d-flex file-icon mb-4">
+          <div class="icon">
+            <img src="/assets/icons/copy-alt 1.svg" alt="" />
+          </div>
+          <h5 class="mb-0 ms-2">Skills</h5>
+        </div>
+
+        <div class="d-flex">
+          <div
+            *ngFor="let skill of candidate.skills; let i = index"
+            class="skill-pill bg-primary me-2"
+          >
+            {{ skill }}
+          </div>
+          <!-- <div *ngIf="candidate.skills.length > 3" class="skill-pill2 bg-secondary">
+                          {{ candidate.skills.length - 3 }}
+                      </div> -->
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isSelected" class="comment-section mt-4">
+      <label for="comment">Add Comments (if any)</label>
+      <textarea id="comment" name="comment" rows="4"></textarea>
+
+      <div class="btn-group2 d-flex justify-content-end">
+        <button type="button" class="btn btn-outline-danger me-2">
+          Reject
+        </button>
+        <button type="button" class="btn btn-success">Approve</button>
+      </div>
+    </div>
+  </div>
+</div>

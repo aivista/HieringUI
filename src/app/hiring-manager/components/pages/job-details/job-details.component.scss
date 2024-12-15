@@ -1,0 +1,17 @@
+.job-details-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas: "left middle middle right";
+  background-color: black;
+  // gap: 1rem;
+
+  .left {
+    grid-area: left;
+  }
+  .middle {
+    grid-area: middle;
+  }
+  .right {
+    grid-area: right;
+  }
+}

@@ -1,0 +1,39 @@
+<div class="recently-applied">
+  <h2 class="heading">
+    <img src="assets/icons//group.svg" alt="" />
+    Recently Applied
+  </h2>
+
+  <div class="cards">
+    <div class="card-container" *ngFor="let job of jobs">
+      <!-- Header Section -->
+      <div class="header">
+        <img [src]="job.headerImage" alt="" height="22" width="98" />
+      </div>
+
+      <!-- Role Title -->
+      <div class="role-title">
+        {{ job.roleTitle }}
+      </div>
+
+      <!-- Status Section -->
+      <div class="status">
+        <span>Status</span>
+        <div
+          class="status-tag"
+          [ngClass]="{
+            'ai-screening': job.status === 'AI Based Screening',
+            'inactive-status': job.status === 'Inactive'
+          }"
+        >
+          {{ job.status }}
+        </div>
+      </div>
+
+      <!-- Take Test Button -->
+      <div class="action" *ngIf="job.buttonVisible">
+        <button class="take-test-btn">Take Test</button>
+      </div>
+    </div>
+  </div>
+</div>

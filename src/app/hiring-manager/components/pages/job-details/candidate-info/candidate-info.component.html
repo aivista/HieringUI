@@ -2,10 +2,10 @@
   <div class="candidate-card p-4 h-100">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <div class="star-pill">
-        <h4 class="m-0">{{ candidate.name }}</h4>
+        <h4 class="m-0">{{ candidate?.first_name + ' ' +candidate?.last_name }}</h4>
         <span class="rating d-flex"
           ><img src="/assets/icons/starIcon.svg" alt="" />
-          {{ candidate.rating }}</span
+          {{ candidate.star }}</span
         >
       </div>
       <img (click)="closeModal()" src="/assets/icons/+ (1).svg" alt="" />
@@ -86,7 +86,7 @@
 
         <div class="d-flex">
           <div
-            *ngFor="let skill of candidate.skills; let i = index"
+            *ngFor="let skill of candidate?.skills?.split(','); let i = index"
             class="skill-pill bg-primary me-2"
           >
             {{ skill }}

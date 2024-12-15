@@ -4,4 +4,6 @@ export const GETurl = {
   jobDetails: baseUrl + 'Jobs',
 };
 
-export const POSTurl = {};
+export const POSTurl = {
+    login: baseUrl + "login/hiringmanager",
+};

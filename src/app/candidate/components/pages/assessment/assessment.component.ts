@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-assessment',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./assessment.component.scss']
 })
 export class AssessmentComponent {
+
+  constructor(private router: Router) {}
   // State variables
   testStarted: boolean = false;
   currentQuestionIndex: number = 0;
@@ -62,7 +65,16 @@ export class AssessmentComponent {
   // Submit Test
   submitTest(): void {
     console.log('Selected Answers:', this.selectedAnswers);
-    alert('Test submitted successfully!');
+    this.isPopupVisible = true;
     // Add submission logic here
+  }
+
+  isPopupVisible: boolean = false;
+
+
+  // Function to hide popup
+  closePopup(): void {
+    this.isPopupVisible = false;
+    this.router.navigate(['/candidate/profile']);
   }
 }

@@ -81,7 +81,7 @@
               </div>
               <div class="row">
                 <span class="d-flex align-items-center justify-content-center mt-4">
-                  <button class="generate-jd-btn">
+                  <button class="generate-jd-btn" (click)="getJobDetails()">
                     <img src="/assets/icons/generate-jd.svg" alt="icon"> &nbsp;
                     Generate JD
                   </button>
@@ -93,12 +93,12 @@
           <div class="col-6 left-section">
             <label class="job-desc-text">Job Description</label>
             <div class="job-desc-section">
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-12">
                   <div class="role-overview">
                     <label class="field-text-small">Role overview <label class="aristick">*</label></label> <br>
-                    <textarea pInputTextarea rows="6" id="roleoverview"
-                      [(ngModel)]="roleOverView" name="roleoverview" class="w-100 jd-cutom-textarea"></textarea>
+                    <textarea pInputTextarea rows="6" id="roleoverview" [(ngModel)]="roleOverView" name="roleoverview"
+                      class="w-100 jd-cutom-textarea"></textarea>
                   </div>
                 </div>
               </div>
@@ -106,11 +106,11 @@
                 <div class="col-12">
                   <div class="role-overview">
                     <label class="field-text-small">Minimum Experience<label class="aristick">*</label></label> <br>
-                    <textarea pInputTextarea rows="6" id="roleoverview"
-                      [(ngModel)]="roleOverView" name="roleoverview" class="w-100 jd-cutom-textarea"></textarea>
+                    <textarea pInputTextarea rows="6" id="roleoverview" [(ngModel)]="roleOverView" name="roleoverview"
+                      class="w-100 jd-cutom-textarea"></textarea>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <!-- <div class="row">
                 <div class="col-12">
                   <div class="role-overview">
@@ -120,6 +120,33 @@
                   </div>
                 </div>
               </div> -->
+              <div  class="job-desc-section-sub">
+                <div class="col-12" *ngFor="let item of JDData">
+                  <!-- <div class="form-group">
+                    <label class="field-text-small">{{ item.key }}</label> <br />
+                    <textarea pInputTextarea rows="6" [(ngModel)]="item.value" class="w-100 jd-cutom-textarea">
+                    </textarea>
+                  </div> -->
+                  <div class="role-overview">
+                    <label class="field-text-small">{{ item.key }}<label class="aristick">*</label></label>
+                    <br>
+                    <textarea pInputTextarea rows="6" [(ngModel)]="item.value" 
+                      class="w-100 jd-cutom-textarea"></textarea>
+                  </div>
+                </div>
+              </div>
+             
+            </div>
+
+            <div>
+              <div>
+                <span class="d-flex align-items-center justify-content-end mt-4">
+                  <button class="save-jd-btn" (click)="saveJobDetails()">
+                    <!-- <img src="/assets/icons/generate-jd.svg" alt="icon"> &nbsp; -->
+                    Save
+                  </button>
+                </span>
+              </div>
             </div>
           </div>
         </div>

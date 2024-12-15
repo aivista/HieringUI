@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
+  standalone: true,
+  imports: [],
   selector: 'app-assessment',
   templateUrl: './assessment.component.html',
-  styleUrls: ['./assessment.component.scss']
+  styleUrls: ['./assessment.component.scss'],
 })
 export class AssessmentComponent {
-
   constructor(private router: Router) {}
   // State variables
   testStarted: boolean = false;
@@ -17,25 +18,40 @@ export class AssessmentComponent {
   // Sample Questions Array
   questions = [
     {
-      question: 'Guy Bailey, Roy Hackett and Paul Stephenson made history in 1963, as part of a protest against a bus company that refused to employ black and Asian drivers in which UK city?',
-      options: ['London', 'Edinburgh', 'Liverpool', 'Canary Wharf']
+      question:
+        'Guy Bailey, Roy Hackett and Paul Stephenson made history in 1963, as part of a protest against a bus company that refused to employ black and Asian drivers in which UK city?',
+      options: ['London', 'Edinburgh', 'Liverpool', 'Canary Wharf'],
     },
     {
-      question: 'The Dandi March, led by Mahatma Gandhi in 1930, was an act of civil disobedience against the British-imposed salt tax. This 24-day journey began in Sabarmati Ashram and ended in which coastal village where Gandhi symbolically broke the salt law?',
-      options: ['Dandi', 'Porbandar', 'Surat', 'Bhavnagar']
+      question:
+        'The Dandi March, led by Mahatma Gandhi in 1930, was an act of civil disobedience against the British-imposed salt tax. This 24-day journey began in Sabarmati Ashram and ended in which coastal village where Gandhi symbolically broke the salt law?',
+      options: ['Dandi', 'Porbandar', 'Surat', 'Bhavnagar'],
     },
     {
-      question: 'The Jallianwala Bagh Massacre took place on April 13, 1919, when General Dyer ordered British troops to fire on a peaceful gathering of Indians in Amritsar. What was the occasion for this large public gathering in the park?',
-      options: ['Baisakhi Festival', 'Quit India Meeting', 'Non-Cooperation Movement Rally', "Gandhi's Speech on Civil Disobedience"]
+      question:
+        'The Jallianwala Bagh Massacre took place on April 13, 1919, when General Dyer ordered British troops to fire on a peaceful gathering of Indians in Amritsar. What was the occasion for this large public gathering in the park?',
+      options: [
+        'Baisakhi Festival',
+        'Quit India Meeting',
+        'Non-Cooperation Movement Rally',
+        "Gandhi's Speech on Civil Disobedience",
+      ],
     },
     {
-      question: 'Subhas Chandra Bose formed the Azad Hind Fauj (Indian National Army) to fight against British rule during World War II. From which country did Bose famously give the slogan "Give me blood, and I will give you freedom"?',
-      options: ['Japan', 'Germany', 'Singapore', 'Burma']
+      question:
+        'Subhas Chandra Bose formed the Azad Hind Fauj (Indian National Army) to fight against British rule during World War II. From which country did Bose famously give the slogan "Give me blood, and I will give you freedom"?',
+      options: ['Japan', 'Germany', 'Singapore', 'Burma'],
     },
     {
-      question: 'The Simon Commission, appointed by the British Government in 1927 to review constitutional reforms in India, faced strong opposition from Indians because of a particular reason. Why did Indian leaders oppose the Simon Commission?',
-      options: ['It included no Indian members', 'It proposed partitioning provinces', 'It increased land taxes','It banned Indian political parties']
-    }
+      question:
+        'The Simon Commission, appointed by the British Government in 1927 to review constitutional reforms in India, faced strong opposition from Indians because of a particular reason. Why did Indian leaders oppose the Simon Commission?',
+      options: [
+        'It included no Indian members',
+        'It proposed partitioning provinces',
+        'It increased land taxes',
+        'It banned Indian political parties',
+      ],
+    },
   ];
 
   // Start the Test
@@ -70,7 +86,6 @@ export class AssessmentComponent {
   }
 
   isPopupVisible: boolean = false;
-
 
   // Function to hide popup
   closePopup(): void {

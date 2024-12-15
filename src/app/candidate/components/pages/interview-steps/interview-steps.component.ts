@@ -25,6 +25,9 @@ export class InterviewStepsComponent {
     ngOnInit(){
       
       this.getstepperdata()
+      
+      
+      
        
      }
 
@@ -44,7 +47,7 @@ export class InterviewStepsComponent {
           {
             flag=1;
             // this.comoponent=item.assessmentName;
-            this.comoponent='AI Based Interview'
+            this.comoponent='AI Based MCQ'
           }
           console.log('component name',this.comoponent);
           

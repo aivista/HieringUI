@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CandidateInfoComponent } from '../candidate-info/candidate-info.component';
 import { HiringManagerService } from '../../../../service/hiring-manager.service';
 
@@ -43,6 +43,7 @@ export class CandidatesComponent {
   //   },
   // ];
   shortlistedCandidates: any = []
+  showHiddenSkills: boolean = false;
 
 
   appliedCandidates: any = []
@@ -112,5 +113,16 @@ export class CandidatesComponent {
     if (this.jobSucribe) {
       this.jobSucribe.unsubscribe()
     }
+  }
+
+  @Input() skills: string = ''; // Assuming `skills` is a comma-separated string
+  displayedSkills: string[] = [];
+  remainingSkills: string[] = [];
+  showRemaining = false;
+
+  ngOnChanges(): void {
+    const skillsArray = this.skills ? this.skills.split(',') : [];
+    this.displayedSkills = skillsArray.slice(0, 3); // Show the first three
+    this.remainingSkills = skillsArray.slice(3); // Rest of the skills
   }
 }

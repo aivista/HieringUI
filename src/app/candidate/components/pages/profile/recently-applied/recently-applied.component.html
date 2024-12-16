@@ -5,7 +5,10 @@
   </h2>
 
   <div class="cards">
-    <div class="card-container" *ngFor="let job of recentJobs">
+    <div
+      class="card-container"
+      *ngFor="let job of recentApplied; let isFirst = first"
+    >
       <div class="header">
         <img src="assets/icons/adanicon.svg" alt="" height="22" width="98" />
       </div>
@@ -34,6 +37,12 @@
           Take Test
         </button>
       </div>
+
+      <!-- <div class="action" *ngIf="isFirst">
+        <button class="take-test-btn" (click)="navigateToInterview(job.jobId)">
+          Take Test
+        </button>
+      </div> -->
     </div>
   </div>
 </div>

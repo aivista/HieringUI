@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { CandidateService } from '../../../../service/candidate.service';
 
 @Component({
   selector: 'app-recently-applied',
@@ -10,8 +11,13 @@ import { Router } from '@angular/router';
   styleUrl: './recently-applied.component.scss',
 })
 export class RecentlyAppliedComponent {
+  recentJobs: any;
+  storedCandidateId: any;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private recentlyAppliedService: CandidateService
+  ) {}
   jobs = [
     {
       headerImage: 'assets/icons/adanicon.svg',
@@ -33,8 +39,32 @@ export class RecentlyAppliedComponent {
       buttonVisible: false,
     },
   ];
+  ngOnInit() {
+    this.storedCandidateId = localStorage.getItem('candidateId');
+    if (this.storedCandidateId) {
+      this.fetchRecentlyAppliedJobs();
+    }
+  }
+
+  fetchRecentlyAppliedJobs() {
+    if (this.storedCandidateId) {
+      this.recentlyAppliedService
+        .getRecentlyAppliedJobs(this.storedCandidateId)
+        .subscribe(
+          (response: any) => {
+            this.recentJobs = response.result;
+            console.log('API Response:', this.recentJobs);
+          },
+          (error) => {
+            console.error('Error fetching recently applied jobs:', error);
+          }
+        );
+    } else {
+      console.error('Candidate ID is not available.');
+    }
+  }
 
   navigateToInterview() {
-    this.router.navigate(['/candidate/interview']); 
+    this.router.navigate(['/candidate/interview']);
   }
 }

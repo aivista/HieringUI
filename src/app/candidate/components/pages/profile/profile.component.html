@@ -5,7 +5,10 @@
     >
       <!-- <app-profile-details class="w-100" /> -->
       <ng-container *ngIf="isEditMode; else showDetails">
-        <app-edit-profile class="w-100" (cancelEdit)="toggleEditMode(false)" />
+        <app-edit-profile
+          class="w-100 h-100"
+          (cancelEdit)="toggleEditMode(false)"
+        />
       </ng-container>
       <ng-template #showDetails>
         <app-profile-details class="w-100" (edit)="toggleEditMode(true)" />

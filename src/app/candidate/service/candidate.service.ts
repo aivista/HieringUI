@@ -24,16 +24,25 @@ export class CandidateService {
     }
     return [];
   }
-  getsteppardata(data:any)
-  {
-    const url=environment.assessment+'ASSESSMENTSERVICE/JOB/'+data.jobid+'/CANDIDATE/'+data.candidateid+'/ASSESSMENTSTATE'
+  getsteppardata(data: any) {
+    const url =
+      environment.assessment +
+      'ASSESSMENTSERVICE/JOB/' +
+      data.jobid +
+      '/CANDIDATE/' +
+      data.candidateid +
+      '/ASSESSMENTSTATE';
     return this.http.get(url);
-
   }
   Candidatelogin(data: any) {
     return this.http.post(this.url + 'login/candidate', data);
   }
   CandidateDetails(data: any) {
     return this.http.post(this.url + 'login/candidatedetails', data);
+  }
+
+  getRecentlyAppliedJobs(candidateId: number) {
+    const url = `${this.jobservice}Jobs/LatestStatus/jobs/appliedjobs_by_candidate/${candidateId}`;
+    return this.http.get(url);
   }
 }

@@ -6,7 +6,7 @@
   color: #fff;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     top: 13%;
@@ -37,12 +37,16 @@ textarea {
 
 // Main Container
 .profile-preview-container {
-  width: 1104px;
+  // width: 1104px;
   margin: auto;
-  max-height: 800px; // Fixed height
-  background: linear-gradient(137.88deg, #1E222A 21.56%, #272C37 100%);
+  max-height: 85%;
+  background: linear-gradient(137.88deg, #1e222a 21.56%, #272c37 100%);
   border: 0.5px solid;
-  border-image-source: linear-gradient(138.76deg, rgba(91, 91, 91, 0.72) 3.02%, rgba(193, 193, 193, 0.72) 100%);
+  border-image-source: linear-gradient(
+    138.76deg,
+    rgba(91, 91, 91, 0.72) 3.02%,
+    rgba(193, 193, 193, 0.72) 100%
+  );
   color: #fff;
   padding: 30px;
   border-radius: 10px;
@@ -54,32 +58,9 @@ textarea {
 
 // Content Scrollable Area
 .profile-preview-left {
-  height: 100%; // Full height
-  width: 838px;
-  padding: 10px;
-  margin: auto;
-  max-height: 780px; // Limits scrolling area
-  overflow-y: auto; // Enables scrolling
-  padding-right: 100px; // Space for scrollbar
-
-  // Customize Scrollbar
-  &::-webkit-scrollbar {
-    width: 8px; // Scrollbar width
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba(138, 138, 138, 1);
-    width: 7px;
-    height: 53.74px !important;
-    gap: 0px;
-    opacity: 0px;
-    border-radius: 4px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: rgba(55, 55, 55, 1);
-    height: 716px;
-  }
+  height: 100%;
+  padding: 0 2rem;
+  overflow-y: auto;
 }
 
 // Header Container for Preview and Buttons
@@ -88,7 +69,7 @@ textarea {
   justify-content: space-between;
   align-items: center;
   margin: 23px auto 20px;
-  max-width: 1104px;
+  // max-width: 1104px;
 }
 
 .profile-preview-header {
@@ -229,11 +210,11 @@ textarea {
     line-height: 19.36px;
   }
 }
-:host ::ng-deep .p-select-label{
+:host ::ng-deep .p-select-label {
   color: rgba(255, 255, 255, 1) !important;
 }
 
-.p-select{
+.p-select {
   background: rgba(19, 19, 19, 1);
   color: rgba(255, 255, 255, 1) !important;
   border: 1px solid rgba(66, 75, 87, 1);
@@ -275,13 +256,13 @@ textarea {
     line-height: 21px;
     font-size: 14px;
   }
- .remove-skill{
-  background-color: transparent;
-  color: #fff;
-  border-color:rgba(255, 255, 255, 0.87);
-  margin-left: 10px;
-  border-radius: 50%;
- }
+  .remove-skill {
+    background-color: transparent;
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.87);
+    margin-left: 10px;
+    border-radius: 50%;
+  }
 }
 
 .skill-tag {

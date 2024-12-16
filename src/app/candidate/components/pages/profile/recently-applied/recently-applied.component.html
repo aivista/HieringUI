@@ -5,34 +5,34 @@
   </h2>
 
   <div class="cards">
-    <div class="card-container" *ngFor="let job of jobs">
-      <!-- Header Section -->
+    <div class="card-container" *ngFor="let job of recentJobs">
       <div class="header">
-        <img [src]="job.headerImage" alt="" height="22" width="98" />
+        <img src="assets/icons/adanicon.svg" alt="" height="22" width="98" />
       </div>
 
-      <!-- Role Title -->
-      <div class="role-title">
-        {{ job.roleTitle }}
-      </div>
+      <div class="role-title">{{ job.jd }} - {{ job.role }}</div>
 
-      <!-- Status Section -->
       <div class="status">
         <span>Status</span>
         <div
           class="status-tag"
           [ngClass]="{
-            'ai-screening': job.status === 'AI Based Screening',
-            'inactive-status': job.status === 'Inactive'
+            assessment: job.latestStatus === 'ASSESSMENT',
+            'ai-screening': job.latestStatus === 'AI Based Screening',
+            'interview-pending':
+              job.latestStatus === 'Interview Schedule Pending',
+            'meeting-panding': job.latestStatus === 'Teams Meeting Pending',
+            'inactive-status': job.latestStatus === 'Inactive'
           }"
         >
-          {{ job.status }}
+          {{ job.latestStatus }}
         </div>
       </div>
 
-      <!-- Take Test Button -->
-      <div class="action" *ngIf="job.buttonVisible">
-        <button class="take-test-btn" (click)="navigateToInterview()">Take Test</button>
+      <div class="action" *ngIf="job.latestStatus === 'Teams Meeting Pending'">
+        <button class="take-test-btn" (click)="navigateToInterview()">
+          Take Test
+        </button>
       </div>
     </div>
   </div>

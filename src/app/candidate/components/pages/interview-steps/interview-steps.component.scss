@@ -42,6 +42,7 @@
       top: 6px;
       left: 50px;
       position: absolute;
+      cursor: pointer;
     }
 
     .previouspage-title {
@@ -149,7 +150,7 @@
     }
 
     .timeline {
-      justify-content: center;
+      justify-content: space-between!important;
     }
 
     // .round {
@@ -186,11 +187,17 @@
       border-radius: 50%;
       height: 36px !important;
       width: 36px !important;
-      background-color: #8b04f5;
+     
       align-items: center;
 
       display: flex;
       justify-content: center;
+    }
+    .complete-round{
+      background-color: #8b04f5;
+    }
+    .pending-round{
+      background-color: #424B57;
     }
 
     .stapper {
@@ -204,7 +211,7 @@
     }
 
     .line {
-      margin-top: 16px;
+      // margin-top: 16px;
       border-top: 2px dotted #7086fd;
       width: 10rem;
     }

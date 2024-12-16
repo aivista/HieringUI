@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { POSTurl } from '../../config';
+import { GETurl } from '../../config';
 import { environment } from '../../../environments/environment';
 import { Subject } from 'rxjs';
 
@@ -39,14 +40,14 @@ export class CandidateService {
     return this.http.get(url);
   }
   Candidatelogin(data: any) {
-    return this.http.post(this.url + 'login/candidate', data);
+    return this.http.post(POSTurl.candidateLogin, data);
   }
   CandidateDetails(data: any) {
-    return this.http.post(this.url + 'login/candidatedetails', data);
+    return this.http.post(POSTurl.candidateDetails, data);
   }
 
   getRecentlyAppliedJobs(candidateId: number) {
-    const url = `${this.jobservice}jobs/appliedjobsByCandidate/${candidateId}`;
+    const url = GETurl.appliedjobsByCandidate+candidateId
     return this.http.get(url);
   }
 
@@ -58,8 +59,7 @@ export class CandidateService {
   }
   evaluateMcq(jsonBody:any) {
     return this.http.post(
-      this.assessment +
-        `ASSESSMENTSERVICE/EvaluateMCQ`,jsonBody
+      POSTurl.evaluateMCQ,jsonBody
     );
   }
 }

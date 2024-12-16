@@ -31,13 +31,13 @@ export class AssessmentComponent {
     this.route.queryParams.subscribe((params) => {
       this.candidateId = params['candidateId'];
       this.jobId = params['jobId'];
-      this.fetchQuestions(1, this.jobId, this.candidateId);
-      this.questionsService.assessmentId.subscribe((ass:any)=>{
-        console.log("assessmentId",ass);
-        
-      })
+     
+    const assid= this.questionsService.getData("assessmentId");
+   
+    
+    this.fetchQuestions(assid, this.jobId, this.candidateId);
     });
- 
+    
   }
   // Sample Questions Array
  

@@ -1,4 +1,5 @@
  import { Component, EventEmitter, Output } from '@angular/core';
+import { CandidateService } from '../../../../service/candidate.service';
 
 @Component({
   selector: 'app-introductory-call',
@@ -15,5 +16,11 @@ export class IntroductoryCallComponent {
   onButtonClick(): void {
     this.showAiAvatar.emit();
   }
-
+  constructor(private candidateService:CandidateService){}
+ngOnInit(){
+  this.candidateService.assessmentId.subscribe((ass:any)=>{
+    console.log("assessmentId",ass);
+    
+  })
+}
 }

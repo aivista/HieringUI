@@ -132,86 +132,91 @@
                     </small>
                   </div>
                 </div>
-                <div class="row mt-3">
-                  <div class="col-12">
-                    <label class="field-text"
-                      >Primary Skills <label class="aristick">*</label></label
-                    >
-                    <br />
-                    <p-multiSelect
-                      id="primarySkills"
-                      formControlName="primarySkills"
-                      [(ngModel)]="selectedPrimarySkills"
-                      [options]="primarySkills"
-                      placeholder="Select"
-                      name="primarySkills"
-                      class="w-50"
-                    ></p-multiSelect>
-
-                    <div
-                      class="chip-container flex items-center gap-2 flex-wrap jcd-chip-section"
-                    >
-                      <p-chip
-                        *ngFor="let genre of selectedPrimarySkills"
-                        [label]="genre"
-                        [removable]="true"
-                        (onRemove)="removeFromSelection(genre)"
-                        class="mt-1"
+                <div class="row">
+                  <div class="col-md-6 mt-2">
+                    <div class="">
+                      <label class="field-text"
+                        >Primary Skills <label class="aristick">*</label></label
                       >
-                      </p-chip>
+                      <br />
+                      <p-multiSelect
+                        id="primarySkills"
+                        formControlName="primarySkills"
+                        [(ngModel)]="selectedPrimarySkills"
+                        [options]="primarySkills"
+                        placeholder="Select"
+                        name="primarySkills"
+                        class="w-100"
+                      ></p-multiSelect>
+  
+                      <div
+                        class="chip-container flex items-center gap-2 flex-wrap jcd-chip-section"
+                      >
+                        <p-chip
+                          *ngFor="let genre of selectedPrimarySkills"
+                          [label]="genre"
+                          [removable]="true"
+                          (onRemove)="removeFromSelection(genre)"
+                          class="mt-1"
+                        >
+                        </p-chip>
+                      </div>
+                      <small
+                        class="p-error block"
+                        style="color: red; font-size: 10px"
+                        *ngIf="
+                          profileForm.get('primarySkills')?.invalid &&
+                          profileForm.get('primarySkills')?.touched
+                        "
+                      >
+                        Primary Skills is required.
+                      </small>
                     </div>
-                    <small
-                      class="p-error block"
-                      style="color: red; font-size: 10px"
-                      *ngIf="
-                        profileForm.get('primarySkills')?.invalid &&
-                        profileForm.get('primarySkills')?.touched
-                      "
-                    >
-                      Primary Skills is required.
-                    </small>
+                  </div>
+                  <div class="col-md-6 mt-2">
+                    <div class="">
+                      <label class="field-text"
+                        >Secondary Skills <label class="aristick">*</label></label
+                      >
+                      <br />
+                      <p-multiSelect
+                        id="secondarySkills"
+                        formControlName="secondarySkills"
+                        [(ngModel)]="selectedSecondarySkills"
+                        [options]="secondarySkills"
+                        placeholder="Select"
+                        name="secondarySkills"
+                        class="w-100"
+                      ></p-multiSelect>
+  
+                      <div
+                        class="chip-container flex items-center gap-2 flex-wrap jcd-chip-section"
+                      >
+                        <p-chip
+                          *ngFor="let genre of selectedSecondarySkills"
+                          [label]="genre"
+                          [removable]="true"
+                          (onRemove)="removeFromSelectionSecondary(genre)"
+                          class="custom-p-chip mt-1"
+                        >
+                        </p-chip>
+                      </div>
+                      <small
+                        class="p-error block"
+                        style="color: red; font-size: 10px"
+                        *ngIf="
+                          profileForm.get('secondarySkills')?.invalid &&
+                          profileForm.get('secondarySkills')?.touched
+                        "
+                      >
+                        Secondary Skills is required.
+                      </small>
+                    </div>
                   </div>
                 </div>
-                <div class="row mt-2">
-                  <div class="col-12">
-                    <label class="field-text"
-                      >Secondary Skills <label class="aristick">*</label></label
-                    >
-                    <br />
-                    <p-multiSelect
-                      id="secondarySkills"
-                      formControlName="secondarySkills"
-                      [(ngModel)]="selectedSecondarySkills"
-                      [options]="secondarySkills"
-                      placeholder="Select"
-                      name="secondarySkills"
-                      class="w-50"
-                    ></p-multiSelect>
+              
 
-                    <div
-                      class="chip-container flex items-center gap-2 flex-wrap jcd-chip-section"
-                    >
-                      <p-chip
-                        *ngFor="let genre of selectedSecondarySkills"
-                        [label]="genre"
-                        [removable]="true"
-                        (onRemove)="removeFromSelectionSecondary(genre)"
-                        class="custom-p-chip mt-1"
-                      >
-                      </p-chip>
-                    </div>
-                    <small
-                      class="p-error block"
-                      style="color: red; font-size: 10px"
-                      *ngIf="
-                        profileForm.get('secondarySkills')?.invalid &&
-                        profileForm.get('secondarySkills')?.touched
-                      "
-                    >
-                      Secondary Skills is required.
-                    </small>
-                  </div>
-                </div>
+
                 <div class="row mt-3">
                   <div class="col-12">
                     <label class="field-text"

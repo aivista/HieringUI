@@ -42,14 +42,14 @@ export class CandidatesComponent {
   //     skills: ['React', 'JavaScript', 'CSS'],
   //   },
   // ];
-  shortlistedCandidates:any=[]
+  shortlistedCandidates: any = []
 
- 
-  appliedCandidates:any=[]
-  jobSucribe:any
-constructor(private hiringManagerService:HiringManagerService){
-  this.getShortlisted()
-}
+
+  appliedCandidates: any = []
+  jobSucribe: any
+  constructor(private hiringManagerService: HiringManagerService) {
+    this.getShortlisted()
+  }
   setActiveTab(tab: string): void {
     this.activeTab = tab;
   }
@@ -67,29 +67,29 @@ constructor(private hiringManagerService:HiringManagerService){
         return '';
     }
   }
-ngOnInit(){
+  ngOnInit() {
 
-}
-getShortlisted(){
- this.jobSucribe= this.hiringManagerService.jobSubscribe.subscribe((res:any)=>{
-   
-    this.hiringManagerService.getShortlistedJobs(res.id).subscribe((result:any)=>{
-     if(result.isSuccess){
-      this.shortlistedCandidates=result.result
-     }
-     
-    })
-    this.hiringManagerService.getAppliedJobs(res.id).subscribe((result:any)=>{
-      if(result.isSuccess){
-       this.appliedCandidates=result.result
+  }
+  getShortlisted() {
+    this.jobSucribe = this.hiringManagerService.jobSubscribe.subscribe((res: any) => {
+
+      this.hiringManagerService.getShortlistedJobs(res.id).subscribe((result: any) => {
+        if (result.isSuccess) {
+          this.shortlistedCandidates = result.result
+        }
+
+      })
+      this.hiringManagerService.getAppliedJobs(res.id).subscribe((result: any) => {
+        if (result.isSuccess) {
+          this.appliedCandidates = result.result
+        }
+
       }
-      
-     }
-     
-  )
-    
-  })
-}
+
+      )
+
+    })
+  }
   selectedCandidate: any = null;
 
   openModal(candidate: any) {
@@ -108,8 +108,8 @@ getShortlisted(){
     this.selectedCandidate = null; // Closes the modal
   }
 
-  ngOnDestroy(){
-    if(this.jobSucribe){
+  ngOnDestroy() {
+    if (this.jobSucribe) {
       this.jobSucribe.unsubscribe()
     }
   }

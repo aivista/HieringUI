@@ -62,21 +62,58 @@
     }
   }
 
+
+
   .contact-info {
     color: #bdbdbd;
     font-size: 14px;
     font-weight: 400;
   }
 
-  .progress-status {
-    div {
-      text-align: center;
-
-      p {
-        margin: 0;
-      }
+  .timeline {
+      justify-content: center;
     }
-  }
+
+    .round {
+      border-radius: 50%;
+      height: 36px !important;
+      width: 36px !important;
+      // background-color: #8b04f5;
+      background-color: #424B57;
+      align-items: center;
+
+      display: flex;
+      justify-content: center;
+     
+    }
+
+    .stapper {
+      align-items: center;
+      align-content: center;
+    }
+
+    .round img {
+      height: 21px;
+      width: 21px;
+    }
+
+    .line {
+      margin :auto 0 ;
+      border-top: 2px dotted #7086fd;
+      width: 6rem;
+      z-index: -1;
+    }
+
+    .interview-status {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .interview-status2 {
+      font-size: 12px;
+      font-weight: 400;
+      color: #dfac54;
+    }
 
   .interview-schedule {
     display: flex;

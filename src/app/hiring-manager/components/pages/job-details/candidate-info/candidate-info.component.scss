@@ -71,49 +71,49 @@
   }
 
   .timeline {
-      justify-content: center;
-    }
+    justify-content: center;
+  }
 
-    .round {
-      border-radius: 50%;
-      height: 36px !important;
-      width: 36px !important;
-      // background-color: #8b04f5;
-      background-color: #424B57;
-      align-items: center;
+  .round {
+    border-radius: 50%;
+    height: 36px !important;
+    width: 36px !important;
+    // background-color: #8b04f5;
+    background-color: #424B57;
+    align-items: center;
 
-      display: flex;
-      justify-content: center;
-     
-    }
+    display: flex;
+    justify-content: center;
 
-    .stapper {
-      align-items: center;
-      align-content: center;
-    }
+  }
 
-    .round img {
-      height: 21px;
-      width: 21px;
-    }
+  .stapper {
+    align-items: center;
+    align-content: center;
+  }
 
-    .line {
-      margin :auto 0 ;
-      border-top: 2px dotted #7086fd;
-      width: 6rem;
-      z-index: -1;
-    }
+  .round img {
+    height: 21px;
+    width: 21px;
+  }
 
-    .interview-status {
-      font-size: 14px;
-      font-weight: 600;
-    }
+  .line {
+    margin: auto 0;
+    border-top: 2px dotted #7086fd;
+    width: 6rem;
+    z-index: -1;
+  }
 
-    .interview-status2 {
-      font-size: 12px;
-      font-weight: 400;
-      color: #dfac54;
-    }
+  .interview-status {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .interview-status2 {
+    font-size: 12px;
+    font-weight: 400;
+    color: #dfac54;
+  }
 
   .interview-schedule {
     display: flex;
@@ -179,6 +179,18 @@
     .skill-pill {
       border-radius: 60px;
       padding: 0.5rem;
+    }
+
+    .hidden-skills {
+      top: 100%;
+      left: 0;
+      z-index: 10;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+
+      .more-pill {
+        color: black;
+      }
     }
 
     .skill-pill2 {

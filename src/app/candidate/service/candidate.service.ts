@@ -43,7 +43,7 @@ export class CandidateService {
   }
 
   getRecentlyAppliedJobs(candidateId: number) {
-    const url = `${this.jobservice}Jobs/LatestStatus/jobs/appliedjobs_by_candidate/${candidateId}`;
+    const url = `${this.jobservice}jobs/appliedjobsByCandidate/${candidateId}`;
     return this.http.get(url);
   }
 

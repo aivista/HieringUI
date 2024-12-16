@@ -11,9 +11,8 @@ import { HiringManagerService } from '../../../../service/hiring-manager.service
   styleUrl: './jobs.component.scss',
 })
 export class JobsComponent {
-  private router = inject(Router);
   title = 'resourcemanagement';
-  JobDetails:any=[]
+  JobDetails: any = [];
   jobs = [
     {
       title: 'SAS & Communication Manager',
@@ -62,33 +61,33 @@ export class JobsComponent {
     },
   ];
   activeIndex: number = 0;
-constructor(private hiringManagerService:HiringManagerService){}
-  setActiveJob(index: number,job:any): void {
+  constructor(
+    private router: Router,
+    private hiringManagerService: HiringManagerService
+  ) {}
+  setActiveJob(index: number, job: any): void {
     // Reset all jobs to inactive
-   this.activeIndex=index
-   this.hiringManagerService.jobSubscribe.next(job)
-
+    this.activeIndex = index;
+    this.hiringManagerService.jobSubscribe.next(job);
   }
-  ngOnInit(){
-    const response=this.hiringManagerService.getData("hiringManagerDetails");
-    if(response){
-    this.getJobDetails(response.email)
-     
+  ngOnInit() {
+    const response = this.hiringManagerService.getData('hiringManagerDetails');
+    if (response) {
+      this.getJobDetails(response.email);
     }
-   }
-   getJobDetails(email:string){
-    
-     this.hiringManagerService.getHiringManagerJobs(email).subscribe((res:any)=>{
-       console.log("rews",res)
-       this.JobDetails=res.result
-       this.hiringManagerService.jobSubscribe.next(this.JobDetails[0])
-     },
-     (e)=>{
-   
-     }
-   )
-   }
+  }
+  getJobDetails(email: string) {
+    this.hiringManagerService.getHiringManagerJobs(email).subscribe(
+      (res: any) => {
+        console.log('rews', res);
+        this.JobDetails = res.result;
+        this.hiringManagerService.jobSubscribe.next(this.JobDetails[0]);
+      },
+      (e) => {}
+    );
+  }
   openCreateJob() {
-    this.router.navigate(['/create-job']);
+    // this.router.navigate(['/job-create']);
+    this.router.navigate(['/job-create']);
   }
 }

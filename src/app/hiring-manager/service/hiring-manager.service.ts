@@ -11,26 +11,23 @@ import { environment } from '../../../environments/environment';
 export class HiringManagerService {
   url = environment.apiBaseUrl;
 
-  jobservice = environment.jobService
-  jobDetails = environment.jobDetails
-  jobSubscribe = new Subject()
+  jobservice = environment.jobService;
+  jobDetails = environment.jobDetails;
+  jobSubscribe = new Subject();
 
-  assessment = environment.assessment
+  assessment = environment.assessment;
 
-  constructor(private http: HttpClient) {
-
-  }
+  constructor(private http: HttpClient) {}
 
   setData(key: string, data: any) {
-
     sessionStorage.setItem(key, JSON.stringify(data));
   }
   getData(key: string) {
-    const data = sessionStorage.getItem(key)
+    const data = sessionStorage.getItem(key);
     if (data) {
-      return JSON.parse(data)
+      return JSON.parse(data);
     }
-    return []
+    return [];
   }
 
   login(data: any) {
@@ -38,25 +35,26 @@ export class HiringManagerService {
   }
 
   getHiringManagerJobs(data: string) {
-    const url = this.jobservice + 'jobs/' + data;
-    return this.http.get(url);
+    // const url = this.jobservice + 'jobs/' + data;
+    return this.http.get(this.jobservice + 'jobs/' + data);
   }
   getShortlistedJobs(id: string) {
-    return this.http.get(this.jobservice + 'Jobs/LatestStatus/ShortListed/' + id)
+    return this.http.get(this.jobservice + 'jobs/ShortListed/' + id);
   }
 
   getAppliedJobs(id: string) {
-    return this.http.get(this.jobservice + 'Jobs/LatestStatus/jobs/applied_jobs/' + id)
+    return this.http.get(this.jobservice + 'jobs/appliedJobs/' + id);
   }
-
 
   getJobsDesc() {
     const url = this.jobDetails + 'Job/GetJobDescription';
     return this.http.get(url);
   }
-getUpcomingInterview(jobId:string,managerId:string){
-  return this.http.get(this.jobservice+'Jobs/LatestStatus/upcoming_interview/'+jobId+'/'+managerId)
-}
+  getUpcomingInterview(jobId: string, managerId: string) {
+    return this.http.get(
+      this.jobservice + 'jobs/upcomingInterview/' + jobId + '/' + managerId
+    );
+  }
 
   createJobs(data: any) {
     const url = this.jobDetails + 'Job/CreatedJob';
@@ -64,6 +62,13 @@ getUpcomingInterview(jobId:string,managerId:string){
   }
 
   candidateStatus(jobId: string, CandidateId: string) {
-    return this.http.get(this.assessment + 'ASSESSMENTSERVICE/JOB/' + jobId + '/CANDIDATE/' + CandidateId + '/ASSESSMENTSTATE')
+    return this.http.get(
+      this.assessment +
+        'ASSESSMENTSERVICE/JOB/' +
+        jobId +
+        '/CANDIDATE/' +
+        CandidateId +
+        '/ASSESSMENTSTATE'
+    );
   }
 }

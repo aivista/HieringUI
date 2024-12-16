@@ -30,7 +30,7 @@
       </div>
 
       <div class="action" *ngIf="job.latestStatus === 'Teams Meeting Pending'">
-        <button class="take-test-btn" (click)="navigateToInterview()">
+        <button class="take-test-btn" (click)="navigateToInterview(job.jobId)">
           Take Test
         </button>
       </div>

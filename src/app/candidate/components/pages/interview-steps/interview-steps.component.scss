@@ -22,7 +22,9 @@
 .main-strac-container {
   // padding: 1% 15%;
   height: 100%;
-  background-image: url(https://s3-alpha-sig.figma.com/img/2e8b/9139/045a64f481bdbd80496749ca6940e1f7?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=h7H-ir0ans3xqRUlBnT4YEn6iqoNfxzeuD2gH6fXro7DrjnVVlp8WOoEypRweL2uQFdMX4ZPIFA~lkPwh51dvaAqL7gq3FvI5-oVFjbQzTuPTswO~17992RIsGa0ontRRuE04C59N436ITR9~GSl2Rc4hI81EHeXeTLCAUExKxRVa8W0GMSV~ZjkYNnO10BfjwgSSt4GeM0UgzAm40uqjDuSYbuTHXa3uY-SiK-BLi1iwMtffCXRrnE4aRwiTsGzKvpkP7hSMJnkpZ894TOqU5MVXs9edj57u5R4FjP4pfS8KAwoV7vF-y4a1B55KfrScA15i6wrOsO5ZVwi1m7WMw__);
+
+  background: url("/assets/icons/candidate-bg.svg"),
+    linear-gradient(117.21deg, #141414 80.75%, #484848 149.51%);
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -42,6 +44,7 @@
       top: 6px;
       left: 50px;
       position: absolute;
+      cursor: pointer;
     }
 
     .previouspage-title {
@@ -149,7 +152,7 @@
     }
 
     .timeline {
-      justify-content: center;
+      justify-content: space-between !important;
     }
 
     // .round {
@@ -173,40 +176,98 @@
     //   border-top: 3px dotted white;
     //   width: 10rem;
     // }
+    
+
+    // .timeline {
+    //   justify-content: center;
+    // }
+
+    // .round {
+    //   border-radius: 50%;
+    //   height: 36px !important;
+    //   width: 36px !important;
+
+    //   align-items: center;
+
+    //   display: flex;
+    //   justify-content: center;
+    // }
+    // .complete-round{
+    //   background-color: #8b04f5;
+    // }
+    // .pending-round{
+    //   background-color: #424B57;
+    // }
+
+    // .stapper {
+    //   align-items: center;
+    //   align-content: center;
+    // }
+
+    // .round img {
+    //   height: 21px;
+    //   width: 21px;
+    // }
+
+    // .line {
+    //   // margin-top: 16px;
+    //   border-top: 2px dotted #7086fd;
+    //   width: 10rem;
+    // }
+
+
     .location img {
       height: 14px;
       width: 14px;
     }
-
     .timeline {
       justify-content: center;
+      display: flex;
+      align-items: center; /* Ensures vertical alignment */
+    }
+
+    .timeline-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Ensures the line and circle align properly */
     }
 
     .round {
       border-radius: 50%;
       height: 36px !important;
       width: 36px !important;
-      background-color: #8b04f5;
       align-items: center;
-
       display: flex;
       justify-content: center;
+      z-index: 10;
+    }
+
+    .complete-round {
+      background-color: #8b04f5;
+    }
+
+    .pending-round {
+      background-color: #424b57;
+    }
+
+    .line {
+      z-index: 7;
+      border-top: 2px dotted #7086fd;
+      width: 10rem;
+      position: relative;
+      top: -18px; /* Adjusts the line to align with the center of the circle */
     }
 
     .stapper {
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      align-content: center;
+      z-index: 5;
     }
 
     .round img {
       height: 21px;
       width: 21px;
-    }
-
-    .line {
-      margin-top: 16px;
-      border-top: 2px dotted #7086fd;
-      width: 10rem;
     }
 
     .interview-status {

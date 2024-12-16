@@ -36,9 +36,40 @@
           <div class="experience">{{ candidate?.experience }} years of experience</div>
         </div>
         <div class="skills">
-          <span *ngFor="let skill of candidate?.skills?.split(',')" class="skill">{{
-            skill
-            }}</span>
+          <!-- Show only the first 3 skills -->
+          <div
+            *ngFor="
+              let skill of candidate?.skills?.split(',') | slice : 0 : 3;
+              let i = index
+            "
+            class="skill"
+          >
+            {{ skill }}
+          </div>
+
+          <!-- Show "+count" if there are more than 3 skills -->
+          <div
+            *ngIf="candidate?.skills?.split(',').length > 3"
+            class="skill-pill2 "
+            (mouseenter)="showHiddenSkills = true"
+            (mouseleave)="showHiddenSkills = false"
+            class="skill"
+          >
+            +{{ candidate?.skills?.split(",").length - 3 }}
+
+            <!-- Hidden pills shown on hover -->
+            <div
+              class="hidden-skills bg-light p-2 position-absolute"
+              *ngIf="showHiddenSkills"
+            >
+              <div
+                *ngFor="let skill of candidate?.skills?.split(',') | slice : 3"
+                class="more-pill"
+              >
+                {{ skill }}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </ng-container>
@@ -56,10 +87,46 @@
           </div>
           <div class="experience">{{ candidate.experience }} years of experience</div>
         </div>
-        <div class="skills">
+        <!-- <div class="skills">
           <span *ngFor="let skill of candidate?.skills?.split(',')" class="skill">{{
             skill
             }}</span>
+        </div> -->
+        <div class="skills">
+          <!-- Show only the first 3 skills -->
+          <div
+            *ngFor="
+              let skill of candidate?.skills?.split(',') | slice : 0 : 3;
+              let i = index
+            "
+            class="skill"
+          >
+            {{ skill }}
+          </div>
+
+          <!-- Show "+count" if there are more than 3 skills -->
+          <div
+            *ngIf="candidate?.skills?.split(',').length > 3"
+            class="skill-pill2 "
+            (mouseenter)="showHiddenSkills = true"
+            (mouseleave)="showHiddenSkills = false"
+            class="skill" 
+          >
+            +{{ candidate?.skills?.split(",").length - 3 }}
+
+            <!-- Hidden pills shown on hover -->
+            <div 
+              class="hidden-skills bg-light p-2 position-absolute"
+              *ngIf="showHiddenSkills"
+            >
+              <div
+                *ngFor="let skill of candidate?.skills?.split(',') | slice : 3"
+                class="more-pill"
+              >
+                {{ skill }}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </ng-container>

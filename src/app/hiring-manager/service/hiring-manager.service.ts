@@ -5,6 +5,7 @@ import { Observable, Subject } from 'rxjs';
 // import { Router } from '@angular/router';
 // import { POSTurl } from '../../config';
 import { environment } from '../../../environments/environment';
+import { GETurl, POSTurl } from '../../config';
 @Injectable({
   providedIn: 'root',
 })
@@ -31,33 +32,33 @@ export class HiringManagerService {
   }
 
   login(data: any) {
-    return this.http.post(this.url + 'login/hiringmanager', data);
+    return this.http.post(POSTurl.hiringmanagerLogin , data);
   }
 
   getHiringManagerJobs(data: string) {
     // const url = this.jobservice + 'jobs/' + data;
-    return this.http.get(this.jobservice + 'jobs/' + data);
+    return this.http.get(GETurl.jobDetails + data);
   }
   getShortlistedJobs(id: string) {
-    return this.http.get(this.jobservice + 'jobs/ShortListed/' + id);
+    return this.http.get(GETurl.jobShortListed + id);
   }
 
   getAppliedJobs(id: string) {
-    return this.http.get(this.jobservice + 'jobs/appliedJobs/' + id);
+    return this.http.get(GETurl.appliedJobs + id);
   }
 
   getJobsDesc() {
-    const url = this.jobDetails + 'Job/GetJobDescription';
+    const url = GETurl.getJobDescription;
     return this.http.get(url);
   }
   getUpcomingInterview(jobId: string, managerId: string) {
     return this.http.get(
-      this.jobservice + 'jobs/upcomingInterview/' + jobId + '/' + managerId
+     GETurl.upcomingInterview + jobId + '/' + managerId
     );
   }
 
   createJobs(data: any) {
-    const url = this.jobDetails + 'Job/CreatedJob';
+    const url = GETurl.createdJob;
     return this.http.post(url, data);
   }
 

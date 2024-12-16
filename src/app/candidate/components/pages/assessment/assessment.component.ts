@@ -3,6 +3,9 @@ import { Component, Input, input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CongratulationComponent } from '../interview-steps/congratulation/congratulation.component';
 import { CandidateService } from '../../../service/candidate.service';
+import { ApiResponse,Question,QuestionResponse } from '../../../../interfaces/interface';
+
+
 
 @Component({
   standalone: true,
@@ -24,7 +27,7 @@ export class AssessmentComponent {
   candidateId:number=0
   jobId:number=0
   selectedAnswers: any[] = [];
-  questions: any;
+  questions: Question[]=[];
   
 
   ngOnInit() {
@@ -44,10 +47,10 @@ export class AssessmentComponent {
 
   fetchQuestions(aid: number, jobId: number, cid: number) {
     this.questionsService.getJobQuestions(aid, jobId, cid).subscribe(
-      (questions: any) => {
+      (questions) => {
         // this.questions = questions.result;
       
-        this.questions = questions.result.map((item:any )=> ({
+        this.questions = questions.result.map((item:QuestionResponse )=> ({
           question: item.question,
           id:item.id,
           // correctOption:item.correctOption,

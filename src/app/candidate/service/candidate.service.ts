@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { POSTurl } from '../../config';
 import { GETurl } from '../../config';
 import { environment } from '../../../environments/environment';
-import { Subject } from 'rxjs';
-
+import { Observable, Subject } from 'rxjs';
+import { ApiResponse,Question } from '../../interfaces/interface';
 @Injectable({
   providedIn: 'root',
 })
@@ -51,8 +51,8 @@ export class CandidateService {
     return this.http.get(url);
   }
 
-  getJobQuestions(aid: number, jobId: number, cid: number) {
-    return this.http.get(
+  getJobQuestions(aid: number, jobId: number, cid: number):Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(
       this.assessment +
         `ASSESSMENTSERVICE/ASSESSMENT/${aid}/JOB/${jobId}/CANDIDATE/${cid}/GETMCQ`
     );

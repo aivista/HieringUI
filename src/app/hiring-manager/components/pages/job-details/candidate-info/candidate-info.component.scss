@@ -62,8 +62,6 @@
     }
   }
 
-
-
   .contact-info {
     color: #bdbdbd;
     font-size: 14px;
@@ -74,22 +72,90 @@
     justify-content: center;
   }
 
+  // .round {
+  //   border-radius: 50%;
+  //   height: 36px !important;
+  //   width: 36px !important;
+  //   // background-color: #8b04f5;
+  //   background-color: #424B57;
+  //   align-items: center;
+
+  //   display: flex;
+  //   justify-content: center;
+
+  // }
+
+  // .stapper {
+  //   align-items: center;
+  //   align-content: center;
+  // }
+
+  // .round img {
+  //   height: 21px;
+  //   width: 21px;
+  // }
+
+  // .line {
+  //   margin: auto 0;
+  //   border-top: 2px dotted #7086fd;
+  //   width: 6rem;
+  //   z-index: -1;
+  // }
+
+  // .interview-status {
+  //   font-size: 14px;
+  //   font-weight: 600;
+  // }
+
+  // .interview-status2 {
+  //   font-size: 12px;
+  //   font-weight: 400;
+  //   color: #dfac54;
+  // }
+
+  .timeline {
+    justify-content: space-between;
+    display: flex;
+    align-items: center; /* Ensures vertical alignment */
+  }
+
+  .timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Ensures the line and circle align properly */
+  }
+
   .round {
     border-radius: 50%;
     height: 36px !important;
     width: 36px !important;
-    // background-color: #8b04f5;
-    background-color: #424B57;
     align-items: center;
-
     display: flex;
     justify-content: center;
+    z-index: 10;
+  }
 
+  .complete-round {
+    background-color: #8b04f5;
+  }
+
+  .pending-round {
+    background-color: #424b57;
+  }
+
+  .line {
+    z-index: 7;
+    border-top: 2px dotted #7086fd;
+    width: 7.5rem;
+    position: relative;
+    top: -18px; /* Adjusts the line to align with the center of the circle */
   }
 
   .stapper {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    align-content: center;
+    z-index: 5;
   }
 
   .round img {
@@ -97,22 +163,23 @@
     width: 21px;
   }
 
-  .line {
-    margin: auto 0;
-    border-top: 2px dotted #7086fd;
-    width: 6rem;
-    z-index: -1;
-  }
-
   .interview-status {
     font-size: 14px;
     font-weight: 600;
   }
 
+  .complete-status {
+    color: #27AE60;
+  }
+
+  .pending-status {
+    color: #767FFF;
+  }
   .interview-status2 {
+    display: flex;
+    justify-content: center;
     font-size: 12px;
     font-weight: 400;
-    color: #dfac54;
   }
 
   .interview-schedule {

@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OnInit } from '@angular/core';
 import { CandidateService } from '../../../../service/candidate.service';
-
+import { Tooltip } from 'primeng/tooltip';
 interface Profile {
   name: string;
   imageUrl: string;
@@ -70,41 +70,30 @@ export class ProfileDetailsComponent implements OnInit {
                 ProfileDetails.lastName || ''
               }`.trim(),
               imageUrl:
-                ProfileDetails.imageUrl || 'assets/icons/profileLogo.svg',
-              certifications: (ProfileDetails.certification || '').split(','),
+                ProfileDetails.imageUrl || 'assets/icons/defultProfileIcon.svg',
+              certifications: (ProfileDetails.skills || '').split(','),
               email: ProfileDetails.email || '',
               phone: ProfileDetails.contact || '',
               location: ProfileDetails.address || '',
               latestExperience: {
-                company:
-                  ProfileDetails.latestExperience?.company ||
-                  'Nxtra Data Ltd. (A Bharti Airtel Group Company)',
+                company: ProfileDetails.latestRole || '',
                 employmentType:
-                  ProfileDetails.latestExperience?.employmentType ||
-                  'Full Time',
-                period:
-                  ProfileDetails.latestExperience?.period ||
-                  'September, 2022-Present',
-                location:
-                  ProfileDetails.latestExperience?.location ||
-                  'Mumbai, Maharashtra',
+                  ProfileDetails.latestExperience?.employmentType || '',
+                period: ProfileDetails.latestExperience?.period || '',
+                location: ProfileDetails.address || '',
                 position: ProfileDetails.designation || '',
               },
               latestEducation: {
-                university:
-                  ProfileDetails.latestEducation?.university ||
-                  'Pune University, Maharashtra',
+                university: ProfileDetails.latestEducation?.university || '',
                 degree: ProfileDetails.education || '',
-                major: ProfileDetails.major || 'Computer Science',
-                period:
-                  ProfileDetails.latestEducation?.period ||
-                  'September, 2022-Present',
-                activities:
-                  ProfileDetails.latestEducation?.activities ||
-                  'football team head',
+                major: ProfileDetails.major || '',
+                period: ProfileDetails.latestEducation?.period || '',
+                activities: ProfileDetails.latestEducation?.activities || '',
               },
-              // certificationsAndTraining:(ProfileDetails.skills || '').split(','),
-              certificationsAndTraining: [],
+              certificationsAndTraining: (
+                ProfileDetails.certification || ''
+              ).split(','),
+              // certificationsAndTraining: [],
             };
           },
           (error) => {

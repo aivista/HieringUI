@@ -13,6 +13,7 @@ import { CandidateService } from '../../../../service/candidate.service';
 export class RecentlyAppliedComponent {
   recentJobs: any;
   storedCandidateId: any;
+  recentApplied: any;
 
   constructor(
     private router: Router,
@@ -53,7 +54,11 @@ export class RecentlyAppliedComponent {
         .subscribe(
           (response: any) => {
             this.recentJobs = response.result;
-            console.log('API Response:', this.recentJobs);
+            if (this.recentJobs.length > 0) {
+              this.recentApplied = this.recentJobs.sort(
+                (a: any, b: any) => b.jobId - a.jobId
+              );
+            }
           },
           (error) => {
             console.error('Error fetching recently applied jobs:', error);
@@ -63,10 +68,9 @@ export class RecentlyAppliedComponent {
       console.error('Candidate ID is not available.');
     }
   }
-  navigateToInterview(jobId:string) {
-    this.router.navigate(['/candidate/interview'], { 
-      queryParams: { jobId: jobId, candidateId: this.storedCandidateId }
+  navigateToInterview(jobId: string) {
+    this.router.navigate(['/candidate/interview'], {
+      queryParams: { jobId: jobId, candidateId: this.storedCandidateId },
     });
   }
-  
 }

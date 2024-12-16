@@ -13,11 +13,13 @@
     <div class="candidate-details-info">
       <div class="candidate-details-info-top d-flex gap-3">
         <p>{{ profile.name }}</p>
-        <div
-          *ngFor="let cert of profile.certifications"
-          class="chip ccna d-flex align-items-center justify-content-center"
-        >
-          {{ cert }}
+        <div class="d-flex flex-wrap gap-2">
+          <div
+            *ngFor="let cert of profile.certifications"
+            class="chip ccna d-flex align-items-center justify-content-center"
+          >
+            {{ cert }}
+          </div>
         </div>
       </div>
       <div
@@ -33,9 +35,13 @@
           {{ profile.phone }}
         </p>
         <div class="dot"></div>
-        <p>
+        <p class="location-text" [title]="profile.location">
           <img src="assets/icons/Location.svg" alt="" />
-          {{ profile.location }}
+          {{
+            profile.location.length > 30
+              ? (profile.location | slice : 0 : 30) + "..."
+              : profile.location
+          }}
         </p>
       </div>
     </div>
@@ -49,9 +55,15 @@
           <p class="sub-text">
             {{ profile?.latestExperience?.employmentType }}
           </p>
-          <div class="dot"></div>
+          <div
+            class="dot"
+            *ngIf="profile?.latestExperience?.period?.length"
+          ></div>
           <p class="sub-text">{{ profile?.latestExperience?.period }}</p>
-          <div class="dot"></div>
+          <div
+            class="dot"
+            *ngIf="profile?.latestExperience?.location?.length"
+          ></div>
           <p class="sub-text">{{ profile?.latestExperience?.location }}</p>
         </div>
       </div>
@@ -68,9 +80,15 @@
         <p>{{ profile?.latestEducation?.university }}</p>
         <div class="d-flex align-items-center gap-3">
           <p class="sub-text">{{ profile?.latestEducation?.degree }}</p>
-          <div class="dot"></div>
+          <div
+            class="dot"
+            *ngIf="profile?.latestEducation?.major?.length"
+          ></div>
           <p class="sub-text">{{ profile?.latestEducation?.major }}</p>
-          <div class="dot"></div>
+          <div
+            class="dot"
+            *ngIf="profile?.latestEducation?.period?.length"
+          ></div>
           <p class="sub-text">{{ profile?.latestEducation?.period }}</p>
         </div>
       </div>

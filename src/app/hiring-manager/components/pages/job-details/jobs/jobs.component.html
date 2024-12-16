@@ -1,9 +1,9 @@
 <div class="container">
   <div class="header">
     <h1>Jobs</h1>
-    <button class="add-button" (click)="openCreateJob()">
+    <div class="add-button" (click)="openCreateJob()">
       <img class="add-icon" src="/assets/icons/+.svg" />
-    </button>
+    </div>
   </div>
 
   <div class="job-container">
@@ -17,8 +17,8 @@
     <div class="job-list">
       <div
         *ngFor="let job of JobDetails; let i = index"
-        [class.active]="i===activeIndex"
-        (click)="setActiveJob(i,job)"
+        [class.active]="i === activeIndex"
+        (click)="setActiveJob(i, job)"
         class="job-item"
       >
         <h3>{{ job.jd }}</h3>

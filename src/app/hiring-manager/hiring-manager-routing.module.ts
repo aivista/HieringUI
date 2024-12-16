@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: HiringManagerLoginComponent },
   { path: 'job-details', component: JobDetailsComponent },
-  { path: 'create-job', component: JobCreateComponent },
+  { path: 'job-create', component: JobCreateComponent },
 ];
 
 @NgModule({

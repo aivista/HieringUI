@@ -31,7 +31,7 @@ export class HiringManagerService {
   }
 
   login(data: any) {
-    return this.http.post(this.url + 'login/hiringmanager', data);
+    return this.http.post(this.url + 'LoginServices/login/hiringManager', data);
   }
 
   getHiringManagerJobs(data: string) {

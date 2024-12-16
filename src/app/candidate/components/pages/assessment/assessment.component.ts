@@ -65,8 +65,8 @@ export class AssessmentComponent {
 
   fetchQuestions(aid: number, jobId: number, cid: number) {
     this.questionsService.getJobQuestions(aid, jobId, cid).subscribe(
-      (questions) => {
-        this.questions = (questions as { result: any }).result;
+      (questions: any) => {
+        this.questions = questions.result;
         console.log(this.questions);
       },
       (error) => {

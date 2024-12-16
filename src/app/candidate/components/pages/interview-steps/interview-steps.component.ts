@@ -53,12 +53,12 @@ export class InterviewStepsComponent {
       console.log('api res: ', res);
       const order = ['AI Based Interview', 'AI Based MCQ', 'Teams Meeting'];
       let flag = 0;
-      this.assessmentDetails = res.result.sort((a: any, b: any) => {
+      this.assessmentDetails = res.result?.sort((a: any, b: any) => {
         return (
           order.indexOf(a.assessmentName) - order.indexOf(b.assessmentName)
         );
       });
-      res.result.map((item: any) => {
+      res.result?.map((item: any) => {
         // if (item.status == 'Pending' && flag == 0) {
           flag = 1;
           this.comoponent = item.assessmentName;

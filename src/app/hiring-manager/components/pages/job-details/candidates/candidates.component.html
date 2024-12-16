@@ -6,74 +6,69 @@
 
   <!-- Navbar -->
   <nav class="nav-bar mb-4">
-    <span
-      class="nav-item"
-      [class.activeTab]="activeTab === 'Shortlisted'"
-      (click)="setActiveTab('Shortlisted')"
-    >
+    <span class="nav-item" [class.activeTab]="activeTab === 'Shortlisted'" (click)="setActiveTab('Shortlisted')">
       Shortlisted
     </span>
-    <span
-      class="nav-item"
-      [class.activeTab]="activeTab === 'Applied'"
-      (click)="setActiveTab('Applied')"
-    >
+    <span class="nav-item" [class.activeTab]="activeTab === 'Applied'" (click)="setActiveTab('Applied')">
       Applied
     </span>
   </nav>
 
   <!-- Candidate List -->
   <div *ngIf="activeTab === 'Shortlisted'" class="main-candisate-card">
-    <div
-      *ngFor="let candidate of shortlistedCandidates"
-      class="candidate-card"
-      (click)="openModal(candidate)"
-    >
-      <div class="candidate-info">
-        <div class="left-part">
-          <h3 [ngClass]="{ 'active-name': isCandidateSelected(candidate) }">
-            {{ candidate?.first_name +' ' + candidate?.last_name}}
-          </h3>
-          <div class="star">
-            <div class="rating">
-              <img [src]="'assets/icons/starIcon.svg'" alt="My Image" />
+    <ng-container *ngIf="shortlistedCandidates?.length > 0; else noShortlistedData">
+      <div *ngFor="let candidate of shortlistedCandidates" class="candidate-card" (click)="openModal(candidate)">
+        <div class="candidate-info">
+          <div class="left-part">
+            <h3 [ngClass]="{ 'active-name': isCandidateSelected(candidate) }">
+              {{ candidate?.first_name +' ' + candidate?.last_name}}
+            </h3>
+            <div class="star">
+              <div class="rating">
+                <img [src]="'assets/icons/starIcon.svg'" alt="My Image" />
+              </div>
+              <div class="text">{{ candidate.star }}</div>
             </div>
-            <div class="text">{{ candidate.star }}</div>
+            <div class="status" [ngClass]="getStatusClass(candidate?.latestStatus)">
+              {{ candidate?.latestStatus }}
+            </div>
           </div>
-          <div class="status" [ngClass]="getStatusClass(candidate?.latestStatus)">
-            {{ candidate?.latestStatus }}
-          </div>
+          <div class="experience">{{ candidate?.experience }} years of experience</div>
         </div>
-        <div class="experience">{{ candidate?.experience }} years of experience</div>
+        <div class="skills">
+          <span *ngFor="let skill of candidate?.skills?.split(',')" class="skill">{{
+            skill
+            }}</span>
+        </div>
       </div>
-      <div class="skills">
-        <span *ngFor="let skill of candidate?.skills?.split(',')" class="skill">{{
-          skill
-        }}</span>
-      </div>
-    </div>
+    </ng-container>
+    <ng-template #noShortlistedData>
+      <div class="no-data">No data available</div>
+    </ng-template>
   </div>
 
   <div *ngIf="activeTab === 'Applied'">
-    <div *ngFor="let candidate of appliedCandidates" class="candidate-card">
-      <div class="candidate-info">
-        <div class="left-part">
-          <h3>{{ candidate.first_name + ' ' + candidate.last_name}}</h3>
+    <ng-container *ngIf="appliedCandidates?.length > 0; else noAppliedData">
+      <div *ngFor="let candidate of appliedCandidates" class="candidate-card">
+        <div class="candidate-info">
+          <div class="left-part">
+            <h3>{{ candidate.first_name + ' ' + candidate.last_name}}</h3>
+          </div>
+          <div class="experience">{{ candidate.experience }} years of experience</div>
         </div>
-        <div class="experience">{{ candidate.experience }} years of experience</div>
+        <div class="skills">
+          <span *ngFor="let skill of candidate?.skills?.split(',')" class="skill">{{
+            skill
+            }}</span>
+        </div>
       </div>
-      <div class="skills">
-        <span *ngFor="let skill of candidate?.skills?.split(',')" class="skill">{{
-          skill
-        }}</span>
-      </div>
-    </div>
+    </ng-container>
+    <ng-template #noAppliedData>
+      <div class="no-data">No data available</div>
+    </ng-template>
   </div>
-  <div class="position-absolute top-0 end-0 popup-content">
-    <app-candidate-info
-      *ngIf="selectedCandidate"
-      [candidate]="selectedCandidate"
-      (click)="closeModall($event)"
-    ></app-candidate-info>
+  <div class=" position-absolute top-0 end-0 popup-content">
+    <app-candidate-info *ngIf="selectedCandidate" [candidate]="selectedCandidate"
+      (click)="closeModall($event)"></app-candidate-info>
   </div>
 </div>

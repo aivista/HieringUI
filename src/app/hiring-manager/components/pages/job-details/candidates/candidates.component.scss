@@ -162,8 +162,17 @@ body {
   }
 }
 
+.no-data {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height: 600px;
+}
+
 .popup-content {
   width: 100%;
   z-index: 5;
-  backdrop-filter: blur(5px); /* Blur effect */
+  backdrop-filter: blur(5px);
+  /* Blur effect */
 }

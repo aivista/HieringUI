@@ -11,23 +11,24 @@ import { HiringManagerService } from '../../../../service/hiring-manager.service
   styleUrl: './upcoming-interviews.component.scss',
 })
 export class UpcomingInterviewsComponent {
-  interviews:any=[]
+  interviews: any = [];
   jobSucribe: any;
-  constructor(private hiringManagerService:HiringManagerService){}
-  ngOnInit(){
-    const userdata=this.hiringManagerService.getData("hiringManagerDetails")
-    this.jobSucribe= this.hiringManagerService.jobSubscribe.subscribe((res:any)=>{
-      this.hiringManagerService.getUpcomingInterview(res.id,userdata.email).subscribe((result:any)=>{
-        if(result.isSuccess){
-          
-         
-          this.processData(result.result)
-          
-        }
-      })
-    })
+  constructor(private hiringManagerService: HiringManagerService) {}
+  ngOnInit() {
+    const userdata = this.hiringManagerService.getData('hiringManagerDetails');
+    this.jobSucribe = this.hiringManagerService.jobSubscribe.subscribe(
+      (res: any) => {
+        this.hiringManagerService
+          .getUpcomingInterview(res.id, userdata.email)
+          .subscribe((result: any) => {
+            if (result.isSuccess) {
+              this.processData(result.result);
+            }
+          });
+      }
+    );
   }
-  processData(data:any): void {
+  processData(data: any): void {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
@@ -38,49 +39,49 @@ export class UpcomingInterviewsComponent {
     dayAfterTomorrow.setDate(today.getDate() + 2);
 
     const groupedData = {
-      today: data.filter((item:any) => {
+      today: data.filter((item: any) => {
         const scheduledDate = new Date(item.scheduledTime);
         return scheduledDate >= today && scheduledDate < tomorrow;
       }),
-      tomorrow: data.filter((item:any) => {
+      tomorrow: data.filter((item: any) => {
         const scheduledDate = new Date(item.scheduledTime);
         return scheduledDate >= tomorrow && scheduledDate < dayAfterTomorrow;
-      })
+      }),
     };
 
     // Map grouped data to the template structure
     this.interviews = [
       {
         day: 'Today',
-        interviews: groupedData.today.map((item:any) => ({
+        interviews: groupedData.today.map((item: any) => ({
           name: `${item.first_name} ${item.last_name}`,
           role: item.jobTitle,
           startTime: new Date(item.scheduledTime).toLocaleTimeString([], {
             hour: '2-digit',
-            minute: '2-digit'
+            minute: '2-digit',
           }),
           duration: '1 hr', // Placeholder for duration
-          timeRelative: 'in 2 hours' // Example relative time, you can calculate this dynamically
-        }))
+          timeRelative: 'in 2 hours', // Example relative time, you can calculate this dynamically
+        })),
       },
       {
         day: 'Tomorrow',
-        interviews: groupedData.tomorrow.map((item:any) => ({
+        interviews: groupedData.tomorrow.map((item: any) => ({
           name: `${item.first_name} ${item.last_name}`,
           role: item.jobTitle,
           startTime: new Date(item.scheduledTime).toLocaleTimeString([], {
             hour: '2-digit',
-            minute: '2-digit'
+            minute: '2-digit',
           }),
           duration: '1 hr', // Placeholder for duration
-          timeRelative: null // No relative time for tomorrow
-        }))
-      }
+          timeRelative: null, // No relative time for tomorrow
+        })),
+      },
     ];
   }
-ngOnDestroy(){
-  if(this.jobSucribe){
-    this.jobSucribe.undefined()
+  ngOnDestroy() {
+    if (this.jobSucribe) {
+      this.jobSucribe.unsubscribe();
+    }
   }
-}
 }

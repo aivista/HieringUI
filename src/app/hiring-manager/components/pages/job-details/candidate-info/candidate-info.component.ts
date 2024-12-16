@@ -16,42 +16,68 @@ export class CandidateInfoComponent {
   isInterviewScheduled: boolean = true;
   isSelected: boolean = true;
 constructor(private hiringManagerService:HiringManagerService){}
-  closeModal() {
-    this.close.emit();
+
+
+
+candidateStatus: string = '';
+showHiddenSkills: boolean = false;
+
+assessmentDetails: any[] = []; // Store the assessment details from the API
+component: string = ''; // Store the name of the pending component
+
+
+
+ngOnInit() {
+  console.log('Hello World', this.candidate);
+  this.getcandidateStatus(this.candidate);
+  
+  // Store the status in a variable
+  if (this.candidate && this.candidate.status) {
+    this.candidateStatus = this.candidate.status;
+    console.log('Candidate Status:', this.candidateStatus);
+  }
+  if (this.candidateStatus === 'Interview Scheduled') {
+    this.isInterviewScheduled = true;
+  } else {
+    this.isInterviewScheduled = false;
   }
 
-  candidateStatus: string = '';
-
-  showHiddenSkills: boolean = false;
-
-  ngOnInit() {
-    console.log('Hello World', this.candidate);
-    this.getcandidateStatus(this.candidate)
-    // Store the status in a variable
-    if (this.candidate && this.candidate.status) {
-      this.candidateStatus = this.candidate.status;
-      console.log('Candidate Status:', this.candidateStatus);
-    }
-    if (this.candidateStatus === 'Interview Scheduled') {
-      this.isInterviewScheduled = true;
-    } else {
-      this.isInterviewScheduled = false;
-    }
-
-    if (this.candidateStatus === 'Interview Complited') {
-      this.isSelected = true;
-    } else {
-      this.isSelected = false;
-    }
-
-    // this.isInterviewScheduled = this.candidateStatus !== 'Interview Complited';
+  if (this.candidateStatus === 'Interview Complited') {
+    this.isSelected = true;
+  } else {
+    this.isSelected = false;
   }
-  getcandidateStatus(candidate:any){
-this.hiringManagerService.candidateStatus(candidate.jobId,candidate.candidateId).subscribe((res:any)=>{
-  if(res.isSuccess){
-    console.log("response--->",res);
-    
-  }
-})
-  }
+}
+
+getcandidateStatus(candidate: any) {
+  this.hiringManagerService
+    .candidateStatus(candidate.jobId, candidate.candidateId)
+    .subscribe((res: any) => {
+      if (res.isSuccess) {
+        console.log("response--->", res);
+        
+        // Step 1: Order the assessment names to sort them
+        const order = ['AI Based Interview', 'AI Based MCQ', 'Teams Meeting'];
+        let flag = 0;
+
+        // Step 2: Sort the assessments based on the order
+        this.assessmentDetails = res.result.sort((a: any, b: any) => {
+          return order.indexOf(a.assessmentName) - order.indexOf(b.assessmentName);
+        });
+
+        // Step 3: Identify the first "Pending" step and set it as the component
+        res.result.map((item: any) => {
+          if (item.status === 'Pending' && flag === 0) {
+            flag = 1;
+            this.component = item.assessmentName;
+          }
+        });
+
+      }
+    });
+}
+
+closeModal() {
+  this.close.emit();
+}
 }

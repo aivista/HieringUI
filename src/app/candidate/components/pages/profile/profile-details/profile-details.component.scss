@@ -1,41 +1,19 @@
 .profile-details-left-header {
   color: #ffffff;
-
+  .icon {
+    height: 2rem;
+  }
   p {
-    font-size: 24px;
+    font-size: 1.25rem;
     font-weight: 500;
   }
   .edit-btn {
-    padding: 12px 24px 12px 24px;
-    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
     border: 1px solid #8b04f5;
-    font-size: 16px;
+    font-size: 0.8rem;
+    cursor: pointer;
   }
-}
-.location-text {
-  position: relative;
-  display: inline-block;
-  max-width: 250px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  cursor: pointer;
-}
-
-.location-text:hover::after {
-  content: attr(title);
-  position: absolute;
-  left: 0;
-  top: 100%;
-  background-color: #212830;
-  color: #fff;
-  padding: 8px;
-  border-radius: 4px;
-  white-space: normal;
-  width: max-content;
-  max-width: 300px;
-  z-index: 10;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .candidate-details {
@@ -45,11 +23,11 @@
 
   .candidate-img {
     border-radius: 50%;
-    padding: 1rem;
+    padding: 0.5rem;
     border: 2px solid #868686;
-    img {
-      // height: 6rem;
-      // width: 7.5rem;
+    .img-fluid {
+      height: 5.5rem;
+      width: 5.5rem;
     }
   }
 
@@ -63,11 +41,17 @@
       font-weight: 500;
       font-size: 30px;
 
+      .name {
+        font-size: 1.6rem;
+        text-wrap: nowrap;
+      }
+
       .chip {
-        font-size: 16px;
+        font-size: 0.65rem;
         font-weight: 400;
-        padding: 0.5rem 1rem;
+        padding: 0.3rem 1rem;
         border-radius: 5rem;
+        height: min-content;
 
         &.ccna {
           background-color: #8b04f566;
@@ -79,6 +63,11 @@
           background-color: #0077b566;
         }
       }
+
+      .remaining-chip {
+        background-color: #ffe0b2;
+        color: #e65100;
+      }
     }
 
     .candidate-details-info-bottom {
@@ -86,10 +75,15 @@
       gap: 1rem;
 
       p {
-        font-size: 14px;
+        font-size: 0.75rem;
         font-weight: 400;
         display: flex;
         gap: 0.5rem;
+        align-items: center;
+      }
+
+      img {
+        height: 1rem;
       }
     }
   }
@@ -100,23 +94,23 @@
   border-radius: 16px;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   width: 100%;
 
   p {
     color: #8358ff;
-    font-size: 22px;
+    font-size: 1.2rem;
     font-weight: 600;
   }
   .company {
     p {
-      font-size: 20px;
+      font-size: 1rem;
       font-weight: 500;
       color: #ffffff;
     }
     .sub-text {
       color: #bdbdbd;
-      font-size: 16px;
+      font-size: 0.8rem;
       font-weight: 400;
     }
 
@@ -135,16 +129,17 @@
     }
     p {
       color: #ffffff;
+      font-size: 1rem;
     }
     .job-desc {
       .sub-text {
         color: #bdbdbd;
-        font-size: 16px;
+        font-size: 0.8rem;
         font-weight: 400;
       }
     }
     .sub-text1 {
-      font-size: 16px;
+      font-size: 0.8rem;
       font-weight: 400;
     }
   }

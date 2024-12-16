@@ -1,5 +1,5 @@
 .recently-applied {
-  padding: 20px;
+  // padding: 20px;
   font-family: Arial, sans-serif;
   color: #fff;
   width: 100%;
@@ -8,16 +8,19 @@
   gap: 20px;
 
   .heading {
-    font-size: 24px;
+    font-size: 1.25rem;
     font-weight: 500;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
+
+    .icon {
+      height: 2rem;
+    }
   }
 
   // Variables
-  $card-bg-color: #181b2b;
+  $card-bg-color: linear-gradient(137.88deg, #1e222a 21.56%, #272c37 100%);
   $primary-text-color: #ffffff;
   $secondary-text-color: #b0b0b0;
   $status-tag-bg: #b2335b;
@@ -31,17 +34,22 @@
 
     // Card Container
     .card-container {
-      width: 400px;
-      background-color: $card-bg-color;
+      background: $card-bg-color;
       color: $primary-text-color;
       border-radius: 12px;
       padding: 20px;
-      font-family: "Arial", sans-serif;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+
+      border: 1px solid #c1c1c199;
+      border-radius: 0.5rem;
+      border-image-slice: 1;
+
       display: flex;
       flex-direction: column;
       gap: 8px;
 
+      &.inactive-card {
+        opacity: 0.5;
+      }
       // Header Section
       .header {
         display: flex;
@@ -69,13 +77,9 @@
 
       // Role Title Section
       .role-title {
-        //styleName: Body/XL/500;
-        font-size: 20px;
+        font-size: 1rem;
         font-weight: 500;
-        line-height: 32px;
-        text-align: left;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
+        text-wrap: nowrap;
       }
 
       // Status Section
@@ -85,21 +89,15 @@
         gap: 8px;
 
         span {
-          font-size: 12px;
+          font-size: 0.75rem;
           font-weight: 400;
-          line-height: 32px;
-          text-align: left;
-          text-underline-position: from-font;
-          text-decoration-skip-ink: none;
           color: #bdbdbd;
         }
 
         .status-tag {
-          width: Hug (135px) px;
-          height: Hug (26px) px;
-          padding: 5px 12px;
-          border-radius: 50px;
-          font-size: 12px;
+          padding: 0.2rem 1rem;
+          border-radius: 3rem;
+          font-size: 0.65rem;
         }
 
         .ai-screening {
@@ -126,9 +124,9 @@
           background-color: $button-bg;
           color: $primary-text-color;
           border: none;
-          padding: 10px 16px;
-          font-size: 14px;
-          border-radius: 8px;
+          padding: 0.3rem 1rem;
+          font-size: 0.75rem;
+          border-radius: 0.3rem;
           cursor: pointer;
 
           &:hover {

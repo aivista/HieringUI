@@ -1,3 +1,6 @@
+.h-inherit {
+  height: inherit;
+}
 .blue-line {
   position: relative;
   padding-left: 12px;
@@ -9,10 +12,10 @@
     content: "";
     position: absolute;
     left: 0;
-    top: 13%;
-    height: 22px;
+    top: 7%;
+    height: 18px;
     width: 4px;
-    background: rgba(118, 127, 255, 1); // Blue line color
+    background: rgb(118, 127, 255);
   }
 }
 
@@ -37,16 +40,8 @@ textarea {
 
 // Main Container
 .profile-preview-container {
-  // width: 1104px;
-  margin: auto;
-  max-height: 85%;
   background: linear-gradient(137.88deg, #1e222a 21.56%, #272c37 100%);
-  border: 0.5px solid;
-  border-image-source: linear-gradient(
-    138.76deg,
-    rgba(91, 91, 91, 0.72) 3.02%,
-    rgba(193, 193, 193, 0.72) 100%
-  );
+  border: 1px solid #c1c1c1b8;
   color: #fff;
   padding: 30px;
   border-radius: 10px;
@@ -68,18 +63,16 @@ textarea {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 23px auto 20px;
+  // margin: 23px auto 20px;
   // max-width: 1104px;
 }
 
 .profile-preview-header {
+  font-size: 1.25rem;
   font-weight: 500;
-  line-height: 29.05px;
   color: rgba(255, 255, 255, 1);
-  font-size: 24px;
   display: flex;
   align-items: center;
-  gap: 8px;
 
   h2 {
     font-size: 24px;
@@ -87,17 +80,12 @@ textarea {
 }
 
 .profile-icon {
-  width: 39px;
-  height: 39px;
-  background: rgba(131, 88, 255, 1);
-  border: 2px solid rgba(250, 248, 245, 1);
-  border-radius: 50%;
+  height: 2rem;
 }
 
 .profile-preview-subheader {
-  font-size: 22px;
+  font-size: 1.2rem;
   font-weight: 500;
-  line-height: 32px;
 }
 
 // Button Alignment
@@ -112,9 +100,8 @@ textarea {
 }
 
 .subheader {
-  font-size: 20px;
+  font-size: 1rem;
   font-weight: 600;
-  line-height: 32px;
   color: rgba(131, 88, 255, 1);
   margin-bottom: 10px !important;
 }
@@ -136,30 +123,24 @@ textarea {
 
 .profile-preview-save-btn {
   background-color: #b26aff;
-  width: 130px;
-  height: 47px;
-  border-radius: 12px;
-  padding: 10.5px 17px;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
   border: 1px solid rgba(139, 4, 245, 1);
   background: rgba(139, 4, 245, 1);
   gap: 7px;
-  font-size: 16px;
+  font-size: 0.8em;
   font-weight: 500;
-  line-height: 19.36px;
   color: rgba(255, 255, 255, 1);
 }
 
 .profile-preview-cancel-btn {
   background-color: transparent;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 0.8em;
   font-weight: 500;
-  color: rgba(255, 255, 255, 1);
-  border: 1px solid rgba(139, 4, 245, 1);
-  width: 101px;
-  height: 47px;
-  padding: 12px 24px;
-  border-radius: 12px;
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(139, 4, 245);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
 }
 
 // Form Adjustments
@@ -179,35 +160,29 @@ textarea {
   flex-direction: column;
 
   label {
-    font-size: 16px;
     font-weight: 500;
-    line-height: 27px;
     margin-bottom: 5px;
     color: #d1d1d1;
-    font-size: 14px;
+    font-size: 0.8rem;
   }
 }
 
 input,
 select,
 textarea {
-  background: rgba(19, 19, 19, 1);
-  color: rgba(255, 255, 255, 1);
-  border: 1px solid rgba(66, 75, 87, 1);
-  padding: 18px;
-  border-radius: 6px;
-  width: 100%;
-  margin-bottom: 10px !important;
-  font-size: 16px;
+  background: rgb(19, 19, 19);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(66, 75, 87);
+  padding: 0.65rem;
+  border-radius: 0.3rem;
+  font-size: 0.8rem;
   font-weight: 400;
-  line-height: 19.36px;
 
   &::placeholder {
     background: rgba(19, 19, 19, 1);
-    color: rgba(255, 255, 255, 1);
-    font-size: 16px;
+    color: rgb(166, 166, 166);
+    font-size: 0.8rem;
     font-weight: 400;
-    line-height: 19.36px;
   }
 }
 :host ::ng-deep .p-select-label {
@@ -215,16 +190,13 @@ textarea {
 }
 
 .p-select {
-  background: rgba(19, 19, 19, 1);
-  color: rgba(255, 255, 255, 1) !important;
-  border: 1px solid rgba(66, 75, 87, 1);
-  padding: 10px;
+  background: rgb(19, 19, 19);
+  color: rgb(255, 255, 255) !important;
+  border: 1px solid rgb(66, 75, 87);
+  padding: 0.2rem;
   border-radius: 6px;
-  width: 100%;
-  margin-bottom: 10px !important;
-  font-size: 16px;
+  font-size: 0.8rem;
   font-weight: 400;
-  line-height: 19.36px;
 }
 // Specific Widths
 .title-width {
@@ -289,6 +261,4 @@ textarea {
 }
 span {
   color: red;
-  font-size: 16px;
-  line-height: 27px;
 }

@@ -30,7 +30,7 @@ interface Profile {
 @Component({
   selector: 'app-profile-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, Tooltip],
   templateUrl: './profile-details.component.html',
   styleUrl: './profile-details.component.scss',
 })
@@ -70,13 +70,13 @@ export class ProfileDetailsComponent implements OnInit {
                 ProfileDetails.last_name || ''
               }`.trim(),
               imageUrl:
-                ProfileDetails.imageUrl || 'assets/icons/defultProfileIcon.svg',
+                ProfileDetails.imageUrl || 'assets/icons/avatarIcon.svg',
               certifications: (ProfileDetails.skills || '').split(','),
               email: ProfileDetails.email || '',
               phone: ProfileDetails.contact || '',
               location: ProfileDetails.address || '',
               latestExperience: {
-                company: ProfileDetails.latestRole || '',
+                company: ProfileDetails.latestrole || '',
                 employmentType:
                   ProfileDetails.latestExperience?.employmentType || '',
                 period: ProfileDetails.latestExperience?.period || '',
@@ -127,5 +127,9 @@ export class ProfileDetailsComponent implements OnInit {
     //   },
     //   certificationsAndTraining: [],
     // };
+  }
+  getRemainingCertificationsTooltip() {
+    const remainingCerts = this.profile?.certifications.slice(3);
+    return remainingCerts?.join(', ');
   }
 }

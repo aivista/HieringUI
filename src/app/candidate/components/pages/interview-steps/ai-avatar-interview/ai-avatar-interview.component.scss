@@ -1,15 +1,15 @@
 /* Centered card */
 .dark-card {
-    margin-top: 3rem;
-    background-color: #434343; /* Dark grey */
-    width: 90%;
-    min-height: 30rem; /* Adjust height as needed */
-    border-radius: 8px; /* Optional rounded corners */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .text-white {
-    color: #ffffff; /* White text color */
-  }
+  background-color: #434343; /* Dark grey */
+  margin-top: 2rem;
+  width: 90%;
+  min-height: 27rem;
+  border-radius: 8px; /* Adjust height as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-white {
+  color: #ffffff; /* White text color */
+}

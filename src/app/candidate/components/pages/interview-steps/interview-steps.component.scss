@@ -39,12 +39,18 @@
     position: relative;
 
     .top-portion {
-      width: 127.5px;
-      height: 29px;
       top: 6px;
       left: 50px;
       position: absolute;
       cursor: pointer;
+
+      .home {
+        color: #ffffff;
+      }
+      .breadcrumb {
+        color: #767fff;
+        gap: 0.5rem;
+      }
     }
 
     .previouspage-title {
@@ -176,7 +182,6 @@
     //   border-top: 3px dotted white;
     //   width: 10rem;
     // }
-    
 
     // .timeline {
     //   justify-content: center;
@@ -215,7 +220,6 @@
     //   width: 10rem;
     // }
 
-
     .location img {
       height: 14px;
       width: 14px;
@@ -253,7 +257,7 @@
     .line {
       z-index: 7;
       border-top: 2px dotted #7086fd;
-      width: 10rem;
+      width: 12rem;
       position: relative;
       top: -18px; /* Adjusts the line to align with the center of the circle */
     }
@@ -279,6 +283,12 @@
       font-size: 12px;
       font-weight: 400;
       color: #dfac54;
+      gap: 0.5rem;
+      display: flex;
+
+      &.complete-text {
+        color: #27ae60;
+      }
     }
 
     .card-msg {
@@ -353,4 +363,11 @@
       background-color: #5500c8;
     }
   }
+}
+.align-left {
+  text-align: left !important;
+}
+
+.align-right {
+  text-align: right !important;
 }

@@ -67,7 +67,7 @@ export class InterviewStepsComponent {
           // this.candidateService.assessmentId.next(item.id)
           this.candidateService.setData('assessmentId', item.id);
         }
-        this.comoponent = 'AI Based Interview'; //This is for AI Based Interview (Hardcoded Navigation)
+        // this.comoponent = 'Teams Meeting'; //This is for AI Based Interview (Hardcoded Navigation)
         // }
         console.log('component name', this.comoponent);
       });

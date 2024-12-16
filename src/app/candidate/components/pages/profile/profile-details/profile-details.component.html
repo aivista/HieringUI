@@ -1,24 +1,35 @@
-<div class="profile-details-left d-flex align-items-start flex-column gap-4">
+<div class="profile-details-left d-flex align-items-start flex-column gap-3">
   <div
     class="profile-details-left-header d-flex align-items-center justify-content-center gap-4"
   >
-    <img src="assets/icons/profileIcon.svg" alt="" />
+    <img src="assets/icons/profileIcon.svg" alt="" class="icon" />
     <p>Profile Preview</p>
     <div class="edit-btn" (click)="onEdit()">Edit Profile</div>
   </div>
   <div class="candidate-details" *ngIf="profile">
     <div class="candidate-img">
-      <img [src]="profile.imageUrl" alt="" />
+      <img [src]="profile.imageUrl" alt="" class="img-fluid" />
     </div>
     <div class="candidate-details-info">
-      <div class="candidate-details-info-top d-flex gap-3">
-        <p>{{ profile.name }}</p>
+      <div class="candidate-details-info-top d-flex align-items-center gap-3">
+        <p class="name">{{ profile.name }}</p>
         <div class="d-flex flex-wrap gap-2">
+          <!-- Show the first 3 certifications -->
           <div
-            *ngFor="let cert of profile.certifications"
+            *ngFor="let cert of profile.certifications.slice(0, 3)"
             class="chip ccna d-flex align-items-center justify-content-center"
           >
             {{ cert }}
+          </div>
+
+          <!-- Show the "+X" chip if more than 3 certifications exist -->
+          <div
+            *ngIf="profile.certifications.length > 3"
+            class="chip remaining-chip d-flex align-items-center justify-content-center"
+            pTooltip="{{ getRemainingCertificationsTooltip() }}"
+            tooltipPosition="top"
+          >
+            +{{ profile.certifications.length - 3 }}
           </div>
         </div>
       </div>
@@ -35,11 +46,15 @@
           {{ profile.phone }}
         </p>
         <div class="dot"></div>
-        <p class="location-text" [title]="profile.location">
+        <p
+          class="location-text"
+          pTooltip="{{ profile.location }}"
+          tooltipPosition="top"
+        >
           <img src="assets/icons/Location.svg" alt="" />
           {{
-            profile.location.length > 30
-              ? (profile.location | slice : 0 : 30) + "..."
+            profile.location.length > 50
+              ? (profile.location | slice : 0 : 50) + "..."
               : profile.location
           }}
         </p>
@@ -107,9 +122,9 @@
         </div>
         <div
           *ngFor="let training of profile?.certificationsAndTraining"
-          class="d-flex align-items-center justify-content-center gap-3"
+          class="d-flex align-items-start justify-content-start gap-3"
         >
-          <p>{{ training }}</p>
+          <p class="sub-text">{{ training }}</p>
         </div>
       </div>
     </div>

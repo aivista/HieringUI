@@ -5,20 +5,21 @@
   margin-top: 50px;
 
   .meeting-container {
-
     .schedule-container {
       display: flex;
       gap: 10px;
       align-items: center;
       justify-content: center;
       border: 1px solid #8b04f5;
-      // border-image-source: linear-gradient(90deg, #767FFF 0%, #8B04F5 100%);
       border-radius: 15px;
-      padding: 10px;
+      padding: 0.5rem;
       color: white;
-      font-size: 22px;
+      font-size: 1.2rem;
       font-weight: 500;
-      margin-bottom: 30px;
+      margin-bottom: 1rem;
+      img {
+        height: 2.5rem;
+      }
     }
 
     .instruction-container {
@@ -30,7 +31,7 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        font-size: 26px;
+        font-size: 1.3rem;
         font-weight: 700;
         color: white;
       }
@@ -40,7 +41,7 @@
 
         .equipment-title {
           color: #7086fd;
-          font-size: 20px;
+          font-size: 1rem;
           font-weight: 500;
           margin-bottom: 15px;
         }
@@ -51,7 +52,7 @@
 
             li {
               color: #f9f9f9;
-              font-size: 14px;
+              font-size: 0.8rem;
               font-weight: 200;
               line-height: 27px;
             }
@@ -71,6 +72,7 @@
             border-radius: 12px;
             margin-top: 50px;
             color: #f9f9f9;
+            border: none;
           }
 
           .disabled {

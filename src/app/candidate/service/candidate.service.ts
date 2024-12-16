@@ -11,6 +11,7 @@ import { Subject } from 'rxjs';
 export class CandidateService {
   url = environment.apiBaseUrl;
   jobservice = environment.jobService;
+  assessment = environment.assessment;
   jobSubscribe = new Subject();
   constructor(private http: HttpClient, private route: Router) {}
 
@@ -44,5 +45,12 @@ export class CandidateService {
   getRecentlyAppliedJobs(candidateId: number) {
     const url = `${this.jobservice}Jobs/LatestStatus/jobs/appliedjobs_by_candidate/${candidateId}`;
     return this.http.get(url);
+  }
+
+  getJobQuestions(aid: number, jobId: number, cid: number) {
+    return this.http.get(
+      this.assessment +
+        `ASSESSMENTSERVICE/ASSESSMENT/${aid}/JOB/${jobId}/CANDIDATE/${cid}/GETMCQ`
+    );
   }
 }

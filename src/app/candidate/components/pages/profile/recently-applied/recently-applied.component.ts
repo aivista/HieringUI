@@ -63,8 +63,10 @@ export class RecentlyAppliedComponent {
       console.error('Candidate ID is not available.');
     }
   }
-
-  navigateToInterview() {
-    this.router.navigate(['/candidate/interview']);
+  navigateToInterview(jobId:string) {
+    this.router.navigate(['/candidate/interview'], { 
+      queryParams: { jobId: jobId, candidateId: this.storedCandidateId }
+    });
   }
+  
 }

@@ -60,14 +60,14 @@ export class InterviewStepsComponent {
       });
       res.result?.map((item: any) => {
         // if (item.status == 'Pending' && flag == 0) {
-          flag = 1;
-          this.comoponent = item.assessmentName;
-          if(item.assessmentName==='AI Based MCQ'){
-            // alert()
-            // this.candidateService.assessmentId.next(item.id)
-            this.candidateService.setData("assessmentId",item.id)
-          }
-          this.comoponent = 'AI Based MCQ';
+        flag = 1;
+        this.comoponent = item.assessmentName;
+        if (item.assessmentName === 'AI Based MCQ') {
+          // alert()
+          // this.candidateService.assessmentId.next(item.id)
+          this.candidateService.setData('assessmentId', item.id);
+        }
+        this.comoponent = 'AI Based Interview'; //This is for AI Based Interview (Hardcoded Navigation)
         // }
         console.log('component name', this.comoponent);
       });

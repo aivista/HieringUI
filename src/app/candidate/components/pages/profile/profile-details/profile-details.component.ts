@@ -65,9 +65,9 @@ export class ProfileDetailsComponent implements OnInit {
             // Bind API response to profile
             this.profile = {
               name: `${ProfileDetails.title || ''} ${
-                ProfileDetails.firstName || ''
+                ProfileDetails.first_name || ''
               } ${ProfileDetails.middleName || ''} ${
-                ProfileDetails.lastName || ''
+                ProfileDetails.last_name || ''
               }`.trim(),
               imageUrl:
                 ProfileDetails.imageUrl || 'assets/icons/defultProfileIcon.svg',

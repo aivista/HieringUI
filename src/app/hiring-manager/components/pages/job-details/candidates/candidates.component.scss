@@ -159,11 +159,15 @@ body {
     border: 1px solid rgba(15, 108, 189, 1);
     font-size: 0.75rem;
     font-weight: 400;
+    cursor: pointer;
   }
 
-  .more-pill{
-    color: black;
+  .skill-pill2 {
     cursor: pointer;
+  }
+
+  .more-pill {
+    color: black;
   }
 }
 

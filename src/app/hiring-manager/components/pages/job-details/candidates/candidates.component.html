@@ -50,7 +50,7 @@
           <!-- Show "+count" if there are more than 3 skills -->
           <div
             *ngIf="candidate?.skills?.split(',').length > 3"
-            class="skill-pill2 bg-secondary position-relative"
+            class="skill-pill2 "
             (mouseenter)="showHiddenSkills = true"
             (mouseleave)="showHiddenSkills = false"
             class="skill"
@@ -107,15 +107,15 @@
           <!-- Show "+count" if there are more than 3 skills -->
           <div
             *ngIf="candidate?.skills?.split(',').length > 3"
-            class="skill-pill2 bg-secondary position-relative"
+            class="skill-pill2 "
             (mouseenter)="showHiddenSkills = true"
             (mouseleave)="showHiddenSkills = false"
-            class="skill"
+            class="skill" 
           >
             +{{ candidate?.skills?.split(",").length - 3 }}
 
             <!-- Hidden pills shown on hover -->
-            <div
+            <div 
               class="hidden-skills bg-light p-2 position-absolute"
               *ngIf="showHiddenSkills"
             >

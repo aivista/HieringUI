@@ -1,74 +1,82 @@
-.meeting-container {
-  .schedule-container {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #8b04f5;
-    // border-image-source: linear-gradient(90deg, #767FFF 0%, #8B04F5 100%);
-    border-radius: 15px;
-    padding: 10px;
-    color: white;
-    font-size: 22px;
-    font-weight: 500;
-    margin-bottom: 30px;
-  }
+.meeting-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
 
-  .instruction-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  .meeting-container {
 
-    .panel-head {
+    .schedule-container {
       display: flex;
-      align-items: center;
       gap: 10px;
-      font-size: 26px;
-      font-weight: 700;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #8b04f5;
+      // border-image-source: linear-gradient(90deg, #767FFF 0%, #8B04F5 100%);
+      border-radius: 15px;
+      padding: 10px;
       color: white;
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 30px;
     }
 
-    .equipment-section {
-      padding-left: 45px;
+    .instruction-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
 
-      .equipment-title {
-        color: #7086fd;
-        font-size: 20px;
-        font-weight: 500;
-        margin-bottom: 15px;
+      .panel-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 26px;
+        font-weight: 700;
+        color: white;
       }
 
-      .equipment-body {
-        ul {
-          padding-left: 25px;
+      .equipment-section {
+        padding-left: 45px;
 
-          li {
-            color: #f9f9f9;
-            font-size: 14px;
-            font-weight: 200;
-            line-height: 27px;
+        .equipment-title {
+          color: #7086fd;
+          font-size: 20px;
+          font-weight: 500;
+          margin-bottom: 15px;
+        }
+
+        .equipment-body {
+          ul {
+            padding-left: 25px;
+
+            li {
+              color: #f9f9f9;
+              font-size: 14px;
+              font-weight: 200;
+              line-height: 27px;
+            }
           }
         }
-      }
 
-      .join-button {
-        text-align: center;
-
-        button {
-          width: 208px;
-          height: 50px;
-          background-color: #8b04f5;
-          font-size: 18px;
-          font-weight: 400;
+        .join-button {
           text-align: center;
-          border-radius: 12px;
-          margin-top: 50px;
-          color: #f9f9f9;
-        }
 
-        .disabled {
-          cursor: no-drop;
-          opacity: 0.4;
+          button {
+            width: 208px;
+            height: 50px;
+            background-color: #8b04f5;
+            font-size: 18px;
+            font-weight: 400;
+            text-align: center;
+            border-radius: 12px;
+            margin-top: 50px;
+            color: #f9f9f9;
+          }
+
+          .disabled {
+            cursor: no-drop;
+            opacity: 0.4;
+          }
         }
       }
     }

@@ -46,7 +46,7 @@ export class HiringManagerService {
   }
 
   getAppliedJobs(id: string) {
-    return this.http.get(this.jobservice + 'Jobs/LatestStatus/jobs/applied_candidates/' + id)
+    return this.http.get(this.jobservice + 'Jobs/LatestStatus/jobs/applied_jobs/' + id)
   }
 
 
@@ -54,6 +54,9 @@ export class HiringManagerService {
     const url = this.jobDetails + 'Job/GetJobDescription';
     return this.http.get(url);
   }
+getUpcomingInterview(jobId:string,managerId:string){
+  return this.http.get(this.jobservice+'Jobs/LatestStatus/upcoming_interview/'+jobId+'/'+managerId)
+}
 
   createJobs(data: any) {
     const url = this.jobDetails + 'Job/CreatedJob';

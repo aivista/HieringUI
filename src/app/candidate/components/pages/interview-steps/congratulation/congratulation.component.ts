@@ -11,6 +11,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class CongratulationComponent {
 
   @Input() isPopupVisible: boolean = false;
+  @Input() subHeader: string = '';          // Content for the subheader
+  @Input() subSubHeader: string = '';       // Content for the sub-subheader
   @Output() close = new EventEmitter<void>(); // Event to notify parent
 
   closePopup(): void {

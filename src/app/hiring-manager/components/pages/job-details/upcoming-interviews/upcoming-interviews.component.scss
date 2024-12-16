@@ -41,11 +41,9 @@
       overflow-y: auto;
       border-radius: 20px;
       padding: 5px 0;
-      border-image-source: linear-gradient(
-        138.76deg,
-        rgba(91, 91, 91, 0.32) 3.02%,
-        rgba(193, 193, 193, 0.32) 100%
-      );
+      border-image-source: linear-gradient(138.76deg,
+          rgba(91, 91, 91, 0.32) 3.02%,
+          rgba(193, 193, 193, 0.32) 100%);
       background: linear-gradient(137.88deg, #1d212a 21.56%, #272c37 100%);
 
       hr {
@@ -60,6 +58,14 @@
         display: flex;
         align-items: center;
         gap: 5px;
+      }
+
+      .no-data {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        color: white;
       }
 
       .int-time {

@@ -15,15 +15,18 @@
     </div>
 
     <div class="job-list">
-      <div
-        *ngFor="let job of JobDetails; let i = index"
-        [class.active]="i === activeIndex"
-        (click)="setActiveJob(i, job)"
-        class="job-item"
-      >
+      <!-- <div *ngIf="JobDetails && JobDetails.length > 0; else noJobs"> -->
+      <div *ngFor="let job of JobDetails; let i = index" [class.active]="i === activeIndex"
+        (click)="setActiveJob(i, job)" class="job-item">
         <h3>{{ job.jd }}</h3>
         <p>{{ job.location }}</p>
       </div>
+      <!-- </div>
+      <ng-template #noJobs>
+        <div class="no-data">
+          No jobs available.
+        </div>
+      </ng-template> -->
     </div>
   </div>
 </div>

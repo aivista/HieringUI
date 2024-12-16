@@ -22,6 +22,8 @@ constructor(private hiringManagerService:HiringManagerService){}
 
   candidateStatus: string = '';
 
+  showHiddenSkills: boolean = false;
+
   ngOnInit() {
     console.log('Hello World', this.candidate);
     this.getcandidateStatus(this.candidate)

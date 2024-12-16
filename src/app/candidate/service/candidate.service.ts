@@ -12,7 +12,10 @@ export class CandidateService {
   url = environment.apiBaseUrl;
   jobservice = environment.jobService;
   assessment = environment.assessment;
-  jobSubscribe = new Subject();
+  // jobSubscribe = new Subject();
+  assessmentId=new Subject()
+  
+
   constructor(private http: HttpClient, private route: Router) {}
 
   setData(key: string, data: any) {
@@ -51,6 +54,12 @@ export class CandidateService {
     return this.http.get(
       this.assessment +
         `ASSESSMENTSERVICE/ASSESSMENT/${aid}/JOB/${jobId}/CANDIDATE/${cid}/GETMCQ`
+    );
+  }
+  evaluateMcq(jsonBody:any) {
+    return this.http.post(
+      this.assessment +
+        `ASSESSMENTSERVICE/EvaluateMCQ`,jsonBody
     );
   }
 }

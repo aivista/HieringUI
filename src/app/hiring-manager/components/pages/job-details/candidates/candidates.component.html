@@ -39,7 +39,7 @@
           <!-- Show only the first 3 skills -->
           <div
             *ngFor="
-              let skill of candidate?.skills?.split(',') | slice : 0 : 3;
+              let skill of candidate?.skills?.split(',') | slice : 0 : 2;
               let i = index
             "
             class="skill"
@@ -49,13 +49,13 @@
 
           <!-- Show "+count" if there are more than 3 skills -->
           <div
-            *ngIf="candidate?.skills?.split(',').length > 3"
+            *ngIf="candidate?.skills?.split(',').length > 2"
             class="skill-pill2 "
             (mouseenter)="showHiddenSkills = true"
             (mouseleave)="showHiddenSkills = false"
             class="skill"
           >
-            +{{ candidate?.skills?.split(",").length - 3 }}
+            +{{ candidate?.skills?.split(",").length - 2 }}
 
             <!-- Hidden pills shown on hover -->
             <div
@@ -63,7 +63,7 @@
               *ngIf="showHiddenSkills"
             >
               <div
-                *ngFor="let skill of candidate?.skills?.split(',') | slice : 3"
+                *ngFor="let skill of candidate?.skills?.split(',') | slice : 2"
                 class="more-pill"
               >
                 {{ skill }}
@@ -96,7 +96,7 @@
           <!-- Show only the first 3 skills -->
           <div
             *ngFor="
-              let skill of candidate?.skills?.split(',') | slice : 0 : 3;
+              let skill of candidate?.skills?.split(',') | slice : 0 : 2;
               let i = index
             "
             class="skill"
@@ -106,13 +106,13 @@
 
           <!-- Show "+count" if there are more than 3 skills -->
           <div
-            *ngIf="candidate?.skills?.split(',').length > 3"
+            *ngIf="candidate?.skills?.split(',').length > 2"
             class="skill-pill2 "
             (mouseenter)="showHiddenSkills = true"
             (mouseleave)="showHiddenSkills = false"
             class="skill" 
           >
-            +{{ candidate?.skills?.split(",").length - 3 }}
+            +{{ candidate?.skills?.split(",").length - 2 }}
 
             <!-- Hidden pills shown on hover -->
             <div 
@@ -120,7 +120,7 @@
               *ngIf="showHiddenSkills"
             >
               <div
-                *ngFor="let skill of candidate?.skills?.split(',') | slice : 3"
+                *ngFor="let skill of candidate?.skills?.split(',') | slice : 2"
                 class="more-pill"
               >
                 {{ skill }}

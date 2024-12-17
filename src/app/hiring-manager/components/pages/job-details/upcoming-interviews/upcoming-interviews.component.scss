@@ -10,7 +10,7 @@
 
   .interview-container {
     width: 400px;
-    padding: 20px;
+    padding: 18px;
 
     .header {
       h4 {
@@ -38,7 +38,8 @@
     .body {
       margin-top: 20px;
       // width: 449px;
-      height: 700px;
+      height: 80%;
+      min-height: 570px;
       overflow-y: auto;
       // border-radius: 20px;
       border-radius: 10px;

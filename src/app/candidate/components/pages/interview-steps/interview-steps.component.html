@@ -6,9 +6,7 @@
         Job Details</span
       >
       <br />
-      <span class="breadcrumb"
-        ><span class="home">Home /</span> COO-Data center assessment</span
-      >
+      <span>Home / COO-Data center assessment</span>
       <!-- <nav>
                 <a href="#">Home</a> / <a href="#">COO-Data center assessment</a>
               </nav> -->
@@ -79,58 +77,26 @@
            
           </div>
         </div> -->
-        <div class="stapper px-6">
+        <div class="stapper px-4">
           <div class="timeline row px-5">
-            <div
+           
+            <div 
               class="col-md-1 p-0"
-              *ngFor="let step of assessmentDetails; let i = index"
-            >
-              <div class="timeline-item">
-                <div
-                  class="round"
-                  [ngClass]="{
-                    'complete-round': step?.status == 'Completed',
-                    'pending-round': step?.status == 'Pending'
-                  }"
-                >
-                  <img
-                    src="/assets/icons/{{ step.assessmentName }}.svg"
-                    alt=""
-                  />
-                </div>
+              *ngFor="let step of assessmentDetails; let i = index">
+              <div *ngIf="i < assessmentDetails.length - 1" class="line col-md-4 p-0 "></div>
+              <div class="timeline-item ">
+              <div class="round" [ngClass]="{'complete-round':step?.status=='Completed','pending-round':step?.status=='Pending'}">
+                <img src="/assets/icons/{{step.assessmentName}}.svg" alt="" />
               </div>
-              <div
-                *ngIf="i < assessmentDetails.length - 1"
-                class="line col-md-4 p-0"
-              ></div>
+              </div>
+              
             </div>
           </div>
-
-          <div class="row w-100">
-            <div
-              class="col-md-4 text-center text-nowrap d-flex flex-column align-items-center"
-              *ngFor="let step of assessmentDetails; let i = index"
-              [ngClass]="{
-                'align-left': i === 0,
-                'align-right': i === assessmentDetails.length - 1
-              }"
-            >
-              <p class="mb-0 interview-status">
-                {{ step?.assessmentName }}
-              </p>
-              <p
-                class="interview-status2"
-                [ngClass]="{
-                'complete-text': step?.status == 'Completed',
-              }"
-              >
-                <img
-                  *ngIf="step?.status == 'Completed'"
-                  src="assets/icons/Tick.svg"
-                  alt=""
-                />
-                {{ step?.status }}
-              </p>
+        
+          <div class="row">
+            <div class="col-md-4 text-center" *ngFor="let step of assessmentDetails; let i = index">
+              <p class="mb-0 interview-status">{{ step?.assessmentName }}</p>
+              <p class="interview-status2">{{ step?.status }}</p>
             </div>
           </div>
         </div>

@@ -54,9 +54,10 @@
           <input
             type="radio"
             [name]="'question' + currentQuestionIndex"
-        [checked]="selectedAnswers[currentQuestionIndex]?.selectedOption === option"
-       
-        (change)="selectOption(currentQuestionIndex, option)"
+            [checked]="
+              selectedAnswers[currentQuestionIndex]?.selectedOption === option
+            "
+            (change)="selectOption(currentQuestionIndex, option)"
           />
 
           {{ option }}
@@ -92,7 +93,7 @@
     <app-congratulation
       [isPopupVisible]="isPopupVisible"
       (close)="closePopup()"
-      [subHeader]="'You have successfully passed the assessment'"
+      [subHeader]="'You have successfully completed the assessment'"
     ></app-congratulation>
 
     <!-- Submit Button (Visible on Last Question) -->

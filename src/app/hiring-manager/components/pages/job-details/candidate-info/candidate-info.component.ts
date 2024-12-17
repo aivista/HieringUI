@@ -64,23 +64,12 @@ export class CandidateInfoComponent {
       .candidateStatus(candidate.jobId, candidate.candidateId)
       .subscribe((res: any) => {
         if (res.isSuccess) {
-          console.log('response--->', res);
-
-          // Step 1: Order the assessment names to sort them
-          const order = ['AI Based Interview', 'AI Based MCQ', 'Teams Meeting'];
-          let flag = 0;
-
-          // Step 2: Sort the assessments based on the order
-          this.assessmentDetails = res.result.sort((a: any, b: any) => {
-            return (
-              order.indexOf(a.assessmentName) - order.indexOf(b.assessmentName)
-            );
+          this.assessmentDetails = res.result?.sort((a: any, b: any) => {
+            return a.assessmentSqnc - b.assessmentSqnc;
           });
 
-          // Step 3: Identify the first "Pending" step and set it as the component
           res.result.map((item: any) => {
-            if (item.status === 'Pending' && flag === 0) {
-              flag = 1;
+            if (item.status === 'Pending') {
               this.component = item.assessmentName;
             }
           });
@@ -99,7 +88,7 @@ export class CandidateInfoComponent {
       status: 'REJECTED',
       profileJourney: 'SELECTION',
     };
-    console.log('jasonBody', jasonBody);
+
     this.hiringManagerService.callProfileUpdateJurney(jasonBody).subscribe(
       (response: any) => {
         if (response.isSuccess) {
@@ -112,6 +101,7 @@ export class CandidateInfoComponent {
         console.error('Error updating profile:', error);
       }
     );
+    this.close.emit();
   }
 
   onApprove() {
@@ -121,7 +111,7 @@ export class CandidateInfoComponent {
       status: 'SELECTED',
       profileJourney: 'SELECTION',
     };
-    console.log('jasonBody', jasonBody);
+
     this.hiringManagerService.callProfileUpdateJurney(jasonBody).subscribe(
       (response: any) => {
         if (response.isSuccess) {
@@ -134,5 +124,6 @@ export class CandidateInfoComponent {
         console.error('Error updating profile:', error);
       }
     );
+    this.close.emit();
   }
 }

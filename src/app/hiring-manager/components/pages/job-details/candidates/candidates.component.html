@@ -135,6 +135,6 @@
   </div>
   <div class=" position-absolute top-0 end-0 popup-content">
     <app-candidate-info *ngIf="selectedCandidate" [candidate]="selectedCandidate"
-      (click)="closeModall($event)"></app-candidate-info>
+       (close)="onClose()"></app-candidate-info>
   </div>
 </div>

@@ -101,6 +101,10 @@ export class CandidatesComponent {
     this.selectedCandidate = null;
   }
 
+  onClose() {
+    this.selectedCandidate = null;
+  }
+
   isCandidateSelected(candidate: any): boolean {
     return this.selectedCandidate === candidate;
   }

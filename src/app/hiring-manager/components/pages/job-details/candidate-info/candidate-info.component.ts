@@ -11,7 +11,7 @@ import { HiringManagerService } from '../../../../service/hiring-manager.service
 })
 export class CandidateInfoComponent {
   @Input() candidate: any;
-  @Output() close = new EventEmitter<void>();
+  @Output() close: EventEmitter<void> = new EventEmitter();
 
   isInterviewScheduled: boolean = true;
   isSelected: boolean = true;

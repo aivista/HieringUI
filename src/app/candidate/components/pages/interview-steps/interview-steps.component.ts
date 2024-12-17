@@ -50,27 +50,38 @@ export class InterviewStepsComponent {
       candidateid: candidateId,
     };
     this.candidateService.getsteppardata(data).subscribe((res: any) => {
-      console.log('api res: ', res);
-      const order = ['AI Based Interview', 'AI Based MCQ', 'Teams Meeting'];
-      let flag = 0;
+      // console.log('api res: ', res);
+      // const order = ['AI Based Interview', 'AI Based MCQ', 'Teams Meeting'];
+      // let flag = 0;
       this.assessmentDetails = res.result?.sort((a: any, b: any) => {
-        return (
-          order.indexOf(a.assessmentName) - order.indexOf(b.assessmentName)
-        );
+        return a.assessmentSqnc - b.assessmentSqnc;
       });
-      res.result?.map((item: any) => {
-        // if (item.status == 'Pending' && flag == 0) {
-        flag = 1;
-        this.comoponent = item.assessmentName;
-        if (item.assessmentName === 'AI Based MCQ') {
-          // alert()
-          // this.candidateService.assessmentId.next(item.id)
-          this.candidateService.setData('assessmentId', item.id);
+      // console.log('assessmentDetails', res.result);
+      // res.result?.map((item: any) => {
+      //   // if (item.status == 'Pending' && flag == 0) {
+      //   // console.log('Page', this.assessmentDetails);
+
+      //   flag = 1;
+      //   this.comoponent = item.assessmentName;
+      //   if (item.assessmentName === 'AI Based Assessment') {
+      //     // alert()
+      //     // this.candidateService.assessmentId.next(item.id)
+      //     this.candidateService.setData('assessmentId', item.id);
+      //   }
+      //   // this.comoponent = 'Teams Meeting'; //This is for AI Based Interview (Hardcoded Navigation)
+      //   // }
+      //   console.log('component name', this.comoponent);
+      // });
+      for (let i = 0; i < res.result.length; i++) {
+        if (res.result[i].status == 'Pending') {
+          this.comoponent = res.result[i].assessmentName;
+          if (res.result[i].assessmentName === 'AI Based Assessment') {
+            this.candidateService.assessmentId.next(res.result[i].id);
+            this.candidateService.setData('assessmentId', res.result[i].id);
+          }
+          break;
         }
-        // this.comoponent = 'Teams Meeting'; //This is for AI Based Interview (Hardcoded Navigation)
-        // }
-        console.log('component name', this.comoponent);
-      });
+      }
     });
   }
 

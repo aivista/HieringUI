@@ -51,16 +51,15 @@
           <div
             *ngIf="candidate?.skills?.split(',').length > 2"
             class="skill-pill2 "
-            (mouseenter)="showHiddenSkills = true"
-            (mouseleave)="showHiddenSkills = false"
-            class="skill"
+            (mouseenter)="candidate.showHiddenSkills = true"
+            (mouseleave)="candidate.showHiddenSkills = false"
           >
             +{{ candidate?.skills?.split(",").length - 2 }}
 
             <!-- Hidden pills shown on hover -->
             <div
               class="hidden-skills bg-light p-2 position-absolute"
-              *ngIf="showHiddenSkills"
+              *ngIf="candidate.showHiddenSkills"
             >
               <div
                 *ngFor="let skill of candidate?.skills?.split(',') | slice : 2"
@@ -108,16 +107,16 @@
           <div
             *ngIf="candidate?.skills?.split(',').length > 2"
             class="skill-pill2 "
-            (mouseenter)="showHiddenSkills = true"
-            (mouseleave)="showHiddenSkills = false"
-            class="skill" 
+            (mouseenter)="candidate.showHiddenSkills = true"
+            (mouseleave)="candidate.showHiddenSkills = false"
+        
           >
             +{{ candidate?.skills?.split(",").length - 2 }}
 
             <!-- Hidden pills shown on hover -->
             <div 
               class="hidden-skills bg-light p-2 position-absolute"
-              *ngIf="showHiddenSkills"
+              *ngIf="candidate.showHiddenSkills"
             >
               <div
                 *ngFor="let skill of candidate?.skills?.split(',') | slice : 2"

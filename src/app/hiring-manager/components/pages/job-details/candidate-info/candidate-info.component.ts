@@ -92,5 +92,25 @@ export class CandidateInfoComponent {
     this.close.emit();
   }
 
-  onSubmit() {}
+  onSubmit(status: string) {
+    const jasonBody = {
+      jobId: this.candidate.jobId,
+      candidateId: this.candidate.candidateId,
+      status: status,
+      profileJourney: status,
+    };
+    console.log('jasonBody', jasonBody);
+    this.hiringManagerService.callProfileUpdateJurney(jasonBody).subscribe(
+      (response: any) => {
+        if (response.isSuccess) {
+          console.log('Profile updated successfully');
+        } else {
+          console.error('Failed to update profile');
+        }
+      },
+      (error) => {
+        console.error('Error updating profile:', error);
+      }
+    );
+  }
 }

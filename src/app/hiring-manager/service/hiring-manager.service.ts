@@ -67,4 +67,8 @@ export class HiringManagerService {
   CandidateDetails(data: any) {
     return this.http.post(POSTurl.candidateDetails, data);
   }
+
+  callProfileUpdateJurney(data: any) {
+    return this.http.post(POSTurl.callProfileUpdateJurney, data);
+  }
 }

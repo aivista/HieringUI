@@ -13,6 +13,7 @@ export const GETurl = {
   createdJob: jobDetails + 'Job/CreatedJob',
   candidateStatus:
     assessment + 'ASSESSMENTSERVICE/JOB/CANDIDATE/ASSESSMENTSTATE/',
+  getMCQ: assessment + 'ASSESSMENTSERVICE/ASSESSMENT/JOB/CANDIDATE/GETMCQ',
 };
 
 export const POSTurl = {
@@ -21,4 +22,6 @@ export const POSTurl = {
   candidateDetails: apiBaseUrl + 'LoginServices/candidate/details',
   CreateJob: apiBaseUrl + 'Job/CreatedJob',
   evaluateMCQ: assessment + 'ASSESSMENTSERVICE/EvaluateMCQ',
+  callProfileUpdateJurney:
+    assessment + 'ASSESSMENTSERVICE/CallUpdateProfileJourneyStatus',
 };

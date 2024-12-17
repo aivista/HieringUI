@@ -22,7 +22,6 @@
       <img src="/assets/icons/Email.svg" alt="" class="ms-4 me-2" />
       {{ selectedCandidateDetails?.email }}
     </p>
-    
 
     <div class="stapper">
       <div class="timeline row px-5">
@@ -73,122 +72,124 @@
     </div>
 
     <div class="scroll-area">
-
-
-    <div *ngIf="isInterviewScheduled" class="interview-schedule my-4">
-      <div>
-        <p class="mb-0">Interview scheduled on -</p>
-        <p class="text-date mb-0">20 August, 2024, 12:30 PM</p>
-      </div>
-      <div>
-        <button class="btn button">Join</button>
-      </div>
-    </div>
-
-    <div class="skill-card mb-4">
-      <hr />
-      <div class="mb-3">
-        <div class="d-flex file-icon mb-3">
-          <div class="icon">
-            <img src="/assets/icons/copy-alt 1.svg" alt="" />
-          </div>
-          <h5 class="mb-0 ms-2">Latest Experience Details</h5>
+      <div *ngIf="isInterviewScheduled" class="interview-schedule my-4">
+        <div>
+          <p class="mb-0">Interview scheduled on -</p>
+          <p class="text-date mb-0">20 August, 2024, 12:30 PM</p>
         </div>
-        <h6 class="mb-1">{{ selectedCandidateDetails?.designation }}</h6>
-        <p class="mb-1">{{ selectedCandidateDetails?.latestrole }}</p>
-        <div class="d-flex date-place">
-          <p>
-            September, 2022 - Present • {{ selectedCandidateDetails?.address }}
-          </p>
+        <div>
+          <button class="btn button">Join</button>
         </div>
       </div>
-      <hr />
 
-      <div class="mb-3">
-        <div class="d-flex file-icon mb-3">
-          <div class="icon">
-            <img src="/assets/icons/copy-alt 1.svg" alt="" />
+      <div class="skill-card mb-4">
+        <hr />
+        <div class="mb-3">
+          <div class="d-flex file-icon mb-3">
+            <div class="icon">
+              <img src="/assets/icons/copy-alt 1.svg" alt="" />
+            </div>
+            <h5 class="mb-0 ms-2">Latest Experience Details</h5>
           </div>
-          <h5 class="mb-0 ms-2">Highest Qualification Details</h5>
-        </div>
-        <h6 class="fw-bold mb-1" class="university"></h6>
-
-        <div class="date-place">
-          <p>
-            {{ selectedCandidateDetails?.education }}
-          </p>
-        </div>
-        <!-- <p>Activities and societies: Football team head</p> -->
-      </div>
-
-      <hr />
-      <div>
-        <div class="d-flex file-icon mb-4">
-          <div class="icon">
-            <img src="/assets/icons/copy-alt 1.svg" alt="" />
+          <h6 class="mb-1">{{ selectedCandidateDetails?.designation }}</h6>
+          <p class="mb-1">{{ selectedCandidateDetails?.latestrole }}</p>
+          <div class="d-flex date-place">
+            <p>
+              September, 2022 - Present •
+              {{ selectedCandidateDetails?.address }}
+            </p>
           </div>
-          <h5 class="mb-0 ms-2">Skills</h5>
+        </div>
+        <hr />
+
+        <div class="mb-3">
+          <div class="d-flex file-icon mb-3">
+            <div class="icon">
+              <img src="/assets/icons/copy-alt 1.svg" alt="" />
+            </div>
+            <h5 class="mb-0 ms-2">Highest Qualification Details</h5>
+          </div>
+          <h6 class="fw-bold mb-1" class="university"></h6>
+
+          <div class="date-place">
+            <p>
+              {{ selectedCandidateDetails?.education }}
+            </p>
+          </div>
+          <!-- <p>Activities and societies: Football team head</p> -->
         </div>
 
-        <div class="d-flex flex-wrap gap-1">
-          <!-- Show only the first 3 skills -->
-          <div
-            *ngFor="
-              let skill of selectedCandidateDetails?.skills?.split(',')
-                | slice : 0 : 3;
-              let i = index
-            "
-            class="skill-pill bg-primary me-2 mb-2"
-          >
-            {{ skill }}
+        <hr />
+        <div>
+          <div class="d-flex file-icon mb-4">
+            <div class="icon">
+              <img src="/assets/icons/copy-alt 1.svg" alt="" />
+            </div>
+            <h5 class="mb-0 ms-2">Skills</h5>
           </div>
 
-          <!-- Show "+count" if there are more than 3 skills -->
-          <div
-            *ngIf="selectedCandidateDetails?.skills?.split(',').length > 3"
-            class="skill-pill2 bg-secondary position-relative"
-            (mouseenter)="showHiddenSkills = true"
-            (mouseleave)="showHiddenSkills = false"
-          >
-            +{{ candidate?.skills?.split(",").length - 3 }}
-
-            <!-- Hidden pills shown on hover -->
+          <div class="d-flex flex-wrap gap-1">
+            <!-- Show only the first 3 skills -->
             <div
-              class="hidden-skills bg-light p-2 position-absolute"
-              *ngIf="showHiddenSkills"
+              *ngFor="
+                let skill of selectedCandidateDetails?.skills?.split(',')
+                  | slice : 0 : 3;
+                let i = index
+              "
+              class="skill-pill bg-primary me-2 mb-2"
             >
+              {{ skill }}
+            </div>
+
+            <!-- Show "+count" if there are more than 3 skills -->
+            <div
+              *ngIf="selectedCandidateDetails?.skills?.split(',').length > 3"
+              class="skill-pill2 bg-secondary position-relative"
+              (mouseenter)="showHiddenSkills = true"
+              (mouseleave)="showHiddenSkills = false"
+            >
+              +{{ candidate?.skills?.split(",").length - 3 }}
+
+              <!-- Hidden pills shown on hover -->
               <div
-                *ngFor="
-                  let skill of selectedCandidateDetails?.skills?.split(',')
-                    | slice : 3
-                "
-                class="more-pill"
+                class="hidden-skills bg-light p-2 position-absolute"
+                *ngIf="showHiddenSkills"
               >
-                {{ skill }}
+                <div
+                  *ngFor="
+                    let skill of selectedCandidateDetails?.skills?.split(',')
+                      | slice : 3
+                  "
+                  class="more-pill"
+                >
+                  {{ skill }}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div *ngIf="isSelected" class="comment-section mt-4">
-      <label for="comment">Add Comments (if any)</label>
-      <textarea id="comment" name="comment" rows="4"></textarea>
+      <div *ngIf="isSelected" class="comment-section mt-4">
+        <label for="comment">Add Comments (if any)</label>
+        <textarea id="comment" name="comment" rows="4"></textarea>
 
-      <div class="btn-group2 d-flex justify-content-end">
-        <button
-          type="button"
-          class="btn btn-outline-danger me-2"
-          (click)="onSubmit()"
-        >
-          Reject
-        </button>
-        <button type="button" class="btn btn-success" (click)="onSubmit()">
-          Approve
-        </button>
+        <div class="btn-group2 d-flex justify-content-end">
+          <button
+            type="button"
+            class="btn btn-outline-danger me-2"
+            (click)="onSubmit('FAILED')"
+          >
+            Reject
+          </button>
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="onSubmit('PASSED')"
+          >
+            Approve
+          </button>
+        </div>
       </div>
     </div>
-
-  </div>
   </div>
 </div>

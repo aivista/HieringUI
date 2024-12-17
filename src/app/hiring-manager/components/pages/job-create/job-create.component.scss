@@ -9,10 +9,10 @@
 }
 
 .main-contain {
-  margin-top: 20px;
+  margin-top: 15px;
   margin-left: 100px;
   margin-right: 100px;
-  margin-bottom: 20px;
+  margin-bottom: 6px;
 }
 
 .cjd-back-icon {
@@ -105,7 +105,7 @@
   padding: 8px 12px;
 }
 .jcd-main-body {
-  margin: 25px;
+  margin: 20px 25px;
 }
 
 .right-section {
@@ -200,6 +200,7 @@
   display: flex;
   height: 39px;
   width: 300px;
+  margin-top: 1rem !important;
   justify-content: center;
   align-items: center;
   border: 1px solid;

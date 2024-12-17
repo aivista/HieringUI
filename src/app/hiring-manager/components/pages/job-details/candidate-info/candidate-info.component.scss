@@ -47,10 +47,11 @@
     .rating {
       margin-left: 1rem;
       border-radius: 50px;
-      padding: 2px 8px;
+      padding: 2px 12px;
       border: 1px solid #767fff;
       // color: #ffbf00;
-      font-weight: bold;
+      font-size: 14px;
+      font-weight: 400;
       align-items: center;
       align-content: center;
 
@@ -58,6 +59,7 @@
         margin-right: 0.5rem;
         width: 1rem;
         height: 1rem;
+        object-fit: contain;
       }
     }
   }
@@ -142,13 +144,24 @@
   .pending-round {
     background-color: #424b57;
   }
+  .failed-round {
+    background-color: #c9370a;
+  }
 
   .line {
     z-index: 7;
     border-top: 2px dotted #7086fd;
-    width: 7.5rem;
+    width: 8.5rem;
     position: relative;
     top: -18px; /* Adjusts the line to align with the center of the circle */
+  }
+
+  .scroll-area {
+    padding-right: .5rem;
+    max-height: 80%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: thin;
   }
 
   .stapper {
@@ -169,12 +182,13 @@
   }
 
   .complete-status {
-    color: #27AE60;
+    color: #27ae60;
   }
 
   .pending-status {
-    color: #767FFF;
+    color: #767fff;
   }
+
   .interview-status2 {
     display: flex;
     justify-content: center;
@@ -245,7 +259,7 @@
 
     .skill-pill {
       border-radius: 60px;
-      padding: 0.5rem;
+      padding: 0.3rem 0.8rem;
     }
 
     .hidden-skills {

@@ -5,7 +5,7 @@ import { POSTurl } from '../../config';
 import { GETurl } from '../../config';
 import { environment } from '../../../environments/environment';
 import { Observable, Subject } from 'rxjs';
-import { ApiResponse,Question } from '../../interfaces/interface';
+import { ApiResponse, Question } from '../../interfaces/interface';
 @Injectable({
   providedIn: 'root',
 })
@@ -14,8 +14,8 @@ export class CandidateService {
   jobservice = environment.jobService;
   assessment = environment.assessment;
   // jobSubscribe = new Subject();
-  assessmentId=new Subject()
-  
+  assessmentId = new Subject();
+  candidateId = new Subject();
 
   constructor(private http: HttpClient, private route: Router) {}
 
@@ -30,14 +30,9 @@ export class CandidateService {
     return [];
   }
   getsteppardata(data: any) {
-    const url =
-      environment.assessment +
-      'ASSESSMENTSERVICE/JOB/' +
-      data.jobid +
-      '/CANDIDATE/' +
-      data.candidateid +
-      '/ASSESSMENTSTATE';
-    return this.http.get(url);
+    return this.http.get(
+      GETurl.candidateStatus + data.jobid + '/' + data.candidateid
+    );
   }
   Candidatelogin(data: any) {
     return this.http.post(POSTurl.candidateLogin, data);
@@ -47,19 +42,21 @@ export class CandidateService {
   }
 
   getRecentlyAppliedJobs(candidateId: number) {
-    const url = GETurl.appliedjobsByCandidate+candidateId
+    const url = GETurl.appliedjobsByCandidate + candidateId;
     return this.http.get(url);
   }
 
-  getJobQuestions(aid: number, jobId: number, cid: number):Observable<ApiResponse> {
+  getJobQuestions(
+    aid: number,
+    jobId: number,
+    cid: number
+  ): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(
       this.assessment +
         `ASSESSMENTSERVICE/ASSESSMENT/${aid}/JOB/${jobId}/CANDIDATE/${cid}/GETMCQ`
     );
   }
-  evaluateMcq(jsonBody:any) {
-    return this.http.post(
-      POSTurl.evaluateMCQ,jsonBody
-    );
+  evaluateMcq(jsonBody: any) {
+    return this.http.post(POSTurl.evaluateMCQ, jsonBody);
   }
 }

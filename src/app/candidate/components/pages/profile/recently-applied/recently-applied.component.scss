@@ -49,6 +49,7 @@
 
       &.inactive-card {
         opacity: 0.5;
+        min-width: 20rem;
       }
       // Header Section
       .header {
@@ -100,7 +101,7 @@
           font-size: 0.65rem;
         }
 
-        .ai-screening {
+        .ai-screening-pending {
           background-color: #6a2a43;
         }
 

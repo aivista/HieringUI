@@ -16,7 +16,7 @@
         <img src="assets/icons/adanicon.svg" alt="" height="22" width="98" />
       </div>
 
-      <div class="role-title">{{ job.jd }} - {{ job.role }}</div>
+      <div class="role-title">{{ job.role }}</div>
 
       <div class="status">
         <span>Status</span>
@@ -24,7 +24,7 @@
           class="status-tag"
           [ngClass]="{
             assessment: job.latestStatus === 'ASSESSMENT',
-            'ai-screening': job.latestStatus === 'AI Based Screening',
+            'ai-screening-pending': job.latestStatus === 'AI Screening Pending',
             'interview-pending':
               job.latestStatus === 'Interview Schedule Pending',
             'meeting-panding': job.latestStatus === 'Teams Meeting Pending',
@@ -35,17 +35,17 @@
         </div>
       </div>
 
-      <div class="action" *ngIf="job.latestStatus === 'Teams Meeting Pending'">
-        <button class="take-test-btn" (click)="navigateToInterview(job.jobId)">
-          Take Test
-        </button>
-      </div>
-
-      <!-- <div class="action" *ngIf="isFirst">
+      <!-- <div class="action" *ngIf="job.latestStatus === 'Teams Meeting Pending'">
         <button class="take-test-btn" (click)="navigateToInterview(job.jobId)">
           Take Test
         </button>
       </div> -->
+
+      <div class="action" *ngIf="job.button_value != null">
+        <button class="take-test-btn" (click)="navigateToInterview(job.jobId)">
+          Take Test
+        </button>
+      </div>
     </div>
   </div>
 </div>

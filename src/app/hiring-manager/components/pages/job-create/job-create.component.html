@@ -190,14 +190,14 @@
                       ></p-multiSelect>
   
                       <div
-                        class="chip-container flex items-center gap-2 flex-wrap jcd-chip-section"
+                        class="chip-container flex items-center gap-2 flex-wrap jcd-chip-section2"
                       >
                         <p-chip
                           *ngFor="let genre of selectedSecondarySkills"
                           [label]="genre"
                           [removable]="true"
                           (onRemove)="removeFromSelectionSecondary(genre)"
-                          class="custom-p-chip mt-1"
+                          class="custom-p-chip Secondary-chip mt-1"
                         >
                         </p-chip>
                       </div>
@@ -295,7 +295,7 @@
               <div>
                 <div>
                   <span
-                    class="d-flex align-items-center justify-content-end mt-4"
+                    class="d-flex align-items-center justify-content-end mt-1"
                   >
                     <button class="save-jd-btn" type="submit">Save</button>
                   </span>

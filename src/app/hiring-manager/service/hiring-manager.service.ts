@@ -61,14 +61,7 @@ export class HiringManagerService {
   }
 
   candidateStatus(jobId: string, CandidateId: string) {
-    return this.http.get(
-      this.assessment +
-        'ASSESSMENTSERVICE/JOB/' +
-        jobId +
-        '/CANDIDATE/' +
-        CandidateId +
-        '/ASSESSMENTSTATE'
-    );
+    return this.http.get(GETurl.candidateStatus + jobId + '/' + CandidateId);
   }
 
   CandidateDetails(data: any) {

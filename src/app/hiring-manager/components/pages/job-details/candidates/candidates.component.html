@@ -33,7 +33,7 @@
               {{ candidate?.latestStatus }}
             </div>
           </div>
-          <div class="experience">{{ candidate?.experience }} years of experience</div>
+          <div class="experience"><span class="text-white">{{ candidate?.experience }}</span> yrs of exp.</div>
         </div>
         <div class="skills">
           <!-- Show only the first 3 skills -->
@@ -84,7 +84,7 @@
           <div class="left-part">
             <h3>{{ candidate.first_name + ' ' + candidate.last_name}}</h3>
           </div>
-          <div class="experience">{{ candidate.experience }} years of experience</div>
+          <div class="experience"><span class="text-white">{{ candidate?.experience }}</span> yrs of exp.</div>
         </div>
         <!-- <div class="skills">
           <span *ngFor="let skill of candidate?.skills?.split(',')" class="skill">{{

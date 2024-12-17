@@ -22,6 +22,7 @@
       <img src="/assets/icons/Email.svg" alt="" class="ms-4 me-2" />
       {{ selectedCandidateDetails?.email }}
     </p>
+    
 
     <div class="stapper">
       <div class="timeline row px-5">
@@ -34,7 +35,8 @@
               class="round"
               [ngClass]="{
                 'complete-round': step?.status == 'Completed',
-                'pending-round': step?.status == 'Pending'
+                'pending-round': step?.status == 'Pending',
+                'failed-round': step?.status == 'Failed'
               }"
             >
               <img src="/assets/icons/{{ step.assessmentName }}.svg" alt="" />
@@ -69,6 +71,9 @@
         </div>
       </div>
     </div>
+
+    <div class="scroll-area">
+
 
     <div *ngIf="isInterviewScheduled" class="interview-schedule my-4">
       <div>
@@ -177,5 +182,7 @@
         <button type="button" class="btn btn-success">Approve</button>
       </div>
     </div>
+
+  </div>
   </div>
 </div>

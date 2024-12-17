@@ -144,6 +144,9 @@
   .pending-round {
     background-color: #424b57;
   }
+  .failed-round {
+    background-color: #c9370a;
+  }
 
   .line {
     z-index: 7;
@@ -151,6 +154,14 @@
     width: 8.5rem;
     position: relative;
     top: -18px; /* Adjusts the line to align with the center of the circle */
+  }
+
+  .scroll-area {
+    padding-right: .5rem;
+    max-height: 80%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: thin;
   }
 
   .stapper {
@@ -171,12 +182,13 @@
   }
 
   .complete-status {
-    color: #27AE60;
+    color: #27ae60;
   }
 
   .pending-status {
-    color: #767FFF;
+    color: #767fff;
   }
+
   .interview-status2 {
     display: flex;
     justify-content: center;
@@ -247,7 +259,7 @@
 
     .skill-pill {
       border-radius: 60px;
-      padding:.3rem 0.8rem;
+      padding: 0.3rem 0.8rem;
     }
 
     .hidden-skills {

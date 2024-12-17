@@ -126,4 +126,8 @@ export class CandidateInfoComponent {
     );
     this.close.emit();
   }
+
+  getImagePath(assessmentName: string): string {
+    return `public/assets/icons/${assessmentName}.svg`;
+  }
 }

@@ -94,6 +94,7 @@
       <div class="company d-flex flex-column" *ngIf="profile?.latestEducation">
         <p>{{ profile?.latestEducation?.university }}</p>
         <div class="d-flex align-items-center gap-3">
+          <span class="dot"></span>
           <p class="sub-text">{{ profile?.latestEducation?.degree }}</p>
           <div
             class="dot"
@@ -124,7 +125,9 @@
           *ngFor="let training of profile?.certificationsAndTraining"
           class="d-flex align-items-start justify-content-start gap-3"
         >
-          <p class="sub-text">{{ training }}</p>
+          <p class="sub-text d-flex align-items-center gap-3">
+            <span class="dot"></span> {{ training }}
+          </p>
         </div>
       </div>
     </div>

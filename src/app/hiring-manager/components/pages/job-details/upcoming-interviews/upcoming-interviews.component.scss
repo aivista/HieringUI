@@ -9,7 +9,8 @@
   // background-color: #272C37;
 
   .interview-container {
-    padding: 20px;
+    width: 400px;
+    padding: 18px;
 
     .header {
       h4 {
@@ -37,9 +38,11 @@
     .body {
       margin-top: 20px;
       // width: 449px;
-      height: 700px;
+      height: 80%;
+      min-height: 570px;
       overflow-y: auto;
-      border-radius: 20px;
+      // border-radius: 20px;
+      border-radius: 10px;
       padding: 5px 0;
       border-image-source: linear-gradient(138.76deg,
           rgba(91, 91, 91, 0.32) 3.02%,

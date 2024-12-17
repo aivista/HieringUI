@@ -11,9 +11,10 @@ body {
 }
 
 .container {
+  width: 400px;
   max-width: 600px;
   margin: auto;
-  padding: 16px;
+  padding: 18px;
 }
 
 .header {
@@ -55,7 +56,8 @@ body {
 
 .job-container {
   // width: 400px;
-  height: 700px;
+  height: 80%;
+      min-height: 570px;
   overflow-y: auto;
   background: linear-gradient(137.88deg, #1d212a 21.56%, #272c37 100%);
   border-radius: 10px;

@@ -9,6 +9,7 @@
   // background-color: #272C37;
 
   .interview-container {
+    width: 400px;
     padding: 20px;
 
     .header {
@@ -39,7 +40,8 @@
       // width: 449px;
       height: 700px;
       overflow-y: auto;
-      border-radius: 20px;
+      // border-radius: 20px;
+      border-radius: 10px;
       padding: 5px 0;
       border-image-source: linear-gradient(138.76deg,
           rgba(91, 91, 91, 0.32) 3.02%,

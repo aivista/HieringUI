@@ -8,13 +8,14 @@
           class="cjd-back-icon"
           (click)="goBack()"
         />
-        <label class="cjd-tittle">Create Job Description</label>
-      </span>
-      <span style="margin-left: 5px">
-        <label class="cjd-jobs-text" (click)="goBack()">Jobs</label>
-        <label class="cjd-jobs-slash">/</label>
-        <label class="cjd-dex-text">Create Job Description</label>
-      </span>
+        <!-- <span style="margin-left: 5px"> -->
+          <label class="cjd-jobs-text" (click)="goBack()">Jobs</label>
+          <label class="cjd-jobs-slash">/</label>
+          <label class="cjd-dex-text">Create Job Description</label>
+        </span>
+        <!-- <label class="cjd-tittle">Create Job Description</label> -->
+      <!-- </span> -->
+     
     </div>
     <div class="jcd-body">
       <form [formGroup]="profileForm" (ngSubmit)="addUser()">
@@ -231,7 +232,7 @@
                       formControlName="businessDependencies"
                       placeholder="Write business dependencies"
                       name="businessDependencies"
-                      class="w-100"
+                      class="w-100 text-area"
                     ></textarea>
                     <small
                       class="p-error block"

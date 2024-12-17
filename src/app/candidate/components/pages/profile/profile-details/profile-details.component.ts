@@ -130,7 +130,7 @@ export class ProfileDetailsComponent implements OnInit {
     // };
   }
   getRemainingCertificationsTooltip() {
-    const remainingCerts = this.profile?.certifications.slice(3);
+    const remainingCerts = this.profile?.certifications.slice(2);
     return remainingCerts?.join(', ');
   }
 }

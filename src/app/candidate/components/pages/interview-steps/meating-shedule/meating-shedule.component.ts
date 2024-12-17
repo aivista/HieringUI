@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CandidateService } from '../../../../service/candidate.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-meating-shedule',
@@ -12,7 +13,7 @@ export class MeatingSheduleComponent {
   storedCandidateId: any;
   JobId: any;
 
-  constructor(private service: CandidateService) {}
+  constructor(private service: CandidateService, private router: Router) {}
 
   ngOnInit() {
     this.storedCandidateId = localStorage.getItem('updateByCandidateId');
@@ -31,5 +32,6 @@ export class MeatingSheduleComponent {
       .subscribe((data: any) => {
         console.log('interview third step done ', data);
       });
+    this.router.navigate(['/candidate/profile']);
   }
 }

@@ -94,7 +94,7 @@
                   }"
                 >
                   <img
-                    src="/assets/icons/{{ step.assessmentName }}.svg"
+                    src="assets/icons/{{ step.assessmentName }}.svg"
                     alt=""
                   />
                 </div>
@@ -140,14 +140,16 @@
           *ngIf="comoponent === 'AI Based Interview'"
           (showAiAvatar)="showAiavatar()"
         ></app-introductory-call>
-        <app-assessment *ngIf="comoponent === 'AI Based MCQ'"></app-assessment>
+        <app-assessment
+          *ngIf="comoponent === 'AI Based Assessment'"
+        ></app-assessment>
         <app-ai-avatar-interview
           *ngIf="comoponent === 'Aiavatar'"
           (showPopupEvent)="showPopup()"
         ></app-ai-avatar-interview>
       </div>
       <app-meating-shedule
-        *ngIf="comoponent === 'Teams Meeting'"
+        *ngIf="comoponent === 'InPerson Interview'"
       ></app-meating-shedule>
       <app-congratulation
         [isPopupVisible]="isPopupVisible"

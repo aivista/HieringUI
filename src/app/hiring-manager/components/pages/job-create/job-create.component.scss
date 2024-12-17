@@ -81,13 +81,13 @@
 }
 
 .right-field-box {
-  margin-top: 15px;
+  // margin-top: 15px;
   margin-right: 20px;
 
   .field-text {
     font-size: 14px;
     color: #ffffff;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
 }
 
@@ -109,7 +109,7 @@
 }
 
 .job-desc-section-sub {
-  min-height: 60vh;
+  min-height: 55vh;
   height: 100%;
   background: #131313;
   color: #ffffff00;
@@ -130,9 +130,21 @@
   font-size: 12px !important;
   margin-right: 8px !important;
 }
-.jcd-chip-section {
+
+.jcd-chip-section{
   min-height: 40px;
 }
+
+.jcd-chip-section2 {
+  min-height: 40px;
+
+  ::ng-deep .p-chip {
+    background-color:#AA3175 !important;
+  }
+}
+
+
+
 
 .generate-jd-btn {
   display: flex;
@@ -166,6 +178,10 @@
   margin-bottom: 5px;
   font-weight: 500;
 }
+
+// .Secondary-chip{
+//   background-color: #587f54 !important;
+// }
 
 .jd-cutom-textarea {
   border: none;

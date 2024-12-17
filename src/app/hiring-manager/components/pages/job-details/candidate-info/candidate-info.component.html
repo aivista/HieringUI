@@ -177,15 +177,11 @@
           <button
             type="button"
             class="btn btn-outline-danger me-2"
-            (click)="onSubmit('FAILED')"
+            (click)="onReject()"
           >
             Reject
           </button>
-          <button
-            type="button"
-            class="btn btn-success"
-            (click)="onSubmit('PASSED')"
-          >
+          <button type="button" class="btn btn-success" (click)="onApprove()">
             Approve
           </button>
         </div>

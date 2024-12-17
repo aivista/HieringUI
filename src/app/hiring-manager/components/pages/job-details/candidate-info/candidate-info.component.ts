@@ -92,18 +92,40 @@ export class CandidateInfoComponent {
     this.close.emit();
   }
 
-  onSubmit(status: string) {
+  onReject() {
     const jasonBody = {
       jobId: this.candidate.jobId,
       candidateId: this.candidate.candidateId,
-      status: status,
-      profileJourney: status,
+      status: 'REJECTED',
+      profileJourney: 'SELECTION',
     };
     console.log('jasonBody', jasonBody);
     this.hiringManagerService.callProfileUpdateJurney(jasonBody).subscribe(
       (response: any) => {
         if (response.isSuccess) {
-          console.log('Profile updated successfully');
+          console.log(response);
+        } else {
+          console.error('Failed to update profile');
+        }
+      },
+      (error) => {
+        console.error('Error updating profile:', error);
+      }
+    );
+  }
+
+  onApprove() {
+    const jasonBody = {
+      jobId: this.candidate.jobId,
+      candidateId: this.candidate.candidateId,
+      status: 'SELECTED',
+      profileJourney: 'SELECTION',
+    };
+    console.log('jasonBody', jasonBody);
+    this.hiringManagerService.callProfileUpdateJurney(jasonBody).subscribe(
+      (response: any) => {
+        if (response.isSuccess) {
+          console.log(response);
         } else {
           console.error('Failed to update profile');
         }

@@ -60,7 +60,8 @@ export class ProfileDetailsComponent implements OnInit {
             console.log('API Response:', response);
             const ProfileDetails = response.result;
             const candidateId = ProfileDetails.id;
-            localStorage.setItem('candidateId', JSON.stringify(candidateId));
+            this.candidateService.candidateId.next(candidateId);
+            // localStorage.setItem('candidateId', JSON.stringify(candidateId));
             // this.candidateIdEmitter.emit(candidateId);
             // Bind API response to profile
             this.profile = {

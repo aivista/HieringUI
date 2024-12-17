@@ -42,14 +42,13 @@ export class CandidatesComponent {
   //     skills: ['React', 'JavaScript', 'CSS'],
   //   },
   // ];
-  shortlistedCandidates: any = []
+  shortlistedCandidates: any = [];
   showHiddenSkills: boolean = false;
 
-
-  appliedCandidates: any = []
-  jobSucribe: any
+  appliedCandidates: any = [];
+  jobSucribe: any;
   constructor(private hiringManagerService: HiringManagerService) {
-    this.getShortlisted()
+    this.getShortlisted();
   }
   setActiveTab(tab: string): void {
     this.activeTab = tab;
@@ -68,33 +67,39 @@ export class CandidatesComponent {
         return '';
     }
   }
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
   getShortlisted() {
-    this.jobSucribe = this.hiringManagerService.jobSubscribe.subscribe((res: any) => {
-
-      this.hiringManagerService.getShortlistedJobs(res.id).subscribe((result: any) => {
-        if (result.isSuccess) {
-          this.shortlistedCandidates = result.result
-        }
-
-      })
-      this.hiringManagerService.getAppliedJobs(res.id).subscribe((result: any) => {
-        if (result.isSuccess) {
-          this.appliedCandidates = result.result
-        }
-
+    this.jobSucribe = this.hiringManagerService.jobSubscribe.subscribe(
+      (res: any) => {
+        this.hiringManagerService
+          .getShortlistedJobs(res.id)
+          .subscribe((result: any) => {
+            if (result.isSuccess) {
+              this.shortlistedCandidates = result.result;
+            }
+          });
+        this.hiringManagerService
+          .getAppliedJobs(res.id)
+          .subscribe((result: any) => {
+            if (result.isSuccess) {
+              this.appliedCandidates = result.result;
+            }
+          });
       }
-
-      )
-
-    })
+    );
   }
   selectedCandidate: any = null;
 
   openModal(candidate: any) {
     this.selectedCandidate = candidate;
+    this.hiringManagerService
+      .CandidateDetails(this.selectedCandidate.jobId)
+      .subscribe((res: any) => {
+        if (res.isSuccess) {
+          this.selectedCandidate = res.result;
+          console.log('selected candidate', this.selectedCandidate);
+        }
+      });
   }
 
   closeModal() {
@@ -102,7 +107,7 @@ export class CandidatesComponent {
   }
 
   isCandidateSelected(candidate: any): boolean {
-    return this.selectedCandidate === candidate; // Check if the candidate is selected
+    return this.selectedCandidate === candidate;
   }
 
   closeModall(event: Event): void {
@@ -111,7 +116,7 @@ export class CandidatesComponent {
 
   ngOnDestroy() {
     if (this.jobSucribe) {
-      this.jobSucribe.unsubscribe()
+      this.jobSucribe.unsubscribe();
     }
   }
 

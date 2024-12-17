@@ -70,4 +70,8 @@ export class HiringManagerService {
         '/ASSESSMENTSTATE'
     );
   }
+
+  CandidateDetails(data: any) {
+    return this.http.post(POSTurl.candidateDetails, data);
+  }
 }

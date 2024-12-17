@@ -41,33 +41,35 @@ export class RecentlyAppliedComponent {
     },
   ];
   ngOnInit() {
-    this.storedCandidateId = localStorage.getItem('candidateId');
-    if (this.storedCandidateId) {
-      this.fetchRecentlyAppliedJobs();
-    }
+    // this.storedCandidateId = localStorage.getItem('candidateId');
+    // if (this.storedCandidateId) {
+    //   this.fetchRecentlyAppliedJobs();
+    // }
+    this.recentlyAppliedService.candidateId.subscribe((candidateId) => {
+      if (candidateId) {
+        console.log('Received candidateId:', candidateId);
+
+        this.fetchRecentlyAppliedJobs(candidateId);
+      }
+    });
   }
 
-  fetchRecentlyAppliedJobs() {
-    if (this.storedCandidateId) {
-      this.recentlyAppliedService
-        .getRecentlyAppliedJobs(this.storedCandidateId)
-        .subscribe(
-          (response: any) => {
-            this.recentJobs = response.result;
-            if (this.recentJobs.length > 0) {
-              this.recentApplied = this.recentJobs.sort(
-                (a: any, b: any) => b.jobId - a.jobId
-              );
-            }
-          },
-          (error) => {
-            console.error('Error fetching recently applied jobs:', error);
-          }
-        );
-    } else {
-      console.error('Candidate ID is not available.');
-    }
+  fetchRecentlyAppliedJobs(id: any) {
+    this.recentlyAppliedService.getRecentlyAppliedJobs(id).subscribe(
+      (response: any) => {
+        this.recentJobs = response.result;
+        if (this.recentJobs.length > 0) {
+          this.recentApplied = this.recentJobs.sort(
+            (a: any, b: any) => b.jobId - a.jobId
+          );
+        }
+      },
+      (error) => {
+        console.error('Error fetching recently applied jobs:', error);
+      }
+    );
   }
+
   navigateToInterview(jobId: string) {
     this.router.navigate(['/candidate/interview'], {
       queryParams: { jobId: jobId, candidateId: this.storedCandidateId },

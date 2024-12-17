@@ -5,12 +5,14 @@
 }
 
 .body {
-  // height: 100vh;
-  // background-color: #272C37;
+  height: 100%;
+  
+ 
 
   .interview-container {
-    width: 400px;
+    width: 100%;
     padding: 18px;
+    height: 100%;
 
     .header {
       h4 {
@@ -35,18 +37,20 @@
       }
     }
 
-    .body {
+    .body2 {
       margin-top: 20px;
       // width: 449px;
-      height: 80%;
-      min-height: 570px;
+      height: 90%;
+      // min-height: 570px;
       overflow-y: auto;
       // border-radius: 20px;
       border-radius: 10px;
       padding: 5px 0;
-      border-image-source: linear-gradient(138.76deg,
-          rgba(91, 91, 91, 0.32) 3.02%,
-          rgba(193, 193, 193, 0.32) 100%);
+      border-image-source: linear-gradient(
+        138.76deg,
+        rgba(91, 91, 91, 0.32) 3.02%,
+        rgba(193, 193, 193, 0.32) 100%
+      );
       background: linear-gradient(137.88deg, #1d212a 21.56%, #272c37 100%);
 
       hr {

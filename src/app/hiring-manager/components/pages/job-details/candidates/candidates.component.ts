@@ -92,14 +92,6 @@ export class CandidatesComponent {
 
   openModal(candidate: any) {
     this.selectedCandidate = candidate;
-    this.hiringManagerService
-      .CandidateDetails(this.selectedCandidate.jobId)
-      .subscribe((res: any) => {
-        if (res.isSuccess) {
-          this.selectedCandidate = res.result;
-          console.log('selected candidate', this.selectedCandidate);
-        }
-      });
   }
 
   closeModal() {

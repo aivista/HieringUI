@@ -3,7 +3,11 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
       <div class="star-pill">
         <h4 class="m-0">
-          {{ candidate?.first_name + " " + candidate?.last_name }}
+          {{
+            selectedCandidateDetails?.first_name +
+              " " +
+              selectedCandidateDetails?.last_name
+          }}
         </h4>
         <span class="rating d-flex"
           ><img src="/assets/icons/starIcon.svg" alt="" />
@@ -13,9 +17,10 @@
       <img (click)="closeModal()" src="/assets/icons/+ (1).svg" alt="" />
     </div>
     <p class="contact-info mt-3 mb-4 d-flex">
-      <img src="/assets/icons/Phone.svg" alt="" class="me-2" /> 780018112
+      <img src="/assets/icons/Phone.svg" alt="" class="me-2" />
+      {{ selectedCandidateDetails?.contact }}
       <img src="/assets/icons/Email.svg" alt="" class="ms-4 me-2" />
-      sanjay.d89.com
+      {{ selectedCandidateDetails?.email }}
     </p>
 
     <div class="stapper">
@@ -84,10 +89,12 @@
           </div>
           <h5 class="mb-0 ms-2">Latest Experience Details</h5>
         </div>
-        <h6 class="mb-1">{{ candidate?.latestrole }}</h6>
-        <p class="mb-1">Nxtra Data Ltd. (A Bharti Airtel Group Company)</p>
+        <h6 class="mb-1">{{ selectedCandidateDetails?.designation }}</h6>
+        <p class="mb-1">{{ selectedCandidateDetails?.latestrole }}</p>
         <div class="d-flex date-place">
-          <p>September, 2022 - Present • Maharashtra, Mumbai, India</p>
+          <p>
+            September, 2022 - Present • {{ selectedCandidateDetails?.address }}
+          </p>
         </div>
       </div>
       <hr />
@@ -99,11 +106,11 @@
           </div>
           <h5 class="mb-0 ms-2">Highest Qualification Details</h5>
         </div>
-        <h6 class="fw-bold mb-1">Pune University, Maharashtra</h6>
+        <h6 class="fw-bold mb-1" class="university"></h6>
 
         <div class="date-place">
           <p>
-            {{ candidate?.education}}
+            {{ selectedCandidateDetails?.education }}
           </p>
         </div>
         <!-- <p>Activities and societies: Football team head</p> -->
@@ -122,7 +129,8 @@
           <!-- Show only the first 3 skills -->
           <div
             *ngFor="
-              let skill of candidate?.skills?.split(',') | slice : 0 : 3;
+              let skill of selectedCandidateDetails?.skills?.split(',')
+                | slice : 0 : 3;
               let i = index
             "
             class="skill-pill bg-primary me-2 mb-2"
@@ -132,7 +140,7 @@
 
           <!-- Show "+count" if there are more than 3 skills -->
           <div
-            *ngIf="candidate?.skills?.split(',').length > 3"
+            *ngIf="selectedCandidateDetails?.skills?.split(',').length > 3"
             class="skill-pill2 bg-secondary position-relative"
             (mouseenter)="showHiddenSkills = true"
             (mouseleave)="showHiddenSkills = false"
@@ -145,7 +153,10 @@
               *ngIf="showHiddenSkills"
             >
               <div
-                *ngFor="let skill of candidate?.skills?.split(',') | slice : 3"
+                *ngFor="
+                  let skill of selectedCandidateDetails?.skills?.split(',')
+                    | slice : 3
+                "
                 class="more-pill"
               >
                 {{ skill }}

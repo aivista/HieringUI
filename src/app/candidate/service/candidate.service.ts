@@ -30,14 +30,9 @@ export class CandidateService {
     return [];
   }
   getsteppardata(data: any) {
-    const url =
-      environment.assessment +
-      'ASSESSMENTSERVICE/JOB/' +
-      data.jobid +
-      '/CANDIDATE/' +
-      data.candidateid +
-      '/ASSESSMENTSTATE';
-    return this.http.get(url);
+    return this.http.get(
+      GETurl.candidateStatus + data.jobid + '/' + data.candidateid
+    );
   }
   Candidatelogin(data: any) {
     return this.http.post(POSTurl.candidateLogin, data);

@@ -48,7 +48,7 @@ export class RecentlyAppliedComponent {
     this.recentlyAppliedService.candidateId.subscribe((candidateId) => {
       if (candidateId) {
         console.log('Received candidateId:', candidateId);
-
+        this.storedCandidateId = candidateId;
         this.fetchRecentlyAppliedJobs(candidateId);
       }
     });

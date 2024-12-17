@@ -91,4 +91,6 @@ export class CandidateInfoComponent {
   closeModal() {
     this.close.emit();
   }
+
+  onSubmit() {}
 }

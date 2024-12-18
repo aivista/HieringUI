@@ -1,6 +1,6 @@
 .main-container {
   // height: 100vh;
-  background-color: #0A0A0A;
+  background-color: #0a0a0a;
 
   .header {
     height: 7vh;
@@ -9,6 +9,10 @@
     color: #ffffff;
     img {
       height: 21px;
+    }
+    .user-icon {
+      background-color: #868686;
+      border-radius: 50%;
     }
     p {
       font-size: 16px;

@@ -18,11 +18,21 @@
         </div>
 
         <!-- Check if group.interviews has interviews -->
-        <div *ngIf="group.interviews && group.interviews.length > 0; else noInterviews">
+        <div
+          *ngIf="
+            group.interviews && group.interviews.length > 0;
+            else noInterviews
+          "
+        >
           <!-- Loop through interview rows for each day -->
           <div *ngFor="let interview of group.interviews">
-            <div class="int-time" *ngIf="group.day === 'Today' && interview.timeRelative">
-              <div class="icon"><img src="assets/icons/clock.svg" alt="" /></div>
+            <div
+              class="int-time"
+              *ngIf="group.day === 'Today' && interview.timeRelative"
+            >
+              <div class="icon">
+                <img src="assets/icons/clock.svg" alt="" />
+              </div>
               <div class="time-text">{{ interview.timeRelative }}</div>
             </div>
             <div class="interview-row">

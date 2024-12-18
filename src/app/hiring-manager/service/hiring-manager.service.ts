@@ -58,7 +58,7 @@ export class HiringManagerService {
   }
 
   createJobs(data: any) {
-    const url = GETurl.createdJob;
+    const url = POSTurl.createdJob;
     return this.http.post(url, data);
   }
 

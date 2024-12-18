@@ -1,27 +1,27 @@
-let apiBaseUrl = 'http://122.163.121.176:3013/api/';
-let jobService = 'http://122.163.121.176:3015/api/JobsServices/';
-let jobDetails = 'http://122.163.121.176:3014/api/';
-let assessment = 'http://122.163.121.176:3011/';
+let ProfileServicesUrl = 'https://adani-hiring.southindia.cloudapp.azure.com/adani-hiring-profile-service/api/';
+let JobServiceUrl = 'https://adani-hiring.southindia.cloudapp.azure.com/adani-hiring-job-service/api/JobsServices/';
+let SmartServiceUrl = 'https://adani-hiring.southindia.cloudapp.azure.com/adani-hiring-smart/api/';
+let AssessmentServicesUrl = 'https://adani-hiring.southindia.cloudapp.azure.com/adani-hiring-assessment-service/';
 
 export const GETurl = {
-  jobDetails: jobService + 'Jobs/',
-  appliedjobsByCandidate: jobService + 'jobs/appliedjobsByCandidate/',
-  jobShortListed: jobService + 'jobs/ShortListed/',
-  appliedJobs: jobService + 'jobs/appliedJobs/',
-  getJobDescription: jobDetails + 'Job/GetJobDescription',
-  upcomingInterview: jobService + 'jobs/upcomingInterview/',
-  createdJob: jobDetails + 'Job/CreatedJob',
+  jobDetails: JobServiceUrl + 'Jobs/',
+  appliedjobsByCandidate: JobServiceUrl + 'jobs/appliedjobsByCandidate/',
+  jobShortListed: JobServiceUrl + 'jobs/ShortListed/',
+  appliedJobs: JobServiceUrl + 'jobs/appliedJobs/',
+  getJobDescription: SmartServiceUrl + '/SmartServices/GetJobDescription',
+  upcomingInterview: JobServiceUrl + 'jobs/upcomingInterview/',
   candidateStatus:
-    assessment + 'ASSESSMENTSERVICE/JOB/CANDIDATE/ASSESSMENTSTATE/',
-  getMCQ: assessment + 'ASSESSMENTSERVICE/ASSESSMENT/JOB/CANDIDATE/GETMCQ',
+  AssessmentServicesUrl + 'ASSESSMENTSERVICE/JOB/CANDIDATE/ASSESSMENTSTATE/',
+  getMCQ: AssessmentServicesUrl + 'ASSESSMENTSERVICE/ASSESSMENT/JOB/CANDIDATE/GETMCQ',
 };
 
 export const POSTurl = {
-  hiringmanagerLogin: apiBaseUrl + 'LoginServices/login/hiringManager',
-  candidateLogin: apiBaseUrl + 'LoginServices/login/candidate',
-  candidateDetails: apiBaseUrl + 'LoginServices/candidate/details',
-  CreateJob: apiBaseUrl + 'Job/CreatedJob',
-  evaluateMCQ: assessment + 'ASSESSMENTSERVICE/EvaluateMCQ',
+  hiringmanagerLogin: ProfileServicesUrl + 'LoginServices/login/hiringManager',
+  candidateLogin: ProfileServicesUrl + 'LoginServices/login/candidate',
+  candidateDetails: ProfileServicesUrl + 'LoginServices/candidate/details',
+  createdJob: SmartServiceUrl + '/SmartServices/CreatedJob',
+  // CreateJob: ProfileServicesUrl + 'Job/CreatedJob',
+  evaluateMCQ: AssessmentServicesUrl + 'ASSESSMENTSERVICE/EvaluateMCQ',
   callProfileUpdateJurney:
-    assessment + 'ASSESSMENTSERVICE/CallUpdateProfileJourneyStatus',
+    AssessmentServicesUrl + 'ASSESSMENTSERVICE/CallUpdateProfileJourneyStatus',
 };

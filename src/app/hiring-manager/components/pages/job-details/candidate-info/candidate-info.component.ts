@@ -26,7 +26,7 @@ export class CandidateInfoComponent {
 
   candidateStatus: string = '';
   showHiddenSkills: boolean = false;
-
+  jobSubscribe:any
   assessmentDetails: any[] = []; // Store the assessment details from the API
   component: string = ''; // Store the name of the pending component
   selectedCandidateDetails: any;
@@ -100,7 +100,7 @@ export class CandidateInfoComponent {
       (response: any) => {
         if (response.isSuccess) {
           console.log(response);
-          this.hiringManagerService.jobSubscribe.next({id:this.candidate.jobId})
+         this.jobSubscribe= this.hiringManagerService.jobSubscribe.next({id:this.candidate.jobId})
         } else {
           console.error('Failed to update profile');
         }
@@ -132,7 +132,7 @@ export class CandidateInfoComponent {
       (response: any) => {
         if (response.isSuccess) {
 
-          this.hiringManagerService.jobSubscribe.next({id:this.candidate.jobId})
+        this.jobSubscribe=  this.hiringManagerService.jobSubscribe.next({id:this.candidate.jobId})
           console.log(response);
         } else {
           console.error('Failed to update profile');
@@ -154,5 +154,10 @@ export class CandidateInfoComponent {
 
   getImagePath(assessmentName: string): string {
     return `public/assets/icons/${assessmentName}.svg`;
+  }
+  ngOnDestroy(){
+    if(this.jobSubscribe){
+      this.jobSubscribe.unsubcribe()
+    }
   }
 }

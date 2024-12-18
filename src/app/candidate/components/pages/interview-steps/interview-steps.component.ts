@@ -64,6 +64,7 @@ export class InterviewStepsComponent {
           break;
         }
       }
+      this.comoponent = 'AI Screening';
     });
   }
 

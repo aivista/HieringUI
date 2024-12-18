@@ -264,3 +264,13 @@
   text-align: justify;
   resize: none !important;
 }
+
+:host::ng-deep .p-select{
+  background: none !important;
+  border-radius: var(--p-inputtext-border-radius) !important;
+}
+
+:host::ng-deep .p-multiselect {
+  background: none !important;
+  border-radius: var(--p-inputtext-border-radius) !important;
+}

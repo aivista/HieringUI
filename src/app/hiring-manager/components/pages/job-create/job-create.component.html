@@ -9,13 +9,12 @@
           (click)="goBack()"
         />
         <!-- <span style="margin-left: 5px"> -->
-          <label class="cjd-jobs-text" (click)="goBack()">Jobs</label>
-          <label class="cjd-jobs-slash">/</label>
-          <label class="cjd-dex-text">Create Job Description</label>
-        </span>
-        <!-- <label class="cjd-tittle">Create Job Description</label> -->
+        <label class="cjd-jobs-text" (click)="goBack()">Jobs</label>
+        <label class="cjd-jobs-slash">/</label>
+        <label class="cjd-dex-text">Create Job Description</label>
+      </span>
+      <!-- <label class="cjd-tittle">Create Job Description</label> -->
       <!-- </span> -->
-     
     </div>
     <div class="jcd-body">
       <form [formGroup]="profileForm" (ngSubmit)="addUser()">
@@ -149,7 +148,7 @@
                         name="primarySkills"
                         class="w-100"
                       ></p-multiSelect>
-  
+
                       <div
                         class="chip-container flex items-center gap-2 flex-wrap jcd-chip-section"
                       >
@@ -177,7 +176,8 @@
                   <div class="col-md-6 mt-2">
                     <div class="">
                       <label class="field-text"
-                        >Secondary Skills <label class="aristick">*</label></label
+                        >Secondary Skills
+                        <label class="aristick">*</label></label
                       >
                       <br />
                       <p-multiSelect
@@ -189,7 +189,7 @@
                         name="secondarySkills"
                         class="w-100"
                       ></p-multiSelect>
-  
+
                       <div
                         class="chip-container flex items-center gap-2 flex-wrap jcd-chip-section2"
                       >
@@ -215,8 +215,6 @@
                     </div>
                   </div>
                 </div>
-              
-
 
                 <div class="row mt-3">
                   <div class="col-12">
@@ -296,7 +294,7 @@
               <div>
                 <div>
                   <span
-                    class="d-flex align-items-center justify-content-end mt-1 me-2"
+                    class="d-flex align-items-center justify-content-end mt-1"
                   >
                     <button class="save-jd-btn" type="submit">Save</button>
                   </span>

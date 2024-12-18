@@ -34,8 +34,8 @@
     position: relative;
 
     .top-portion {
-      top: 6px;
-      left: 50px;
+      top: -5px;
+      left: 40px;
       position: absolute;
       cursor: pointer;
 
@@ -46,6 +46,7 @@
         color: #767fff;
         gap: 0.5rem;
         font-size: 0.85rem;
+        align-items: center;
       }
     }
 

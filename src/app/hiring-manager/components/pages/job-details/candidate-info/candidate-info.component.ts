@@ -100,6 +100,7 @@ export class CandidateInfoComponent {
       (response: any) => {
         if (response.isSuccess) {
           console.log(response);
+          this.hiringManagerService.jobSubscribe.next({id:this.candidate.jobId})
         } else {
           console.error('Failed to update profile');
         }
@@ -130,6 +131,8 @@ export class CandidateInfoComponent {
     this.hiringManagerService.callProfileUpdateJurney(jasonBody).subscribe(
       (response: any) => {
         if (response.isSuccess) {
+
+          this.hiringManagerService.jobSubscribe.next({id:this.candidate.jobId})
           console.log(response);
         } else {
           console.error('Failed to update profile');

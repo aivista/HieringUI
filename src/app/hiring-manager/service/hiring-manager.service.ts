@@ -16,6 +16,8 @@ export class HiringManagerService {
   jobDetails = environment.jobDetails;
   jobSubscribe = new Subject();
 
+  trigerApproved= new Subject()
+
   assessment = environment.assessment;
 
   constructor(private http: HttpClient) {}

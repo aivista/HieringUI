@@ -79,7 +79,14 @@ export class CandidatesComponent {
         return '';
     }
   }
-  ngOnInit() {}
+  ngOnInit() {
+    // this.hiringManagerService.trigerApproved.subscribe((res:any)=>{
+    //   if(res){
+    //     this.getShortlisted()
+    //   }
+    // })
+
+  }
 
   getShortlisted() {
     this.jobSucribe = this.hiringManagerService.jobSubscribe.subscribe(

@@ -1,4 +1,5 @@
 .main-section {
+  padding: 20px;
   background-image: url("/assets/png/create-job-bg.png");
   background-repeat: no-repeat;
   height: 93vh;
@@ -16,6 +17,7 @@
 }
 
 .cjd-back-icon {
+  font-size: 14px;
   height: 14px;
   width: 24px;
   cursor: pointer;
@@ -28,7 +30,7 @@
 
 .cjd-jobs-text {
   color: #bdbdbd;
-  size: 14px;
+  font-size: 14px;
   margin-right: 5px;
 }
 
@@ -39,76 +41,92 @@
 .cjd-dex-text {
   margin-left: 5px;
   color: #767fff;
+  font-size: 14px;
 }
 
 .jcd-body {
   margin-top: 10px;
+  // padding: 20px;
   background: linear-gradient(137.88deg, #1e222a 21.56%, #272c37 100%);
   border-radius: 10px;
   border: 0.5px solid;
-  border-image-source: linear-gradient(
-    138.76deg,
-    rgba(91, 91, 91, 0.72) 3.02%,
-    rgba(193, 193, 193, 0.72) 100%
-  );
+  border-image-source: linear-gradient(138.76deg,
+      rgba(91, 91, 91, 0.72) 3.02%,
+      rgba(193, 193, 193, 0.72) 100%);
   min-height: 300px;
 }
-:host ::ng-deep .p-inputtext{
+
+:host ::ng-deep .p-inputtext {
   background-color: rgba(19, 19, 19, 1);
   color: rgba(255, 255, 255, 0.87);
   border: 1px solid #424b57;
 }
-:host ::ng-deep .p-select{
+
+:host ::ng-deep .p-select {
   border: 1px solid #424b57;
 }
-:host ::ng-deep .p-select-label{
+
+:host ::ng-deep .p-select-label {
   background-color: rgba(19, 19, 19, 1);
   color: rgba(255, 255, 255, 0.87);
 }
-:host ::ng-deep .p-select-overlay{
+
+:host ::ng-deep .p-select-overlay {
   background-color: rgba(19, 19, 19, 1);
   color: rgba(255, 255, 255, 0.87);
 
 }
-:host ::ng-deep .p-select-option{
+
+:host ::ng-deep .p-select-option {
   background-color: rgba(19, 19, 19, 1);
   color: rgba(255, 255, 255, 0.87);
 }
+
 :host ::ng-deep .p-multiselect-overlay {
   background-color: rgba(19, 19, 19, 1);
   color: rgba(255, 255, 255, 0.87);
 
 }
-:host ::ng-deep .p-multiselect-option{
+
+:host ::ng-deep .p-multiselect-option {
   background-color: rgba(19, 19, 19, 1);
   color: rgba(255, 255, 255, 0.87);
 }
-:host ::ng-deep .p-select-dropdown{
+
+:host ::ng-deep .p-select-dropdown {
   background-color: rgba(19, 19, 19, 1);
   color: rgba(255, 255, 255, 0.87);
 }
-:host ::ng-deep .p-multiselect{
+
+:host ::ng-deep .p-multiselect {
   border: 1px solid #424b57;
 }
-:host ::ng-deep .p-multiselect-label{
+
+:host ::ng-deep .p-multiselect-label {
   background-color: rgba(19, 19, 19, 1);
   color: rgba(255, 255, 255, 0.87);
 
 }
-:host ::ng-deep .p-multiselect-dropdown{
+
+:host ::ng-deep .p-multiselect-dropdown {
   background-color: rgba(19, 19, 19, 1);
   color: rgba(255, 255, 255, 0.87);
 }
-.text-area{
+
+.text-area {
   background-color: rgba(19, 19, 19, 1);
   color: rgba(255, 255, 255, 0.87);
   padding: 8px 12px;
 }
+
 .jcd-main-body {
   margin: 20px 25px;
 }
 
 .right-section {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
   // border-right: 1px dashed;
   border-right: 1px solid #424b57;
   height: 100%;
@@ -173,7 +191,8 @@
 ::ng-deep .p-chip {
   display: inline-flex;
   align-items: center;
-  background: #0f6cbd !important;
+  // background: #0f6cbd !important;
+  background: rgba(15, 108, 189, 1) !important;
   gap: var(--p-chip-gap);
   margin-top: 7px !important;
   padding: 4px 10px 4px 10px !important;
@@ -181,7 +200,7 @@
   margin-right: 8px !important;
 }
 
-.jcd-chip-section{
+.jcd-chip-section {
   min-height: 40px;
 }
 
@@ -189,7 +208,9 @@
   min-height: 40px;
 
   ::ng-deep .p-chip {
-    background-color:#AA3175 !important;
+    // background-color:#AA3175 !important;
+    background: rgba(170, 49, 117, 1) !important;
+
   }
 }
 
@@ -205,13 +226,13 @@
   align-items: center;
   border: 1px solid;
   border-radius: 30px;
-  border-image-source: linear-gradient(
-    180deg,
-    rgba(139, 4, 245, 0.3) 0%,
-    rgba(118, 127, 255, 0.3) 100%
-  );
+  color: #f9f9f9;
+  border-image-source: linear-gradient(180deg,
+      rgba(139, 4, 245, 0.3) 0%,
+      rgba(118, 127, 255, 0.3) 100%);
   background: linear-gradient(91.66deg, #8b04f5 5.14%, #0f6cbd 94.83%);
 }
+
 .save-jd-btn {
   display: flex;
   height: 45px;
@@ -219,10 +240,13 @@
   justify-content: center;
   align-items: center;
   border: 1px solid;
+  margin-right: 5px;
   border-radius: 6px;
+  color: #f9f9f9;
   background: #8b04f5;
   border: 1px solid #8b04f5;
 }
+
 .field-text-small {
   font-size: 12px;
   color: #ffffff;

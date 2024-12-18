@@ -151,7 +151,7 @@
   .line {
     z-index: 7;
     border-top: 2px dotted #7086fd;
-    width: 8.5rem;
+    width: 8.3rem;
     position: relative;
     top: -18px; /* Adjusts the line to align with the center of the circle */
   }
@@ -181,7 +181,7 @@
   }
 
   .interview-status {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
   }
 
@@ -262,14 +262,17 @@
     }
 
     .skill-pill {
+      display: flex;
+      align-items: center;
+      text-align: center;
       font-size: .8rem;
       border-radius: 60px;
       padding: 0.3rem 0.8rem;
     }
 
     .hidden-skills {
-      top: 100%;
-      left: 0;
+      top:-5rem;
+      left:0;
       z-index: 10;
       border: 1px solid #ccc;
       border-radius: 4px;
@@ -284,6 +287,8 @@
       border-radius: 50%;
       padding: 8px 12px;
       cursor: pointer;
+      background: rgba(84, 84, 84, 1);
+
     }
   }
 

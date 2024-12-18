@@ -157,22 +157,22 @@
   }
 
   .scroll-area {
-    padding-right: .5rem;
+    padding-right: 0.5rem;
     max-height: 75%;
     overflow-x: hidden;
     overflow-y: scroll;
     // scrollbar-width: thin;
-    
   }
   ::-webkit-scrollbar {
     display: none;
   }
- 
+
   .stapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 5;
+    // z-index: 5;
+    padding: 0.5rem 0;
   }
 
   .round img {
@@ -265,20 +265,20 @@
       display: flex;
       align-items: center;
       text-align: center;
-      font-size: .8rem;
+      font-size: 0.8rem;
       border-radius: 60px;
       padding: 0.3rem 0.8rem;
     }
 
     .hidden-skills {
-      top:-5rem;
-      left:0;
+      top: -5rem;
+      left: 0;
       z-index: 10;
       border: 1px solid #ccc;
       border-radius: 4px;
 
       .more-pill {
-        font-size: .8rem;
+        font-size: 0.8rem;
         color: black;
       }
     }
@@ -288,7 +288,6 @@
       padding: 8px 12px;
       cursor: pointer;
       background: rgba(84, 84, 84, 1);
-
     }
   }
 
@@ -306,8 +305,8 @@
   }
 
   h6 {
-    margin-bottom: 0.5rem;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 0.9rem;
   }
 
   .badge {
@@ -316,6 +315,6 @@
   }
 }
 
-.cross{
-cursor: pointer;
+.cross {
+  cursor: pointer;
 }

@@ -152,7 +152,7 @@
   margin-right: 20px;
 
   .field-text {
-    font-size: 14px;
+    font-size: 0.8rem;
     color: #ffffff;
     margin-bottom: 5px;
   }
@@ -202,7 +202,8 @@
 ::ng-deep .p-multiselect-label.p-placeholder,
 ::ng-deep .p-multiselect-label,
 ::ng-deep .p-select-label,
-::ng-deep .p-inputtext {
+::ng-deep .p-inputtext,
+::ng-deep .p-multiselect-option {
   font-size: 0.7rem;
 }
 .jcd-chip-section {

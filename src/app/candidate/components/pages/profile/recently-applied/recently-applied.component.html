@@ -23,12 +23,15 @@
         <div
           class="status-tag"
           [ngClass]="{
-            assessment: job.latestStatus === 'ASSESSMENT',
+            assessment: job.latestStatus === 'Assessment Pending',
             'ai-screening-pending': job.latestStatus === 'AI Screening Pending',
-            'interview-pending':
-              job.latestStatus === 'Interview Schedule Pending',
+            'interview-pending': job.latestStatus === 'Interview Scheduled',
             'meeting-panding': job.latestStatus === 'Teams Meeting Pending',
-            'inactive-status': job.latestStatus === 'Inactive'
+            'inactive-status': job.latestStatus === 'Inactive',
+            faild: job.latestStatus === 'Failed in Assessment',
+            completed: job.latestStatus === 'Interview Completed',
+            'not-selected': job.latestStatus === 'Not Selected in Interview',
+            selected: job.latestStatus === 'Selected'
           }"
         >
           {{ job.latestStatus }}

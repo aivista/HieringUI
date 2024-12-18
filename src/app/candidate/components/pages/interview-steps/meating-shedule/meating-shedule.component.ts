@@ -12,12 +12,14 @@ import { Router } from '@angular/router';
 export class MeatingSheduleComponent {
   storedCandidateId: any;
   JobId: any;
+  button_value: any;
 
   constructor(private service: CandidateService, private router: Router) {}
 
   ngOnInit() {
     this.storedCandidateId = localStorage.getItem('updateByCandidateId');
     this.JobId = localStorage.getItem('JobIdByCandidate');
+    this.button_value = localStorage.getItem('button_value');
   }
 
   InterviewDone() {

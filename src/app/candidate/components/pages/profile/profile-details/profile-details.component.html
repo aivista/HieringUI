@@ -16,7 +16,7 @@
         <div class="d-flex flex-wrap gap-2">
           <!-- Show the first 3 certifications -->
           <div
-            *ngFor="let cert of profile.certifications.slice(0, 3)"
+            *ngFor="let cert of profile.certifications.slice(0, 2)"
             class="chip ccna d-flex align-items-center justify-content-center"
           >
             {{ cert }}
@@ -24,12 +24,12 @@
 
           <!-- Show the "+X" chip if more than 3 certifications exist -->
           <div
-            *ngIf="profile.certifications.length > 3"
+            *ngIf="profile.certifications.length > 2"
             class="chip remaining-chip d-flex align-items-center justify-content-center"
             pTooltip="{{ getRemainingCertificationsTooltip() }}"
             tooltipPosition="top"
           >
-            +{{ profile.certifications.length - 3 }}
+            +{{ profile.certifications.length - 2 }}
           </div>
         </div>
       </div>
@@ -94,6 +94,7 @@
       <div class="company d-flex flex-column" *ngIf="profile?.latestEducation">
         <p>{{ profile?.latestEducation?.university }}</p>
         <div class="d-flex align-items-center gap-3">
+          <span class="dot"></span>
           <p class="sub-text">{{ profile?.latestEducation?.degree }}</p>
           <div
             class="dot"
@@ -124,7 +125,9 @@
           *ngFor="let training of profile?.certificationsAndTraining"
           class="d-flex align-items-start justify-content-start gap-3"
         >
-          <p class="sub-text">{{ training }}</p>
+          <p class="sub-text d-flex align-items-center gap-3">
+            <span class="dot"></span> {{ training }}
+          </p>
         </div>
       </div>
     </div>

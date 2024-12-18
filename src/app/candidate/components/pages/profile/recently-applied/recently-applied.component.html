@@ -42,8 +42,8 @@
       </div> -->
 
       <div class="action" *ngIf="job.button_value != null">
-        <button class="take-test-btn" (click)="navigateToInterview(job.jobId)">
-          Take Test
+        <button class="take-test-btn" (click)="navigateToInterview(job)">
+          {{ job.button_value }}
         </button>
       </div>
     </div>

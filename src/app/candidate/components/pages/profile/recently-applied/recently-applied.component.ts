@@ -70,9 +70,13 @@ export class RecentlyAppliedComponent {
     );
   }
 
-  navigateToInterview(jobId: string) {
+  navigateToInterview(jobId: any) {
+    localStorage.setItem('JobIdByCandidate', jobId?.jobId);
+    localStorage.setItem('updateByCandidateId', jobId?.candidateId);
+    localStorage.setItem('button_value', jobId.button_value);
+
     this.router.navigate(['/candidate/interview'], {
-      queryParams: { jobId: jobId, candidateId: this.storedCandidateId },
+      queryParams: { jobId: jobId.jobId, candidateId: this.storedCandidateId },
     });
   }
 }

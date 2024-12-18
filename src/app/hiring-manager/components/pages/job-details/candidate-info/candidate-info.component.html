@@ -14,7 +14,12 @@
           {{ candidate.star }}</span
         >
       </div>
-      <img (click)="closeModal()" src="/assets/icons/+ (1).svg" alt="" />
+      <img
+        (click)="closeModal()"
+        src="/assets/icons/+ (1).svg"
+        alt=""
+        class="cross"
+      />
     </div>
     <p class="contact-info mt-3 mb-4 d-flex">
       <img src="/assets/icons/Phone.svg" alt="" class="me-2" />
@@ -38,7 +43,7 @@
                 'failed-round': step?.status == 'Failed'
               }"
             >
-              <img src="/assets/icons/{{ step.assessmentName }}.svg" alt="" />
+              <img src="assets/icons/{{ step.assessmentName }}.svg" alt="" />
             </div>
           </div>
           <div
@@ -134,7 +139,7 @@
             <div
               *ngFor="
                 let skill of selectedCandidateDetails?.skills?.split(',')
-                  | slice : 0 : 3;
+                  | slice : 0 : 2;
                 let i = index
               "
               class="skill-pill bg-primary me-2 mb-2"
@@ -144,12 +149,12 @@
 
             <!-- Show "+count" if there are more than 3 skills -->
             <div
-              *ngIf="selectedCandidateDetails?.skills?.split(',').length > 3"
-              class="skill-pill2 bg-secondary position-relative"
+              *ngIf="selectedCandidateDetails?.skills?.split(',').length > 2"
+              class="skill-pill2 position-relative"
               (mouseenter)="showHiddenSkills = true"
               (mouseleave)="showHiddenSkills = false"
             >
-              +{{ candidate?.skills?.split(",").length - 3 }}
+              +{{ candidate?.skills?.split(",").length - 2 }}
 
               <!-- Hidden pills shown on hover -->
               <div
@@ -159,7 +164,7 @@
                 <div
                   *ngFor="
                     let skill of selectedCandidateDetails?.skills?.split(',')
-                      | slice : 3
+                      | slice : 2
                   "
                   class="more-pill"
                 >
@@ -178,15 +183,11 @@
           <button
             type="button"
             class="btn btn-outline-danger me-2"
-            (click)="onSubmit('FAILED')"
+            (click)="onReject()"
           >
             Reject
           </button>
-          <button
-            type="button"
-            class="btn btn-success"
-            (click)="onSubmit('PASSED')"
-          >
+          <button type="button" class="btn btn-success" (click)="onApprove()">
             Approve
           </button>
         </div>

@@ -262,18 +262,23 @@
     }
 
     .skill-pill {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      font-size: .8rem;
       border-radius: 60px;
       padding: 0.3rem 0.8rem;
     }
 
     .hidden-skills {
-      top: 100%;
-      left: 0;
+      top:-5rem;
+      left:0;
       z-index: 10;
       border: 1px solid #ccc;
       border-radius: 4px;
 
       .more-pill {
+        font-size: .8rem;
         color: black;
       }
     }
@@ -282,6 +287,8 @@
       border-radius: 50%;
       padding: 8px 12px;
       cursor: pointer;
+      background: rgba(84, 84, 84, 1);
+
     }
   }
 
@@ -307,4 +314,8 @@
     font-size: 12px;
     padding: 0.5em 0.75em;
   }
+}
+
+.cross{
+cursor: pointer;
 }

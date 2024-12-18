@@ -11,7 +11,7 @@ import { HiringManagerService } from '../../../../service/hiring-manager.service
 })
 export class CandidateInfoComponent {
   @Input() candidate: any;
-  @Output() close = new EventEmitter<void>();
+  @Output() close: EventEmitter<void> = new EventEmitter();
 
   isInterviewScheduled: boolean = true;
   isSelected: boolean = true;
@@ -64,23 +64,12 @@ export class CandidateInfoComponent {
       .candidateStatus(candidate.jobId, candidate.candidateId)
       .subscribe((res: any) => {
         if (res.isSuccess) {
-          console.log('response--->', res);
-
-          // Step 1: Order the assessment names to sort them
-          const order = ['AI Based Interview', 'AI Based MCQ', 'Teams Meeting'];
-          let flag = 0;
-
-          // Step 2: Sort the assessments based on the order
-          this.assessmentDetails = res.result.sort((a: any, b: any) => {
-            return (
-              order.indexOf(a.assessmentName) - order.indexOf(b.assessmentName)
-            );
+          this.assessmentDetails = res.result?.sort((a: any, b: any) => {
+            return a.assessmentSqnc - b.assessmentSqnc;
           });
 
-          // Step 3: Identify the first "Pending" step and set it as the component
           res.result.map((item: any) => {
-            if (item.status === 'Pending' && flag === 0) {
-              flag = 1;
+            if (item.status === 'Pending') {
               this.component = item.assessmentName;
             }
           });
@@ -92,18 +81,18 @@ export class CandidateInfoComponent {
     this.close.emit();
   }
 
-  onSubmit(status: string) {
+  onReject() {
     const jasonBody = {
       jobId: this.candidate.jobId,
       candidateId: this.candidate.candidateId,
-      status: status,
-      profileJourney: status,
+      status: 'REJECTED',
+      profileJourney: 'SELECTION',
     };
-    console.log('jasonBody', jasonBody);
+
     this.hiringManagerService.callProfileUpdateJurney(jasonBody).subscribe(
       (response: any) => {
         if (response.isSuccess) {
-          console.log('Profile updated successfully');
+          console.log(response);
         } else {
           console.error('Failed to update profile');
         }
@@ -112,5 +101,33 @@ export class CandidateInfoComponent {
         console.error('Error updating profile:', error);
       }
     );
+    this.close.emit();
+  }
+
+  onApprove() {
+    const jasonBody = {
+      jobId: this.candidate.jobId,
+      candidateId: this.candidate.candidateId,
+      status: 'SELECTED',
+      profileJourney: 'SELECTION',
+    };
+
+    this.hiringManagerService.callProfileUpdateJurney(jasonBody).subscribe(
+      (response: any) => {
+        if (response.isSuccess) {
+          console.log(response);
+        } else {
+          console.error('Failed to update profile');
+        }
+      },
+      (error) => {
+        console.error('Error updating profile:', error);
+      }
+    );
+    this.close.emit();
+  }
+
+  getImagePath(assessmentName: string): string {
+    return `public/assets/icons/${assessmentName}.svg`;
   }
 }

@@ -60,4 +60,8 @@ export class CandidateService {
   evaluateMcq(jsonBody: any) {
     return this.http.post(POSTurl.evaluateMCQ, jsonBody);
   }
+
+  UpdateProfileUpdateStatus(jsonBody: any) {
+    return this.http.post(POSTurl.callProfileUpdateJurney, jsonBody);
+  }
 }

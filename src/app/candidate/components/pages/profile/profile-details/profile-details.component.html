@@ -65,27 +65,32 @@
       <div class="company d-flex flex-column" *ngIf="profile?.latestExperience">
         <p>{{ profile?.latestExperience?.company }}</p>
         <div class="d-flex align-items-center gap-3">
-          <p class="sub-text">
+          <!-- <p class="sub-text">
             {{ profile?.latestExperience?.employmentType }}
           </p>
           <div
             class="dot"
             *ngIf="profile?.latestExperience?.period?.length"
           ></div>
-          <p class="sub-text">{{ profile?.latestExperience?.period }}</p>
-          <div
+          <p class="sub-text">{{ profile?.latestExperience?.period }}</p> -->
+          <!-- <div
             class="dot"
             *ngIf="profile?.latestExperience?.location?.length"
           ></div>
-          <p class="sub-text">{{ profile?.latestExperience?.location }}</p>
+          <p class="sub-text">{{ profile?.latestExperience?.location }}</p> -->
+          <div
+            class="dot"
+            *ngIf="profile?.latestExperience"
+          ></div>
+          <p class="sub-text  py-4">{{ profile?.latestExperience?.position }}</p>
         </div>
       </div>
-      <div class="job-position ps-4" *ngIf="profile?.latestExperience">
+      <!-- <div class="job-position ps-4" *ngIf="profile?.latestExperience">
         <div class="job-title d-flex align-items-center gap-3">
-          <div class="big-dot"></div>
-          <p>{{ profile?.latestExperience?.position }}</p>
+          <div class="dot"></div>
+          <p class="sub-text">{{ profile?.latestExperience?.position }}</p>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="candidate-experience">
       <p>Latest Education</p>

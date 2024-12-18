@@ -53,8 +53,6 @@ export class CandidateService {
   ): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(
       GETurl.getMCQ + `/${aid}/${jobId}/${cid}`
-      // this.assessment +
-      //   `ASSESSMENTSERVICE/ASSESSMENT/${aid}/JOB/${jobId}/CANDIDATE/${cid}/GETMCQ`
     );
   }
   evaluateMcq(jsonBody: any) {

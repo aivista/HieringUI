@@ -137,19 +137,17 @@
       </div>
       <div>
         <app-introductory-call
-          *ngIf="comoponent === 'AI Based Interview'"
+          *ngIf="comoponent === 'AI Screening'"
           (showAiAvatar)="showAiavatar()"
         ></app-introductory-call>
-        <app-assessment
-          *ngIf="comoponent === 'AI Based Assessment'"
-        ></app-assessment>
+        <app-assessment *ngIf="comoponent === 'Assessment'"></app-assessment>
         <app-ai-avatar-interview
           *ngIf="comoponent === 'Aiavatar'"
           (showPopupEvent)="showPopup()"
         ></app-ai-avatar-interview>
       </div>
       <app-meating-shedule
-        *ngIf="comoponent === 'InPerson Interview'"
+        *ngIf="comoponent === 'Teams Interview'"
       ></app-meating-shedule>
       <app-congratulation
         [isPopupVisible]="isPopupVisible"

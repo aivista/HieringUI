@@ -3,9 +3,11 @@ import { Component, Input, input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CongratulationComponent } from '../interview-steps/congratulation/congratulation.component';
 import { CandidateService } from '../../../service/candidate.service';
-import { ApiResponse,Question,QuestionResponse } from '../../../../interfaces/interface';
-
-
+import {
+  ApiResponse,
+  Question,
+  QuestionResponse,
+} from '../../../../interfaces/interface';
 
 @Component({
   standalone: true,
@@ -15,54 +17,51 @@ import { ApiResponse,Question,QuestionResponse } from '../../../../interfaces/in
   styleUrls: ['./assessment.component.scss'],
 })
 export class AssessmentComponent {
+  button_value: any;
   constructor(
     private router: Router,
     private questionsService: CandidateService,
-    private route:ActivatedRoute,
-    
+    private route: ActivatedRoute
   ) {}
   // State variables
   testStarted: boolean = false;
   currentQuestionIndex: number = 0;
-  candidateId:number=0
-  jobId:number=0
+  candidateId: number = 0;
+  jobId: number = 0;
   selectedAnswers: any[] = [];
-  questions: Question[]=[];
-  
+  questions: Question[] = [];
 
   ngOnInit() {
+    this.button_value = localStorage.getItem('button_value');
     this.route.queryParams.subscribe((params) => {
       this.candidateId = params['candidateId'];
       this.jobId = params['jobId'];
-     
-    const assid= this.questionsService.getData("assessmentId");
-   
-    
-    this.fetchQuestions(assid, this.jobId, this.candidateId);
+
+      // const assid = this.questionsService.getData('assessmentId');
+      const assid = 1;
+
+      this.fetchQuestions(assid, this.jobId, this.candidateId);
     });
-    
   }
   // Sample Questions Array
- 
 
   fetchQuestions(aid: number, jobId: number, cid: number) {
     this.questionsService.getJobQuestions(aid, jobId, cid).subscribe(
       (questions) => {
         // this.questions = questions.result;
-      
-        this.questions = questions.result.map((item:QuestionResponse )=> ({
+
+        this.questions = questions.result.map((item: QuestionResponse) => ({
           question: item.question,
-          id:item.id,
+          id: item.id,
           // correctOption:item.correctOption,
-          options: [item.option1, item.option2, item.option3, item.option4]
-      }));
-      
-      this.selectedAnswers = this.questions.map((q:any) => ({
-        id: q.id,
-        selectedOption: null
-      }));
-      console.log(" this.questions", this.questions);
-      
+          options: [item.option1, item.option2, item.option3, item.option4],
+        }));
+
+        this.selectedAnswers = this.questions.map((q: any) => ({
+          id: q.id,
+          selectedOption: null,
+        }));
+        console.log(' this.questions', this.questions);
       },
       (error) => {
         // Handle errors
@@ -98,18 +97,18 @@ export class AssessmentComponent {
   // Submit Test
   submitTest(): void {
     console.log('Selected Answers:', this.selectedAnswers);
-    const jsonBody={
-      "jobId": this.jobId,
-      "candidateId": this.candidateId,
-      "assessmentId": 1,
-      "data": this.selectedAnswers
-    }
-    this.questionsService.evaluateMcq(jsonBody).subscribe((res:any)=>{
-      if(res.isSuccess){
+    const jsonBody = {
+      jobId: this.jobId,
+      candidateId: this.candidateId,
+      assessmentId: 1,
+      data: this.selectedAnswers,
+    };
+    this.questionsService.evaluateMcq(jsonBody).subscribe((res: any) => {
+      if (res.isSuccess) {
         this.isPopupVisible = true;
       }
-    })
-    
+    });
+
     // Add submission logic here
   }
 

@@ -16,6 +16,7 @@
 }
 
 .cjd-back-icon {
+  font-size: 14px;
   height: 14px;
   width: 24px;
   cursor: pointer;
@@ -28,7 +29,7 @@
 
 .cjd-jobs-text {
   color: #bdbdbd;
-  size: 14px;
+  font-size: 14px;
   margin-right: 5px;
 }
 
@@ -39,10 +40,12 @@
 .cjd-dex-text {
   margin-left: 5px;
   color: #767fff;
+  font-size: 14px;
 }
 
 .jcd-body {
   margin-top: 10px;
+  // padding: 20px;
   background: linear-gradient(137.88deg, #1e222a 21.56%, #272c37 100%);
   border-radius: 10px;
   border: 0.5px solid;
@@ -205,6 +208,7 @@
   align-items: center;
   border: 1px solid;
   border-radius: 30px;
+  color: #f9f9f9;
   border-image-source: linear-gradient(
     180deg,
     rgba(139, 4, 245, 0.3) 0%,
@@ -219,7 +223,9 @@
   justify-content: center;
   align-items: center;
   border: 1px solid;
+  margin-right: 5px;
   border-radius: 6px;
+  color: #f9f9f9;
   background: #8b04f5;
   border: 1px solid #8b04f5;
 }

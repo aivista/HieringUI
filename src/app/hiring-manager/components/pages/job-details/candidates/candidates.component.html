@@ -6,22 +6,36 @@
 
   <!-- Navbar -->
   <nav class="nav-bar mb-4">
-    <span class="nav-item" [class.activeTab]="activeTab === 'Shortlisted'" (click)="setActiveTab('Shortlisted')">
+    <span
+      class="nav-item"
+      [class.activeTab]="activeTab === 'Shortlisted'"
+      (click)="setActiveTab('Shortlisted')"
+    >
       Shortlisted
     </span>
-    <span class="nav-item" [class.activeTab]="activeTab === 'Applied'" (click)="setActiveTab('Applied')">
+    <span
+      class="nav-item"
+      [class.activeTab]="activeTab === 'Applied'"
+      (click)="setActiveTab('Applied')"
+    >
       Applied
     </span>
   </nav>
 
   <!-- Candidate List -->
   <div *ngIf="activeTab === 'Shortlisted'" class="main-candisate-card">
-    <ng-container *ngIf="shortlistedCandidates?.length > 0; else noShortlistedData">
-      <div *ngFor="let candidate of shortlistedCandidates" class="candidate-card" (click)="openModal(candidate)">
+    <ng-container
+      *ngIf="shortlistedCandidates?.length > 0; else noShortlistedData"
+    >
+      <div
+        *ngFor="let candidate of shortlistedCandidates"
+        class="candidate-card"
+        (click)="openModal(candidate)"
+      >
         <div class="candidate-info">
           <div class="left-part">
             <h3 [ngClass]="{ 'active-name': isCandidateSelected(candidate) }">
-              {{ candidate?.first_name +' ' + candidate?.last_name}}
+              {{ candidate?.first_name + " " + candidate?.last_name }}
             </h3>
             <div class="star">
               <div class="rating">
@@ -29,11 +43,17 @@
               </div>
               <div class="text">{{ candidate.star }}</div>
             </div>
-            <div class="status" [ngClass]="getStatusClass(candidate?.latestStatus)">
+            <div
+              class="status"
+              [ngClass]="getStatusClass(candidate?.latestStatus)"
+            >
               {{ candidate?.latestStatus }}
             </div>
           </div>
-          <div class="experience"><span class="text-white">{{ candidate?.experience }}</span> yrs of exp.</div>
+          <div class="experience">
+            <span class="text-white">{{ candidate?.experience }}</span> yrs of
+            exp.
+          </div>
         </div>
         <div class="skills">
           <!-- Show only the first 3 skills -->
@@ -50,7 +70,7 @@
           <!-- Show "+count" if there are more than 3 skills -->
           <div
             *ngIf="candidate?.skills?.split(',').length > 2"
-            class="skill-pill2 "
+            class="skill-pill2"
             (mouseenter)="candidate.showHiddenSkills = true"
             (mouseleave)="candidate.showHiddenSkills = false"
           >
@@ -82,9 +102,12 @@
       <div *ngFor="let candidate of appliedCandidates" class="candidate-card">
         <div class="candidate-info">
           <div class="left-part">
-            <h3>{{ candidate.first_name + ' ' + candidate.last_name}}</h3>
+            <h3>{{ candidate.first_name + " " + candidate.last_name }}</h3>
           </div>
-          <div class="experience"><span class="text-white">{{ candidate?.experience }}</span> yrs of exp.</div>
+          <div class="experience">
+            <span class="text-white">{{ candidate?.experience }}</span> yrs of
+            exp.
+          </div>
         </div>
         <!-- <div class="skills">
           <span *ngFor="let skill of candidate?.skills?.split(',')" class="skill">{{
@@ -106,15 +129,14 @@
           <!-- Show "+count" if there are more than 3 skills -->
           <div
             *ngIf="candidate?.skills?.split(',').length > 2"
-            class="skill-pill2 "
+            class="skill-pill2"
             (mouseenter)="candidate.showHiddenSkills = true"
             (mouseleave)="candidate.showHiddenSkills = false"
-        
           >
             +{{ candidate?.skills?.split(",").length - 2 }}
 
             <!-- Hidden pills shown on hover -->
-            <div 
+            <div
               class="hidden-skills bg-light p-2 position-absolute"
               *ngIf="candidate.showHiddenSkills"
             >
@@ -133,8 +155,11 @@
       <div class="no-data">No data available</div>
     </ng-template>
   </div>
-  <div class=" position-absolute top-0 end-0 popup-content">
-    <app-candidate-info *ngIf="selectedCandidate" [candidate]="selectedCandidate"
-       (close)="onClose()"></app-candidate-info>
+  <div class="position-absolute top-0 end-0 popup-content">
+    <app-candidate-info
+      *ngIf="selectedCandidate"
+      [candidate]="selectedCandidate"
+      (close)="onClose()"
+    ></app-candidate-info>
   </div>
 </div>

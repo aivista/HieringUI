@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  Input,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { CandidateInfoComponent } from '../candidate-info/candidate-info.component';
 import { HiringManagerService } from '../../../../service/hiring-manager.service';
 
@@ -11,6 +17,9 @@ import { HiringManagerService } from '../../../../service/hiring-manager.service
   styleUrl: './candidates.component.scss',
 })
 export class CandidatesComponent {
+  @ViewChild(CandidateInfoComponent)
+  candidateInfoComponent!: CandidateInfoComponent;
+
   activeTab: string = 'Shortlisted'; // Default active tab
   // shortlistedCandidates = [
   //   {
@@ -47,7 +56,10 @@ export class CandidatesComponent {
 
   appliedCandidates: any = [];
   jobSucribe: any;
-  constructor(private hiringManagerService: HiringManagerService) {
+  constructor(
+    private hiringManagerService: HiringManagerService,
+    private cdRef: ChangeDetectorRef
+  ) {
     this.getShortlisted();
   }
   setActiveTab(tab: string): void {
@@ -68,6 +80,7 @@ export class CandidatesComponent {
     }
   }
   ngOnInit() {}
+
   getShortlisted() {
     this.jobSucribe = this.hiringManagerService.jobSubscribe.subscribe(
       (res: any) => {
@@ -75,10 +88,12 @@ export class CandidatesComponent {
           .getShortlistedJobs(res.id)
           .subscribe((result: any) => {
             if (result.isSuccess) {
-              this.shortlistedCandidates = result.result.map((candidate: any) => ({
-                ...candidate,
-                showHiddenSkills: false, // Add hover state for each candidate
-              }));
+              this.shortlistedCandidates = result.result.map(
+                (candidate: any) => ({
+                  ...candidate,
+                  showHiddenSkills: false, // Add hover state for each candidate
+                })
+              );
             }
           });
         this.hiringManagerService
@@ -124,7 +139,7 @@ export class CandidatesComponent {
   remainingSkills: string[] = [];
   showRemaining = false;
 
-  ngOnChanges(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     const skillsArray = this.skills ? this.skills.split(',') : [];
     this.displayedSkills = skillsArray.slice(0, 3); // Show the first three
     this.remainingSkills = skillsArray.slice(3); // Rest of the skills

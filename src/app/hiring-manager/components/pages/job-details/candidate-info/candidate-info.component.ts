@@ -1,21 +1,28 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HiringManagerService } from '../../../../service/hiring-manager.service';
+import { MessageService } from 'primeng/api';
+import { Toast } from 'primeng/toast';
 
 @Component({
   selector: 'app-candidate-info',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, Toast],
   templateUrl: './candidate-info.component.html',
   styleUrl: './candidate-info.component.scss',
+  providers: [MessageService],
 })
 export class CandidateInfoComponent {
   @Input() candidate: any;
   @Output() close: EventEmitter<void> = new EventEmitter();
+  // @Output() refresh: EventEmitter<void> = new EventEmitter<void>();
 
   isInterviewScheduled: boolean = true;
   isSelected: boolean = true;
-  constructor(private hiringManagerService: HiringManagerService) {}
+  constructor(
+    private hiringManagerService: HiringManagerService,
+    private messageService: MessageService
+  ) {}
 
   candidateStatus: string = '';
   showHiddenSkills: boolean = false;
@@ -101,7 +108,15 @@ export class CandidateInfoComponent {
         console.error('Error updating profile:', error);
       }
     );
+
+    this.messageService.add({
+      severity: 'warn',
+      summary: 'Rejected',
+      detail: `Candidate ${this.selectedCandidateDetails?.first_name} Rejected`,
+    });
+    alert(`Candidate ${this.selectedCandidateDetails?.first_name} Rejected`);
     this.close.emit();
+    // this.refresh.emit();
   }
 
   onApprove() {
@@ -124,7 +139,14 @@ export class CandidateInfoComponent {
         console.error('Error updating profile:', error);
       }
     );
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success',
+      detail: `Candidate ${this.selectedCandidateDetails?.first_name} Approved`,
+    });
+    alert(`Candidate ${this.selectedCandidateDetails?.first_name} Approved`);
     this.close.emit();
+    // this.refresh.emit();
   }
 
   getImagePath(assessmentName: string): string {

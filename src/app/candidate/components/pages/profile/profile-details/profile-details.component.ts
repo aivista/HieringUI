@@ -70,8 +70,7 @@ export class ProfileDetailsComponent implements OnInit {
               } ${ProfileDetails.middleName || ''} ${
                 ProfileDetails.last_name || ''
               }`.trim(),
-              imageUrl:
-                ProfileDetails.imageUrl || 'assets/icons/avatarIcon.svg',
+              imageUrl: ProfileDetails.imageUrl || 'assets/icons/darkUser.svg',
               certifications: (ProfileDetails.skills || '').split(','),
               email: ProfileDetails.email || '',
               phone: ProfileDetails.contact || '',

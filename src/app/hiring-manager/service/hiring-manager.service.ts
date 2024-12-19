@@ -49,9 +49,9 @@ export class HiringManagerService {
     return this.http.get(GETurl.appliedJobs + id);
   }
 
-  getJobsDesc() {
-    const url = GETurl.getJobDescription;
-    return this.http.get(url);
+  getJobsDesc(data:any) {
+    const url = POSTurl.getJobDescription;
+    return this.http.post(url,data);
   }
   getUpcomingInterview(jobId: string, managerId: string) {
     return this.http.get(GETurl.upcomingInterview + jobId + '/' + managerId);

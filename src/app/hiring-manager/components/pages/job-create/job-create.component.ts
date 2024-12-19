@@ -17,6 +17,7 @@ import {
 // import {FormGroup, FormControl} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-job-create',
@@ -58,6 +59,8 @@ export class JobCreateComponent {
   businessDependencies: string | undefined;
   JDData: any = [];
   profileForm: FormGroup;
+  JDResponse: any = [];
+  ManagerEmail: string = '';
   // Job description placeholder
   jobDescription: string = `
     The Chief Operating Officer (COO) will be responsible for overall operations, management, and execution...
@@ -86,6 +89,11 @@ export class JobCreateComponent {
     this.hiringManagerDetails = getHRID ? JSON.parse(getHRID) : null;
     // console.log('getHRID', this.hiringManagerDetails);
   }
+  ngOnInit() {
+    const response = this.apiService.getData('hiringManagerDetails');
+    console.log(response);
+    this.ManagerEmail = response.email;
+  }
 
   addPrimarySkill(event: Event): void {
     const selectElement = event.target as HTMLSelectElement;
@@ -108,10 +116,34 @@ export class JobCreateComponent {
   }
 
   getJobDetails() {
-    this.apiService.getJobsDesc().subscribe((res: any) => {
+    this.JDData = [];
+    this.JDResponse = [];
+    const jsonBody = {
+      jobTitle: this.profileForm.value.jobTitle,
+      jobExperienceRequired: this.profileForm.value.experience,
+      jobLocation: this.profileForm.value.location,
+      jobPrimarySkills: this.profileForm.value.primarySkills,
+      jobSecondarySkills: this.profileForm.value.secondarySkills,
+      jobEducationalQualifications: ['Master', 'Bachelor', '10th/12th'],
+      jobBusinessDependencies: this.profileForm.value.businessDependencies,
+      jobRole: this.profileForm.value.role,
+      jobType: 'Fulltime',
+    };
+    console.log(jsonBody);
+
+    this.apiService.getJobsDesc(jsonBody).subscribe((res: any) => {
       if (res.isSuccess === true) {
-        // console.log('response', res.result);
-        this.JDData = res.result;
+        let subObj = {};
+        this.JDResponse = res.result;
+        for (const [key, value] of Object.entries(res.result)) {
+          if (Array.isArray(value)) {
+            subObj = { Title: key, Description: value.join('\n') };
+          } else {
+            subObj = { Title: key, Description: value };
+          }
+          this.JDData.push(subObj);
+        }
+        console.log(this.JDData);
       }
     });
   }
@@ -125,19 +157,19 @@ export class JobCreateComponent {
     });
 
     if (this.profileForm.valid) {
-      // console.log('Form Value: ', this.profileForm.value);
       const jsonBody = {
-        jd: this.profileForm.value.jobTitle,
-        experience: this.profileForm.value.experience,
-        location: this.profileForm.value.location,
-        role: this.profileForm.value.role,
-        primarySkills: this.profileForm.value.primarySkills.toString(),
-        secondarySkills: this.profileForm.value.secondarySkills.toString(),
-        businessDependencies: this.profileForm.value.businessDependencies,
-        createdBy: '',
-        hiringManagerId: this.hiringManagerDetails.email,
+        jobTitle: this.profileForm.value.jobTitle,
+        jobExperienceRequired: this.profileForm.value.experience,
+        jobLocation: this.profileForm.value.location,
+        jobPrimarySkills: this.profileForm.value.primarySkills,
+        jobSecondarySkills: this.profileForm.value.secondarySkills,
+        jobEducationalQualifications: ['Master', 'Bachelor', '10th/12th'],
+        jobRole: this.profileForm.value.role,
+        jobType: 'Fulltime',
+        jobHiringManager: this.ManagerEmail,
+        jobDescriptionText: this.JDResponse,
       };
-      // console.log('json body', jsonBody);
+      console.log('json body', JSON.stringify(jsonBody));
       this.apiService.createJobs(jsonBody).subscribe((res: any) => {
         if (res.isSuccess === true) {
           this.router.navigate(['/job-details']);

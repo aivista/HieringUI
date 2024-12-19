@@ -276,16 +276,22 @@
                   <div class="col-12" *ngFor="let item of JDData">
                     <div class="role-overview">
                       <label class="field-text-small"
-                        >{{ item.key }}<label class="aristick">*</label></label
+                        >{{ item.Title }}<label class="aristick">*</label></label
                       >
                       <br />
-                      <textarea
+                       <textarea
+                        *ngIf="!item.type"
                         pInputTextarea
-                        rows="{{ getRowSize(item.value.length) }}"
-                        [(ngModel)]="item.value"
+                        [(ngModel)]="item.Description"
                         [ngModelOptions]="{ standalone: true }"
                         class="w-100 jd-cutom-textarea"
                       ></textarea>
+                      <!-- <br />
+                      <textarea *ngIf="item.type"   
+                         pInputTextarea
+                        [(ngModel)]="item.Description"
+                        [ngModelOptions]="{ standalone: true }"
+                        >{{item.Description.join('\n')}}</textarea> -->
                     </div>
                   </div>
                 </div>

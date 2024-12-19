@@ -65,7 +65,7 @@ export class InterviewStepsComponent {
         }
       }
 
-      //this.comoponent = 'AI Screening';
+      // this.comoponent = 'AI Screening';
     });
   }
 

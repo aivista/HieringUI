@@ -25,7 +25,6 @@ export const POSTurl = {
   candidateDetails: ProfileServicesUrl + 'LoginServices/candidate/details',
   createdJob: SmartServiceUrl + 'SmartServices/CreatedJob',
   getJobDescription: SmartServiceUrl + 'SmartServices/GetJobDescription',
-  // CreateJob: ProfileServicesUrl + 'Job/CreatedJob', SmartServiceUrl +
   evaluateMCQ: AssessmentServicesUrl + 'ASSESSMENTSERVICE/EvaluateMCQ',
   callProfileUpdateJurney:
     AssessmentServicesUrl + 'ASSESSMENTSERVICE/CallUpdateProfileJourneyStatus',

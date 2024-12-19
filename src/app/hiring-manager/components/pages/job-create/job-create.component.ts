@@ -39,7 +39,7 @@ import { Title } from '@angular/platform-browser';
 export class JobCreateComponent {
   jobTitles = ['Chief Operating Officer', 'Data Scientist', 'Project Manager'];
   experienceOptions = ['0-2 years', '3-5 years', '6-10 years', '10+ years'];
-  locationOptions = ['Delhi', 'Mumbai', 'Bangalore', 'Remote'];
+  locationOptions = ['Delhi', 'Mumbai', 'Bangalore', 'Mundra', 'Remote'];
   roleOptions = [
     'Chief Operating Officer',
     'Data Scientist',
@@ -157,7 +157,7 @@ export class JobCreateComponent {
     });
 
     if (this.profileForm.valid) {
-      const jsonBody = {
+      let jsonBody = {
         jobTitle: this.profileForm.value.jobTitle,
         jobExperienceRequired: this.profileForm.value.experience,
         jobLocation: this.profileForm.value.location,
@@ -169,6 +169,7 @@ export class JobCreateComponent {
         jobHiringManager: this.ManagerEmail,
         jobDescriptionText: this.JDResponse,
       };
+
       console.log('json body', JSON.stringify(jsonBody));
       this.apiService.createJobs(jsonBody).subscribe((res: any) => {
         if (res.isSuccess === true) {

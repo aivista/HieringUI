@@ -77,10 +77,15 @@ export class JobsComponent {
     }
   }
   getJobDetails(email: string) {
+    let formatedData = [];
     this.hiringManagerService.getHiringManagerJobs(email).subscribe(
       (res: any) => {
-        console.log('rews', res);
+        //console.log('rews', res);
         this.JobDetails = res.result;
+        this.JobDetails.forEach((el: any) => {
+          el['Title'] = JSON.parse(el['jd'])?.['Job Title'];
+        });
+        console.log(this.JobDetails);
         this.hiringManagerService.jobSubscribe.next(this.JobDetails[0]);
       },
       (e) => {}

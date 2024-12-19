@@ -23,9 +23,8 @@ export const POSTurl = {
   hiringmanagerLogin: ProfileServicesUrl + 'LoginServices/login/hiringManager',
   candidateLogin: ProfileServicesUrl + 'LoginServices/login/candidate',
   candidateDetails: ProfileServicesUrl + 'LoginServices/candidate/details',
-  createdJob: 'http://122.163.121.176:3014/api/SmartServices/CreatedJob',
-  getJobDescription:
-    'http://122.163.121.176:3014/api/SmartServices/GetJobDescription',
+  createdJob: SmartServiceUrl + 'SmartServices/CreatedJob',
+  getJobDescription: SmartServiceUrl + 'SmartServices/GetJobDescription',
   // CreateJob: ProfileServicesUrl + 'Job/CreatedJob', SmartServiceUrl +
   evaluateMCQ: AssessmentServicesUrl + 'ASSESSMENTSERVICE/EvaluateMCQ',
   callProfileUpdateJurney:

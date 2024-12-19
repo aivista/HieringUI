@@ -43,7 +43,7 @@ export class InterviewStepsComponent {
   }
 
   getstepperdata(candidateId: any, jobId: any) {
-    console.log('getstepperdata called');
+    //console.log('getstepperdata called');
 
     const data = {
       jobid: jobId,
@@ -53,7 +53,7 @@ export class InterviewStepsComponent {
       this.assessmentDetails = res.result?.sort((a: any, b: any) => {
         return a.assessmentSqnc - b.assessmentSqnc;
       });
-
+      // console.log(res);
       for (let i = 0; i < res.result.length; i++) {
         if (res.result[i].status == 'Pending') {
           this.comoponent = res.result[i].assessmentName;
@@ -64,7 +64,8 @@ export class InterviewStepsComponent {
           break;
         }
       }
-      this.comoponent = 'AI Screening';
+
+      //this.comoponent = 'AI Screening';
     });
   }
 

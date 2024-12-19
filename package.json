@@ -19,10 +19,14 @@
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
     "@primeng/themes": "^18.0.0",
+    "assert": "^2.1.0",
     "bootstrap": "^5.3.3",
+    "microsoft-cognitiveservices-speech-sdk": "^1.42.0",
     "primeng": "^18.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "url": "^0.11.4",
+    "util": "^0.12.5",
     "zone.js": "~0.14.10"
   },
   "devDependencies": {

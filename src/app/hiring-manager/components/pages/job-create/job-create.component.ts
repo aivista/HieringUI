@@ -57,6 +57,7 @@ export class JobCreateComponent {
   // ];
   newSecondarySkill: string = '';
   newPrimarySkill: string = '';
+  newRole: string = '';
 
   // Model for form fields
   selectedJobTitle: string | undefined;
@@ -128,36 +129,46 @@ export class JobCreateComponent {
   }
 
   getJobDetails() {
-    this.JDData = [];
-    this.JDResponse = [];
-    const jsonBody = {
-      jobTitle: this.profileForm.value.jobTitle,
-      jobExperienceRequired: this.profileForm.value.experience,
-      jobLocation: this.profileForm.value.location,
-      jobPrimarySkills: this.profileForm.value.primarySkills,
-      jobSecondarySkills: this.profileForm.value.secondarySkills,
-      jobEducationalQualifications: ['Master', 'Bachelor', '10th/12th'],
-      jobBusinessDependencies: this.profileForm.value.businessDependencies,
-      jobRole: this.profileForm.value.role,
-      jobType: 'Fulltime',
-    };
-    console.log(jsonBody);
-
-    this.apiService.getJobsDesc(jsonBody).subscribe((res: any) => {
-      if (res.isSuccess === true) {
-        let subObj = {};
-        this.JDResponse = res.result;
-        for (const [key, value] of Object.entries(res.result)) {
-          if (Array.isArray(value)) {
-            subObj = { Title: key, Description: value.join('\n') };
-          } else {
-            subObj = { Title: key, Description: value };
-          }
-          this.JDData.push(subObj);
-        }
-        console.log(this.JDData);
+    Object.keys(this.profileForm.controls).forEach((field) => {
+      const control = this.profileForm.get(field);
+      if (control) {
+        control.markAsTouched();
       }
     });
+    if (this.profileForm.valid) {
+      this.JDData = [];
+      this.JDResponse = [];
+      const jsonBody = {
+        jobTitle: this.profileForm.value.jobTitle,
+        jobExperienceRequired: this.profileForm.value.experience,
+        jobLocation: this.profileForm.value.location,
+        jobPrimarySkills: this.profileForm.value.primarySkills,
+        jobSecondarySkills: this.profileForm.value.secondarySkills,
+        jobEducationalQualifications: ['Master', 'Bachelor', '10th/12th'],
+        jobBusinessDependencies: this.profileForm.value.businessDependencies,
+        jobRole: this.profileForm.value.role,
+        jobType: 'Fulltime',
+      };
+      console.log(jsonBody);
+
+      this.apiService.getJobsDesc(jsonBody).subscribe((res: any) => {
+        if (res.isSuccess === true) {
+          let subObj = {};
+          this.JDResponse = res.result;
+          for (const [key, value] of Object.entries(res.result)) {
+            if (Array.isArray(value)) {
+              subObj = { Title: key, Description: value.join('\n') };
+            } else {
+              subObj = { Title: key, Description: value };
+            }
+            this.JDData.push(subObj);
+          }
+          console.log(this.JDData);
+        }
+      });
+    } else {
+      console.log('Form is invalid');
+    }
   }
 
   addUser() {
@@ -214,6 +225,13 @@ export class JobCreateComponent {
     if (newPrimarySkill && newPrimarySkill.trim()) {
       this.primarySkills.push(newPrimarySkill);
       // this.newPrimarySkill = '';
+    }
+  }
+  addNewRole(): void {
+    const newRole = prompt('Enter a new role:');
+    if (newRole && newRole.trim()) {
+      this.roleOptions.push(newRole);
+      // this.newRole = ''; // No need to reset here
     }
   }
 }

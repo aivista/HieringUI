@@ -36,10 +36,9 @@ export class AssessmentComponent {
     this.route.queryParams.subscribe((params) => {
       this.candidateId = params['candidateId'];
       this.jobId = params['jobId'];
-
-      // const assid = this.questionsService.getData('assessmentId');
       const assid = 1;
 
+      // const assid = this.questionsService.getData('assessmentId');
       this.fetchQuestions(assid, this.jobId, this.candidateId);
     });
   }

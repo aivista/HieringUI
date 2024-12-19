@@ -11,11 +11,12 @@ import { AvatarService } from '../../../../service/avatar.service';
 import * as sdk from 'microsoft-cognitiveservices-speech-sdk';
 import { QuestionSet } from '../../../../../../environments/QuestionSet';
 import { config } from '../../../../../../environments/config';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-ai-avatar-interview',
   standalone: true,
-  imports: [],
+  imports: [NgxSpinnerModule],
   templateUrl: './ai-avatar-interview.component.html',
   styleUrl: './ai-avatar-interview.component.scss',
 })
@@ -66,7 +67,8 @@ export class AiAvatarInterviewComponent {
   constructor(
     private service: CandidateService,
     private route: ActivatedRoute,
-    private _avatarService: AvatarService
+    private _avatarService: AvatarService,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit() {
@@ -95,15 +97,11 @@ export class AiAvatarInterviewComponent {
     this.candidateFullName();
     this.getJobDescription();
 
-    const now = new Date();
-    const hours = now.getHours();
-    const isAmPm = hours >= 12 ? 'PM' : 'AM';
+    console.log(this.fullName, 'fullName');
+  }
 
-    if (isAmPm === 'PM') {
-      this.greetingMessage = 'Good Afternoon ' + this.fullName;
-    } else {
-      this.greetingMessage = 'Good Morning ' + this.fullName;
-    }
+  handleName(event: any) {
+    console.log(event, 'event');
   }
 
   getJobDescription = async () => {
@@ -144,6 +142,8 @@ export class AiAvatarInterviewComponent {
       const response = await this._avatarService.candidateProfile(
         this.candidateId
       );
+      console.log(response, 'res');
+
       this.fullName = response.fullName;
     } catch (error) {
       console.log(error);
@@ -332,10 +332,9 @@ export class AiAvatarInterviewComponent {
     try {
       this.avatarSynthesizer.stopSpeakingAsync().then(() => {
         this.avatarSynthesizer.close();
-        window.location.reload();
+        this.onButtonClick();
+        // window.location.reload();
       });
-
-      this.onButtonClick();
     } catch (e) {
       console.log(e);
     } finally {
@@ -346,6 +345,16 @@ export class AiAvatarInterviewComponent {
     this.cbtn.nativeElement.style.display = 'none';
     this.dbtn.nativeElement.style.display = 'block';
     this.dbtn.nativeElement.disabled = 'true';
+
+    const now = new Date();
+    const hours = now.getHours();
+    const isAmPm = hours >= 12 ? 'PM' : 'AM';
+
+    if (isAmPm === 'PM') {
+      this.greetingMessage = 'Good Afternoon ' + this.fullName;
+    } else {
+      this.greetingMessage = 'Good Morning ' + this.fullName;
+    }
 
     this.log = '';
     // this.spinner.show();
@@ -414,7 +423,8 @@ export class AiAvatarInterviewComponent {
           speech,
           false,
           false,
-          this.jd
+          this.jd,
+          false
         );
 
         this.log = `you: ${response.result['key']}`;
@@ -456,10 +466,14 @@ export class AiAvatarInterviewComponent {
 
           let json: any;
           let coreSkillQuestion: boolean = false;
+          let isItCandidateQuestion: boolean = false;
 
           cars[i] === 'Can you please tell me some of core skills?'
             ? (coreSkillQuestion = true)
             : (coreSkillQuestion = false);
+          cars[i] === 'Do you have any questions for me?'
+            ? (isItCandidateQuestion = true)
+            : (isItCandidateQuestion = false);
 
           const speech = await this.initSession();
 
@@ -467,7 +481,8 @@ export class AiAvatarInterviewComponent {
             speech,
             contextual[i],
             coreSkillQuestion,
-            this.jd
+            this.jd,
+            isItCandidateQuestion
           );
 
           json = response.result;
@@ -636,6 +651,7 @@ export class AiAvatarInterviewComponent {
             error
         );
         console.log(avatarSynthesizer.properties);
+        // this.spinner.hide();
         this.cbtn.nativeElement.style.display = 'block';
         this.dbtn.nativeElement.style.display = 'none';
         alert('Avatar Failed to Start. Try Again!');

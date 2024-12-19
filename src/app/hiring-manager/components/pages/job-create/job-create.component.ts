@@ -14,6 +14,7 @@ import {
   FormGroup,
   FormControl,
 } from '@angular/forms';
+
 // import {FormGroup, FormControl} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -47,7 +48,15 @@ export class JobCreateComponent {
     'Software Developer',
   ];
   primarySkills = ['Management Consulting', 'MS Office', 'Leadership'];
+
   secondarySkills = ['DevOps', 'Agile Methodologies', 'Technical Writing'];
+  // secondarySkills = [
+  //   { label: 'DevOps', value: 'DevOps' },
+  //   { label: 'Agile Methodologies', value: 'Agile Methodologies' },
+  //   { label: 'Technical Writing', value: 'Technical Writing' },
+  // ];
+  newSecondarySkill: string = '';
+  newPrimarySkill: string = '';
 
   // Model for form fields
   selectedJobTitle: string | undefined;
@@ -61,6 +70,9 @@ export class JobCreateComponent {
   profileForm: FormGroup;
   JDResponse: any = [];
   ManagerEmail: string = '';
+  newSkillName: string = '';
+  filteredSkills: { name: string; value: string }[] = []; // Add this line
+
   // Job description placeholder
   jobDescription: string = `
     The Chief Operating Officer (COO) will be responsible for overall operations, management, and execution...
@@ -188,5 +200,20 @@ export class JobCreateComponent {
 
   goBack() {
     this.router.navigate(['/job-details']);
+  }
+  addNewSecondarySkill(): void {
+    const newSecondarySkill = prompt('Enter a new skill:');
+    if (newSecondarySkill && newSecondarySkill.trim()) {
+      this.secondarySkills.push(newSecondarySkill);
+      // this.newSecondarySkill = '';  No need to reset here
+    }
+  }
+
+  addNewPrimarySkill(): void {
+    const newPrimarySkill = prompt('Enter a new skill:');
+    if (newPrimarySkill && newPrimarySkill.trim()) {
+      this.primarySkills.push(newPrimarySkill);
+      // this.newPrimarySkill = '';
+    }
   }
 }

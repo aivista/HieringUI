@@ -147,7 +147,20 @@
                         placeholder="Select"
                         name="primarySkills"
                         class="w-100"
-                      ></p-multiSelect>
+                      >
+                        <ng-template pTemplate="footer">
+                          <div class="p-3 flex justify-between">
+                            <p-button
+                              label="Add New"
+                              severity="primary"
+                              text
+                              size="small"
+                              icon="pi pi-plus"
+                              (click)="addNewPrimarySkill()"
+                            />
+                          </div>
+                        </ng-template>
+                      </p-multiSelect>
 
                       <div
                         class="chip-container flex items-center gap-2 flex-wrap jcd-chip-section"
@@ -188,7 +201,20 @@
                         placeholder="Select"
                         name="secondarySkills"
                         class="w-100"
-                      ></p-multiSelect>
+                      >
+                        <ng-template pTemplate="footer">
+                          <div class="p-3 flex justify-between">
+                            <p-button
+                              label="Add New"
+                              severity="primary"
+                              text
+                              size="small"
+                              icon="pi pi-plus"
+                              (click)="addNewSecondarySkill()"
+                            />
+                          </div>
+                        </ng-template>
+                      </p-multiSelect>
 
                       <div
                         class="chip-container flex items-center gap-2 flex-wrap jcd-chip-section2"
@@ -202,6 +228,7 @@
                         >
                         </p-chip>
                       </div>
+
                       <small
                         class="p-error block"
                         style="color: red; font-size: 10px"
@@ -276,10 +303,11 @@
                   <div class="col-12" *ngFor="let item of JDData">
                     <div class="role-overview">
                       <label class="field-text-small"
-                        >{{ item.Title }}<label class="aristick">*</label></label
+                        >{{ item.Title
+                        }}<label class="aristick">*</label></label
                       >
                       <br />
-                       <textarea
+                      <textarea
                         *ngIf="!item.type"
                         pInputTextarea
                         [(ngModel)]="item.Description"

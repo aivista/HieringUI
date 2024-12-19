@@ -5,6 +5,7 @@ import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,5 +18,9 @@ export const appConfig: ApplicationConfig = {
         preset: Aura,
       },
     }),
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy,
+    },
   ],
 };

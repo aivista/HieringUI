@@ -1,5 +1,60 @@
-<div class="container-fluid p-0 d-flex justify-content-center align-items-center">
-  <div class="dark-card d-flex justify-content-center align-items-center" (click)="onButtonClick()">
-    <span class="text-white fw-semibold fs-5">AI Avatar based interview</span>
+<div
+  class="container-fluid p-0 d-flex justify-content-center align-items-center"
+>
+  <div
+    class="dark-card d-flex justify-content-center align-items-center"
+    (click)="onButtonClick()"
+  >
+    <!-- <span class="text-white fw-semibold fs-5">AI Avatar based interview</span> -->
+    <div class="container myAvatarContainer">
+      <div class="container myAvatarVideoRootDiv d-flex justify-content-around">
+        <div class="myAvatarVideo">
+          <div id="myAvatarVideo" class="myVideoDiv" #videoDiv>
+            <video class="myAvatarVideoElement" #myAvatarVideoEleRef></video>
+
+            <audio #myAvatarAudioEleRef></audio>
+          </div>
+          <div class="myButtonGroup d-flex justify-content-around">
+            <button
+              class="btn btn-success"
+              id="connectBtn"
+              #connectBtn
+              (click)="startSession()"
+            >
+              Connect
+            </button>
+            <button
+              class="btn btn-danger"
+              id="disconnectBtn"
+              #disconnectBtn
+              (click)="stopSession()"
+            >
+              Disconnect
+            </button>
+          </div>
+        </div>
+
+        <div class="myTextArea">
+          <video id="userVid" #videoRef autoPlay muted></video>
+          <h2 class="logsHeader">Your Transcript Will Appear Here</h2>
+          <textarea
+            id="myLogs"
+            readOnly
+            rows="10"
+            cols="50"
+            [value]="log"
+            #textArea
+          ></textarea>
+        </div>
+      </div>
+      <div id="counter" #counter>
+        <img
+          src="../../../../../../../public/assets/png/clock.png"
+          id="myClock"
+        />
+        <p id="seconds" #seconds></p>
+      </div>
+    </div>
+    <!-- <ngx-spinner bdColor = "rgba(0,0,0,0.5)" size="large" color="#fff" type="ball-spin"></ngx-spinner> -->
   </div>
 </div>

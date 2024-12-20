@@ -6,8 +6,8 @@ import { ProfileComponent } from './components/pages/profile/profile.component';
 import { AssessmentComponent } from './components/pages/assessment/assessment.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: CandidateLoginComponent },
+  { path: '', redirectTo: 'clogin', pathMatch: 'full' },
+  { path: 'clogin', component: CandidateLoginComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'interview', component: InterviewStepsComponent },
   { path: 'assessment', component: AssessmentComponent },

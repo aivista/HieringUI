@@ -13,15 +13,15 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'candidate',
+    path: 'cadidateL',
     loadChildren: () =>
       import('./candidate/candidate.module').then((m) => m.CandidateModule),
   },
   { path: '**', redirectTo: '' },
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
+// @NgModule({
+//   imports: [RouterModule.forRoot(routes)],
+//   exports: [RouterModule],
+// })
 export class AppRoutingModule {}

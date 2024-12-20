@@ -10,9 +10,9 @@ import { ApiResponse, Question } from '../../interfaces/interface';
   providedIn: 'root',
 })
 export class CandidateService {
-  url = environment.apiBaseUrl;
-  jobservice = environment.jobService;
-  assessment = environment.assessment;
+  url = environment.ProfileServicesUrl;
+  jobservice = environment.JobServiceUrl;
+  assessment = environment.AssessmentServicesUrl;
   // jobSubscribe = new Subject();
   assessmentId = new Subject();
   candidateId = new Subject();

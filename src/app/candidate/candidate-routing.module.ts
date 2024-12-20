@@ -6,7 +6,7 @@ import { ProfileComponent } from './components/pages/profile/profile.component';
 import { AssessmentComponent } from './components/pages/assessment/assessment.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'clogin', pathMatch: 'full' },
+  { path: '', redirectTo: '/candidate/clogin', pathMatch: 'full' },
   { path: 'clogin', component: CandidateLoginComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'interview', component: InterviewStepsComponent },

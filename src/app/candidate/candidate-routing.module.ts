@@ -5,9 +5,18 @@ import { InterviewStepsComponent } from './components/pages/interview-steps/inte
 import { ProfileComponent } from './components/pages/profile/profile.component';
 import { AssessmentComponent } from './components/pages/assessment/assessment.component';
 
+// const routes: Routes = [
+//   { path: '', redirectTo: '/candidate/clogin', pathMatch: 'full' },
+//   { path: 'login', component: CandidateLoginComponent },
+//   { path: 'profile', component: ProfileComponent },
+//   { path: 'interview', component: InterviewStepsComponent },
+//   { path: 'assessment', component: AssessmentComponent },
+// ];
+
 const routes: Routes = [
-  { path: '', redirectTo: '/candidate/clogin', pathMatch: 'full' },
-  { path: 'clogin', component: CandidateLoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+
+  { path: 'login', component: CandidateLoginComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'interview', component: InterviewStepsComponent },
   { path: 'assessment', component: AssessmentComponent },

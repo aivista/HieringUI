@@ -15,7 +15,6 @@ import { AssessmentComponent } from './components/pages/assessment/assessment.co
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-
   { path: 'login', component: CandidateLoginComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'interview', component: InterviewStepsComponent },

@@ -29,13 +29,9 @@ export const routes: Routes = [
         (m) => m.HiringManagerModule
       ),
   },
+
   {
-    path: 'test',
-    loadChildren: () =>
-      import('./test2/test2.module').then((m) => m.Test2Module),
-  },
-  {
-    path: 'cnadidate',
+    path: 'candidate',
     loadChildren: () =>
       import('./candidate/candidate.module').then((m) => m.CandidateModule),
   },

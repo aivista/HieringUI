@@ -10,15 +10,15 @@ import { GETurl, POSTurl } from '../../config';
   providedIn: 'root',
 })
 export class HiringManagerService {
-  url = environment.apiBaseUrl;
+  url = environment.ProfileServicesUrl;
 
-  jobservice = environment.jobService;
-  jobDetails = environment.jobDetails;
+  jobservice = environment.JobServiceUrl;
+  jobDetails = environment.SmartServiceUrl;
   jobSubscribe = new Subject();
 
-  trigerApproved= new Subject()
+  trigerApproved = new Subject();
 
-  assessment = environment.assessment;
+  assessment = environment.AssessmentServicesUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -49,9 +49,9 @@ export class HiringManagerService {
     return this.http.get(GETurl.appliedJobs + id);
   }
 
-  getJobsDesc(data:any) {
+  getJobsDesc(data: any) {
     const url = POSTurl.getJobDescription;
-    return this.http.post(url,data);
+    return this.http.post(url, data);
   }
   getUpcomingInterview(jobId: string, managerId: string) {
     return this.http.get(GETurl.upcomingInterview + jobId + '/' + managerId);

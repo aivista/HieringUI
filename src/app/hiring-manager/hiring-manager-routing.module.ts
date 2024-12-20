@@ -5,8 +5,7 @@ import { JobDetailsComponent } from './components/pages/job-details/job-details.
 import { JobCreateComponent } from './components/pages/job-create/job-create.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: HiringManagerLoginComponent },
+  { path: '', component: HiringManagerLoginComponent },
   { path: 'job-details', component: JobDetailsComponent },
   { path: 'job-create', component: JobCreateComponent },
 ];

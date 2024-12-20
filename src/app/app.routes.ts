@@ -17,7 +17,7 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./candidate/candidate.module').then((m) => m.CandidateModule),
   },
-  { path: '**', redirectTo: '' },
+  // { path: '**', redirectTo: '' },
 ];
 
 // @NgModule({

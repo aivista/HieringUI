@@ -58,6 +58,9 @@ export class JobCreateComponent {
   newSecondarySkill: string = '';
   newPrimarySkill: string = '';
   newRole: string = '';
+  filterRole: string = '';
+  filterPrimarySkills: string = '';
+  filterSecondarySkills: string = '';
 
   // Model for form fields
   selectedJobTitle: string | undefined;
@@ -212,26 +215,51 @@ export class JobCreateComponent {
   goBack() {
     this.router.navigate(['/job-details']);
   }
+
+  onFilterSecondarySkill(event: any) {
+    this.filterSecondarySkills = event.filter;
+  }
+
   addNewSecondarySkill(): void {
-    const newSecondarySkill = prompt('Enter a new skill:');
-    if (newSecondarySkill && newSecondarySkill.trim()) {
+    const newSecondarySkill = this.filterSecondarySkills.trim();
+    if (
+      newSecondarySkill &&
+      !this.secondarySkills.includes(newSecondarySkill)
+    ) {
       this.secondarySkills.push(newSecondarySkill);
-      // this.newSecondarySkill = '';  No need to reset here
+      this.selectedSecondarySkills.push(newSecondarySkill);
+      this.profileForm
+        .get('secondarySkills')
+        ?.setValue(this.selectedSecondarySkills);
+      this.newSecondarySkill = '';
+    }
+  }
+  onFilterPrimarySkill(event: any) {
+    this.filterPrimarySkills = event.filter;
+  }
+
+  addNewPrimarySkill() {
+    const newPrimarySkill = this.filterPrimarySkills.trim();
+    if (newPrimarySkill && !this.primarySkills.includes(newPrimarySkill)) {
+      this.primarySkills.push(newPrimarySkill);
+      this.selectedPrimarySkills.push(newPrimarySkill);
+      this.profileForm
+        .get('primarySkills')
+        ?.setValue(this.selectedPrimarySkills);
+      this.filterPrimarySkills = '';
     }
   }
 
-  addNewPrimarySkill(): void {
-    const newPrimarySkill = prompt('Enter a new skill:');
-    if (newPrimarySkill && newPrimarySkill.trim()) {
-      this.primarySkills.push(newPrimarySkill);
-      // this.newPrimarySkill = '';
-    }
+  onFilterRole(event: any) {
+    this.filterRole = event.filter;
   }
-  addNewRole(): void {
-    const newRole = prompt('Enter a new role:');
-    if (newRole && newRole.trim()) {
+
+  addNewRole() {
+    const newRole = this.filterRole.trim();
+    if (newRole && newRole.trim() && !this.roleOptions.includes(newRole)) {
       this.roleOptions.push(newRole);
-      // this.newRole = ''; // No need to reset here
+      this.profileForm.get('role')?.setValue(newRole);
+      this.filterRole = '';
     }
   }
 }

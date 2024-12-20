@@ -119,6 +119,7 @@
                       name="role"
                       [filter]="true"
                       class="w-100"
+                      (onFilter)="onFilterRole($event)"
                     >
                       <ng-template pTemplate="footer">
                         <div class="p-3 flex justify-between">
@@ -160,6 +161,7 @@
                         placeholder="Select"
                         name="primarySkills"
                         class="w-100"
+                        (onFilter)="onFilterPrimarySkill($event)"
                       >
                         <ng-template pTemplate="footer">
                           <div class="p-3 flex justify-between">
@@ -214,6 +216,7 @@
                         placeholder="Select"
                         name="secondarySkills"
                         class="w-100"
+                        (onFilter)="onFilterSecondarySkill($event)"
                       >
                         <ng-template pTemplate="footer">
                           <div class="p-3 flex justify-between">

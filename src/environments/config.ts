@@ -10,6 +10,6 @@ export const config = {
   videoCodec: 'h264',
   iceUrl: 'turn:relay.communication.microsoft.com:3478',
   iceUsername:
-    'BQAANh5boAAB21drPdQz4Wmqlo0xrEvGF6d8o2H2avMAAAAQAxAq/afaM6dGw5Do3IPkMuoaQrBiq++X881P5aZzWfm4s3/Qf5g=',
-  iceCredential: 'wloUtXPsZn5fxRg6lgGE17Vb/uM=',
+    'BQAANiwLKIAB21dfOhyNpUCSF1vsjli86SEzFSjaTZIAAAAQAxAq/afaM6dGw5Do3IPkMuoaUDGtzzHnDWG9J9ZmUiBy7cu+wZI=',
+  iceCredential: '+FndAUkmHmw+ge5W0zgKBO92KGU=',
 };

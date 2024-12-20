@@ -1,0 +1,87 @@
+.logo-img {
+  top: 4%;
+  left: 2%;
+}
+
+.bg-image {
+  background-image: url(../../../../public/assets/icons/candidateLoginBG.svg);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  // opacity: 0.85;
+
+  .login-container {
+    padding-top: 6rem;
+
+    .logo {
+      background-color: #9747ff;
+      border-radius: 50%;
+      padding: 1.5rem;
+      align-content: center;
+    }
+
+    .headd {
+      font-size: 46px;
+    }
+    .form-group {
+      p {
+        padding-bottom: 0.5rem;
+        span {
+          color: red;
+        }
+      }
+    }
+    .btn-login {
+      margin: 1rem 0;
+      width: 100%;
+      background-color: #8b04f5;
+      color: #fff;
+      padding: 0.6rem 0;
+    }
+  }
+}
+
+.btn-primary {
+  background-color: #8b04f5;
+  border-color: #8b04f5;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #8b04f5;
+}
+
+.footer {
+  position: relative;
+  bottom: 2%;
+}
+
+.ppp {
+  max-width: 400px;
+  font-size: 0.8rem;
+}
+
+.subtitle {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.otp {
+  font-size: 1.5rem;
+}
+
+.form-label {
+  text-align: start !important;
+}
+
+.email-input::placeholder {
+  color: rgb(101, 101, 101);
+}
+.email-input {
+  background-color: #131313;
+  color: #fff;
+  border-color: #424b57;
+}

@@ -11,7 +11,6 @@ import { GETurl, POSTurl } from '../../config';
 })
 export class HiringManagerService {
   url = environment.ProfileServicesUrl;
-
   jobservice = environment.JobServiceUrl;
   jobDetails = environment.SmartServiceUrl;
   jobSubscribe = new Subject();

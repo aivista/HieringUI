@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { AssessmentComponent } from '../assessment/assessment.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MeatingSheduleComponent } from './meating-shedule/meating-shedule.component';
+import { CircularProgressBar2Component } from './circular-progress-bar2/circular-progress-bar2.component';
 
 @Component({
   selector: 'app-interview-steps',
@@ -18,6 +19,7 @@ import { MeatingSheduleComponent } from './meating-shedule/meating-shedule.compo
     AssessmentComponent,
     CongratulationComponent,
     MeatingSheduleComponent,
+    CircularProgressBar2Component,
   ],
   templateUrl: './interview-steps.component.html',
   styleUrl: './interview-steps.component.scss',
@@ -28,6 +30,8 @@ export class InterviewStepsComponent {
   candidateId: any;
   jobId: any;
   assessmentDetails: any;
+  totalTime: number = 1;
+  remainingTime: number = 1;
   constructor(
     private candidateService: CandidateService,
     private router: Router,

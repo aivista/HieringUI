@@ -25,7 +25,7 @@
         </div> -->
 
       <!-- Position Title -->
-      <div class="card-header text-white">
+      <div class="card-header text-white" *ngIf="comoponent != 'Aiavatar'">
         <div class="txt-head">
           <h5>Chief Operating Officer - Data Center</h5>
           <div class="location">
@@ -34,55 +34,6 @@
           </div>
         </div>
 
-        <!-- staper -->
-        <!-- <div class="timeline d-flex">
-          <div class="timeline-item">
-            <div class="round">
-              <img src="../../../../../assets/icons/call.svg" alt="" />
-            </div>
-          </div>
-          <div class="line"></div>
-          <div class="timeline-item">
-            <div class="round">
-              <img src="../../../../../assets/icons/simcard.svg" alt="" />
-            </div>
-          </div>
-          <div class="line"></div>
-          <div class="timeline-item">
-            <div class="round">
-              <img src="../../../../../assets/icons/video.svg" alt="" />
-            </div>
-          </div>
-        </div> -->
-        <!-- <div class="stapper px-4">
-          <div class="timeline row px-5" >
-            <div class="timeline-item col-md-1 p-0" >
-              <div class="round" >
-                <img src="/assets/icons/call-calling.svg" alt="" />
-              </div>
-            </div>
-            <div class="line col-md-4 p-0"></div>
-            <div class="timeline-item col-md-1 p-0">
-              <div class="round">
-                <img src="/assets/icons/simcard.svg" alt="" />
-              </div>
-            </div>
-            <div class="line col-md-4 p-0"></div>
-            <div class="timeline-item col-md-1 p-0">
-              <div class="round">
-                <img src="/assets/icons/video.svg" alt="" />
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-4 text-center" *ngFor="let step of assessmentDetails; let i=index">
-              <p class="mb-0 interview-status">{{step?.assessmentName}}</p>
-              <p class="interview-status2">{{step?.status}}</p>
-            </div>
-           
-          </div>
-        </div> -->
         <div class="stapper px-6">
           <div class="timeline row px-5">
             <div
@@ -139,6 +90,18 @@
           </div>
         </div>
       </div>
+      <!-- <div
+        class="card-header justify-content-end"
+        *ngIf="comoponent === 'Aiavatar'"
+      >
+        <div class="d-flex align-items-center gap-2">
+          <p>Remaining Time:</p>
+          <app-circular-progress-bar2
+            [totalTime]="totalTime * 60"
+            [remainingTime]="remainingTime * 60"
+          ></app-circular-progress-bar2>
+        </div>
+      </div> -->
       <div>
         <app-introductory-call
           *ngIf="comoponent === 'AI Screening'"

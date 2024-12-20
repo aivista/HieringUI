@@ -12,11 +12,12 @@ import * as sdk from 'microsoft-cognitiveservices-speech-sdk';
 import { QuestionSet } from '../../../../../../environments/QuestionSet';
 import { config } from '../../../../../../environments/config';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
+import { CircularProgressBar2Component } from '../circular-progress-bar2/circular-progress-bar2.component';
 
 @Component({
   selector: 'app-ai-avatar-interview',
   standalone: true,
-  imports: [NgxSpinnerModule],
+  imports: [NgxSpinnerModule, CircularProgressBar2Component],
   templateUrl: './ai-avatar-interview.component.html',
   styleUrl: './ai-avatar-interview.component.scss',
 })
@@ -45,6 +46,8 @@ export class AiAvatarInterviewComponent {
   isRecognizing = false;
   speechToText!: sdk.SpeechRecognitionResult;
   candidateSpeechToText: any;
+  totalTime: number = 1;
+  remainingTime: number = 1;
 
   log: string = '';
   time: number = 0;

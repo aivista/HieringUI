@@ -1,10 +1,7 @@
 <div
   class="container-fluid p-0 d-flex justify-content-center align-items-center"
 >
-  <div
-    class="dark-card d-flex justify-content-center align-items-center"
-    
-  >
+  <div class="dark-card d-flex justify-content-center align-items-center">
     <!-- <span class="text-white fw-semibold fs-5">AI Avatar based interview</span> -->
     <div class="container myAvatarContainer">
       <div class="container myAvatarVideoRootDiv d-flex justify-content-around">
@@ -48,13 +45,22 @@
         </div>
       </div>
       <div id="counter" #counter>
-        <img
+        <!-- <img
           src="../../../../../../../public/assets/png/clock.png"
           id="myClock"
         />
-        <p id="seconds" #seconds></p>
+        <p id="seconds" #seconds></p> -->
+        <app-circular-progress-bar2
+          [totalTime]="totalTime * 60"
+          [remainingTime]="remainingTime * 60"
+        ></app-circular-progress-bar2>
       </div>
     </div>
-    <ngx-spinner bdColor = "rgba(0,0,0,0.5)" size="large" color="#fff" type="ball-spin"></ngx-spinner>
+    <ngx-spinner
+      bdColor="rgba(0,0,0,0.5)"
+      size="large"
+      color="#fff"
+      type="ball-spin"
+    ></ngx-spinner>
   </div>
 </div>

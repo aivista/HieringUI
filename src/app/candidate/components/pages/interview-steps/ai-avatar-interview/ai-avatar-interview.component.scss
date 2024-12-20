@@ -1,10 +1,8 @@
-/* Centered card */
 .dark-card {
-  background-color: #434343; /* Dark grey */
-  margin-top: 2rem;
-  width: 90%;
-  min-height: 27rem;
-  border-radius: 8px; /* Adjust height as needed */
+  background-color: #434343;
+  width: 100%;
+  min-height: 37rem;
+  border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,18 +70,18 @@
 .myAvatarVideo {
   height: 420px;
   width: 40%;
-  box-shadow: 0 0 25px rgb(39, 39, 39);
+  // box-shadow: 0 0 25px rgb(39, 39, 39);
   border-radius: 5%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .myVideoDiv {
   position: relative;
   z-index: 100;
-  height: 58%;
+  height: 73%;
   width: 100%;
   background-color: white;
   // background-image: url('../../assets/dummy.jpg');
@@ -106,7 +104,7 @@ video {
 }
 .myButtonGroup {
   width: 100%;
-  height: 12%;
+  // height: 12%;
   z-index: 100;
 }
 
@@ -146,21 +144,20 @@ textarea:focus {
 }
 
 #counter {
-  visibility: hidden;
   width: 9%;
-  height: 20%;
+  height: 25%;
   position: absolute;
   z-index: 100;
-  top: 1%;
+  top: 0%;
   right: 1%;
   font-size: 150%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  /* background-color: white; */
   border-radius: 50%;
-  box-shadow: 0 0 5% rgb(39, 39, 39);
-  opacity: 0.8;
+
+  // opacity: 0.8;
   font-weight: bold;
 }
 

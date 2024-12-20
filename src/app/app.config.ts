@@ -22,9 +22,9 @@ export const appConfig: ApplicationConfig = {
         preset: Aura,
       },
     }),
-    {
-      provide: LocationStrategy,
-      useClass: PathLocationStrategy,
-    },
+    // {
+    //   provide: LocationStrategy,
+    //   useClass: PathLocationStrategy,
+    // },
   ],
 };

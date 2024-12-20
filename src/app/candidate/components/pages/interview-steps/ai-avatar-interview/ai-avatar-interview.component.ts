@@ -46,8 +46,8 @@ export class AiAvatarInterviewComponent {
   isRecognizing = false;
   speechToText!: sdk.SpeechRecognitionResult;
   candidateSpeechToText: any;
-  totalTime: number = 1;
-  remainingTime: number = 1;
+  totalTime: number = 0;
+  remainingTime: number = 0;
 
   log: string = '';
   time: number = 0;
@@ -405,12 +405,14 @@ export class AiAvatarInterviewComponent {
         this.log = this.summaryOfJobDescription;
 
         let firstTime = 20;
+        this.totalTime = firstTime;
 
         this.seconds.nativeElement.innerHTML = `${firstTime}`;
         this.counter.nativeElement.style.visibility = 'visible';
 
         let firstInterval = setInterval(() => {
           firstTime = Math.max(0, firstTime - 1);
+          this.remainingTime = firstTime;
           this.seconds.nativeElement.innerHTML = `${firstTime}`;
         }, 1000);
 
@@ -458,12 +460,14 @@ export class AiAvatarInterviewComponent {
           }
 
           this.time = time[i];
+          this.totalTime = time[i];
           this.seconds.nativeElement.innerHTML = `${this.time}`;
           qStart = Date.now();
           this.counter.nativeElement.style.visibility = 'visible';
 
           let interval = setInterval(() => {
             this.time = Math.max(0, this.time - 1);
+            this.remainingTime = this.time;
             this.seconds.nativeElement.innerHTML = `${this.time}`;
           }, 1000);
 

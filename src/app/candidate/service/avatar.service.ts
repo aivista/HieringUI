@@ -49,12 +49,11 @@ export class AvatarService {
     speech: any,
     contextual: boolean,
     coreSkillQuestion: boolean,
-    jd: any,
-    isItCandidateQuestion: boolean
+    jd: any
   ): Promise<any> {
     return this._http
       .post(
-        `${environment.avatarEndPoint}/Speech/recognize?speech=${speech}&contextual=${contextual}&coreSkillQuestion=${coreSkillQuestion}&isItCandidateQuestion=${isItCandidateQuestion}`,
+        `${environment.avatarEndPoint}/Speech/recognize?speech=${speech}&contextual=${contextual}&coreSkillQuestion=${coreSkillQuestion}`,
         jd
       )
       .toPromise();

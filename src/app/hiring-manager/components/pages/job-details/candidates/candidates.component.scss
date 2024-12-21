@@ -204,3 +204,9 @@ body {
   backdrop-filter: blur(5px);
   /* Blur effect */
 }
+
+@media (min-width: 1024px) and (max-width: 1436px) {
+  .left-part h3 {
+    font-size: 0.9rem;
+  }
+}

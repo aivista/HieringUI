@@ -176,7 +176,7 @@
 }
 
 .job-desc-section-sub {
-  min-height: 55vh;
+  min-height: calc(93vh - 14rem);
   height: 100%;
   background: #131313;
   color: #ffffff00;
@@ -240,8 +240,8 @@
 
 .save-jd-btn {
   display: flex;
-  height: 45px;
-  width: 130px;
+  margin: 0.5rem;
+  padding: 0.5rem 3rem;
   justify-content: center;
   align-items: center;
   border: 1px solid;
@@ -279,4 +279,38 @@
 :host::ng-deep .p-multiselect {
   background: none !important;
   border-radius: var(--p-inputtext-border-radius) !important;
+}
+
+@media (min-width: 1024px) and (max-width: 1436px) {
+  .main-contain {
+    margin-top: 4px !important;
+    margin-left: 80px !important;
+    margin-right: 80px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .cjd-jobs-text {
+    font-size: 0.8rem !important;
+  }
+
+  .cjd-dex-text {
+    font-size: 0.8rem !important;
+  }
+
+  .right-section .text-t1 {
+    font-size: 14px !important;
+  }
+  .text-t2 {
+    font-size: 12px !important;
+  }
+  .from-container {
+    height: calc(93vh - 15rem) !important;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+    padding-right: 0.5rem !important;
+  }
+
+  .jcd-main-body {
+    margin: 16px !important;
+  }
 }

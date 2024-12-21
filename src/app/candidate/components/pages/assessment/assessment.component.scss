@@ -149,3 +149,60 @@
     }
   }
 }
+@media (min-width: 1024px) and (max-width: 1436px) {
+  .assessment-container .upperrwap .title {
+    font-size: 1rem;
+  }
+
+  .assessment-container {
+    .question-header {
+      margin-top: 0 !important;
+    }
+    .instructions {
+      div {
+        font-size: 0.8rem !important;
+      }
+
+      p {
+        font-size: 0.65rem !important;
+      }
+    }
+    .take-test-button {
+      width: 181px !important;
+      height: 40px !important;
+      padding: 12px 24px !important;
+      font-size: 0.7rem !important;
+      border-radius: 0.5rem !important;
+    }
+
+    .question-text p {
+      font-size: 0.8rem !important;
+    }
+
+    .options {
+      margin-bottom: 0.8rem !important;
+      label {
+        margin: 0.8rem 0 !important;
+
+        font-size: 0.8rem !important;
+      }
+    }
+
+    .nav-button {
+      width: 33px !important;
+      height: 33px !important;
+    }
+    .nav-button:disabled {
+      width: 33px !important;
+      height: 33px !important;
+    }
+
+    .submit-test-button {
+      width: 181px !important;
+      height: 40px !important;
+      padding: 12px 24px !important;
+      font-size: 0.7rem !important;
+      border-radius: 0.5rem !important;
+    }
+  }
+}

@@ -255,7 +255,7 @@
     }
 
     .interview-status {
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 600;
     }
 
@@ -352,22 +352,23 @@
   text-align: right !important;
 }
 
-@media (min-width: 1024px) and (max-width: 1300px) {
+@media (min-width: 1024px) and (max-width: 1436px) {
   .main-strac-container {
     .main-contain {
       .top-portion {
-        left: 30px;
-        top: -8px;
+        left: 30px !important;
+        top: -8px !important;
       }
 
       .bottom {
+        padding: 15px;
         .card-header {
-          padding: 0.8rem;
-          padding-top: 0;
+          padding: 0.5rem !important;
+          padding-top: 0 !important;
         }
 
         h5 {
-          font-size: 1rem;
+          font-size: 1rem !important;
         }
       }
 

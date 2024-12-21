@@ -33,135 +33,94 @@
                 >
               </div>
               <div class="right-field-box">
-                <div class="row">
-                  <div class="col-12">
-                    <label class="field-text"
-                      >Job Title <label class="aristick">*</label></label
-                    >
-                    <br />
-                    <input
-                      type="text"
-                      pInputText
-                      id="jobTitle"
-                      class="w-100"
-                      formControlName="jobTitle"
-                    />
-                    <small
-                      class="p-error block"
-                      style="color: red; font-size: 10px"
-                      *ngIf="
-                        profileForm.get('jobTitle')?.invalid &&
-                        profileForm.get('jobTitle')?.touched
-                      "
-                    >
-                      Job Title is required.
-                    </small>
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col-4">
-                    <label class="field-text">Experience</label> <br />
-                    <p-dropdown
-                      id="experience"
-                      formControlName="experience"
-                      [options]="experienceOptions"
-                      placeholder="Select"
-                      name="experience"
-                      [filter]="true"
-                      class="w-100"
-                    ></p-dropdown>
-                    <small
-                      class="p-error block"
-                      style="color: red; font-size: 10px"
-                      *ngIf="
-                        profileForm.get('experience')?.invalid &&
-                        profileForm.get('experience')?.touched
-                      "
-                    >
-                      Experience is required.
-                    </small>
-                  </div>
-                  <div class="col-4">
-                    <label class="field-text"
-                      >Location <label class="aristick">*</label></label
-                    >
-                    <br />
-                    <p-dropdown
-                      id="location"
-                      formControlName="location"
-                      [options]="locationOptions"
-                      placeholder="Select"
-                      name="location"
-                      [filter]="true"
-                      class="w-100"
-                    ></p-dropdown>
-                    <small
-                      class="p-error block"
-                      style="color: red; font-size: 10px"
-                      *ngIf="
-                        profileForm.get('location')?.invalid &&
-                        profileForm.get('location')?.touched
-                      "
-                    >
-                      Location is required.
-                    </small>
-                  </div>
-                  <div class="col-4">
-                    <label class="field-text"
-                      >Role <label class="aristick">*</label></label
-                    >
-                    <br />
-                    <p-dropdown
-                      id="role"
-                      formControlName="role"
-                      [options]="roleOptions"
-                      placeholder="Select"
-                      name="role"
-                      [filter]="true"
-                      class="w-100"
-                      (onFilter)="onFilterRole($event)"
-                    >
-                      <ng-template pTemplate="footer">
-                        <div class="p-3 flex justify-between">
-                          <p-button
-                            label="Add New"
-                            severity="primary"
-                            text
-                            size="small"
-                            icon="pi pi-plus"
-                            (click)="addNewRole()"
-                          />
-                        </div>
-                      </ng-template>
-                    </p-dropdown>
-                    <small
-                      class="p-error block"
-                      style="color: red; font-size: 10px"
-                      *ngIf="
-                        profileForm.get('role')?.invalid &&
-                        profileForm.get('role')?.touched
-                      "
-                    >
-                      Role is required.
-                    </small>
-                  </div>
-                </div>
-                <div class="row pt-2">
-                  <div class="col-md-6 mt-2">
-                    <div class="">
+                <div class="from-container">
+                  <div class="row">
+                    <div class="col-12">
                       <label class="field-text"
-                        >Primary Skills <label class="aristick">*</label></label
+                        >Job Title <label class="aristick">*</label></label
                       >
                       <br />
-                      <p-multiSelect
-                        id="primarySkills"
-                        formControlName="primarySkills"
-                        [(ngModel)]="selectedPrimarySkills"
-                        [options]="primarySkills"
-                        placeholder="Select"
-                        name="primarySkills"
+                      <input
+                        type="text"
+                        pInputText
+                        id="jobTitle"
                         class="w-100"
-                        (onFilter)="onFilterPrimarySkill($event)"
+                        formControlName="jobTitle"
+                      />
+                      <small
+                        class="p-error block"
+                        style="color: red; font-size: 10px"
+                        *ngIf="
+                          profileForm.get('jobTitle')?.invalid &&
+                          profileForm.get('jobTitle')?.touched
+                        "
+                      >
+                        Job Title is required.
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-4">
+                      <label class="field-text">Experience</label> <br />
+                      <p-dropdown
+                        id="experience"
+                        formControlName="experience"
+                        [options]="experienceOptions"
+                        placeholder="Select"
+                        name="experience"
+                        [filter]="true"
+                        class="w-100"
+                      ></p-dropdown>
+                      <small
+                        class="p-error block"
+                        style="color: red; font-size: 10px"
+                        *ngIf="
+                          profileForm.get('experience')?.invalid &&
+                          profileForm.get('experience')?.touched
+                        "
+                      >
+                        Experience is required.
+                      </small>
+                    </div>
+                    <div class="col-4">
+                      <label class="field-text"
+                        >Location <label class="aristick">*</label></label
+                      >
+                      <br />
+                      <p-dropdown
+                        id="location"
+                        formControlName="location"
+                        [options]="locationOptions"
+                        placeholder="Select"
+                        name="location"
+                        [filter]="true"
+                        class="w-100"
+                      ></p-dropdown>
+                      <small
+                        class="p-error block"
+                        style="color: red; font-size: 10px"
+                        *ngIf="
+                          profileForm.get('location')?.invalid &&
+                          profileForm.get('location')?.touched
+                        "
+                      >
+                        Location is required.
+                      </small>
+                    </div>
+                    <div class="col-4">
+                      <label class="field-text"
+                        >Role <label class="aristick">*</label></label
+                      >
+                      <br />
+                      <p-dropdown
+                        id="role"
+                        formControlName="role"
+                        [options]="roleOptions"
+                        placeholder="Select"
+                        name="role"
+                        [filter]="true"
+                        class="w-100"
+                        (onFilter)="onFilterRole($event)"
                       >
                         <ng-template pTemplate="footer">
                           <div class="p-3 flex justify-between">
@@ -171,120 +130,164 @@
                               text
                               size="small"
                               icon="pi pi-plus"
-                              (click)="addNewPrimarySkill()"
+                              (click)="addNewRole()"
                             />
                           </div>
                         </ng-template>
-                      </p-multiSelect>
-
-                      <div
-                        class="chip-container flex items-center gap-2 flex-wrap jcd-chip-section"
-                      >
-                        <p-chip
-                          *ngFor="let genre of selectedPrimarySkills"
-                          [label]="genre"
-                          [removable]="true"
-                          (onRemove)="removeFromSelection(genre)"
-                          class="mt-1"
-                        >
-                        </p-chip>
-                      </div>
+                      </p-dropdown>
                       <small
                         class="p-error block"
                         style="color: red; font-size: 10px"
                         *ngIf="
-                          profileForm.get('primarySkills')?.invalid &&
-                          profileForm.get('primarySkills')?.touched
+                          profileForm.get('role')?.invalid &&
+                          profileForm.get('role')?.touched
                         "
                       >
-                        Primary Skills is required.
+                        Role is required.
                       </small>
                     </div>
                   </div>
-                  <div class="col-md-6 mt-2">
-                    <div class="">
+                  <div class="row pt-2">
+                    <div class="col-md-6 mt-2">
+                      <div class="">
+                        <label class="field-text"
+                          >Primary Skills
+                          <label class="aristick">*</label></label
+                        >
+                        <br />
+                        <p-multiSelect
+                          id="primarySkills"
+                          formControlName="primarySkills"
+                          [(ngModel)]="selectedPrimarySkills"
+                          [options]="primarySkills"
+                          placeholder="Select"
+                          name="primarySkills"
+                          class="w-100"
+                          (onFilter)="onFilterPrimarySkill($event)"
+                        >
+                          <ng-template pTemplate="footer">
+                            <div class="p-3 flex justify-between">
+                              <p-button
+                                label="Add New"
+                                severity="primary"
+                                text
+                                size="small"
+                                icon="pi pi-plus"
+                                (click)="addNewPrimarySkill()"
+                              />
+                            </div>
+                          </ng-template>
+                        </p-multiSelect>
+
+                        <div
+                          class="chip-container flex items-center gap-2 flex-wrap jcd-chip-section"
+                        >
+                          <p-chip
+                            *ngFor="let genre of selectedPrimarySkills"
+                            [label]="genre"
+                            [removable]="true"
+                            (onRemove)="removeFromSelection(genre)"
+                            class="mt-1"
+                          >
+                          </p-chip>
+                        </div>
+                        <small
+                          class="p-error block"
+                          style="color: red; font-size: 10px"
+                          *ngIf="
+                            profileForm.get('primarySkills')?.invalid &&
+                            profileForm.get('primarySkills')?.touched
+                          "
+                        >
+                          Primary Skills is required.
+                        </small>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mt-2">
+                      <div class="">
+                        <label class="field-text"
+                          >Secondary Skills
+                          <label class="aristick">*</label></label
+                        >
+                        <br />
+                        <p-multiSelect
+                          id="secondarySkills"
+                          formControlName="secondarySkills"
+                          [(ngModel)]="selectedSecondarySkills"
+                          [options]="secondarySkills"
+                          placeholder="Select"
+                          name="secondarySkills"
+                          class="w-100"
+                          (onFilter)="onFilterSecondarySkill($event)"
+                        >
+                          <ng-template pTemplate="footer">
+                            <div class="p-3 flex justify-between">
+                              <p-button
+                                label="Add New"
+                                severity="primary"
+                                text
+                                size="small"
+                                icon="pi pi-plus"
+                                (click)="addNewSecondarySkill()"
+                              />
+                            </div>
+                          </ng-template>
+                        </p-multiSelect>
+
+                        <div
+                          class="chip-container flex items-center gap-2 flex-wrap jcd-chip-section2"
+                        >
+                          <p-chip
+                            *ngFor="let genre of selectedSecondarySkills"
+                            [label]="genre"
+                            [removable]="true"
+                            (onRemove)="removeFromSelectionSecondary(genre)"
+                            class="custom-p-chip Secondary-chip mt-1"
+                          >
+                          </p-chip>
+                        </div>
+
+                        <small
+                          class="p-error block"
+                          style="color: red; font-size: 10px"
+                          *ngIf="
+                            profileForm.get('secondarySkills')?.invalid &&
+                            profileForm.get('secondarySkills')?.touched
+                          "
+                        >
+                          Secondary Skills is required.
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row mt-3">
+                    <div class="col-12">
                       <label class="field-text"
-                        >Secondary Skills
+                        >Business Dependencies
                         <label class="aristick">*</label></label
                       >
                       <br />
-                      <p-multiSelect
-                        id="secondarySkills"
-                        formControlName="secondarySkills"
-                        [(ngModel)]="selectedSecondarySkills"
-                        [options]="secondarySkills"
-                        placeholder="Select"
-                        name="secondarySkills"
-                        class="w-100"
-                        (onFilter)="onFilterSecondarySkill($event)"
-                      >
-                        <ng-template pTemplate="footer">
-                          <div class="p-3 flex justify-between">
-                            <p-button
-                              label="Add New"
-                              severity="primary"
-                              text
-                              size="small"
-                              icon="pi pi-plus"
-                              (click)="addNewSecondarySkill()"
-                            />
-                          </div>
-                        </ng-template>
-                      </p-multiSelect>
-
-                      <div
-                        class="chip-container flex items-center gap-2 flex-wrap jcd-chip-section2"
-                      >
-                        <p-chip
-                          *ngFor="let genre of selectedSecondarySkills"
-                          [label]="genre"
-                          [removable]="true"
-                          (onRemove)="removeFromSelectionSecondary(genre)"
-                          class="custom-p-chip Secondary-chip mt-1"
-                        >
-                        </p-chip>
-                      </div>
-
+                      <textarea
+                        pInputTextarea
+                        rows="2"
+                        id="businessDependencies"
+                        formControlName="businessDependencies"
+                        placeholder="Write business dependencies"
+                        name="businessDependencies"
+                        class="w-100 text-area"
+                      ></textarea>
                       <small
                         class="p-error block"
                         style="color: red; font-size: 10px"
                         *ngIf="
-                          profileForm.get('secondarySkills')?.invalid &&
-                          profileForm.get('secondarySkills')?.touched
+                          profileForm.get('businessDependencies')?.invalid &&
+                          profileForm.get('businessDependencies')?.touched
                         "
                       >
-                        Secondary Skills is required.
+                        Business Dependencies is required.
                       </small>
                     </div>
-                  </div>
-                </div>
-
-                <div class="row mt-3">
-                  <div class="col-12">
-                    <label class="field-text"
-                      >Business Dependencies
-                      <label class="aristick">*</label></label
-                    >
-                    <br />
-                    <textarea
-                      pInputTextarea
-                      rows="2"
-                      id="businessDependencies"
-                      formControlName="businessDependencies"
-                      placeholder="Write business dependencies"
-                      name="businessDependencies"
-                      class="w-100 text-area"
-                    ></textarea>
-                    <small
-                      class="p-error block"
-                      style="color: red; font-size: 10px"
-                      *ngIf="
-                        profileForm.get('businessDependencies')?.invalid &&
-                        profileForm.get('businessDependencies')?.touched
-                      "
-                    >
-                      Business Dependencies is required.
-                    </small>
                   </div>
                 </div>
                 <div class="row">

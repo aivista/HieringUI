@@ -53,7 +53,7 @@
             li {
               color: #f9f9f9;
               font-size: 0.8rem;
-              font-weight: 200;
+              font-weight: 400;
               line-height: 27px;
             }
           }
@@ -78,6 +78,40 @@
           .disabled {
             cursor: no-drop;
             opacity: 0.4;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1436px) {
+  .meeting-body {
+    margin-top: 30px !important;
+
+    .meeting-container {
+      .instruction-container {
+        .panel-head {
+          font-size: 1rem !important;
+        }
+
+        .equipment-section {
+          .equipment-title {
+            font-size: 0.8rem !important;
+            margin-bottom: 10px !important;
+          }
+
+          .equipment-body ul li {
+            font-size: 0.65rem !important;
+            line-height: 18px !important;
+          }
+
+          .join-button button {
+            width: 181px !important;
+            height: 40px !important;
+            padding: 12px 24px !important;
+            font-size: 0.7rem !important;
+            border-radius: 0.5rem !important;
           }
         }
       }

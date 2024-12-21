@@ -1,24 +1,3 @@
-// .main-section {
-//   background: url("/assets/icons/HMLoginBG.svg"),
-//     linear-gradient(117.21deg, #141414 80.75%, #484848 149.51%);
-//   background-size: cover;
-//   background-repeat: no-repeat;
-//   width: 100vw;
-//   background-attachment: fixed;
-
-//   .top-portion{
-//     width: 127.5px;
-//     height: 29px;
-//     top: 16px;
-//     left: 58px;
-//     position: absolute;
-//   }
-//   .previouspage-title{
-//     color: white;
-//     position: absolute;
-//   }
-// }
-
 .main-strac-container {
   background-image: url(../../../../../../public/assets/icons/candidateBG.svg);
   background-size: cover;
@@ -151,8 +130,8 @@
     .job-card .card-header .location {
       display: flex;
       align-items: center;
-      font-size: 14px;
-      line-height: 20px;
+      font-size: 0.8rem;
+
       font-weight: 400;
 
       color: #767f8c;
@@ -371,4 +350,30 @@
 
 .align-right {
   text-align: right !important;
+}
+
+@media (min-width: 1024px) and (max-width: 1300px) {
+  .main-strac-container {
+    .main-contain {
+      .top-portion {
+        left: 30px;
+        top: -8px;
+      }
+
+      .bottom {
+        .card-header {
+          padding: 0.8rem;
+          padding-top: 0;
+        }
+
+        h5 {
+          font-size: 1rem;
+        }
+      }
+
+      .location {
+        font-size: 0.7rem !important;
+      }
+    }
+  }
 }

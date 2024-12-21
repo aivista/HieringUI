@@ -51,8 +51,8 @@
         >
           <img src="assets/icons/Location.svg" alt="" />
           {{
-            profile.location.length > 50
-              ? (profile.location | slice : 0 : 50) + "..."
+            profile.location.length > 30
+              ? (profile.location | slice : 0 : 30) + "..."
               : profile.location
           }}
         </p>

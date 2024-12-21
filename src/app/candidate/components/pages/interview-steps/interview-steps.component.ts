@@ -32,6 +32,7 @@ export class InterviewStepsComponent {
   assessmentDetails: any;
   totalTime: number = 1;
   remainingTime: number = 1;
+  role: any;
   constructor(
     private candidateService: CandidateService,
     private router: Router,
@@ -44,6 +45,7 @@ export class InterviewStepsComponent {
       this.jobId = params['jobId'];
       this.getstepperdata(this.candidateId, this.jobId);
     });
+    this.role = localStorage.getItem('role');
   }
 
   getstepperdata(candidateId: any, jobId: any) {

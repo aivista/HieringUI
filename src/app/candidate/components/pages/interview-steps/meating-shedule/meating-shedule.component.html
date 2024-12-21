@@ -45,3 +45,8 @@
     </div>
   </div>
 </div>
+<app-congratulation
+  [isPopupVisible]="isPopupVisible"
+  (close)="closePopup()"
+  [subHeader]="'You have successfully completed the interview'"
+></app-congratulation>

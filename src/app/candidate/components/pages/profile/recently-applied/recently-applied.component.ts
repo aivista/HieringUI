@@ -74,6 +74,7 @@ export class RecentlyAppliedComponent {
     localStorage.setItem('JobIdByCandidate', jobId?.jobId);
     localStorage.setItem('updateByCandidateId', jobId?.candidateId);
     localStorage.setItem('button_value', jobId.button_value);
+    localStorage.setItem('role', jobId.role);
 
     this.router.navigate(['/candidate/interview'], {
       queryParams: { jobId: jobId.jobId, candidateId: this.storedCandidateId },

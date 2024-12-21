@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CandidateService } from '../../../../service/candidate.service';
 import { Router } from '@angular/router';
+import { CongratulationComponent } from '../congratulation/congratulation.component';
 
 @Component({
   selector: 'app-meating-shedule',
   standalone: true,
-  imports: [],
+  imports: [CongratulationComponent],
   templateUrl: './meating-shedule.component.html',
   styleUrl: './meating-shedule.component.scss',
 })
@@ -13,6 +14,7 @@ export class MeatingSheduleComponent {
   storedCandidateId: any;
   JobId: any;
   button_value: any;
+  isPopupVisible: boolean = false;
 
   constructor(private service: CandidateService, private router: Router) {}
 
@@ -34,6 +36,12 @@ export class MeatingSheduleComponent {
       .subscribe((data: any) => {
         console.log('interview third step done ', data);
       });
+    // this.router.navigate(['/candidate/profile']);
+    this.isPopupVisible = true;
+  }
+
+  closePopup(): void {
+    this.isPopupVisible = false;
     this.router.navigate(['/candidate/profile']);
   }
 }

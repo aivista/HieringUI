@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CandidateService } from '../../../../service/candidate.service';
+import { ProgressSpinner } from 'primeng/progressspinner';
 
 @Component({
   selector: 'app-recently-applied',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ProgressSpinner],
   templateUrl: './recently-applied.component.html',
   styleUrl: './recently-applied.component.scss',
 })
@@ -14,6 +15,7 @@ export class RecentlyAppliedComponent {
   recentJobs: any;
   storedCandidateId: any;
   recentApplied: any;
+  loaderflag: boolean = false;
 
   constructor(
     private router: Router,
@@ -62,21 +64,32 @@ export class RecentlyAppliedComponent {
           this.recentApplied = this.recentJobs.sort(
             (a: any, b: any) => b.jobId - a.jobId
           );
+          this.recentApplied.forEach((el: any) => {
+            el['Title'] = JSON.parse(el['jd'])?.['Job Title'];
+          });
         }
       },
       (error) => {
         console.error('Error fetching recently applied jobs:', error);
+      },
+      () => {
+        this.loaderflag = true;
       }
     );
   }
 
-  navigateToInterview(jobId: any) {
-    localStorage.setItem('JobIdByCandidate', jobId?.jobId);
-    localStorage.setItem('updateByCandidateId', jobId?.candidateId);
-    localStorage.setItem('button_value', jobId.button_value);
-
+  navigateToInterview(job: any) {
+    localStorage.setItem('JobIdByCandidate', job?.jobId);
+    localStorage.setItem('updateByCandidateId', job?.candidateId);
+    localStorage.setItem('button_value', job.button_value);
+    let jobdetails = {
+      jobTitle: JSON.parse(job.jd)?.['Job Title'],
+      location: JSON.parse(job.jd)?.['Location'],
+    };
+    //console.log('job details', JSON.parse(job.jd));
+    this.recentlyAppliedService.$jobDetailsSubject.next(jobdetails);
     this.router.navigate(['/candidate/interview'], {
-      queryParams: { jobId: jobId.jobId, candidateId: this.storedCandidateId },
+      queryParams: { jobId: job.jobId, candidateId: this.storedCandidateId },
     });
   }
 }

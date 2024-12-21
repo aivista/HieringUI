@@ -4,8 +4,9 @@ import { Router } from '@angular/router';
 import { POSTurl } from '../../config';
 import { GETurl } from '../../config';
 import { environment } from '../../../environments/environment';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { ApiResponse, Question } from '../../interfaces/interface';
+import { Profile } from '../interface/Profile';
 @Injectable({
   providedIn: 'root',
 })
@@ -16,6 +17,10 @@ export class CandidateService {
   // jobSubscribe = new Subject();
   assessmentId = new Subject();
   candidateId = new Subject();
+  profile: Profile | undefined = undefined;
+  jobdetails: any | undefined = undefined;
+  $ProfilsdataSubject = new BehaviorSubject<Profile | undefined>(this.profile);
+  $jobDetailsSubject = new BehaviorSubject<any | undefined>(this.jobdetails);
 
   constructor(private http: HttpClient, private route: Router) {}
 

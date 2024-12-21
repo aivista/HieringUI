@@ -464,7 +464,7 @@ export class AiAvatarInterviewComponent {
           let json: any;
           let coreSkillQuestion: boolean = false;
 
-          cars[i] === 'Can you please tell me some of core skills?'
+          cars[i] === 'Can you please tell me some of your core skills?'
             ? (coreSkillQuestion = true)
             : (coreSkillQuestion = false);
 

@@ -3,34 +3,13 @@ import { CommonModule } from '@angular/common';
 import { OnInit } from '@angular/core';
 import { CandidateService } from '../../../../service/candidate.service';
 import { Tooltip } from 'primeng/tooltip';
-interface Profile {
-  name: string;
-  imageUrl: string;
-  certifications: string[];
-  email: string;
-  phone: string;
-  location: string;
-  latestExperience: {
-    company: string;
-    employmentType: string;
-    period: string;
-    location: string;
-    position: string;
-  };
-  latestEducation: {
-    university: string;
-    degree: string;
-    major: string;
-    period: string;
-    activities: string;
-  };
-  certificationsAndTraining: string[]; // Or a more detailed structure if needed
-}
+import { Profile } from '../../../../interface/Profile';
+import { ProgressSpinner } from 'primeng/progressspinner';
 
 @Component({
   selector: 'app-profile-details',
   standalone: true,
-  imports: [CommonModule, Tooltip],
+  imports: [CommonModule, Tooltip, ProgressSpinner],
   templateUrl: './profile-details.component.html',
   styleUrl: './profile-details.component.scss',
 })
@@ -39,12 +18,16 @@ export class ProfileDetailsComponent implements OnInit {
   profile: Profile | undefined;
   @Output() edit = new EventEmitter<void>();
   @Output() candidateIdEmitter = new EventEmitter<number>();
+  loader: boolean = true;
+
+  constructor(private candidateService: CandidateService) {}
 
   onEdit(): void {
+    // console.log('subject call');
+    this.candidateService.$ProfilsdataSubject.next(this.profile);
     this.edit.emit();
   }
 
-  constructor(private candidateService: CandidateService) {}
   ngOnInit() {
     this.candidateDetails = this.candidateService.getData(
       'candidateServiceDetails'
@@ -57,19 +40,18 @@ export class ProfileDetailsComponent implements OnInit {
         .CandidateDetails({ email: this.candidateDetails.email })
         .subscribe(
           (response: any) => {
-            console.log('API Response:', response);
             const ProfileDetails = response.result;
             const candidateId = ProfileDetails.id;
             this.candidateService.candidateId.next(candidateId);
-            // localStorage.setItem('candidateId', JSON.stringify(candidateId));
-            // this.candidateIdEmitter.emit(candidateId);
-            // Bind API response to profile
             this.profile = {
               name: `${ProfileDetails.title || ''} ${
                 ProfileDetails.first_name || ''
               } ${ProfileDetails.middleName || ''} ${
                 ProfileDetails.last_name || ''
               }`.trim(),
+              lname: ProfileDetails.last_name,
+              fname: ProfileDetails.first_name,
+              mname: ProfileDetails.middleName,
               imageUrl: ProfileDetails.imageUrl || 'assets/icons/darkUser.svg',
               certifications: (ProfileDetails.skills || '').split(','),
               email: ProfileDetails.email || '',
@@ -98,35 +80,15 @@ export class ProfileDetailsComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching candidate details:', error);
+          },
+          () => {
+            this.loader = false;
+            console.log('data loaded completed ');
           }
         );
     } else {
       console.error('Candidate details not found in session storage');
     }
-
-    // this.profile = {
-    //   name: 'Rajesh Tapadia',
-    //   imageUrl: 'assets/icons/profileLogo.svg',
-    //   certifications: ['CCNA', 'MIS', 'Management Consulting'],
-    //   email: 'rajesh.tapadia@gmail.com',
-    //   phone: '+91 9876543210',
-    //   location: 'Mumbai, Maharashtra',
-    //   latestExperience: {
-    //     company: 'Nxtra Data Ltd. (A Bharti Airtel Group Company)',
-    //     employmentType: 'Full Time',
-    //     period: 'September, 2022-Present',
-    //     location: 'Mumbai, Maharashtra',
-    //     position: 'Executive Director & COO',
-    //   },
-    //   latestEducation: {
-    //     university: 'Pune University, Maharashtra',
-    //     degree: 'Bachelor of Engineering',
-    //     major: 'Computer Science',
-    //     period: 'Aug 1990 - Jun 1994',
-    //     activities: 'football team head',
-    //   },
-    //   certificationsAndTraining: [],
-    // };
   }
   getRemainingCertificationsTooltip() {
     const remainingCerts = this.profile?.certifications.slice(2);

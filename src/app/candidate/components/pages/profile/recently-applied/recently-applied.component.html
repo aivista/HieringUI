@@ -1,4 +1,10 @@
-<div class="recently-applied">
+<div *ngIf="!loaderflag" class="loader_position">
+  <div class="flex justify-center">
+    <p-progress-spinner strokeWidth="2" fill="transparent" [style]="{ width: '100px', height: '100px', }" />
+  </div>
+</div>
+
+<div *ngIf="loaderflag" class="recently-applied">
   <h2 class="heading gap-4">
     <img src="assets/icons/recentJob.svg" alt="" class="icon" />
     Recently Applied
@@ -16,7 +22,7 @@
         <img src="assets/icons/adanicon.svg" alt="" height="22" width="98" />
       </div>
 
-      <div class="role-title">{{ job.role }}</div>
+      <div class="role-title">{{ job.Title }}</div>
 
       <div class="status">
         <span>Status</span>

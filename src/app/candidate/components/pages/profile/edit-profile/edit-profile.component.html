@@ -31,7 +31,7 @@
           </div>
           <div class="profile-preview-form-group first-width">
             <label>First Name <span>*</span></label>
-            <input type="text" value="Rajesh" />
+            <input type="text" [value]="profileData?.fname"  disabled/>
           </div>
         </div>
 
@@ -39,11 +39,11 @@
         <div class="profile-preview-row">
           <div class="profile-preview-form-group middle-width">
             <label>Middle Name</label>
-            <input type="text" placeholder="Enter your middle name" />
+            <input type="text" placeholder="Enter your middle name" [value]="profileData?.mnane == undefined ? '': profileData?.mnane"/>
           </div>
           <div class="profile-preview-form-group last-width">
             <label>Last Name <span>*</span></label>
-            <input type="text" value="Tapadia" />
+            <input type="text" [value]="profileData?.lname" disabled/>
           </div>
         </div>
 
@@ -51,11 +51,11 @@
         <div class="profile-preview-row">
           <div class="profile-preview-form-group middle-width">
             <label>Email ID <span>*</span></label>
-            <input type="email" value="rajesh.tapadia@gmail.com" />
+            <input type="email" [value]="profileData?.email" disabled/>
           </div>
           <div class="profile-preview-form-group last-width">
             <label>Phone No. <span>*</span></label>
-            <input type="text" value="9832192091" />
+            <input type="text" [value]="profileData?.phone" disabled/>
           </div>
         </div>
       </div>
@@ -64,22 +64,20 @@
       <div class="profile-preview-section">
         <h3 class="profile-preview-subheader subheader">Address</h3>
         <p>Please enter your home address</p>
-        <textarea rows="2">Sector 45, Faridabad, Haryana 121003</textarea>
+        <textarea rows="2">{{profileData?.location}}</textarea>
       </div>
 
       <!-- Experience Details Section -->
       <div class="profile-preview-section">
         <h3 class="profile-preview-subheader blue-line">Experience Details</h3>
-        <textarea rows="2">
-Executive director at Nxtra Data Ltd. (A Bharti Airtel Group Company).</textarea
+        <textarea rows="2">{{profileData?.latestExperience.company + '('+profileData?.latestExperience.position +')'}}</textarea
         >
       </div>
 
       <!-- Educational Details Section -->
       <div class="profile-preview-section">
         <h3 class="profile-preview-subheader blue-line">Educational Details</h3>
-        <textarea rows="2">
-Bachelor of Engineering in computer science from Pune University</textarea
+        <textarea rows="2">{{profileData?.latestEducation.degree}}</textarea
         >
       </div>
 
@@ -90,21 +88,22 @@ Bachelor of Engineering in computer science from Pune University</textarea
       <div class="profile-preview-section">
         <div class="profile-preview-form-group">
           <h4 class="subheader">Certification</h4>
-          <textarea placeholder="Details goes here"></textarea>
+          <textarea placeholder="Details goes here">{{profileData?.cert}}</textarea>
         </div>
         <div class="profile-preview-form-group">
           <h4 class="subheader">Skills</h4>
           <h5 class="skill">Add your skills (maximum 10)</h5>
-          <input
+
+          <textarea
+            rows="2"
             id="skillsInput"
             type="text"
-            [(ngModel)]="searchTerm"
-            (input)="filterSkills()"
+            [value]="profileData?.skill"
             placeholder="Type and add skills"
             autocomplete="off"
-          />
+          disabled></textarea>
           <!-- Dropdown Suggestions -->
-          <ul *ngIf="filteredSkills.length" class="skills-dropdown">
+          <!-- <ul *ngIf="filteredSkills.length" class="skills-dropdown">
             <li
               class="skill-li"
               *ngFor="let skill of filteredSkills"
@@ -112,16 +111,16 @@ Bachelor of Engineering in computer science from Pune University</textarea
             >
               {{ skill }}
             </li>
-          </ul>
+          </ul> -->
           <!-- Selected Skills -->
-          <div class="profile-preview-skills">
+          <!-- <div class="profile-preview-skills">
             <span *ngFor="let skill of selectedSkills" class="skill-tag">
               {{ skill }}
               <button (click)="removeSkill(skill)" class="remove-skill">
                 &times;
               </button>
             </span>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

@@ -1,4 +1,10 @@
-<div class="profile-details-left d-flex align-items-start flex-column gap-3">
+
+<div *ngIf="loader" class="loader_position">
+<div class="flex justify-center">
+    <p-progress-spinner strokeWidth="2" fill="transparent" [style]="{ width: '100px', height: '100px', }" />
+</div>
+</div>
+<div *ngIf="!loader" class="profile-details-left d-flex align-items-start flex-column gap-3">
   <div
     class="profile-details-left-header d-flex align-items-center justify-content-center gap-4"
   >

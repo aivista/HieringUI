@@ -10,7 +10,7 @@
         ><img src="assets/icons/fi_arrow-left.svg" /><span class="home"
           >Home /</span
         >
-        COO-Data center assessment</span
+        {{JobDetails?.jobTitle}} assessment</span
       >
       <!-- <nav>
                 <a href="#">Home</a> / <a href="#">COO-Data center assessment</a>
@@ -26,10 +26,10 @@
       <!-- Position Title -->
       <div class="card-header text-white" *ngIf="comoponent != 'Aiavatar'">
         <div class="txt-head">
-          <h5>Chief Operating Officer - Data Center</h5>
+          <h5>{{JobDetails?.jobTitle}}</h5>
           <div class="location">
             <img src="assets/icons/Location.svg" alt="" />
-            <span class="ms-2">Ahmedabad, Gujarat, India</span>
+            <span class="ms-2">{{JobDetails?.location}}</span>
           </div>
         </div>
 

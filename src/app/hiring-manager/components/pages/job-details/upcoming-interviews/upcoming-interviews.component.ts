@@ -28,9 +28,15 @@ export class UpcomingInterviewsComponent {
       }
     );
   }
+
+  getRandomValue<T>(array: T[]): T {
+    const randomIndex = Math.floor(Math.random() * array.length);
+    return array[randomIndex];
+  }
   processData(data: any): void {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
+    const interviewsmin = ['30 min', '45 min', '60 min'];
 
     const tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 1);
@@ -55,12 +61,12 @@ export class UpcomingInterviewsComponent {
         day: 'Today',
         interviews: groupedData.today.map((item: any) => ({
           name: `${item.first_name} ${item.last_name}`,
-          role: item.jobTitle,
+          role: JSON.parse(item.jobTitle)?.['Job Title'],
           startTime: new Date(item.scheduledTime).toLocaleTimeString([], {
             hour: '2-digit',
             minute: '2-digit',
           }),
-          duration: '1 hr', // Placeholder for duration
+          duration: this.getRandomValue(interviewsmin), // Placeholder for duration
           timeRelative: 'in 2 hours', // Example relative time, you can calculate this dynamically
         })),
       },
@@ -68,12 +74,12 @@ export class UpcomingInterviewsComponent {
         day: 'Tomorrow',
         interviews: groupedData.tomorrow.map((item: any) => ({
           name: `${item.first_name} ${item.last_name}`,
-          role: item.jobTitle,
+          role: JSON.parse(item.jobTitle)?.['Job Title'],
           startTime: new Date(item.scheduledTime).toLocaleTimeString([], {
             hour: '2-digit',
             minute: '2-digit',
           }),
-          duration: '1 hr', // Placeholder for duration
+          duration: this.getRandomValue(interviewsmin), // Placeholder for duration
           timeRelative: null, // No relative time for tomorrow
         })),
       },

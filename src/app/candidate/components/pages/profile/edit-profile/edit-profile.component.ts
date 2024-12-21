@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CandidateService } from '../../../../service/candidate.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -14,7 +15,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 })
 export class EditProfileComponent {
   @Output() cancelEdit = new EventEmitter<void>();
-
+  constructor(private services: CandidateService) {}
+  profileData: any;
   titleOptions = [
     { label: 'Mr.', value: 'Mr.' },
     { label: 'Ms.', value: 'Ms.' },
@@ -22,6 +24,16 @@ export class EditProfileComponent {
   ];
 
   selectedTitle: string = 'Mr.';
+  ngOnInit() {
+    // console.log('ok all are data in ngOn');
+    this.services.$ProfilsdataSubject.subscribe((data: any) => {
+      // console.log('services data', data);
+      this.profileData = data;
+      this.profileData['cert'] =
+        this.profileData.certificationsAndTraining.join(',');
+      this.profileData['skill'] = this.profileData.certifications.join(',');
+    });
+  }
 
   onCancel(): void {
     this.cancelEdit.emit(); // Emit event to exit edit mode

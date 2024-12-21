@@ -32,6 +32,7 @@ export class InterviewStepsComponent {
   assessmentDetails: any;
   totalTime: number = 1;
   remainingTime: number = 1;
+  JobDetails: any;
   constructor(
     private candidateService: CandidateService,
     private router: Router,
@@ -43,6 +44,10 @@ export class InterviewStepsComponent {
       this.candidateId = params['candidateId'];
       this.jobId = params['jobId'];
       this.getstepperdata(this.candidateId, this.jobId);
+    });
+    this.candidateService.$jobDetailsSubject.subscribe((data) => {
+      console.log('service data', data);
+      this.JobDetails = data;
     });
   }
 

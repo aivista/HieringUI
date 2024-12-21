@@ -1,5 +1,5 @@
 .dark-card {
-  background-color: #434343;
+  // background-color: #434343;
   width: 100%;
   min-height: calc(93vh - 7rem);
   border-radius: 8px;
@@ -62,7 +62,8 @@
   justify-content: center;
   flex-wrap: wrap;
   padding: 0 2%;
-  background-color: white;
+  background-color: #232323;
+  color: #000000 !important;
   border-radius: 5%;
   box-shadow: 0 0 25px rgb(39, 39, 39);
 }
@@ -118,6 +119,7 @@ video {
   height: 15%;
   padding: 0 2%;
   background-color: white;
+  color: #000000 !important;
   border: none;
   outline: none;
   margin: 0;
@@ -132,7 +134,7 @@ video {
   font-weight: bold;
   padding-top: 2%;
   font-size: 3vh;
-  color: black;
+  color: #ffffff;
   margin: 0;
 }
 textarea:focus {

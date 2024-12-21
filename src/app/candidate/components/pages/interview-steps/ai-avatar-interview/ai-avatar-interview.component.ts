@@ -98,16 +98,6 @@ export class AiAvatarInterviewComponent {
     this.roleAsPerJobDescription();
     this.candidateFullName();
     this.getJobDescription();
-
-    const now = new Date();
-    const hours = now.getHours();
-    const isAmPm = hours >= 12 ? 'PM' : 'AM';
-
-    if (isAmPm === 'PM') {
-      this.greetingMessage = 'Good Afternoon ' + this.fullName;
-    } else {
-      this.greetingMessage = 'Good Morning ' + this.fullName;
-    }
   }
 
   getJobDescription = async () => {
@@ -336,10 +326,9 @@ export class AiAvatarInterviewComponent {
     try {
       this.avatarSynthesizer.stopSpeakingAsync().then(() => {
         this.avatarSynthesizer.close();
-        window.location.reload();
+        this.onButtonClick();
+        // window.location.reload();
       });
-
-      this.onButtonClick();
     } catch (e) {
       console.log(e);
     } finally {
@@ -350,6 +339,16 @@ export class AiAvatarInterviewComponent {
     this.cbtn.nativeElement.style.display = 'none';
     this.dbtn.nativeElement.style.display = 'block';
     this.dbtn.nativeElement.disabled = 'true';
+
+    const now = new Date();
+    const hours = now.getHours();
+    const isAmPm = hours >= 12 ? 'PM' : 'AM';
+
+    if (isAmPm === 'PM') {
+      this.greetingMessage = 'Good Afternoon ' + this.fullName;
+    } else {
+      this.greetingMessage = 'Good Morning ' + this.fullName;
+    }
 
     this.log = '';
     // this.spinner.show();
@@ -399,13 +398,13 @@ export class AiAvatarInterviewComponent {
         let firstTime = 20;
         this.totalTime = firstTime;
 
-        this.seconds.nativeElement.innerHTML = `${firstTime}`;
-        this.counter.nativeElement.style.visibility = 'visible';
+        // this.seconds.nativeElement.innerHTML = `${firstTime}`;
+        // this.counter.nativeElement.style.visibility = 'visible';
 
         let firstInterval = setInterval(() => {
           firstTime = Math.max(0, firstTime - 1);
           this.remainingTime = firstTime;
-          this.seconds.nativeElement.innerHTML = `${firstTime}`;
+          // this.seconds.nativeElement.innerHTML = `${firstTime}`;
         }, 1000);
 
         await avatarSynthesizer.speakTextAsync(
@@ -452,14 +451,14 @@ export class AiAvatarInterviewComponent {
 
           this.time = time[i];
           this.totalTime = time[i];
-          this.seconds.nativeElement.innerHTML = `${this.time}`;
+          // this.seconds.nativeElement.innerHTML = `${this.time}`;
           qStart = Date.now();
-          this.counter.nativeElement.style.visibility = 'visible';
+          // this.counter.nativeElement.style.visibility = 'visible';
 
           let interval = setInterval(() => {
             this.time = Math.max(0, this.time - 1);
             this.remainingTime = this.time;
-            this.seconds.nativeElement.innerHTML = `${this.time}`;
+            // this.seconds.nativeElement.innerHTML = `${this.time}`;
           }, 1000);
 
           let json: any;
@@ -533,7 +532,7 @@ export class AiAvatarInterviewComponent {
             prevAnswer['type'] = 'mistake';
             answers.push(prevAnswer);
 
-            this.counter.nativeElement.style.visibility = 'hidden';
+            // this.counter.nativeElement.style.visibility = 'hidden';
             this.log = `You mistakenly said : ${json['key']}`;
 
             qStart = Date.now();
@@ -560,7 +559,7 @@ export class AiAvatarInterviewComponent {
             }
 
             this.log = `You : ${json['key']}`;
-            this.counter.nativeElement.style.visibility = 'hidden';
+            // this.counter.nativeElement.style.visibility = 'hidden';
 
             if (contextual[i]) {
               if (contextType[i] === 'A') {

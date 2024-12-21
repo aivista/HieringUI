@@ -1,10 +1,7 @@
 <div
   class="container-fluid p-0 d-flex justify-content-center align-items-center"
 >
-  <div
-    class="dark-card d-flex justify-content-center align-items-center"
-    (click)="onButtonClick()"
-  >
+  <div class="dark-card d-flex justify-content-center align-items-center">
     <!-- <span class="text-white fw-semibold fs-5">AI Avatar based interview</span> -->
     <div class="container myAvatarContainer">
       <div class="container myAvatarVideoRootDiv d-flex justify-content-around">
@@ -54,8 +51,8 @@
         />
         <p id="seconds" #seconds></p> -->
         <app-circular-progress-bar2
-          [totalTime]="totalTime * 60"
-          [remainingTime]="remainingTime * 60"
+          [totalTime]="totalTime"
+          [remainingTime]="remainingTime"
         ></app-circular-progress-bar2>
       </div>
     </div>

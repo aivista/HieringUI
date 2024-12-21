@@ -15,8 +15,14 @@ export class AppComponent {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // Hide header for specific routes
-        const loginPages = ['/login', '/candidate/login'];
-        this.showHeader = !loginPages.some((path) =>
+        const loginPages = [
+          '/job-details',
+          '/job-create',
+          '/candidate/profile',
+          '/candidate/interview',
+          '/candidate/assessment',
+        ];
+        this.showHeader = loginPages.some((path) =>
           event.urlAfterRedirects.includes(path)
         );
       }

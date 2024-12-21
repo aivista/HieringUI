@@ -59,7 +59,7 @@
       </div>
     </div>
   </div>
-  <div class="d-flex flex-column gap-4 w-100">
+  <div class="d-flex flex-column gap-4 w-100 profile-container">
     <div class="candidate-experience">
       <p>Latest Experience</p>
       <div class="company d-flex flex-column" *ngIf="profile?.latestExperience">
@@ -78,11 +78,8 @@
             *ngIf="profile?.latestExperience?.location?.length"
           ></div>
           <p class="sub-text">{{ profile?.latestExperience?.location }}</p> -->
-          <div
-            class="dot"
-            *ngIf="profile?.latestExperience"
-          ></div>
-          <p class="sub-text  py-4">{{ profile?.latestExperience?.position }}</p>
+          <div class="dot" *ngIf="profile?.latestExperience"></div>
+          <p class="sub-text py-4">{{ profile?.latestExperience?.position }}</p>
         </div>
       </div>
       <!-- <div class="job-position ps-4" *ngIf="profile?.latestExperience">

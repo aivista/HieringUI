@@ -2,16 +2,15 @@
 <div *ngIf="isPopupVisible" class="popup-background" (click)="closePopup()">
   <div class="popup-container" (click)="$event.stopPropagation()">
     <div class="popup-content text-center">
-      <span class="close-btn" (click)="closePopup()"><img src="/assets/icons/crosscircle.svg" alt=""></span>
+      <span class="close-btn" (click)="closePopup()"
+        ><img src="assets/icons/crosscircle.svg" alt=""
+      /></span>
       <div class="icon">
-        <img src="/assets/icons/Tickmark.svg" alt="">
+        <img src="assets/icons/Tickmark.svg" alt="" />
       </div>
       <p class="headd">Congratulations!</p>
-      <p class="subheadd">{{ subHeader }}</p>       
-      <p class="subsubhead">{{ subSubHeader }}</p> 
-
+      <p class="subheadd">{{ subHeader }}</p>
+      <p class="subsubhead">{{ subSubHeader }}</p>
     </div>
   </div>
 </div>
-
-

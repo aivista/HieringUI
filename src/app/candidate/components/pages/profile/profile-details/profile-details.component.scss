@@ -87,6 +87,16 @@
     }
   }
 }
+.profile-container {
+  height: calc(93vh - 15rem);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+}
 .candidate-experience {
   background: linear-gradient(90deg, #2c2c2c 0%, #1a1822 100%);
   padding: 16px 24px;

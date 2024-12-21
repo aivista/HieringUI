@@ -56,8 +56,12 @@ body {
 .job-container {
   // width: 400px;
   // height: 80%;
-  height: 90%;
-  overflow-y: auto;
+  height: calc(93vh - 5rem);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
   background: linear-gradient(137.88deg, #1d212a 21.56%, #272c37 100%);
   border-radius: 10px;
   border: 0.5px solid;
@@ -67,6 +71,10 @@ body {
     rgba(193, 193, 193, 0.72) 100%
   );
   padding: 10px;
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
 }
 
 .job-details {

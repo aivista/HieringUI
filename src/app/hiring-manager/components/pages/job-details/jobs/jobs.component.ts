@@ -85,7 +85,7 @@ export class JobsComponent {
         this.JobDetails.forEach((el: any) => {
           el['Title'] = JSON.parse(el['jd'])?.['Job Title'];
         });
-        console.log(this.JobDetails);
+        console.log(this.JobDetails.reverse());
         this.hiringManagerService.jobSubscribe.next(this.JobDetails[0]);
       },
       (e) => {}

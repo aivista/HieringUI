@@ -1,4 +1,10 @@
+<div *ngIf="loader" class="loader_position">
+  <div class="flex justify-center">
+      <p-progress-spinner strokeWidth="2" fill="transparent" [style]="{ width: '100px', height: '100px', }" />
+  </div>
+</div>
 <div
+  *ngIf="!loader"
   class="container-fluid p-0 d-flex justify-content-center align-items-center"
 >
   <div class="dark-card d-flex justify-content-center align-items-center">
@@ -50,12 +56,42 @@
           id="myClock"
         />
         <p id="seconds" #seconds></p> -->
-        <app-circular-progress-bar2
+        <!-- <app-circular-progress-bar2
           [totalTime]="totalTime"
           [remainingTime]="remainingTime"
-        ></app-circular-progress-bar2>
+        ></app-circular-progress-bar2> -->
+
+        <div class="progress-bar-container" #progressBar>
+          <!-- Circular Progress Bar -->
+          <svg class="progress-circle" width="100" height="100" viewBox="0 0 36 36">
+            <circle
+              class="progress-background"
+              cx="18"
+              cy="18"
+              r="16"
+              fill="none"
+              stroke="#444"
+              stroke-width="2"
+            ></circle>
+            <circle
+              class="progress-foreground"
+              cx="18"
+              cy="18"
+              r="16"
+              fill="none"
+              [attr.stroke-dasharray]="circumference"
+              [attr.stroke-dashoffset]="dashOffset"
+              stroke="#00bfff"
+              stroke-width="2"
+              stroke-linecap="round"
+            ></circle>
+          </svg>
+
+          <!-- Remaining Time Text -->
+          <p class="progress-text" #seconds></p>
+        </div>
+
       </div>
     </div>
-    <!-- <ngx-spinner bdColor = "rgba(0,0,0,0.5)" size="large" color="#fff" type="ball-spin"></ngx-spinner> -->
   </div>
 </div>

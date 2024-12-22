@@ -13,11 +13,13 @@ import { QuestionSet } from '../../../../../../environments/QuestionSet';
 import { config } from '../../../../../../environments/config';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { CircularProgressBar2Component } from '../circular-progress-bar2/circular-progress-bar2.component';
+import { ProgressSpinner } from 'primeng/progressspinner';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-ai-avatar-interview',
   standalone: true,
-  imports: [NgxSpinnerModule, CircularProgressBar2Component],
+  imports: [NgxSpinnerModule, CircularProgressBar2Component, ProgressSpinner, CommonModule],
   templateUrl: './ai-avatar-interview.component.html',
   styleUrl: './ai-avatar-interview.component.scss',
 })
@@ -52,6 +54,11 @@ export class AiAvatarInterviewComponent {
   log: string = '';
   time: number = 0;
 
+  loader: boolean = true;
+
+  circumference = 2 * Math.PI * 16;
+  dashOffset = 0;
+
   jd: any;
 
   @ViewChild('connectBtn') cbtn!: ElementRef;
@@ -63,6 +70,7 @@ export class AiAvatarInterviewComponent {
   @ViewChild('textArea') textArea!: ElementRef;
   @ViewChild('counter') counter!: ElementRef;
   @ViewChild('seconds') seconds!: ElementRef;
+  @ViewChild('progressBar') progressBar!: ElementRef;
 
   mediaRecorderRef!: MediaRecorder;
   recordedChunks: Blob[] = [];
@@ -104,6 +112,7 @@ export class AiAvatarInterviewComponent {
     try {
       const response = await this._avatarService.getJobDescription(this.JobId);
       this.jd = response;
+      this.loader = false;
     } catch (error) {
       console.log(error);
     }
@@ -398,13 +407,10 @@ export class AiAvatarInterviewComponent {
         let firstTime = 20;
         this.totalTime = firstTime;
 
-        // this.seconds.nativeElement.innerHTML = `${firstTime}`;
-        // this.counter.nativeElement.style.visibility = 'visible';
-
         let firstInterval = setInterval(() => {
           firstTime = Math.max(0, firstTime - 1);
-          this.remainingTime = firstTime;
-          // this.seconds.nativeElement.innerHTML = `${firstTime}`;
+          this.remainingTime = firstTime; //!Delete This
+          this.seconds.nativeElement.innerHTML = `${firstTime}`;
         }, 1000);
 
         await avatarSynthesizer.speakTextAsync(
@@ -413,13 +419,18 @@ export class AiAvatarInterviewComponent {
 
         this.log = `Avatar : What aspect of this ${this.role} are most intriguing to you?`;
 
+        this.seconds.nativeElement.innerHTML = `${firstTime}`;
+        this.counter.nativeElement.style.visibility = 'visible';
+        this.progressBar.nativeElement.style.visibility = 'visible';
+
         const speech = await this.initSession();
 
         const response = await this._avatarService.speak(
           speech,
           false,
           false,
-          this.jd
+          false,
+          this.jd,
         );
 
         this.log = `you: ${response.result['key']}`;
@@ -451,22 +462,36 @@ export class AiAvatarInterviewComponent {
 
           this.time = time[i];
           this.totalTime = time[i];
-          // this.seconds.nativeElement.innerHTML = `${this.time}`;
+          this.seconds.nativeElement.innerHTML = `${this.time}`;
           qStart = Date.now();
-          // this.counter.nativeElement.style.visibility = 'visible';
+          this.counter.nativeElement.style.visibility = 'visible';
+          this.progressBar.nativeElement.style.visibility = 'visible';
 
           let interval = setInterval(() => {
             this.time = Math.max(0, this.time - 1);
             this.remainingTime = this.time;
-            // this.seconds.nativeElement.innerHTML = `${this.time}`;
+            this.seconds.nativeElement.innerHTML = `${this.time}`;
           }, 1000);
 
           let json: any;
           let coreSkillQuestion: boolean = false;
+          let isItCandidateQuestion: boolean = false;
 
-          cars[i] === 'Can you please tell me some of your core skills?'
-            ? (coreSkillQuestion = true)
-            : (coreSkillQuestion = false);
+          // cars[i] === "Can you please tell me some of your core skills?"
+          //   ? (coreSkillQuestion = true)
+          //   : (coreSkillQuestion = false);
+
+          if (cars[i] === "Can you please tell me some of your core skills?") {
+            coreSkillQuestion = true;
+          } else {
+            coreSkillQuestion = false;
+          }
+
+          if (cars[i] === "Do you have any questions for me?") {
+            isItCandidateQuestion = true;
+          } else {
+            isItCandidateQuestion = false;
+          }
 
           const speech = await this.initSession();
 
@@ -474,6 +499,7 @@ export class AiAvatarInterviewComponent {
             speech,
             contextual[i],
             coreSkillQuestion,
+            isItCandidateQuestion,
             this.jd
           );
 
@@ -532,7 +558,8 @@ export class AiAvatarInterviewComponent {
             prevAnswer['type'] = 'mistake';
             answers.push(prevAnswer);
 
-            // this.counter.nativeElement.style.visibility = 'hidden';
+            this.counter.nativeElement.style.visibility = 'hidden';
+            this.progressBar.nativeElement.style.visibility = 'hidden';
             this.log = `You mistakenly said : ${json['key']}`;
 
             qStart = Date.now();
@@ -559,7 +586,8 @@ export class AiAvatarInterviewComponent {
             }
 
             this.log = `You : ${json['key']}`;
-            // this.counter.nativeElement.style.visibility = 'hidden';
+            this.counter.nativeElement.style.visibility = 'hidden';
+            this.progressBar.nativeElement.style.visibility = 'hidden';
 
             if (contextual[i]) {
               if (contextType[i] === 'A') {

@@ -214,3 +214,44 @@ textarea:focus {
   background-color: black;
   color: white;
 }
+.loader_position{
+  padding-top: 9%;
+  padding-left: 45%;
+}
+
+.progress-bar-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // background-color: #1a1a1a; /* Matches the dark theme */
+  border-radius: 50%;
+  visibility: hidden;
+}
+
+.progress-circle {
+  transform: rotate(-90deg); /* Start stroke from the top-left */
+  transform-origin: center; /* Rotate around the center */
+}
+
+.progress-background {
+  stroke: #969696;
+  stroke-width: 1;
+}
+
+.progress-foreground {
+  stroke: #00bfff;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.35s ease;
+}
+
+.progress-text {
+  position: absolute;
+  font-size: 16px;
+  color: #00bfff;
+  font-weight: bold;
+  text-align: center;
+}

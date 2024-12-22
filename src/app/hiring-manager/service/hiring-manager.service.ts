@@ -72,4 +72,7 @@ export class HiringManagerService {
   callProfileUpdateJurney(data: any) {
     return this.http.post(POSTurl.callProfileUpdateJurney, data);
   }
+  getcandidateInterviewtime(jsonBody: any) {
+    return this.http.post(POSTurl.interviewSechudle, jsonBody);
+  }
 }

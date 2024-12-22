@@ -85,7 +85,6 @@ export class CandidatesComponent {
     //     this.getShortlisted()
     //   }
     // })
-
   }
 
   getShortlisted() {
@@ -116,6 +115,7 @@ export class CandidatesComponent {
   selectedCandidate: any = null;
 
   openModal(candidate: any) {
+    console.log('dtaa', candidate);
     this.selectedCandidate = candidate;
   }
 

@@ -3,14 +3,15 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HiringManagerService } from '../../../../service/hiring-manager.service';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-candidate-info',
   standalone: true,
-  imports: [CommonModule, Toast],
+  imports: [CommonModule, Toast, DatePipe],
   templateUrl: './candidate-info.component.html',
   styleUrl: './candidate-info.component.scss',
-  providers: [MessageService],
+  providers: [MessageService, DatePipe],
 })
 export class CandidateInfoComponent {
   @Input() candidate: any;
@@ -21,15 +22,17 @@ export class CandidateInfoComponent {
   isSelected: boolean = true;
   constructor(
     private hiringManagerService: HiringManagerService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private datepipe: DatePipe
   ) {}
 
   candidateStatus: string = '';
   showHiddenSkills: boolean = false;
-  jobSubscribe:any
+  jobSubscribe: any;
   assessmentDetails: any[] = []; // Store the assessment details from the API
   component: string = ''; // Store the name of the pending component
   selectedCandidateDetails: any;
+  interviewTime: any;
 
   ngOnInit() {
     console.log('Hello World', this.candidate);
@@ -38,14 +41,14 @@ export class CandidateInfoComponent {
     // Store the status in a variable
     if (this.candidate && this.candidate.latestStatus) {
       this.candidateStatus = this.candidate.latestStatus;
-      console.log('Candidate Status:', this.candidateStatus);
+      // console.log('Candidate Status:', this.candidateStatus);
     }
     if (this.candidateStatus === 'Interview Scheduled') {
       this.isInterviewScheduled = true;
     } else {
       this.isInterviewScheduled = false;
     }
-    console.log('candidate', this.candidate);
+    // console.log('candidate', this.candidate);
 
     if (this.candidateStatus === 'Interview Completed') {
       this.isSelected = true;
@@ -62,6 +65,23 @@ export class CandidateInfoComponent {
         if (res.isSuccess) {
           this.selectedCandidateDetails = res.result;
           console.log('selected candidate', this.selectedCandidateDetails);
+        }
+      });
+    this.getInterviewTime(this.candidate.jobId, this.candidate.candidateId);
+  }
+  getInterviewTime(JobId: any, CandidateId: any) {
+    const Jsonobj = {
+      jobId: JobId,
+      candidateId: CandidateId,
+    };
+    this.hiringManagerService
+      .getcandidateInterviewtime(Jsonobj)
+      .subscribe((data: any) => {
+        if (data.isSuccess) {
+          this.interviewTime = this.datepipe.transform(
+            data?.result['0'].scheduledTime,
+            'd MMMM yyyy'
+          );
         }
       });
   }
@@ -100,7 +120,9 @@ export class CandidateInfoComponent {
       (response: any) => {
         if (response.isSuccess) {
           console.log(response);
-         this.jobSubscribe= this.hiringManagerService.jobSubscribe.next({id:this.candidate.jobId})
+          this.jobSubscribe = this.hiringManagerService.jobSubscribe.next({
+            id: this.candidate.jobId,
+          });
         } else {
           console.error('Failed to update profile');
         }
@@ -131,8 +153,9 @@ export class CandidateInfoComponent {
     this.hiringManagerService.callProfileUpdateJurney(jasonBody).subscribe(
       (response: any) => {
         if (response.isSuccess) {
-
-        this.jobSubscribe=  this.hiringManagerService.jobSubscribe.next({id:this.candidate.jobId})
+          this.jobSubscribe = this.hiringManagerService.jobSubscribe.next({
+            id: this.candidate.jobId,
+          });
           console.log(response);
         } else {
           console.error('Failed to update profile');
@@ -155,9 +178,9 @@ export class CandidateInfoComponent {
   getImagePath(assessmentName: string): string {
     return `public/assets/icons/${assessmentName}.svg`;
   }
-  ngOnDestroy(){
-    if(this.jobSubscribe){
-      this.jobSubscribe.unsubcribe()
+  ngOnDestroy() {
+    if (this.jobSubscribe) {
+      this.jobSubscribe.unsubcribe();
     }
   }
 }

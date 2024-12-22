@@ -28,4 +28,5 @@ export const POSTurl = {
   evaluateMCQ: AssessmentServicesUrl + 'ASSESSMENTSERVICE/EvaluateMCQ',
   callProfileUpdateJurney:
     AssessmentServicesUrl + 'ASSESSMENTSERVICE/CallUpdateProfileJourneyStatus',
+  interviewSechudle: JobServiceUrl + 'jobs/getInterViewSechdule',
 };

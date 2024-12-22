@@ -67,4 +67,7 @@ export class CandidateService {
   UpdateProfileUpdateStatus(jsonBody: any) {
     return this.http.post(POSTurl.callProfileUpdateJurney, jsonBody);
   }
+  getcandidateInterviewtime(jsonBody: any) {
+    return this.http.post(POSTurl.interviewSechudle, jsonBody);
+  }
 }

@@ -13,10 +13,17 @@ import { HiringManagerService } from '../../../../service/hiring-manager.service
 import { ProgressSpinner } from 'primeng/progressspinner';
 import { Toast } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { TooltipModule } from 'primeng/tooltip';
 @Component({
   selector: 'app-candidates',
   standalone: true,
-  imports: [CommonModule, CandidateInfoComponent, ProgressSpinner, Toast],
+  imports: [
+    CommonModule,
+    CandidateInfoComponent,
+    ProgressSpinner,
+    Toast,
+    TooltipModule,
+  ],
   templateUrl: './candidates.component.html',
   styleUrl: './candidates.component.scss',
   providers: [MessageService],
@@ -173,5 +180,11 @@ export class CandidatesComponent {
     const skillsArray = this.skills ? this.skills.split(',') : [];
     this.displayedSkills = skillsArray.slice(0, 3); // Show the first three
     this.remainingSkills = skillsArray.slice(3); // Rest of the skills
+  }
+  getHiddenSkillsTooltip(candidate: any): string {
+    if (candidate?.skills) {
+      return candidate.skills.split(',').slice(2).join(', ');
+    }
+    return '';
   }
 }

@@ -9,12 +9,12 @@
 </div>
 
 <div *ngIf="!loaderflag" class="candidates-container">
-    <p-toast />
+  <p-toast />
   <div class="header">
     <img [src]="'assets/icons/profile-logo.svg'" alt="My Image" />
     <h2>Candidates</h2>
   </div>
-<nav class="nav-bar mb-4 d-flex justify-content-between">
+  <nav class="nav-bar mb-4 d-flex justify-content-between">
     <div class="nav-btn">
       <span
         class="nav-item"
@@ -31,8 +31,8 @@
         Applied
       </span>
     </div>
-    <button  class="refresh btn" (click)="refreshData()" >
-      <img src="assets/icons/refresh.svg" alt="" class="img-fluid w-75">
+    <button class="refresh btn" (click)="refreshData()">
+      <img src="assets/icons/refresh.svg" alt="" class="img-fluid w-75" />
     </button>
   </nav>
   <div *ngIf="activeTab === 'Shortlisted'" class="main-candisate-card">
@@ -77,7 +77,7 @@
           >
             {{ skill }}
           </div>
-          <div
+          <!-- <div
             *ngIf="candidate?.skills?.split(',').length > 2"
             class="skill-pill2"
             (mouseenter)="candidate.showHiddenSkills = true"
@@ -95,6 +95,14 @@
                 {{ skill }}
               </div>
             </div>
+          </div> -->
+
+          <div
+            *ngIf="candidate?.skills?.split(',').length > 2"
+            class="skill-pill2"
+            pTooltip="{{ getHiddenSkillsTooltip(candidate) }}"
+          >
+            +{{ candidate?.skills?.split(",").length - 2 }}
           </div>
         </div>
       </div>
@@ -151,8 +159,6 @@
     <ng-template #noAppliedData>
       <div class="no-data">No data available</div>
     </ng-template>
-
-  
   </div>
   <div class="position-absolute top-0 end-0 popup-content">
     <app-candidate-info

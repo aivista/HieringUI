@@ -9,8 +9,9 @@
   .quiz-screen {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     width: 80%;
+    padding-top: 1rem;
   }
   .upperrwap {
     display: flex;
@@ -157,6 +158,10 @@
   .assessment-container {
     .question-header {
       margin-top: 0 !important;
+      margin-bottom: 0.8rem !important;
+    }
+    .question-text {
+      margin-bottom: 0 !important;
     }
     .instructions {
       div {
@@ -180,7 +185,7 @@
     }
 
     .options {
-      margin-bottom: 0.8rem !important;
+      margin-bottom: 0.5rem !important;
       label {
         margin: 0.8rem 0 !important;
 
@@ -214,6 +219,10 @@
   .assessment-container {
     .question-header {
       margin-top: 0 !important;
+      margin-bottom: 0.8rem !important;
+    }
+    .question-text {
+      margin-bottom: 0 !important;
     }
     .instructions {
       div {
@@ -237,7 +246,7 @@
     }
 
     .options {
-      margin-bottom: 0.8rem !important;
+      margin-bottom: 0.5rem !important;
       label {
         margin: 0.8rem 0 !important;
 

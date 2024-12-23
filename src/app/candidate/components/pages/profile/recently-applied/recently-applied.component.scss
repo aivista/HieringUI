@@ -1,6 +1,6 @@
-.loader_position{
-   padding-top: 290%;
-    padding-left: 40%;
+.loader_position {
+  padding-top: 290%;
+  padding-left: 40%;
 }
 .recently-applied {
   // padding: 20px;
@@ -38,12 +38,7 @@
     height: calc(93vh - 9rem);
     overflow-y: scroll;
     overflow-x: hidden;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-
-    &::-webkit-scrollbar {
-      display: none; /* Chrome, Safari and Opera */
-    }
+    padding-right: 0.2rem;
 
     // Card Container
     .card-container {

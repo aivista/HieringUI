@@ -70,17 +70,21 @@
 .test-btn:hover {
   background-color: #5500c8;
 }
-@media (min-height: 600px) and (max-height: 800px) {
+
+@media (min-height: 500px) and (max-height: 700px) {
   .call {
     h6 {
-      font-size: 0.8rem !important;
+      font-size: 0.7rem !important;
+    }
+    img {
+      height: 1.2rem !important;
     }
   }
   .instructions {
     h6 {
       font-size: 0.8rem !important;
-      line-height: 32px !important;
-      margin-top: 0.6rem !important;
+      line-height: 20px !important;
+      margin: 0.5rem 0 !important;
     }
 
     ul li {
@@ -99,16 +103,22 @@
   }
 }
 @media (min-width: 1024px) and (max-width: 1436px) {
+  .card-box {
+    margin-top: 1rem !important;
+  }
   .call {
     h6 {
       font-size: 0.8rem !important;
+    }
+    img {
+      height: 1.2rem !important;
     }
   }
   .instructions {
     h6 {
       font-size: 0.8rem !important;
-      line-height: 32px !important;
-      margin-top: 0.6rem !important;
+      line-height: 20px !important;
+      margin: 0.5rem 0 !important;
     }
 
     ul li {

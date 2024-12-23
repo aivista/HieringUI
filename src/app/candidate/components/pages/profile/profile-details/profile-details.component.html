@@ -1,10 +1,16 @@
-
 <div *ngIf="loader" class="loader_position">
-<div class="flex justify-center">
-    <p-progress-spinner strokeWidth="2" fill="transparent" [style]="{ width: '100px', height: '100px', }" />
+  <div class="flex justify-center">
+    <p-progress-spinner
+      strokeWidth="2"
+      fill="transparent"
+      [style]="{ width: '100px', height: '100px', }"
+    />
+  </div>
 </div>
-</div>
-<div *ngIf="!loader" class="profile-details-left d-flex align-items-start flex-column gap-3">
+<div
+  *ngIf="!loader"
+  class="profile-details-left d-flex align-items-start flex-column gap-3"
+>
   <div
     class="profile-details-left-header d-flex align-items-center justify-content-center gap-4"
   >
@@ -85,7 +91,7 @@
           ></div>
           <p class="sub-text">{{ profile?.latestExperience?.location }}</p> -->
           <div class="dot" *ngIf="profile?.latestExperience"></div>
-          <p class="sub-text py-4">{{ profile?.latestExperience?.position }}</p>
+          <p class="sub-text py-3">{{ profile?.latestExperience?.position }}</p>
         </div>
       </div>
       <!-- <div class="job-position ps-4" *ngIf="profile?.latestExperience">

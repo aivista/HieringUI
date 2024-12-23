@@ -9,7 +9,7 @@ body {
   align-items: center;
 }
 
-.refresh{
+.refresh {
   border: none;
 }
 .candidates-container {
@@ -153,6 +153,29 @@ body {
 .status-selected {
   background: rgba(74, 222, 128, 0.2);
   color: rgba(89, 217, 145, 1);
+}
+
+.completed,
+.selected {
+  background-color: rgb(33, 101, 33);
+}
+.ai-screening-pending,
+.interview-pending,
+.assessment {
+  background-color: #6a2a43;
+}
+
+.iterview-pending,
+.meeting-panding {
+  background-color: #b5a01eb2;
+}
+
+.inactive-status {
+  background-color: #4d4d4d;
+}
+.faild,
+.not-selected {
+  background-color: #c42c2f;
 }
 
 .experience {

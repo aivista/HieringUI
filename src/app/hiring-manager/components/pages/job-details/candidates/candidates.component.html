@@ -57,7 +57,21 @@
             </div>
             <div
               class="status"
-              [ngClass]="getStatusClass(candidate?.latestStatus)"
+              [ngClass]="{
+                assessment: candidate.latestStatus === 'Assessment Pending',
+                'ai-screening-pending':
+                  candidate.latestStatus === 'AI Screening Pending',
+                'interview-pending':
+                  candidate.latestStatus === 'Interview Scheduled',
+                'meeting-panding':
+                  candidate.latestStatus === 'Teams Meeting Pending',
+                'inactive-status': candidate.latestStatus === 'Inactive',
+                faild: candidate.latestStatus === 'Failed in Assessment',
+                completed: candidate.latestStatus === 'Interview Completed',
+                'not-selected':
+                  candidate.latestStatus === 'Not Selected in Interview',
+                selected: candidate.latestStatus === 'Selected'
+              }"
             >
               {{ candidate?.latestStatus }}
             </div>

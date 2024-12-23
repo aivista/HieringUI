@@ -84,7 +84,7 @@
     rgba(91, 91, 91, 0.72) 3.02%,
     rgba(193, 193, 193, 0.72) 100%
   );
-  min-height: 300px;
+  min-height: 31rem;
 }
 
 :host ::ng-deep .p-inputtext {
@@ -241,6 +241,7 @@
 :host::ng-deep .p-select-option {
   padding: 0.4rem;
   line-height: normal;
+  white-space: wrap;
 }
 
 ::ng-deep .p-checkbox,
@@ -322,11 +323,6 @@
   border-radius: var(--p-inputtext-border-radius) !important;
 }
 
-::ng-deep .p-overlay-content {
-  z-index: 9999 !important;
-  position: relative !important;
-}
-
 ::ng-deep p-checkbox {
   display: flex !important;
 }
@@ -341,10 +337,11 @@
 
 @media (min-height: 600px) and (max-height: 800px) {
   .main-section {
-    padding: 18px 20px !important;
+    padding: 0px 20px !important;
   }
   .jcd-body {
     padding-top: 5px !important;
+    margin-top: 5px !important;
   }
 
   .main-contain {
@@ -369,7 +366,7 @@
     font-size: 12px !important;
   }
   .from-container {
-    height: calc(93vh - 15rem) !important;
+    height: calc(93vh - 13rem) !important;
     overflow-y: scroll !important;
     overflow-x: hidden !important;
     padding-right: 0.5rem !important;
@@ -391,10 +388,11 @@
 }
 @media (min-width: 1024px) and (max-width: 1436px) {
   .main-section {
-    padding: 18px 20px !important;
+    padding: 0px 20px !important;
   }
   .jcd-body {
     padding-top: 5px !important;
+    margin-top: 5px !important;
   }
   .main-contain {
     margin-top: 2px !important;
@@ -418,7 +416,7 @@
     font-size: 12px !important;
   }
   .from-container {
-    height: calc(93vh - 15rem) !important;
+    height: calc(93vh - 13rem) !important;
     overflow-y: scroll !important;
     overflow-x: hidden !important;
     padding-right: 0.5rem !important;

@@ -324,7 +324,7 @@
 
 ::ng-deep .p-overlay-content {
   z-index: 9999 !important;
-  position: fixed !important;
+  position: relative !important;
 }
 
 ::ng-deep p-checkbox {

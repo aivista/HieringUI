@@ -86,8 +86,9 @@ export class RecentlyAppliedComponent {
       jobTitle: JSON.parse(job.jd)?.['Job Title'],
       location: JSON.parse(job.jd)?.['Location'],
     };
+    localStorage.setItem('selected_job', JSON.stringify(jobdetails));
     //console.log('job details', JSON.parse(job.jd));
-    this.recentlyAppliedService.$jobDetailsSubject.next(jobdetails);
+    // this.recentlyAppliedService.$jobDetailsSubject.next(jobdetails);
     this.router.navigate(['/candidate/interview'], {
       queryParams: { jobId: job.jobId, candidateId: this.storedCandidateId },
     });

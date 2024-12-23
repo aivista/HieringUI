@@ -171,7 +171,7 @@ export class JobCreateComponent {
   }
 
   getJobDetails() {
-    this.jdloader = true;
+    //this.jdloader = true;
     Object.keys(this.profileForm.controls).forEach((field) => {
       const control = this.profileForm.get(field);
       if (control) {
@@ -179,6 +179,7 @@ export class JobCreateComponent {
       }
     });
     if (this.profileForm.valid) {
+      this.jdloader = true;
       this.JDData = [];
       this.JDResponse = [];
       const jsonBody = {

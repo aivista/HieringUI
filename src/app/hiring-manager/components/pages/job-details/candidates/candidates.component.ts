@@ -96,6 +96,7 @@ export class CandidatesComponent {
 
   refreshData() {
     this.loaderflag = true;
+    this.hiringManagerService.reloadUpcomeingInterview.next(this.jobId);
     this.hiringManagerService.getShortlistedJobs(this.jobId).subscribe(
       (result: any) => {
         if (result.isSuccess) {

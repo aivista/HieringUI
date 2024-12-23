@@ -117,6 +117,9 @@ export class CandidateInfoComponent {
   }
 
   onReject() {
+    let jobTitle = localStorage.getItem('jobTitle');
+    let jobLocation = localStorage.getItem('jobLocation');
+    let JObRole = localStorage.getItem('JObRole');
     const jasonBody = {
       jobId: this.candidate.jobId,
       candidateId: this.candidate.candidateId,
@@ -145,7 +148,28 @@ export class CandidateInfoComponent {
       summary: 'Rejected',
       detail: `Candidate ${this.selectedCandidateDetails?.first_name} Rejected`,
     });
-    // alert(`Candidate ${this.selectedCandidateDetails?.first_name} Rejected`);
+    let jsonObj = {
+      to: [
+        {
+          name:
+            this.selectedCandidateDetails?.first_name +
+            ' ' +
+            this.selectedCandidateDetails?.last_name,
+          email: this.selectedCandidateDetails?.email,
+        },
+      ],
+      subject: `Update on Your Application for ${jobTitle}`,
+      plainTextBody: `Thank you for your interest in the ${jobTitle} position. We appreciate the time and effort you invested in your application and the opportunity to learn about your skills and experiences. 
+                      After careful consideration, we have decided to move forward with other candidates who more closely match our current needs. Please know this decision was not easy due to the high quality of applicants.
+                      We encourage you to apply for future openings for which you qualify, as we'd be happy to consider your application again.`,
+      htmlBody: `<p>Hello ${
+        this.selectedCandidateDetails?.first_name +
+        ' ' +
+        this.selectedCandidateDetails?.last_name
+      },</p><p>Thank you for your interest in the <b>${jobTitle} </b> position. We appreciate the time and effort you invested in your <br/> application and the opportunity to learn about your skills and experiences.</p><br/><br/><br/>
+<p>After careful consideration, we have decided to move forward with other candidates who more closely match our <br/>current needs. Please know this decision was not easy due to the high quality of applicants.</p></br></br></br><p>We encourage you to apply for future openings for which you qualify, as we'd be happy to consider your <br/>application again.</p><br/><br/>.</p><p>Best regards,<br>Hiring Platform</p>`,
+    };
+    this.sendMail_to_candidate(jsonObj);
     this.close.emit(
       this.selectedCandidateDetails?.first_name +
         ' ' +
@@ -156,6 +180,9 @@ export class CandidateInfoComponent {
   }
 
   onApprove() {
+    let jobTitle = localStorage.getItem('jobTitle');
+    let jobLocation = localStorage.getItem('jobLocation');
+    let JObRole = localStorage.getItem('JObRole');
     const jasonBody = {
       jobId: this.candidate.jobId,
       candidateId: this.candidate.candidateId,
@@ -183,7 +210,26 @@ export class CandidateInfoComponent {
       summary: 'Success',
       detail: `Candidate ${this.selectedCandidateDetails?.first_name} Approved`,
     });
-    // alert(`Candidate ${this.selectedCandidateDetails?.first_name} Approved`);
+
+    let jsonObj = {
+      to: [
+        {
+          name:
+            this.selectedCandidateDetails?.first_name +
+            ' ' +
+            this.selectedCandidateDetails?.last_name,
+          email: this.selectedCandidateDetails?.email,
+        },
+      ],
+      subject: `Selected for ${JObRole} Position`,
+      plainTextBody: `Congratulations! You have been selected for the ${jobTitle} position at ${jobLocation}. Please log in to the hiring platform for further details.`,
+      htmlBody: `<p>Hello ${
+        this.selectedCandidateDetails?.first_name +
+        ' ' +
+        this.selectedCandidateDetails?.last_name
+      },</p><p>Congratulations! You have been selected for the  <b>  ${jobTitle} </b>. position at ${jobLocation}. Please log in to the hiring platform for further details.</p><p>Best regards,<br>Hiring Platform</p>`,
+    };
+    this.sendMail_to_candidate(jsonObj);
     this.close.emit(
       this.selectedCandidateDetails?.first_name +
         ' ' +
@@ -200,5 +246,15 @@ export class CandidateInfoComponent {
     if (this.jobSubscribe) {
       this.jobSubscribe.unsubcribe();
     }
+  }
+
+  sendMail_to_candidate(Jsonobj: any) {
+    this.hiringManagerService.sendNotification(Jsonobj).subscribe(
+      (data) => {},
+      () => {},
+      () => {
+        console.log('Completed');
+      }
+    );
   }
 }

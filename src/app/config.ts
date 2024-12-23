@@ -6,6 +6,8 @@ let SmartServiceUrl =
   'https://adani-hiring.southindia.cloudapp.azure.com/adani-hiring-smart/api/';
 let AssessmentServicesUrl =
   'https://adani-hiring.southindia.cloudapp.azure.com/adani-hiring-assessment-service/';
+let NotificationServoces =
+  'https://adani-hiring.southindia.cloudapp.azure.com/email-notification-service';
 
 export const GETurl = {
   jobDetails: JobServiceUrl + 'Jobs/',
@@ -29,4 +31,5 @@ export const POSTurl = {
   callProfileUpdateJurney:
     AssessmentServicesUrl + 'ASSESSMENTSERVICE/CallUpdateProfileJourneyStatus',
   interviewSechudle: JobServiceUrl + 'jobs/getInterViewSechdule',
+  notificationUrl: NotificationServoces + '/api/NotificationService/sendMail',
 };

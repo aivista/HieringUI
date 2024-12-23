@@ -32,12 +32,14 @@ export class CandidatesComponent {
   loaderflag: boolean = true;
   header: any;
   status: any;
+  selectedCandidate: any = null;
+  jobId: any;
   constructor(
     private hiringManagerService: HiringManagerService,
     private messageService: MessageService,
     private cdRef: ChangeDetectorRef
   ) {
-    this.getShortlisted();
+    // this.getShortlisted();
   }
   setActiveTab(tab: string): void {
     this.activeTab = tab;
@@ -57,17 +59,14 @@ export class CandidatesComponent {
     }
   }
   ngOnInit() {
-    // this.hiringManagerService.trigerApproved.subscribe((res:any)=>{
-    //   if(res){
-    //     this.getShortlisted()
-    //   }
-    // })
+    this.getShortlisted();
   }
 
   getShortlisted() {
     this.loaderflag = true;
     this.jobSucribe = this.hiringManagerService.jobSubscribe.subscribe(
       (res: any) => {
+        this.jobId = res.id;
         this.hiringManagerService.getShortlistedJobs(res.id).subscribe(
           (result: any) => {
             if (result.isSuccess) {
@@ -94,8 +93,31 @@ export class CandidatesComponent {
       }
     );
   }
-  selectedCandidate: any = null;
 
+  refreshData() {
+    this.loaderflag = true;
+    this.hiringManagerService.getShortlistedJobs(this.jobId).subscribe(
+      (result: any) => {
+        if (result.isSuccess) {
+          this.shortlistedCandidates = result.result.map((candidate: any) => ({
+            ...candidate,
+            showHiddenSkills: false, // Add hover state for each candidate
+          }));
+        }
+      },
+      () => {},
+      () => {
+        this.loaderflag = false;
+      }
+    );
+    this.hiringManagerService
+      .getAppliedJobs(this.jobId)
+      .subscribe((result: any) => {
+        if (result.isSuccess) {
+          this.appliedCandidates = result.result;
+        }
+      });
+  }
   openModal(candidate: any) {
     //console.log('dtaa', candidate);
     this.selectedCandidate = candidate;

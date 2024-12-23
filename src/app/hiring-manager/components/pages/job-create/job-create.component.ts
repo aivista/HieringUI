@@ -182,7 +182,6 @@ export class JobCreateComponent {
   }
 
   addJD() {
-    this.jdloader = true;
     Object.keys(this.profileForm.controls).forEach((field) => {
       const control = this.profileForm.get(field);
       if (control) {
@@ -191,6 +190,7 @@ export class JobCreateComponent {
     });
 
     if (this.profileForm.valid) {
+      this.jdloader = true;
       let jsonBody = {
         jobTitle: this.profileForm.value.jobTitle,
         jobExperienceRequired: this.profileForm.value.experience,

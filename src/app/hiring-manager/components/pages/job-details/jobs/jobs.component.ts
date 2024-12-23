@@ -25,6 +25,9 @@ export class JobsComponent {
     // Reset all jobs to inactive
     this.activeIndex = index;
     this.hiringManagerService.jobSubscribe.next(job);
+    localStorage.setItem('jobTitle', job.Title);
+    localStorage.setItem('jobLocation', job.location);
+    localStorage.setItem('JObRole', job.role);
   }
   ngOnInit() {
     const response = this.hiringManagerService.getData('hiringManagerDetails');
@@ -41,7 +44,16 @@ export class JobsComponent {
         this.JobDetails.forEach((el: any) => {
           el['Title'] = JSON.parse(el['jd'])?.['Job Title'];
         });
-        console.log(this.JobDetails.reverse());
+        //console.log(this.JobDetails.reverse());
+        localStorage.setItem(
+          'jobTitle',
+          this.JobDetails[this.activeIndex].Title
+        );
+        localStorage.setItem(
+          'jobLocation',
+          this.JobDetails[this.activeIndex].location
+        );
+        localStorage.setItem('JObRole', this.JobDetails[this.activeIndex].role);
         this.hiringManagerService.jobSubscribe.next(this.JobDetails[0]);
       },
       (e) => {},

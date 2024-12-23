@@ -16,6 +16,7 @@ export class HiringManagerService {
   jobSubscribe = new Subject();
 
   trigerApproved = new Subject();
+  reloadUpcomeingInterview = new Subject();
 
   assessment = environment.AssessmentServicesUrl;
 
@@ -74,5 +75,8 @@ export class HiringManagerService {
   }
   getcandidateInterviewtime(jsonBody: any) {
     return this.http.post(POSTurl.interviewSechudle, jsonBody);
+  }
+  sendNotification(jsonBody: any) {
+    return this.http.post(POSTurl.notificationUrl, jsonBody);
   }
 }

@@ -17,6 +17,8 @@ export class UpcomingInterviewsComponent {
   jobSucribe: any;
   loaderflag: boolean = true;
   currenttime: any = '';
+  jobId: any;
+  userdata: any;
   constructor(
     private hiringManagerService: HiringManagerService,
     private datepipe: DatePipe
@@ -27,11 +29,11 @@ export class UpcomingInterviewsComponent {
       "EEEE, MMM d 'at' h:mm a"
     );
     this.loaderflag = true;
-    const userdata = this.hiringManagerService.getData('hiringManagerDetails');
+    this.userdata = this.hiringManagerService.getData('hiringManagerDetails');
     this.jobSucribe = this.hiringManagerService.jobSubscribe.subscribe(
       (res: any) => {
         this.hiringManagerService
-          .getUpcomingInterview(res.id, userdata.email)
+          .getUpcomingInterview(res.id, this.userdata.email)
           .subscribe(
             (result: any) => {
               if (result.isSuccess) {
@@ -45,6 +47,25 @@ export class UpcomingInterviewsComponent {
               this.loaderflag = false;
             }
           );
+      }
+    );
+    this.hiringManagerService.reloadUpcomeingInterview.subscribe((data) => {
+      this.loaderflag = true;
+      this.refresh_upccomeingInterview(data, this.userdata.email);
+    });
+  }
+  refresh_upccomeingInterview(jobId: any, managerId: any) {
+    this.hiringManagerService.getUpcomingInterview(jobId, managerId).subscribe(
+      (result: any) => {
+        if (result.isSuccess) {
+          this.processData(result.result);
+        }
+      },
+      (e) => {
+        console.log(`something is error ${e}`);
+      },
+      () => {
+        this.loaderflag = false;
       }
     );
   }

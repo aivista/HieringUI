@@ -201,9 +201,6 @@
     max-height: 60vh;
     border-radius: 10px !important;
     overflow: auto;
-    &::-webkit-scrollbar {
-      width: 0;
-    }
   }
 }
 
@@ -236,8 +233,20 @@
 ::ng-deep .p-select-label,
 ::ng-deep .p-inputtext,
 ::ng-deep .p-multiselect-option,
-::ng-deep .p-select-option {
-  font-size: 0.7rem;
+::ng-deep .p-select-option,
+::ng-deep .p-button-sm {
+  font-size: 0.7rem !important;
+}
+:host::ng-deep .p-multiselect-option,
+:host::ng-deep .p-select-option {
+  padding: 0.4rem;
+  line-height: normal;
+}
+
+::ng-deep .p-checkbox,
+::ng-deep .p-checkbox-box {
+  width: 0.8rem !important;
+  height: 0.8rem !important;
 }
 .jcd-chip-section {
   min-height: 40px;
@@ -313,7 +322,31 @@
   border-radius: var(--p-inputtext-border-radius) !important;
 }
 
+::ng-deep .p-overlay-content {
+  z-index: 9999 !important;
+  position: fixed !important;
+}
+
+::ng-deep p-checkbox {
+  display: flex !important;
+}
+
+::ng-deep .p-inputicon {
+  top: 40% !important;
+}
+
+::ng-deep :root {
+  --p-icon-size: 0.6rem !important;
+}
+
 @media (min-height: 600px) and (max-height: 800px) {
+  .main-section {
+    padding: 18px 20px !important;
+  }
+  .jcd-body {
+    padding-top: 5px !important;
+  }
+
   .main-contain {
     margin-top: 2px !important;
     margin-left: 80px !important;
@@ -330,7 +363,7 @@
   }
 
   .right-section .text-t1 {
-    font-size: 14px !important;
+    font-size: 13px !important;
   }
   .text-t2 {
     font-size: 12px !important;
@@ -343,10 +376,26 @@
   }
 
   .jcd-main-body {
-    margin: 16px !important;
+    margin: 12px !important;
+  }
+
+  .right-field-box {
+    .field-text {
+      font-size: 0.65rem;
+    }
+  }
+
+  ::ng-deep .p-inputtext {
+    padding: 0.4rem 0.5rem !important;
   }
 }
 @media (min-width: 1024px) and (max-width: 1436px) {
+  .main-section {
+    padding: 18px 20px !important;
+  }
+  .jcd-body {
+    padding-top: 5px !important;
+  }
   .main-contain {
     margin-top: 2px !important;
     margin-left: 80px !important;
@@ -363,7 +412,7 @@
   }
 
   .right-section .text-t1 {
-    font-size: 14px !important;
+    font-size: 13px !important;
   }
   .text-t2 {
     font-size: 12px !important;
@@ -376,6 +425,16 @@
   }
 
   .jcd-main-body {
-    margin: 16px !important;
+    margin: 12px !important;
+  }
+
+  .right-field-box {
+    .field-text {
+      font-size: 0.65rem;
+    }
+  }
+
+  ::ng-deep .p-inputtext {
+    padding: 0.4rem 0.5rem !important;
   }
 }

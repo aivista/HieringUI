@@ -59,7 +59,7 @@
                       </small>
                     </div>
                   </div>
-                  <div class="row mt-3">
+                  <div class="row mt-2">
                     <div class="col-4">
                       <label class="field-text">Experience</label> <br />
                       <p-dropdown
@@ -137,7 +137,7 @@
                         (onFilter)="onFilterRole($event)"
                       >
                         <ng-template pTemplate="footer">
-                          <div class="p-3 flex justify-between">
+                          <div class="flex justify-between">
                             <p-button
                               label="Add New"
                               severity="primary"
@@ -161,7 +161,7 @@
                       </small>
                     </div>
                   </div>
-                  <div class="row pt-2">
+                  <div class="row pt-1">
                     <div class="col-md-6 mt-2">
                       <div class="">
                         <label class="field-text"
@@ -180,7 +180,7 @@
                           (onFilter)="onFilterPrimarySkill($event)"
                         >
                           <ng-template pTemplate="footer">
-                            <div class="p-3 flex justify-between">
+                            <div class="flex justify-between">
                               <p-button
                                 label="Add New"
                                 severity="primary"
@@ -193,6 +193,16 @@
                           </ng-template>
                         </p-multiSelect>
 
+                        <small
+                          class="p-error block"
+                          style="color: red; font-size: 10px"
+                          *ngIf="
+                            profileForm.get('primarySkills')?.invalid &&
+                            profileForm.get('primarySkills')?.touched
+                          "
+                        >
+                          Primary Skills is required.
+                        </small>
                         <div
                           class="chip-container flex items-center gap-2 flex-wrap jcd-chip-section"
                         >
@@ -205,16 +215,6 @@
                           >
                           </p-chip>
                         </div>
-                        <small
-                          class="p-error block"
-                          style="color: red; font-size: 10px"
-                          *ngIf="
-                            profileForm.get('primarySkills')?.invalid &&
-                            profileForm.get('primarySkills')?.touched
-                          "
-                        >
-                          Primary Skills is required.
-                        </small>
                       </div>
                     </div>
                     <div class="col-md-6 mt-2">
@@ -235,7 +235,7 @@
                           (onFilter)="onFilterSecondarySkill($event)"
                         >
                           <ng-template pTemplate="footer">
-                            <div class="p-3 flex justify-between">
+                            <div class="flex justify-between">
                               <p-button
                                 label="Add New"
                                 severity="primary"
@@ -248,6 +248,16 @@
                           </ng-template>
                         </p-multiSelect>
 
+                        <small
+                          class="p-error block"
+                          style="color: red; font-size: 10px"
+                          *ngIf="
+                            profileForm.get('secondarySkills')?.invalid &&
+                            profileForm.get('secondarySkills')?.touched
+                          "
+                        >
+                          Secondary Skills is required.
+                        </small>
                         <div
                           class="chip-container flex items-center gap-2 flex-wrap jcd-chip-section2"
                         >
@@ -260,17 +270,6 @@
                           >
                           </p-chip>
                         </div>
-
-                        <small
-                          class="p-error block"
-                          style="color: red; font-size: 10px"
-                          *ngIf="
-                            profileForm.get('secondarySkills')?.invalid &&
-                            profileForm.get('secondarySkills')?.touched
-                          "
-                        >
-                          Secondary Skills is required.
-                        </small>
                       </div>
                     </div>
                   </div>

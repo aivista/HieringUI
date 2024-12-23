@@ -66,8 +66,6 @@ body {
   height: calc(93vh - 5rem);
   overflow-y: scroll;
   overflow-x: hidden;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
 
   background: linear-gradient(137.88deg, #1d212a 21.56%, #272c37 100%);
   border-radius: 10px;
@@ -78,10 +76,6 @@ body {
     rgba(193, 193, 193, 0.72) 100%
   );
   padding: 10px;
-
-  &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
-  }
 }
 
 .job-details {
@@ -170,4 +164,8 @@ body {
   &.active:after {
     display: none;
   }
+}
+@media (min-height: 600px) and (max-height: 800px) {
+}
+@media (min-width: 1024px) and (max-width: 1436px) {
 }

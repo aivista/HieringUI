@@ -204,10 +204,16 @@
             type="button"
             class="btn btn-outline-danger me-2"
             (click)="onReject()"
+            label="Rejected"
           >
             Reject
           </button>
-          <button type="button" class="btn btn-success" (click)="onApprove()">
+          <button
+            type="button"
+            class="btn btn-success"
+            label="Selected"
+            (click)="onApprove()"
+          >
             Approve
           </button>
         </div>

@@ -14,19 +14,4 @@ import { HiringManagerService } from '../../../service/hiring-manager.service';
 export class JobDetailsComponent {
   jobSucribe: any;
   constructor(private hiringManagerService: HiringManagerService) {}
-  // fetchJobs(){
-  //   this.hiringManagerService.getHiringManagerJobs(hiringManagerID)
-  //   .subscribe({
-  //     next: (jobs) => {
-  //       console.log('Jobs:', jobs);
-  //       // Process the fetched jobs (e.g., display them in the template)
-  //     },
-  //     error: (error) => {
-  //       console.error('Error fetching jobs:', error);
-  //       // Handle the error (e.g., display an error message)
-  //     }
-  //   });
-  // }
-
-  
 }

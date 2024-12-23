@@ -1,4 +1,12 @@
-<div class="container">
+
+
+
+<div *ngIf="loaderflag" class="loader_position">
+  <div class="flex justify-center">
+    <p-progress-spinner strokeWidth="2" fill="transparent" [style]="{ width: '100px', height: '100px', }" />
+  </div>
+</div>
+<div *ngIf="!loaderflag" class="container">
   <div class="header">
     <h1>Job Details</h1>
     <div class="add-button" (click)="openCreateJob()">
@@ -7,15 +15,7 @@
   </div>
 
   <div class="job-container">
-    <!-- <div class="job-details">
-      <div class="job-item1">
-        <h2>Job Details</h2>
-        <p>Last updated Thursday, Oct 30 at 11:11 AM (PT)</p>
-      </div>
-    </div> -->
-
     <div class="job-list">
-      <!-- <div *ngIf="JobDetails && JobDetails.length > 0; else noJobs"> -->
       <div
         *ngFor="let job of JobDetails; let i = index"
         [class.active]="i === activeIndex"
@@ -25,12 +25,6 @@
         <h3>{{ job.Title }}</h3>
         <p>{{ job.location }}</p>
       </div>
-      <!-- </div>
-      <ng-template #noJobs>
-        <div class="no-data">
-          No jobs available.
-        </div>
-      </ng-template> -->
     </div>
   </div>
 </div>

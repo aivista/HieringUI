@@ -19,6 +19,7 @@ import {
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { ProgressSpinner } from 'primeng/progressspinner';
 
 @Component({
   selector: 'app-job-create',
@@ -33,6 +34,7 @@ import { Title } from '@angular/platform-browser';
     InputTextModule,
     Chip,
     ReactiveFormsModule,
+    ProgressSpinner,
   ],
   templateUrl: './job-create.component.html',
   styleUrl: './job-create.component.scss',
@@ -50,11 +52,6 @@ export class JobCreateComponent {
   primarySkills = ['Management Consulting', 'MS Office', 'Leadership'];
 
   secondarySkills = ['DevOps', 'Agile Methodologies', 'Technical Writing'];
-  // secondarySkills = [
-  //   { label: 'DevOps', value: 'DevOps' },
-  //   { label: 'Agile Methodologies', value: 'Agile Methodologies' },
-  //   { label: 'Technical Writing', value: 'Technical Writing' },
-  // ];
   newSecondarySkill: string = '';
   newPrimarySkill: string = '';
   newRole: string = '';
@@ -76,7 +73,7 @@ export class JobCreateComponent {
   ManagerEmail: string = '';
   newSkillName: string = '';
   filteredSkills: { name: string; value: string }[] = []; // Add this line
-
+  jdloader: boolean = false;
   // Job description placeholder
   jobDescription: string = `
     The Chief Operating Officer (COO) will be responsible for overall operations, management, and execution...
@@ -132,6 +129,7 @@ export class JobCreateComponent {
   }
 
   getJobDetails() {
+    this.jdloader = true;
     Object.keys(this.profileForm.controls).forEach((field) => {
       const control = this.profileForm.get(field);
       if (control) {
@@ -152,29 +150,38 @@ export class JobCreateComponent {
         jobRole: this.profileForm.value.role,
         jobType: 'Fulltime',
       };
-      console.log(jsonBody);
+      // console.log(jsonBody);
 
-      this.apiService.getJobsDesc(jsonBody).subscribe((res: any) => {
-        if (res.isSuccess === true) {
-          let subObj = {};
-          this.JDResponse = res.result;
-          for (const [key, value] of Object.entries(res.result)) {
-            if (Array.isArray(value)) {
-              subObj = { Title: key, Description: value.join('\n') };
-            } else {
-              subObj = { Title: key, Description: value };
+      this.apiService.getJobsDesc(jsonBody).subscribe(
+        (res: any) => {
+          if (res.isSuccess === true) {
+            let subObj = {};
+            this.JDResponse = res.result;
+            for (const [key, value] of Object.entries(res.result)) {
+              if (Array.isArray(value)) {
+                subObj = { Title: key, Description: value.join('\n') };
+              } else {
+                subObj = { Title: key, Description: value };
+              }
+              this.JDData.push(subObj);
             }
-            this.JDData.push(subObj);
+            console.log(this.JDData);
           }
-          console.log(this.JDData);
+        },
+        (error) => {
+          console.log('somethings is error');
+        },
+        () => {
+          this.jdloader = false;
         }
-      });
+      );
     } else {
       console.log('Form is invalid');
     }
   }
 
-  addUser() {
+  addJD() {
+    this.jdloader = true;
     Object.keys(this.profileForm.controls).forEach((field) => {
       const control = this.profileForm.get(field);
       if (control) {
@@ -196,12 +203,20 @@ export class JobCreateComponent {
         jobDescriptionText: this.JDResponse,
       };
 
-      console.log('json body', JSON.stringify(jsonBody));
-      this.apiService.createJobs(jsonBody).subscribe((res: any) => {
-        if (res.isSuccess === true) {
-          this.router.navigate(['/job-details']);
+      // console.log('json body', JSON.stringify(jsonBody));
+      this.apiService.createJobs(jsonBody).subscribe(
+        (res: any) => {
+          if (res.isSuccess === true) {
+            this.router.navigate(['/job-details']);
+          }
+        },
+        (error) => {
+          console.log(`something is error${error}`);
+        },
+        () => {
+          this.jdloader = false;
         }
-      });
+      );
     } else {
       console.log('Form is invalid');
     }

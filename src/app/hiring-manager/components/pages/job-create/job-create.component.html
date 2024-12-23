@@ -17,7 +17,7 @@
       <!-- </span> -->
     </div>
     <div class="jcd-body">
-      <form [formGroup]="profileForm" (ngSubmit)="addUser()">
+      <form [formGroup]="profileForm" (ngSubmit)="addJD()">
         <div class="jcd-main-body">
           <div class="row">
             <div class="col-6 right-section mt-1">
@@ -309,15 +309,6 @@
             <div class="col-6 left-section">
               <label class="job-desc-text">Job Description</label>
               <div class="job-desc-section">
-                <!-- <div class="row">
-                <div class="col-12">
-                  <div class="role-overview">
-                    <label class="field-text-small">Role overview <label class="aristick">*</label></label> <br>
-                    <textarea pInputTextarea rows="6" id="roleoverview" [(ngModel)]="roleOverView" name="roleoverview"
-                      class="w-100 jd-cutom-textarea"></textarea>
-                  </div>
-                </div>
-              </div>-->
                 <div class="job-desc-section-sub">
                   <div class="col-12" *ngFor="let item of JDData">
                     <div class="role-overview">
@@ -333,12 +324,6 @@
                         [ngModelOptions]="{ standalone: true }"
                         class="w-100 jd-cutom-textarea"
                       ></textarea>
-                      <!-- <br />
-                      <textarea *ngIf="item.type"   
-                         pInputTextarea
-                        [(ngModel)]="item.Description"
-                        [ngModelOptions]="{ standalone: true }"
-                        >{{item.Description.join('\n')}}</textarea> -->
                     </div>
                   </div>
                 </div>
@@ -360,3 +345,9 @@
     </div>
   </div>
 </div>
+
+ <div *ngIf="jdloader" class="modal">
+    <div class="modal-content">
+     <p-progress-spinner strokeWidth="2" fill="transparent" [style]="{ width: '100px', height: '100px', }" />
+    </div>
+  </div>

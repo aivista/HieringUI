@@ -1,4 +1,11 @@
-<div class="body">
+
+<div *ngIf="loaderflag"  class="loader_position">
+  <div class="flex justify-center">
+    <p-progress-spinner strokeWidth="2" fill="transparent" [style]="{ width: '100px', height: '100px', }" />
+  </div>
+</div>
+
+<div *ngIf="!loaderflag" class="body"> 
   <div class="interview-container h-100">
     <div class="header">
       <h4>Upcoming Interviews</h4>
@@ -6,25 +13,19 @@
     </div>
 
     <div class="body2">
-      <!-- No interviews scheduled -->
       <div *ngIf="!interviews || interviews.length === 0" class="no-data">
         No interviews scheduled.
       </div>
-
-      <!-- Loop through interview days -->
       <div *ngFor="let group of interviews">
         <div class="day">
           <img src="assets/icons/calender.svg" alt="" />{{ group.day }}
         </div>
-
-        <!-- Check if group.interviews has interviews -->
         <div
           *ngIf="
             group.interviews && group.interviews.length > 0;
             else noInterviews
           "
         >
-          <!-- Loop through interview rows for each day -->
           <div *ngFor="let interview of group.interviews">
             <div
               class="int-time"
@@ -49,8 +50,6 @@
             <hr />
           </div>
         </div>
-
-        <!-- No interviews for this group -->
         <ng-template #noInterviews>
           <div class="no-data">No interviews scheduled for {{ group.day }}</div>
         </ng-template>

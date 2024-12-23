@@ -8,54 +8,25 @@ import {
 } from '@angular/core';
 import { CandidateInfoComponent } from '../candidate-info/candidate-info.component';
 import { HiringManagerService } from '../../../../service/hiring-manager.service';
+import { ProgressSpinner } from 'primeng/progressspinner';
 
 @Component({
   selector: 'app-candidates',
   standalone: true,
-  imports: [CommonModule, CandidateInfoComponent],
+  imports: [CommonModule, CandidateInfoComponent, ProgressSpinner],
   templateUrl: './candidates.component.html',
   styleUrl: './candidates.component.scss',
 })
 export class CandidatesComponent {
   @ViewChild(CandidateInfoComponent)
   candidateInfoComponent!: CandidateInfoComponent;
-
   activeTab: string = 'Shortlisted'; // Default active tab
-  // shortlistedCandidates = [
-  //   {
-  //     name: 'John Doe',
-  //     rating: 4.5,
-  //     status: 'Interview Scheduled',
-  //     experience: '5 years of experience',
-  //     skills: ['Angular', 'TypeScript', 'SCSS'],
-  //   },
-  //   {
-  //     name: 'Jane Smith',
-  //     rating: 4.8,
-  //     status: 'Interview Complited',
-  //     experience: '3 years of experience',
-  //     skills: ['React', 'JavaScript', 'CSS'],
-  //   },
-  //   {
-  //     name: 'John Doe',
-  //     rating: 4.5,
-  //     status: 'AI Based Screening Pending',
-  //     experience: '5 years of experience',
-  //     skills: ['Angular', 'TypeScript', 'SCSS'],
-  //   },
-  //   {
-  //     name: 'Jane Smith',
-  //     rating: 4.8,
-  //     status: 'Selected',
-  //     experience: '3 years of experience',
-  //     skills: ['React', 'JavaScript', 'CSS'],
-  //   },
-  // ];
   shortlistedCandidates: any = [];
   showHiddenSkills: boolean = false;
 
   appliedCandidates: any = [];
   jobSucribe: any;
+  loaderflag: boolean = true;
   constructor(
     private hiringManagerService: HiringManagerService,
     private cdRef: ChangeDetectorRef
@@ -88,11 +59,11 @@ export class CandidatesComponent {
   }
 
   getShortlisted() {
+    this.loaderflag = true;
     this.jobSucribe = this.hiringManagerService.jobSubscribe.subscribe(
       (res: any) => {
-        this.hiringManagerService
-          .getShortlistedJobs(res.id)
-          .subscribe((result: any) => {
+        this.hiringManagerService.getShortlistedJobs(res.id).subscribe(
+          (result: any) => {
             if (result.isSuccess) {
               this.shortlistedCandidates = result.result.map(
                 (candidate: any) => ({
@@ -101,7 +72,12 @@ export class CandidatesComponent {
                 })
               );
             }
-          });
+          },
+          () => {},
+          () => {
+            this.loaderflag = false;
+          }
+        );
         this.hiringManagerService
           .getAppliedJobs(res.id)
           .subscribe((result: any) => {
@@ -115,7 +91,7 @@ export class CandidatesComponent {
   selectedCandidate: any = null;
 
   openModal(candidate: any) {
-    console.log('dtaa', candidate);
+    //console.log('dtaa', candidate);
     this.selectedCandidate = candidate;
   }
 

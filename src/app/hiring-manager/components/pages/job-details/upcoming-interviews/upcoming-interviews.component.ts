@@ -2,29 +2,40 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HiringManagerService } from '../../../../service/hiring-manager.service';
+import { ProgressSpinner } from 'primeng/progressspinner';
 
 @Component({
   selector: 'app-upcoming-interviews',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, ProgressSpinner],
   templateUrl: './upcoming-interviews.component.html',
   styleUrl: './upcoming-interviews.component.scss',
 })
 export class UpcomingInterviewsComponent {
   interviews: any = [];
   jobSucribe: any;
+  loaderflag: boolean = true;
   constructor(private hiringManagerService: HiringManagerService) {}
   ngOnInit() {
+    this.loaderflag = true;
     const userdata = this.hiringManagerService.getData('hiringManagerDetails');
     this.jobSucribe = this.hiringManagerService.jobSubscribe.subscribe(
       (res: any) => {
         this.hiringManagerService
           .getUpcomingInterview(res.id, userdata.email)
-          .subscribe((result: any) => {
-            if (result.isSuccess) {
-              this.processData(result.result);
+          .subscribe(
+            (result: any) => {
+              if (result.isSuccess) {
+                this.processData(result.result);
+              }
+            },
+            (e) => {
+              console.log(`something is error ${e}`);
+            },
+            () => {
+              this.loaderflag = false;
             }
-          });
+          );
       }
     );
   }

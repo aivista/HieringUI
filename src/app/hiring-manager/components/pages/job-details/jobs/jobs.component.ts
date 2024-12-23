@@ -2,65 +2,21 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { HiringManagerService } from '../../../../service/hiring-manager.service';
+import { ProgressSpinner } from 'primeng/progressspinner';
 
 @Component({
   selector: 'app-jobs',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ProgressSpinner],
   templateUrl: './jobs.component.html',
   styleUrl: './jobs.component.scss',
 })
 export class JobsComponent {
   title = 'resourcemanagement';
   JobDetails: any = [];
-  jobs = [
-    {
-      title: 'SAS & Communication Manager',
-      location: 'Ahmedabad, Gujarat, India',
-      active: true,
-    },
-    {
-      title: 'Digital Marketing Manager',
-      location: 'Ahmedabad, Gujarat, India',
-      active: false,
-    },
-    {
-      title: 'SAS & Communication Manager',
-      location: 'Ahmedabad, Gujarat, India',
-      active: false,
-    },
-    {
-      title: 'SAS & Communication Manager',
-      location: 'Ahmedabad, Gujarat, India',
-      active: false,
-    },
-    {
-      title: 'SAS & Communication Manager',
-      location: 'Ahmedabad, Gujarat, India',
-      active: false,
-    },
-    {
-      title: 'SAS & Communication Manager',
-      location: 'Ahmedabad, Gujarat, India',
-      active: false,
-    },
-    {
-      title: 'SAS & Communication Manager',
-      location: 'Ahmedabad, Gujarat, India',
-      active: false,
-    },
-    {
-      title: 'SAS & Communication Manager',
-      location: 'Ahmedabad, Gujarat, India',
-      active: false,
-    },
-    {
-      title: 'SAS & Communication Manager',
-      location: 'Ahmedabad, Gujarat, India',
-      active: false,
-    },
-  ];
+  jobs = [];
   activeIndex: number = 0;
+  loaderflag: boolean = true;
   constructor(
     private router: Router,
     private hiringManagerService: HiringManagerService
@@ -78,9 +34,9 @@ export class JobsComponent {
   }
   getJobDetails(email: string) {
     let formatedData = [];
+    this.loaderflag = true;
     this.hiringManagerService.getHiringManagerJobs(email).subscribe(
       (res: any) => {
-        //console.log('rews', res);
         this.JobDetails = res.result;
         this.JobDetails.forEach((el: any) => {
           el['Title'] = JSON.parse(el['jd'])?.['Job Title'];
@@ -88,11 +44,14 @@ export class JobsComponent {
         console.log(this.JobDetails.reverse());
         this.hiringManagerService.jobSubscribe.next(this.JobDetails[0]);
       },
-      (e) => {}
+      (e) => {},
+      () => {
+        this.loaderflag = false;
+      }
     );
   }
+
   openCreateJob() {
-    // this.router.navigate(['/job-create']);
     this.router.navigate(['/job-create']);
   }
 }

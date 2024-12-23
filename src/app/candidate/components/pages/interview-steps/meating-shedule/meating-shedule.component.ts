@@ -7,7 +7,7 @@ import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-meating-shedule',
   standalone: true,
-  imports: [CongratulationComponent, DatePipe],
+  imports: [CongratulationComponent],
   templateUrl: './meating-shedule.component.html',
   styleUrl: './meating-shedule.component.scss',
   providers: [DatePipe],

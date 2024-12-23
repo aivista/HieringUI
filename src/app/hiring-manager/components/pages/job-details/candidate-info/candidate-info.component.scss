@@ -357,7 +357,7 @@
     }
   }
 }
-::ng-deep .p-toast-summary {
+:host ::ng-deep .p-toast-summary {
   display: none !important;
 }
 

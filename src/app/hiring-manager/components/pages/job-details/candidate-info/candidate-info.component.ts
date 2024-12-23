@@ -15,9 +15,7 @@ import { DatePipe } from '@angular/common';
 })
 export class CandidateInfoComponent {
   @Input() candidate: any;
-  @Output() close: EventEmitter<void> = new EventEmitter();
-  // @Output() refresh: EventEmitter<void> = new EventEmitter<void>();
-
+  @Output() close: EventEmitter<string> = new EventEmitter<string>();
   isInterviewScheduled: boolean = true;
   isSelected: boolean = true;
   constructor(
@@ -105,7 +103,7 @@ export class CandidateInfoComponent {
   }
 
   closeModal() {
-    this.close.emit();
+    this.close.emit('');
   }
 
   onReject() {
@@ -137,8 +135,13 @@ export class CandidateInfoComponent {
       summary: 'Rejected',
       detail: `Candidate ${this.selectedCandidateDetails?.first_name} Rejected`,
     });
-    alert(`Candidate ${this.selectedCandidateDetails?.first_name} Rejected`);
-    this.close.emit();
+    // alert(`Candidate ${this.selectedCandidateDetails?.first_name} Rejected`);
+    this.close.emit(
+      this.selectedCandidateDetails?.first_name +
+        ' ' +
+        this.selectedCandidateDetails?.last_name +
+        ' has been Rejected_0'
+    );
     // this.refresh.emit();
   }
 
@@ -170,8 +173,13 @@ export class CandidateInfoComponent {
       summary: 'Success',
       detail: `Candidate ${this.selectedCandidateDetails?.first_name} Approved`,
     });
-    alert(`Candidate ${this.selectedCandidateDetails?.first_name} Approved`);
-    this.close.emit();
+    // alert(`Candidate ${this.selectedCandidateDetails?.first_name} Approved`);
+    this.close.emit(
+      this.selectedCandidateDetails?.first_name +
+        ' ' +
+        this.selectedCandidateDetails?.last_name +
+        ' has been selected_1'
+    );
     // this.refresh.emit();
   }
 

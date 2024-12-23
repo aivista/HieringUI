@@ -2,20 +2,24 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectorRef,
   Component,
+  EventEmitter,
   Input,
+  Output,
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { CandidateInfoComponent } from '../candidate-info/candidate-info.component';
 import { HiringManagerService } from '../../../../service/hiring-manager.service';
 import { ProgressSpinner } from 'primeng/progressspinner';
-
+import { Toast } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-candidates',
   standalone: true,
-  imports: [CommonModule, CandidateInfoComponent, ProgressSpinner],
+  imports: [CommonModule, CandidateInfoComponent, ProgressSpinner, Toast],
   templateUrl: './candidates.component.html',
   styleUrl: './candidates.component.scss',
+  providers: [MessageService],
 })
 export class CandidatesComponent {
   @ViewChild(CandidateInfoComponent)
@@ -23,12 +27,14 @@ export class CandidatesComponent {
   activeTab: string = 'Shortlisted'; // Default active tab
   shortlistedCandidates: any = [];
   showHiddenSkills: boolean = false;
-
   appliedCandidates: any = [];
   jobSucribe: any;
   loaderflag: boolean = true;
+  header: any;
+  status: any;
   constructor(
     private hiringManagerService: HiringManagerService,
+    private messageService: MessageService,
     private cdRef: ChangeDetectorRef
   ) {
     this.getShortlisted();
@@ -99,8 +105,26 @@ export class CandidatesComponent {
     this.selectedCandidate = null;
   }
 
-  onClose() {
+  onClose(data: string) {
     this.selectedCandidate = null;
+    if (data != '') {
+      this.header = data.split('_')[0];
+      this.status = parseInt(data.split('_')[1]);
+      if (this.status == 1)
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: this.header,
+        });
+      else if (this.status == 0)
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: this.header,
+        });
+    }
+    //console.log(data);
+    //if (data != '') this.Modalopen.emit(data);
   }
 
   isCandidateSelected(candidate: any): boolean {

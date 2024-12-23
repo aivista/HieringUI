@@ -13,5 +13,13 @@ import { HiringManagerService } from '../../../service/hiring-manager.service';
 })
 export class JobDetailsComponent {
   jobSucribe: any;
+  isPopupVisible: any;
+  header: string = '';
+  subheader: string = '';
+  status: number = 0;
   constructor(private hiringManagerService: HiringManagerService) {}
+
+  closePopup() {
+    // this.isPopupVisible = false;
+  }
 }

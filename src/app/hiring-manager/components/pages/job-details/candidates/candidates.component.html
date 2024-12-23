@@ -9,6 +9,7 @@
 </div>
 
 <div *ngIf="!loaderflag" class="candidates-container">
+    <p-toast />
   <div class="header">
     <img [src]="'assets/icons/profile-logo.svg'" alt="My Image" />
     <h2>Candidates</h2>
@@ -145,12 +146,14 @@
     <ng-template #noAppliedData>
       <div class="no-data">No data available</div>
     </ng-template>
+
+  
   </div>
   <div class="position-absolute top-0 end-0 popup-content">
     <app-candidate-info
       *ngIf="selectedCandidate"
       [candidate]="selectedCandidate"
-      (close)="onClose()"
+      (close)="onClose($event)"
     ></app-candidate-info>
   </div>
 </div>

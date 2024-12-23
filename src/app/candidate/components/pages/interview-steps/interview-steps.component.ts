@@ -33,6 +33,7 @@ export class InterviewStepsComponent {
   totalTime: number = 1;
   remainingTime: number = 1;
   JobDetails: any;
+  interviewassessment: string = '';
   constructor(
     private candidateService: CandidateService,
     private router: Router,
@@ -62,7 +63,6 @@ export class InterviewStepsComponent {
       this.assessmentDetails = res.result?.sort((a: any, b: any) => {
         return a.assessmentSqnc - b.assessmentSqnc;
       });
-      // console.log(res);
       for (let i = 0; i < res.result.length; i++) {
         if (res.result[i].status == 'Pending') {
           this.comoponent = res.result[i].assessmentName;
@@ -70,6 +70,7 @@ export class InterviewStepsComponent {
             this.candidateService.assessmentId.next(res.result[i].id);
             this.candidateService.setData('assessmentId', res.result[i].id);
           }
+          this.interviewassessment = res.result[i].assessmentName;
           break;
         }
       }

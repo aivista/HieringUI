@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { CommonModule, DatePipe } from '@angular/common';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HiringManagerService } from '../../../../service/hiring-manager.service';
 import { ProgressSpinner } from 'primeng/progressspinner';
@@ -10,13 +10,22 @@ import { ProgressSpinner } from 'primeng/progressspinner';
   imports: [FormsModule, CommonModule, ProgressSpinner],
   templateUrl: './upcoming-interviews.component.html',
   styleUrl: './upcoming-interviews.component.scss',
+  providers: [DatePipe],
 })
 export class UpcomingInterviewsComponent {
   interviews: any = [];
   jobSucribe: any;
   loaderflag: boolean = true;
-  constructor(private hiringManagerService: HiringManagerService) {}
+  currenttime: any = '';
+  constructor(
+    private hiringManagerService: HiringManagerService,
+    private datepipe: DatePipe
+  ) {}
   ngOnInit() {
+    this.currenttime = this.datepipe.transform(
+      new Date(),
+      "EEEE, MMM d 'at' h:mm a"
+    );
     this.loaderflag = true;
     const userdata = this.hiringManagerService.getData('hiringManagerDetails');
     this.jobSucribe = this.hiringManagerService.jobSubscribe.subscribe(

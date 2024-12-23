@@ -1,10 +1,12 @@
-
-<div  *ngIf="loaderflag"  class="loader_position">
+<div *ngIf="loaderflag" class="loader_position">
   <div class="flex justify-center">
-    <p-progress-spinner strokeWidth="2" fill="transparent" [style]="{ width: '100px', height: '100px', }" />
+    <p-progress-spinner
+      strokeWidth="2"
+      fill="transparent"
+      [style]="{ width: '100px', height: '100px', }"
+    />
   </div>
 </div>
-
 
 <div *ngIf="!loaderflag" class="candidates-container">
     <p-toast />
@@ -97,7 +99,7 @@
     </ng-template>
   </div>
 
-  <div *ngIf="activeTab === 'Applied'">
+  <div *ngIf="activeTab === 'Applied'" class="main-candisate-card">
     <ng-container *ngIf="appliedCandidates?.length > 0; else noAppliedData">
       <div *ngFor="let candidate of appliedCandidates" class="candidate-card">
         <div class="candidate-info">

@@ -9,10 +9,12 @@ body {
   background-color: #121212 !important;
   color: white;
 }
-.loader_position{
-    padding-left: 40%;
-    position: relative;
-    margin-top: 140%;
+.loader_position {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {

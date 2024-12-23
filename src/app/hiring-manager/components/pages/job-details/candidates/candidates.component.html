@@ -134,7 +134,7 @@
           >
             {{ skill }}
           </div>
-          <div
+          <!-- <div
             *ngIf="candidate?.skills?.split(',').length > 2"
             class="skill-pill2"
             (mouseenter)="candidate.showHiddenSkills = true"
@@ -152,6 +152,13 @@
                 {{ skill }}
               </div>
             </div>
+          </div> -->
+          <div
+            *ngIf="candidate?.skills?.split(',').length > 2"
+            class="skill-pill2"
+            pTooltip="{{ getHiddenSkillsTooltip(candidate) }}"
+          >
+            +{{ candidate?.skills?.split(",").length - 2 }}
           </div>
         </div>
       </div>

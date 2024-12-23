@@ -5,11 +5,12 @@ import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { DatePipe } from '@angular/common';
 import { ProgressSpinner } from 'primeng/progressspinner';
+import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
   selector: 'app-candidate-info',
   standalone: true,
-  imports: [CommonModule, Toast, ProgressSpinner],
+  imports: [CommonModule, Toast, ProgressSpinner, TooltipModule],
   templateUrl: './candidate-info.component.html',
   styleUrl: './candidate-info.component.scss',
   providers: [MessageService, DatePipe],
@@ -256,5 +257,14 @@ export class CandidateInfoComponent {
         console.log('Completed');
       }
     );
+  }
+
+  getHiddenSkillsTooltip(candidate: any): string {
+    if (candidate?.skills) {
+      const allSkills = candidate.skills.split(',');
+      const hiddenSkills = allSkills.slice(2);
+      return hiddenSkills.join(', '); // Just join the skills with a comma
+    }
+    return '';
   }
 }

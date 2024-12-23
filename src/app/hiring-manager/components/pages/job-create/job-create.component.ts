@@ -42,16 +42,50 @@ import { ProgressSpinner } from 'primeng/progressspinner';
 export class JobCreateComponent {
   jobTitles = ['Chief Operating Officer', 'Data Scientist', 'Project Manager'];
   experienceOptions = ['0-2 years', '3-5 years', '6-10 years', '10+ years'];
-  locationOptions = ['Delhi', 'Mumbai', 'Bangalore', 'Mundra', 'Remote'];
+  locationOptions = [
+    'Delhi',
+    'Mumbai',
+    'Bangalore',
+    'Mundra',
+    'Remote',
+    'Jaipur, Rajasthan, India',
+    'Kanpur, Uttar Pradesh, India',
+  ];
   roleOptions = [
     'Chief Operating Officer',
     'Data Scientist',
     'Project Manager',
     'Software Developer',
+    'Team Member- Terminal Operations',
+    'Associate Engineer',
   ];
-  primarySkills = ['Management Consulting', 'MS Office', 'Leadership'];
+  primarySkills = [
+    'Management Consulting',
+    'MS Office',
+    'Leadership',
+    'SLA Management',
+    'VIP Facilitation',
+    'Resource Management',
+    'Housekeeping Monitoring',
+    'Machine Operation',
+    'Quality Control',
+    'Safety Compliance',
+    'SOP Adherence',
+  ];
 
-  secondarySkills = ['DevOps', 'Agile Methodologies', 'Technical Writing'];
+  secondarySkills = [
+    'DevOps',
+    'Agile Methodologies',
+    'Technical Writing',
+    'Communication',
+    'Problem Solving',
+    'Time Management',
+    'Analytical Skills',
+    'Adaptability',
+    'Team Collaboration',
+    'Leadership',
+    'Negotiation Skills',
+  ];
   newSecondarySkill: string = '';
   newPrimarySkill: string = '';
   newRole: string = '';

@@ -41,7 +41,14 @@ import { ProgressSpinner } from 'primeng/progressspinner';
 })
 export class JobCreateComponent {
   jobTitles = ['Chief Operating Officer', 'Data Scientist', 'Project Manager'];
-  experienceOptions = ['0-2 years', '3-5 years', '6-10 years', '10+ years'];
+  experienceOptions = [
+    '0-2 years',
+    '02 - 05 years',
+    '3-5 years',
+    '6-10 years',
+    '08 - 10 years',
+    '10+ years',
+  ];
   locationOptions = [
     'Delhi',
     'Mumbai',

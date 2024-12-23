@@ -34,6 +34,7 @@ export class InterviewStepsComponent {
   remainingTime: number = 1;
   JobDetails: any;
   interviewassessment: string = '';
+
   constructor(
     private candidateService: CandidateService,
     private router: Router,
@@ -46,10 +47,15 @@ export class InterviewStepsComponent {
       this.jobId = params['jobId'];
       this.getstepperdata(this.candidateId, this.jobId);
     });
-    this.candidateService.$jobDetailsSubject.subscribe((data) => {
-      console.log('service data', data);
-      this.JobDetails = data;
-    });
+    // this.candidateService.$jobDetailsSubject.subscribe((data) => {
+    //   console.log('service data', data);
+    //   this.JobDetails = data;
+    // });
+    try {
+      this.JobDetails = JSON.parse(localStorage.getItem('selected_job') || '');
+    } catch {
+      console.log('somethigs is error');
+    }
   }
 
   getstepperdata(candidateId: any, jobId: any) {

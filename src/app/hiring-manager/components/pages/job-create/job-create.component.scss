@@ -241,6 +241,7 @@
 :host::ng-deep .p-select-option {
   padding: 0.4rem;
   line-height: normal;
+  white-space: wrap;
 }
 
 ::ng-deep .p-checkbox,
@@ -320,11 +321,6 @@
 :host::ng-deep .p-multiselect {
   background: none !important;
   border-radius: var(--p-inputtext-border-radius) !important;
-}
-
-::ng-deep .p-overlay-content {
-  z-index: 9999 !important;
-  position: relative !important;
 }
 
 ::ng-deep p-checkbox {

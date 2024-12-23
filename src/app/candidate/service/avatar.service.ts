@@ -65,4 +65,8 @@ export class AvatarService {
       .get(`${environment.avatarEndPoint}/Speech/job-description/${jobId}`)
       .toPromise();
   }
+
+  refreshToken(): Promise<any> {
+    return this._http.get(`${environment.avatarEndPoint}/Speech/refresh-token`).toPromise();
+  }
 }

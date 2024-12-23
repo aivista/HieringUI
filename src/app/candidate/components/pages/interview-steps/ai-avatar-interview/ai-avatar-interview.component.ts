@@ -61,6 +61,12 @@ export class AiAvatarInterviewComponent {
 
   jd: any;
 
+  isAudioVideoPermissionEnabled: boolean = true;
+  isInterviewOver: boolean = false;
+  contextualQuestion: string = '';
+  contextualQuestionAnswer: any;
+  validateCandidateAnswer: boolean = false;
+
   @ViewChild('connectBtn') cbtn!: ElementRef;
   @ViewChild('disconnectBtn') dbtn!: ElementRef;
   @ViewChild('videoRef') videoRef!: ElementRef;
@@ -88,10 +94,10 @@ export class AiAvatarInterviewComponent {
       this.serviceRegion
     );
     speechConfigForListening.speechRecognitionLanguage = 'en-US';
-    const audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
+    // const audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
     this.recognizer = new sdk.SpeechRecognizer(
       speechConfigForListening,
-      audioConfig
+      // audioConfig
     );
 
     // this.storedCandidateId = localStorage.getItem('updateByCandidateId');
@@ -200,7 +206,9 @@ export class AiAvatarInterviewComponent {
       this.mediaRecorderRef.start();
     } catch (err) {
       console.log('Error accessing camera: ', err);
-      alert(err);
+      // alert(err);
+      alert('Your video and audio are not shared. Please enable permissions to continue.');
+      this.isAudioVideoPermissionEnabled = false;
     }
   };
 
@@ -396,256 +404,294 @@ export class AiAvatarInterviewComponent {
 
         await this.startRecording();
 
-        await avatarSynthesizer.speakTextAsync(this.greetingMessage);
+        if (this.isAudioVideoPermissionEnabled) {
+          // this.dbtn.nativeElement.style.visibility = 'hidden';
+          this.dbtn.nativeElement.style.display = 'block';
+          this.dbtn.nativeElement.disabled = 'true';
 
-        this.log = this.greetingMessage;
+          await avatarSynthesizer.speakTextAsync(this.greetingMessage);
 
-        await avatarSynthesizer.speakTextAsync(this.summaryOfJobDescription);
+          this.log = this.greetingMessage;
 
-        this.log = this.summaryOfJobDescription;
+          this.summaryOfJobDescription += "Please properly elaborate your answer so that we can validate your answer according to out job description."
 
-        let firstTime = 20;
-        this.totalTime = firstTime;
+          await avatarSynthesizer.speakTextAsync(this.summaryOfJobDescription);
 
-        let firstInterval = setInterval(() => {
-          firstTime = Math.max(0, firstTime - 1);
-          this.remainingTime = firstTime; //!Delete This
-          this.seconds.nativeElement.innerHTML = `${firstTime}`;
-        }, 1000);
+          this.log = this.summaryOfJobDescription;
 
-        await avatarSynthesizer.speakTextAsync(
-          `What aspect of this ${this.role} are most intriguing to you?`
-        );
+          let firstTime = 20;
+          this.totalTime = firstTime;
 
-        this.log = `Avatar : What aspect of this ${this.role} are most intriguing to you?`;
-
-        this.seconds.nativeElement.innerHTML = `${firstTime}`;
-        this.counter.nativeElement.style.visibility = 'visible';
-        this.progressBar.nativeElement.style.visibility = 'visible';
-
-        const speech = await this.initSession();
-
-        const response = await this._avatarService.speak(
-          speech,
-          false,
-          false,
-          false,
-          this.jd,
-        );
-
-        this.log = `you: ${response.result['key']}`;
-
-        clearInterval(firstInterval);
-
-        console.log('Media Recorder Started');
-        for (let i = 0; i < cars.length; ) {
-          this.videoDiv.nativeElement.style.backgroundImage = 'none';
-
-          qStart = Date.now();
-          await avatarSynthesizer.speakTextAsync(cars[i]);
-          answers.push({
-            user: 'avatar',
-            text: cars[i],
-            start_timestamp: qStart,
-            type: 'question',
-          });
-
-          // this.log = `${this.log}Question :- ${cars[i]}\n`;
-          this.log = `Avatar : ${cars[i]}`;
-
-          // this.textArea.nativeElement.value = this.log;
-
-          let text = this.textArea.nativeElement;
-          if (text.selectionStart == text.selectionEnd) {
-            text.scrollTop = text.scrollHeight;
-          }
-
-          this.time = time[i];
-          this.totalTime = time[i];
-          this.seconds.nativeElement.innerHTML = `${this.time}`;
-          qStart = Date.now();
-          this.counter.nativeElement.style.visibility = 'visible';
-          this.progressBar.nativeElement.style.visibility = 'visible';
-
-          let interval = setInterval(() => {
-            this.time = Math.max(0, this.time - 1);
-            this.remainingTime = this.time;
-            this.seconds.nativeElement.innerHTML = `${this.time}`;
+          let firstInterval = setInterval(() => {
+            firstTime = Math.max(0, firstTime - 1);
+            this.remainingTime = firstTime; //!Delete This
+            this.seconds.nativeElement.innerHTML = `${firstTime}`;
           }, 1000);
 
-          let json: any;
-          let coreSkillQuestion: boolean = false;
-          let isItCandidateQuestion: boolean = false;
+          await avatarSynthesizer.speakTextAsync(
+            `What aspect of this ${this.role} are most intriguing to you?`
+          );
 
-          // cars[i] === "Can you please tell me some of your core skills?"
-          //   ? (coreSkillQuestion = true)
-          //   : (coreSkillQuestion = false);
+          this.log = `Avatar : What aspect of this ${this.role} are most intriguing to you?`;
 
-          if (cars[i] === "Can you please tell me some of your core skills?") {
-            coreSkillQuestion = true;
-          } else {
-            coreSkillQuestion = false;
-          }
-
-          if (cars[i] === "Do you have any questions for me?") {
-            isItCandidateQuestion = true;
-          } else {
-            isItCandidateQuestion = false;
-          }
+          this.seconds.nativeElement.innerHTML = `${firstTime}`;
+          this.counter.nativeElement.style.visibility = 'visible';
+          this.progressBar.nativeElement.style.visibility = 'visible';
 
           const speech = await this.initSession();
 
           const response = await this._avatarService.speak(
             speech,
-            contextual[i],
-            coreSkillQuestion,
-            isItCandidateQuestion,
-            this.jd
+            false,
+            false,
+            false,
+            this.jd,
           );
 
-          json = response.result;
-          console.log('r:', response);
+          this.log = `you: ${response.result['key']}`;
 
-          console.log(json);
+          clearInterval(firstInterval);
 
-          clearInterval(interval);
+          console.log('Media Recorder Started');
 
-          json['key'] &&
-            answers.push({
-              user: 'candidate',
-              text: json['key'],
-              start_timestamp: qStart,
-              type: 'answer',
-            });
+          for (let i = 0; i < cars.length; ) {
+            this.videoDiv.nativeElement.style.backgroundImage = 'none';
 
-          // if (json['notification'] === 'cheating') {
-
-          //     qStart=Date.now();
-          //     await avatarSynthesizer.speakTextAsync('You are doing cheating! Please do not do that otherwise I have to cancel this meeting');
-          //     answers.push({
-          //         "user":"avatar",
-          //         "text": "You are doing cheating! Please do not do that otherwise I have to cancel this meeting",
-          //         "start_timestamp": qStart,
-          //         "type":"warning"
-          //     });
-
-          //     cheatingCount++;
-          // }
-
-          if (i == 0 && json['key'] === '') {
             qStart = Date.now();
-            await avatarSynthesizer.speakTextAsync(
-              `Sorry! I didn't get your name, Please Repeat`
-            );
+            await avatarSynthesizer.speakTextAsync(cars[i]);
             answers.push({
               user: 'avatar',
-              text: "Sorry! I didn't get your name, Please Repeat",
+              text: cars[i],
               start_timestamp: qStart,
-              type: 'repeat',
+              type: 'question',
             });
 
-            this.log = `Avatar : ${`Sorry! I didn't get your name, Please Repeat`}`;
+            // this.log = `${this.log}Question :- ${cars[i]}\n`;
+            this.log = `Avatar : ${cars[i]}`;
 
-            i = 0;
+            // this.textArea.nativeElement.value = this.log;
 
-            count++;
+            let text = this.textArea.nativeElement;
+            if (text.selectionStart == text.selectionEnd) {
+              text.scrollTop = text.scrollHeight;
+            }
 
-            if (count === 3) {
+            this.time = time[i];
+            this.totalTime = time[i];
+            this.seconds.nativeElement.innerHTML = `${this.time}`;
+            qStart = Date.now();
+            this.counter.nativeElement.style.visibility = 'visible';
+            this.progressBar.nativeElement.style.visibility = 'visible';
+
+            let interval = setInterval(() => {
+              this.time = Math.max(0, this.time - 1);
+              this.remainingTime = this.time;
+              this.seconds.nativeElement.innerHTML = `${this.time}`;
+            }, 1000);
+
+            let json: any;
+            let coreSkillQuestion: boolean = false;
+            let isItCandidateQuestion: boolean = false;
+
+            // cars[i] === "Can you please tell me some of your core skills?"
+            //   ? (coreSkillQuestion = true)
+            //   : (coreSkillQuestion = false);
+
+            if (cars[i] === "Can you please tell me some of your core skills?") {
+              coreSkillQuestion = true;
+            } else {
+              coreSkillQuestion = false;
+            }
+
+            if (cars[i] === "Do you have any questions for me?") {
+              isItCandidateQuestion = true;
+            } else {
+              isItCandidateQuestion = false;
+            }
+
+            const speech = await this.initSession();
+
+            const response = await this._avatarService.speak(
+              speech,
+              contextual[i],
+              coreSkillQuestion,
+              isItCandidateQuestion,
+              this.jd
+            );
+
+            json = response.result;
+            console.log('r:', response);
+
+            console.log(json);
+
+            clearInterval(interval);
+
+            json['key'] &&
+              answers.push({
+                user: 'candidate',
+                text: json['key'],
+                start_timestamp: qStart,
+                type: 'answer',
+              });
+
+            // if (json['notification'] === 'cheating') {
+
+            //     qStart=Date.now();
+            //     await avatarSynthesizer.speakTextAsync('You are doing cheating! Please do not do that otherwise I have to cancel this meeting');
+            //     answers.push({
+            //         "user":"avatar",
+            //         "text": "You are doing cheating! Please do not do that otherwise I have to cancel this meeting",
+            //         "start_timestamp": qStart,
+            //         "type":"warning"
+            //     });
+
+            //     cheatingCount++;
+            // }
+
+            if (i == 0 && json['key'] === '') {
+              qStart = Date.now();
+              await avatarSynthesizer.speakTextAsync(
+                `Sorry! I didn't get your name, Please Repeat`
+              );
+              answers.push({
+                user: 'avatar',
+                text: "Sorry! I didn't get your name, Please Repeat",
+                start_timestamp: qStart,
+                type: 'repeat',
+              });
+
+              this.log = `Avatar : ${`Sorry! I didn't get your name, Please Repeat`}`;
+
+              i = 0;
+
+              count++;
+
+              if (count === 3) {
+                break;
+              }
+            } else if (json['notification'] === 'mistake') {
+              let prevAnswer: any = answers.pop();
+              prevAnswer['type'] = 'mistake';
+              answers.push(prevAnswer);
+
+              this.counter.nativeElement.style.visibility = 'hidden';
+              this.progressBar.nativeElement.style.visibility = 'hidden';
+              this.log = `You mistakenly said : ${json['key']}`;
+
+              qStart = Date.now();
+              await avatarSynthesizer.speakTextAsync(
+                'Okay, let me ask the same question again!'
+              );
+              answers.push({
+                user: 'avatar',
+                text: 'Okay, let me ask the same question again!',
+                start_timestamp: qStart,
+                type: 'repeat',
+              });
+              this.log = `Avatar : Okay, let me ask the same question again!`;
+            } else {
+              if (json['key']?.includes('Yeah! I have understood')) {
+                json['key'] = this.stringModification(
+                  json['key'],
+                  'Yeah! I have understood'
+                );
+              }
+
+              // if (isItCandidateQuestion) {
+              //   this.contextualQuestion = json['key'];
+              //   this.validateCandidateAnswer = true;
+
+              //   const avatarResponse = await this._avatarService.speak(
+              //     speech,
+              //     this.contextualQuestion,
+              //     false,
+              //     false,
+              //     false,
+              //     this.validateCandidateAnswer,
+              //     this.jd
+              //   );
+
+              //   const res = avatarResponse.result;
+
+              //   await avatarSynthesizer.speakTextAsync(res['res']);
+              //   this.log = `Avatar: ${json['res']}`;
+              // }
+
+              if (i == 0) {
+                name = json['key'];
+              }
+
+              this.log = `You : ${json['key']}`;
+              this.counter.nativeElement.style.visibility = 'hidden';
+              this.progressBar.nativeElement.style.visibility = 'hidden';
+
+              if (contextual[i]) {
+                if (contextType[i] === 'A') {
+                  await avatarSynthesizer.speakTextAsync(json['res']);
+                  this.log = `Avatar : ${json['res']}`;
+                } else {
+                  cars.splice(i + 1, 0, json['res']);
+                  time.splice(i + 1, 0, time[i]);
+                  contextual.splice(i + 1, 0, false);
+                  contextType.splice(i + 1, 0, 'NA');
+                }
+              }
+
+              i++;
+            }
+
+            if (cheatingCount >= 3) {
+              qStart = Date.now();
+              await avatarSynthesizer.speakTextAsync(
+                'You are doing cheating! We have to cancel this meeting'
+              );
+              answers.push({
+                user: 'avatar',
+                text: 'You are doing cheating! We have to cancel this meeting',
+                start_timestamp: qStart,
+                type: 'cancel',
+              });
               break;
             }
-          } else if (json['notification'] === 'mistake') {
-            let prevAnswer: any = answers.pop();
-            prevAnswer['type'] = 'mistake';
-            answers.push(prevAnswer);
-
-            this.counter.nativeElement.style.visibility = 'hidden';
-            this.progressBar.nativeElement.style.visibility = 'hidden';
-            this.log = `You mistakenly said : ${json['key']}`;
-
-            qStart = Date.now();
-            await avatarSynthesizer.speakTextAsync(
-              'Okay, let me ask the same question again!'
-            );
-            answers.push({
-              user: 'avatar',
-              text: 'Okay, let me ask the same question again!',
-              start_timestamp: qStart,
-              type: 'repeat',
-            });
-            this.log = `Avatar : Okay, let me ask the same question again!`;
-          } else {
-            if (json['key']?.includes('Yeah! I have understood')) {
-              json['key'] = this.stringModification(
-                json['key'],
-                'Yeah! I have understood'
-              );
-            }
-
-            if (i == 0) {
-              name = json['key'];
-            }
-
-            this.log = `You : ${json['key']}`;
-            this.counter.nativeElement.style.visibility = 'hidden';
-            this.progressBar.nativeElement.style.visibility = 'hidden';
-
-            if (contextual[i]) {
-              if (contextType[i] === 'A') {
-                await avatarSynthesizer.speakTextAsync(json['res']);
-                this.log = `Avatar : ${json['res']}`;
-              } else {
-                cars.splice(i + 1, 0, json['res']);
-                time.splice(i + 1, 0, time[i]);
-                contextual.splice(i + 1, 0, false);
-                contextType.splice(i + 1, 0, 'NA');
-              }
-            }
-
-            i++;
           }
 
-          if (cheatingCount >= 3) {
-            qStart = Date.now();
-            await avatarSynthesizer.speakTextAsync(
-              'You are doing cheating! We have to cancel this meeting'
-            );
-            answers.push({
-              user: 'avatar',
-              text: 'You are doing cheating! We have to cancel this meeting',
-              start_timestamp: qStart,
-              type: 'cancel',
-            });
-            break;
-          }
+          // this.dbtn.nativeElement.style.visibility = 'visible';
+          this.isInterviewOver = true;
+
+          qStart = Date.now();
+
+          this.time = 0;
+          this.stopRecording(qStart);
+
+          this.dbtn.nativeElement.disabled = false;
+          // this.dbtn.nativeElement.onclick = this.stopSession;
+
+          const results: any = {
+            DE: answers,
+          };
+
+          const payload = {
+            filename: `${qStart}_Result.json`,
+            content: JSON.stringify(results),
+          };
+
+          this._avatarService.saveFile(payload).subscribe({
+            next: (response: any) => {
+              console.log(response);
+            },
+            error: (err: any) => {
+              console.log(err);
+            },
+          });
+
+          console.log('Connected to Azure Avatar service');
+        } else {
+          this.cbtn.nativeElement.style.display = 'block';
+          this.dbtn.nativeElement.style.display = 'none';
+          // this.dbtn.nativeElement.style.display = 'block';
+          this.isInterviewOver = false;
         }
 
-        qStart = Date.now();
-
-        this.time = 0;
-        this.stopRecording(qStart);
-
-        this.dbtn.nativeElement.disabled = false;
-        this.dbtn.nativeElement.onclick = this.stopSession;
-
-        const results: any = {
-          DE: answers,
-        };
-
-        const payload = {
-          filename: `${qStart}_Result.json`,
-          content: JSON.stringify(results),
-        };
-
-        this._avatarService.saveFile(payload).subscribe({
-          next: (response: any) => {
-            console.log(response);
-          },
-          error: (err: any) => {
-            console.log(err);
-          },
-        });
-
-        console.log('Connected to Azure Avatar service');
       }
 
       if (
@@ -663,7 +709,7 @@ export class AiAvatarInterviewComponent {
         console.log('WebRTC status: ' + peerConnection.iceConnectionState);
         console.log(r['privErrorDetails']);
       })
-      .catch((error) => {
+      .catch(async (error) => {
         console.log(
           '[' +
             new Date().toISOString() +
@@ -671,10 +717,27 @@ export class AiAvatarInterviewComponent {
             error
         );
         console.log(avatarSynthesizer.properties);
+        try {
+          await this.getRefreshToken();
+        } catch (error) {
+          console.log(error);
+
+        }
         this.cbtn.nativeElement.style.display = 'block';
         this.dbtn.nativeElement.style.display = 'none';
         alert('Avatar Failed to Start. Try Again!');
       });
+  }
+
+  getRefreshToken = async () => {
+    try {
+      const response = await this._avatarService.refreshToken();
+      config.iceUsername = response.result.username;
+      config.iceCredential = response.result.password;
+    } catch (error) {
+      console.log(error);
+
+    }
   }
 
   // Emit event to show popup

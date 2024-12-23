@@ -14,21 +14,26 @@
     <img [src]="'assets/icons/profile-logo.svg'" alt="My Image" />
     <h2>Candidates</h2>
   </div>
-  <nav class="nav-bar mb-4">
-    <span
-      class="nav-item"
-      [class.activeTab]="activeTab === 'Shortlisted'"
-      (click)="setActiveTab('Shortlisted')"
-    >
-      Shortlisted
-    </span>
-    <span
-      class="nav-item"
-      [class.activeTab]="activeTab === 'Applied'"
-      (click)="setActiveTab('Applied')"
-    >
-      Applied
-    </span>
+<nav class="nav-bar mb-4 d-flex justify-content-between">
+    <div class="nav-btn">
+      <span
+        class="nav-item"
+        [class.activeTab]="activeTab === 'Shortlisted'"
+        (click)="setActiveTab('Shortlisted')"
+      >
+        Shortlisted
+      </span>
+      <span
+        class="nav-item"
+        [class.activeTab]="activeTab === 'Applied'"
+        (click)="setActiveTab('Applied')"
+      >
+        Applied
+      </span>
+    </div>
+    <button  class="refresh btn" (click)="refreshData()" >
+      <img src="assets/icons/refresh.svg" alt="" class="img-fluid w-75">
+    </button>
   </nav>
   <div *ngIf="activeTab === 'Shortlisted'" class="main-candisate-card">
     <ng-container

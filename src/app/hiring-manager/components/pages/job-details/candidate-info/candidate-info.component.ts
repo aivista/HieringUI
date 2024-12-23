@@ -4,11 +4,12 @@ import { HiringManagerService } from '../../../../service/hiring-manager.service
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { DatePipe } from '@angular/common';
+import { ProgressSpinner } from 'primeng/progressspinner';
 
 @Component({
   selector: 'app-candidate-info',
   standalone: true,
-  imports: [CommonModule, Toast, DatePipe],
+  imports: [CommonModule, Toast, ProgressSpinner],
   templateUrl: './candidate-info.component.html',
   styleUrl: './candidate-info.component.scss',
   providers: [MessageService, DatePipe],
@@ -31,9 +32,11 @@ export class CandidateInfoComponent {
   component: string = ''; // Store the name of the pending component
   selectedCandidateDetails: any;
   interviewTime: any;
+  loader: boolean = true;
 
   ngOnInit() {
-    console.log('Hello World', this.candidate);
+    this.loader = true;
+    //console.log('Hello World', this.candidate);
     this.getcandidateStatus(this.candidate);
 
     // Store the status in a variable
@@ -57,31 +60,38 @@ export class CandidateInfoComponent {
     const jsonBody = {
       email: this.candidate.email,
     };
-    this.hiringManagerService
-      .CandidateDetails(jsonBody)
-      .subscribe((res: any) => {
+    this.hiringManagerService.CandidateDetails(jsonBody).subscribe(
+      (res: any) => {
         if (res.isSuccess) {
           this.selectedCandidateDetails = res.result;
-          console.log('selected candidate', this.selectedCandidateDetails);
+          //  console.log('selected candidate', this.selectedCandidateDetails);
         }
-      });
-    this.getInterviewTime(this.candidate.jobId, this.candidate.candidateId);
+      },
+      (err) => {},
+      () => {
+        this.getInterviewTime(this.candidate.jobId, this.candidate.candidateId);
+      }
+    );
   }
   getInterviewTime(JobId: any, CandidateId: any) {
     const Jsonobj = {
       jobId: JobId,
       candidateId: CandidateId,
     };
-    this.hiringManagerService
-      .getcandidateInterviewtime(Jsonobj)
-      .subscribe((data: any) => {
+    this.hiringManagerService.getcandidateInterviewtime(Jsonobj).subscribe(
+      (data: any) => {
         if (data.isSuccess) {
           this.interviewTime = this.datepipe.transform(
             data?.result['0'].scheduledTime,
             'd MMMM yyyy'
           );
         }
-      });
+      },
+      () => {},
+      () => {
+        this.loader = false;
+      }
+    );
   }
 
   getcandidateStatus(candidate: any) {

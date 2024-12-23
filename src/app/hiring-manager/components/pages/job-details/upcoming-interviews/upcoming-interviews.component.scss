@@ -49,8 +49,6 @@
       height: calc(93vh - 6rem);
       overflow-y: scroll;
       overflow-x: hidden;
-      -ms-overflow-style: none; /* IE and Edge */
-      scrollbar-width: none; /* Firefox */
       border-radius: 10px;
       padding: 10px;
       border-image-source: linear-gradient(
@@ -59,10 +57,6 @@
         rgba(193, 193, 193, 0.32) 100%
       );
       background: linear-gradient(137.88deg, #1d212a 21.56%, #272c37 100%);
-
-      &::-webkit-scrollbar {
-        display: none; /* Chrome, Safari and Opera */
-      }
 
       hr {
         border: 1px solid #575757;
@@ -76,6 +70,7 @@
         display: flex;
         align-items: center;
         gap: 5px;
+        padding-bottom: 0.2rem;
       }
 
       .no-data {
@@ -159,6 +154,89 @@
 }
 
 @media (min-height: 600px) and (max-height: 800px) {
+  .body {
+    .interview-container {
+      .header {
+        h4 {
+          font-size: 1rem;
+        }
+      }
+      p {
+        font-size: 10px !important;
+      }
+    }
+
+    .body2 {
+      .no-data {
+        font-size: 0.7rem !important;
+      }
+
+      .day {
+        font-size: 0.9rem !important;
+      }
+      .interview-row {
+        .time-container {
+          .time-1 {
+            font-size: 12px !important;
+          }
+          .time-2 {
+            font-size: 10px !important;
+          }
+        }
+        .details {
+          .name {
+            font-size: 12px !important;
+          }
+
+          .role {
+            font-size: 10px !important;
+          }
+        }
+      }
+    }
+  }
 }
 @media (min-width: 1024px) and (max-width: 1436px) {
+  .body {
+    .interview-container {
+      .header {
+        h4 {
+          font-size: 1rem !important;
+        }
+        p {
+          font-size: 10px !important;
+        }
+      }
+
+      .body2 {
+        .no-data {
+          font-size: 0.7rem !important;
+        }
+
+        .day {
+          font-size: 0.9rem !important;
+        }
+
+        .interview-row {
+          .time-container {
+            .time-1 {
+              font-size: 12px !important;
+            }
+            .time-2 {
+              font-size: 10px !important;
+            }
+          }
+          .details {
+            .name {
+              font-size: 12px !important;
+            }
+
+            .role {
+              font-size: 10px !important;
+            }
+          }
+        }
+      }
+    }
+  }
 }

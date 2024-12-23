@@ -21,7 +21,7 @@
         class="cross"
       />
     </div>
-    <p class="contact-info mt-3 mb-4 d-flex">
+    <p class="contact-info mt-3 mb-4 d-flex align-items-center">
       <img src="assets/icons/Phone.svg" alt="" class="me-2" />
       {{ selectedCandidateDetails?.contact }}
       <img src="assets/icons/Email.svg" alt="" class="ms-4 me-2" />
@@ -80,7 +80,7 @@
       <div *ngIf="isInterviewScheduled" class="interview-schedule my-4">
         <div>
           <p class="mb-0">Interview scheduled on -</p>
-          <p class="text-date mb-0">{{interviewTime}}</p>
+          <p class="text-date mb-0">{{ interviewTime }}</p>
         </div>
         <div>
           <button class="btn button">Join</button>

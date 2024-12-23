@@ -198,22 +198,16 @@
         <!-- <div class="comment-section mt-4">  -->
         <label for="comment">Add Comments (if any)</label>
         <textarea id="comment" name="comment" rows="4"></textarea>
-        <p-toast position="bottom-center"></p-toast>
+        <p-toast position="bottom-center"> </p-toast>
         <div class="btn-group2 d-flex justify-content-end">
           <button
             type="button"
             class="btn btn-outline-danger me-2"
             (click)="onReject()"
-            label="Rejected"
           >
             Reject
           </button>
-          <button
-            type="button"
-            class="btn btn-success"
-            label="Selected"
-            (click)="onApprove()"
-          >
+          <button type="button" class="btn btn-success" (click)="onApprove()">
             Approve
           </button>
         </div>

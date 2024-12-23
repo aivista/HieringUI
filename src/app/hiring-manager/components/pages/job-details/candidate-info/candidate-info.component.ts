@@ -146,9 +146,9 @@ export class CandidateInfoComponent {
 
     this.messageService.add({
       severity: 'warn',
-      summary: 'Rejected',
       detail: `Candidate ${this.selectedCandidateDetails?.first_name} Rejected`,
     });
+
     let jsonObj = {
       to: [
         {
@@ -208,7 +208,6 @@ export class CandidateInfoComponent {
     );
     this.messageService.add({
       severity: 'success',
-      summary: 'Success',
       detail: `Candidate ${this.selectedCandidateDetails?.first_name} Approved`,
     });
 

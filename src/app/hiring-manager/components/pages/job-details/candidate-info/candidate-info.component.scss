@@ -357,6 +357,9 @@
     }
   }
 }
+:host::ng-deep .p-toast-summary {
+  display: none !important;
+}
 
 @media (min-width: 1024px) and (max-width: 1436px) {
   .candidate-card {

@@ -86,7 +86,9 @@
       line-height: 20px !important;
       margin: 0.5rem 0 !important;
     }
-
+    ul {
+      margin: 0 !important;
+    }
     ul li {
       font-weight: 400 !important;
       font-size: 0.65rem !important;
@@ -100,6 +102,9 @@
     padding: 12px 24px !important;
     font-size: 0.7rem !important;
     border-radius: 0.5rem !important;
+  }
+  .button-container {
+    margin-top: 1rem !important;
   }
 }
 @media (min-width: 1024px) and (max-width: 1436px) {
@@ -120,7 +125,9 @@
       line-height: 20px !important;
       margin: 0.5rem 0 !important;
     }
-
+    ul {
+      margin: 0 !important;
+    }
     ul li {
       font-weight: 400 !important;
       font-size: 0.65rem !important;
@@ -134,5 +141,8 @@
     padding: 12px 24px !important;
     font-size: 0.7rem !important;
     border-radius: 0.5rem !important;
+  }
+  .button-container {
+    margin-top: 1rem !important;
   }
 }

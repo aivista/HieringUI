@@ -72,3 +72,54 @@
   font-size: 12px;
   font-weight: 400;
 }
+
+@media (min-height: 600px) and (max-height: 800px) {
+  .logo-wel {
+    .title {
+      font-size: 2rem;
+    }
+  }
+  .sub-title {
+    font-size: 18px;
+  }
+  .form-group label {
+    font-size: 14px;
+  }
+
+  .form-control {
+    font-size: 0.8rem;
+  }
+  .btn-login {
+    margin: 1rem 0;
+    padding: 0.5rem 0;
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1436px) {
+  .card-body {
+    gap: 1.5rem !important;
+  }
+
+  .logo-wel {
+    .title {
+      font-size: 2rem;
+    }
+  }
+  .sub-title {
+    font-size: 18px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+  }
+  .form-control {
+    font-size: 0.8rem;
+  }
+
+  .btn-login {
+    margin: 1rem 0;
+    padding: 0.5rem 0;
+    font-size: 0.8rem;
+  }
+}

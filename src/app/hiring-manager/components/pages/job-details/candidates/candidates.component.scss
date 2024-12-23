@@ -61,11 +61,6 @@ body {
 .main-candisate-card {
   height: calc(93vh - 9rem);
   overflow-y: auto;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
-  }
 }
 
 .candidate-card {
@@ -78,6 +73,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-right: 0.2rem;
 }
 
 .candidate-info {
@@ -222,12 +218,117 @@ body {
 
 @media (min-height: 600px) and (max-height: 800px) {
   .left-part h3 {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+  }
+
+  .candidates-container {
+    padding: 18px 16px !important;
+    .header {
+      h2 {
+        font-size: 1rem !important;
+      }
+    }
+  }
+  .nav-item {
+    font-size: 0.7rem !important;
+    .activeTab {
+      font-size: 0.7rem !important;
+    }
+  }
+  .star {
+    gap: 0.4rem !important;
+    padding: 0.15rem 0.4rem !important;
+
+    .text {
+      font-size: 0.65rem !important;
+    }
+    .rating {
+      img {
+        height: 0.8rem !important;
+        width: 0.8rem !important;
+      }
+    }
+  }
+
+  .experience {
+    font-size: 0.65rem !important;
+  }
+
+  .status {
+    font-size: 0.55rem !important;
+    padding: 4px 8px !important;
+  }
+
+  .skills {
+    .skill {
+      padding: 5px 9px !important;
+      font-size: 0.55rem !important;
+      height: 20px !important;
+    }
+
+    .skill-pill2 {
+      padding: 5px 9px !important;
+      font-size: 0.55rem !important;
+      height: 20px !important;
+    }
   }
 }
 
 @media (min-width: 1024px) and (max-width: 1436px) {
   .left-part h3 {
-    font-size: 0.9rem;
+    font-size: 0.8rem !important;
+  }
+  .candidates-container {
+    padding: 18px 16px !important;
+    .header {
+      h2 {
+        font-size: 1rem !important;
+      }
+    }
+  }
+
+  .nav-item {
+    font-size: 0.7rem !important;
+    .activeTab {
+      font-size: 0.7rem !important;
+    }
+  }
+
+  .star {
+    gap: 0.4rem !important;
+    padding: 0.15rem 0.4rem !important;
+    .text {
+      font-size: 0.65rem !important;
+    }
+
+    .rating {
+      img {
+        height: 0.8rem !important;
+        width: 0.8rem !important;
+      }
+    }
+  }
+
+  .experience {
+    font-size: 0.65rem !important;
+  }
+
+  .status {
+    font-size: 0.55rem !important;
+    padding: 4px 8px !important;
+  }
+
+  .skills {
+    .skill {
+      padding: 5px 9px !important;
+      font-size: 0.55rem !important;
+      height: 20px !important;
+    }
+
+    .skill-pill2 {
+      padding: 5px 9px !important;
+      font-size: 0.55rem !important;
+      height: 20px !important;
+    }
   }
 }

@@ -95,7 +95,21 @@
                         name="location"
                         [filter]="true"
                         class="w-100"
-                      ></p-dropdown>
+                        (onFilter)="onFilterLocation($event)"
+                      >
+                        <ng-template pTemplate="footer">
+                          <div class="p-3 flex justify-between">
+                            <p-button
+                              label="Add New"
+                              severity="primary"
+                              text
+                              size="small"
+                              icon="pi pi-plus"
+                              (click)="addNewLocation()"
+                            />
+                          </div>
+                        </ng-template>
+                      </p-dropdown>
                       <small
                         class="p-error block"
                         style="color: red; font-size: 10px"
@@ -346,8 +360,12 @@
   </div>
 </div>
 
- <div *ngIf="jdloader" class="modal">
-    <div class="modal-content">
-     <p-progress-spinner strokeWidth="2" fill="transparent" [style]="{ width: '100px', height: '100px', }" />
-    </div>
+<div *ngIf="jdloader" class="modal">
+  <div class="modal-content">
+    <p-progress-spinner
+      strokeWidth="2"
+      fill="transparent"
+      [style]="{ width: '100px', height: '100px', }"
+    />
   </div>
+</div>

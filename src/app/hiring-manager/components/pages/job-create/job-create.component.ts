@@ -58,6 +58,7 @@ export class JobCreateComponent {
   filterRole: string = '';
   filterPrimarySkills: string = '';
   filterSecondarySkills: string = '';
+  filterLocation: string = '';
 
   // Model for form fields
   selectedJobTitle: string | undefined;
@@ -275,6 +276,22 @@ export class JobCreateComponent {
       this.roleOptions.push(newRole);
       this.profileForm.get('role')?.setValue(newRole);
       this.filterRole = '';
+    }
+  }
+
+  onFilterLocation(event: any) {
+    this.filterLocation = event.filter;
+  }
+  addNewLocation() {
+    const newLocation = this.filterLocation.trim();
+    if (
+      newLocation &&
+      newLocation.trim() &&
+      !this.locationOptions.includes(newLocation)
+    ) {
+      this.locationOptions.push(newLocation);
+      this.profileForm.get('location')?.setValue(newLocation);
+      this.filterLocation = '';
     }
   }
 }

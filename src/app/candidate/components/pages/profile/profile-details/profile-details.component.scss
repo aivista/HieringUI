@@ -117,6 +117,7 @@
       color: #bdbdbd;
       font-size: 0.8rem;
       font-weight: 400;
+      padding: 1rem 0;
     }
 
     .no-data {
@@ -173,13 +174,127 @@ hr {
 }
 
 @media (min-height: 600px) and (max-height: 800px) {
-  .candidate-details .candidate-details-info .candidate-details-info-bottom p {
-    font-size: 0.65rem;
+  .profile-container {
+    gap: 1rem !important;
+  }
+  .candidate-details {
+    .candidate-img {
+      .img-fluid {
+        width: 4.5rem;
+      }
+    }
+    .candidate-details-info {
+      .candidate-details-info-top {
+        .name {
+          font-size: 1.2rem;
+        }
+        .chip {
+          font-size: 0.55rem;
+          padding: 0.2rem 0.5rem;
+        }
+      }
+      .candidate-details-info-bottom {
+        p {
+          font-size: 0.6rem;
+        }
+      }
+    }
+  }
+
+  .profile-details-left-header {
+    .icon {
+      height: 1.5rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+
+    .edit-btn {
+      padding: 0.3rem 0.5rem;
+      font-size: 0.6rem;
+    }
+  }
+  .candidate-experience {
+    padding: 10px 20px;
+    gap: 0.5rem;
+    p {
+      font-size: 0.85rem;
+    }
+    .company {
+      p {
+        font-size: 0.7rem;
+      }
+      .sub-text {
+        font-size: 0.6rem;
+        padding: 0.5rem 0;
+      }
+      .dot {
+        height: 4px;
+        width: 4px;
+      }
+    }
   }
 }
 
 @media (min-width: 1024px) and (max-width: 1436px) {
-  .candidate-details .candidate-details-info .candidate-details-info-bottom p {
-    font-size: 0.65rem;
+  .profile-container {
+    gap: 1rem !important;
+  }
+  .candidate-details {
+    .candidate-img {
+      .img-fluid {
+        width: 4.5rem;
+      }
+    }
+    .candidate-details-info {
+      .candidate-details-info-top {
+        .name {
+          font-size: 1.2rem;
+        }
+        .chip {
+          font-size: 0.55rem;
+          padding: 0.2rem 0.5rem;
+        }
+      }
+      .candidate-details-info-bottom {
+        p {
+          font-size: 0.6rem;
+        }
+      }
+    }
+  }
+
+  .profile-details-left-header {
+    .icon {
+      height: 1.5rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+
+    .edit-btn {
+      padding: 0.3rem 0.5rem;
+      font-size: 0.6rem;
+    }
+  }
+  .candidate-experience {
+    padding: 10px 20px;
+    gap: 0.5rem;
+    p {
+      font-size: 0.85rem;
+    }
+    .company {
+      p {
+        font-size: 0.7rem;
+      }
+      .sub-text {
+        font-size: 0.6rem;
+        padding: 0.5rem 0;
+      }
+      .dot {
+        height: 4px;
+        width: 4px;
+      }
+    }
   }
 }

@@ -92,6 +92,7 @@ textarea {
 .profile-preview-button-row {
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 
 .profile-preview-save-btn,
@@ -109,7 +110,7 @@ textarea {
 .profile-preview-section p {
   font-size: 16px;
   font-weight: 400;
-  line-height: 27px;
+  // line-height: 27px;
   margin-top: 10px !important;
   margin-bottom: 10px !important;
   text-align: left;
@@ -118,7 +119,7 @@ textarea {
 .skill {
   font-size: 16px;
   font-weight: 500;
-  line-height: 27px;
+  // line-height: 27px;
 }
 
 .profile-preview-save-btn {
@@ -146,6 +147,9 @@ textarea {
 // Form Adjustments
 .profile-preview-section {
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .profile-preview-row {
@@ -261,4 +265,56 @@ textarea {
 }
 span {
   color: red;
+}
+
+@media (min-height: 600px) and (max-height: 800px) {
+}
+@media (min-width: 1024px) and (max-width: 1436px) {
+  .profile-preview-header {
+    font-size: 1rem;
+    .profile-icon {
+      height: 1.5rem;
+    }
+  }
+  .profile-preview-cancel-btn {
+    padding: 0.3rem 1rem;
+    font-size: 0.6rem;
+  }
+  .profile-preview-save-btn {
+    padding: 0.3rem 1rem;
+    font-size: 0.6rem;
+  }
+  .profile-preview-subheader {
+    font-size: 0.9rem;
+  }
+  .blue-line::before {
+    height: 13px;
+  }
+  .subheader {
+    font-size: 0.8rem;
+  }
+
+  .profile-preview-form-group {
+    label {
+      font-size: 0.65rem;
+    }
+  }
+  .p-select {
+    padding: 0 0.2rem;
+    font-size: 0.65rem;
+  }
+  input,
+  select,
+  textarea {
+    padding: 0.5rem 0.65rem;
+    font-size: 0.65rem;
+  }
+  .profile-preview-section p {
+    font-size: 10px;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+  }
+  .skill {
+    font-size: 10px;
+  }
 }

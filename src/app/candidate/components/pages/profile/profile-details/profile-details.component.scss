@@ -180,22 +180,22 @@ hr {
   .candidate-details {
     .candidate-img {
       .img-fluid {
-        width: 4.5rem;
+        width: 4.5rem !important;
       }
     }
     .candidate-details-info {
       .candidate-details-info-top {
         .name {
-          font-size: 1.2rem;
+          font-size: 1.2rem !important;
         }
         .chip {
-          font-size: 0.55rem;
-          padding: 0.2rem 0.5rem;
+          font-size: 0.55rem !important;
+          padding: 0.2rem 0.5rem !important;
         }
       }
       .candidate-details-info-bottom {
         p {
-          font-size: 0.6rem;
+          font-size: 0.6rem !important;
         }
       }
     }
@@ -203,34 +203,34 @@ hr {
 
   .profile-details-left-header {
     .icon {
-      height: 1.5rem;
+      height: 1.5rem !important;
     }
     p {
-      font-size: 1rem;
+      font-size: 1rem !important;
     }
 
     .edit-btn {
-      padding: 0.3rem 0.5rem;
-      font-size: 0.6rem;
+      padding: 0.3rem 0.5rem !important;
+      font-size: 0.6rem !important;
     }
   }
   .candidate-experience {
-    padding: 10px 20px;
-    gap: 0.5rem;
+    padding: 10px 20px !important;
+    gap: 0.5rem !important;
     p {
-      font-size: 0.85rem;
+      font-size: 0.85rem !important;
     }
     .company {
       p {
-        font-size: 0.7rem;
+        font-size: 0.7rem !important;
       }
       .sub-text {
-        font-size: 0.6rem;
-        padding: 0.5rem 0;
+        font-size: 0.6rem !important;
+        padding: 0.5rem 0 !important;
       }
       .dot {
-        height: 4px;
-        width: 4px;
+        height: 4px !important;
+        width: 4px !important;
       }
     }
   }
@@ -243,22 +243,22 @@ hr {
   .candidate-details {
     .candidate-img {
       .img-fluid {
-        width: 4.5rem;
+        width: 4.5rem !important;
       }
     }
     .candidate-details-info {
       .candidate-details-info-top {
         .name {
-          font-size: 1.2rem;
+          font-size: 1.2rem !important;
         }
         .chip {
-          font-size: 0.55rem;
-          padding: 0.2rem 0.5rem;
+          font-size: 0.55rem !important;
+          padding: 0.2rem 0.5rem !important;
         }
       }
       .candidate-details-info-bottom {
         p {
-          font-size: 0.6rem;
+          font-size: 0.6rem !important;
         }
       }
     }
@@ -266,34 +266,34 @@ hr {
 
   .profile-details-left-header {
     .icon {
-      height: 1.5rem;
+      height: 1.5rem !important;
     }
     p {
-      font-size: 1rem;
+      font-size: 1rem !important;
     }
 
     .edit-btn {
-      padding: 0.3rem 0.5rem;
-      font-size: 0.6rem;
+      padding: 0.3rem 0.5rem !important;
+      font-size: 0.6rem !important;
     }
   }
   .candidate-experience {
-    padding: 10px 20px;
-    gap: 0.5rem;
+    padding: 10px 20px !important;
+    gap: 0.5rem !important;
     p {
-      font-size: 0.85rem;
+      font-size: 0.85rem !important;
     }
     .company {
       p {
-        font-size: 0.7rem;
+        font-size: 0.7rem !important;
       }
       .sub-text {
-        font-size: 0.6rem;
-        padding: 0.5rem 0;
+        font-size: 0.6rem !important;
+        padding: 0.5rem 0 !important;
       }
       .dot {
-        height: 4px;
-        width: 4px;
+        height: 4px !important;
+        width: 4px !important;
       }
     }
   }

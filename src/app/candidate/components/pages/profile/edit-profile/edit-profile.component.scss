@@ -269,43 +269,43 @@ span {
 
 @media (min-height: 600px) and (max-height: 800px) {
   .profile-preview-header {
-    font-size: 1rem;
+    font-size: 1rem !important;
     .profile-icon {
-      height: 1.5rem;
+      height: 1.5rem !important;
     }
   }
   .profile-preview-cancel-btn {
-    padding: 0.3rem 1rem;
-    font-size: 0.6rem;
+    padding: 0.3rem 1rem !important;
+    font-size: 0.6rem !important;
   }
   .profile-preview-save-btn {
-    padding: 0.3rem 1rem;
-    font-size: 0.6rem;
+    padding: 0.3rem 1rem !important;
+    font-size: 0.6rem !important;
   }
   .profile-preview-subheader {
-    font-size: 0.9rem;
+    font-size: 0.9rem !important;
   }
   .blue-line::before {
-    height: 13px;
+    height: 13px !important;
   }
   .subheader {
-    font-size: 0.8rem;
+    font-size: 0.8rem !important;
   }
 
   .profile-preview-form-group {
     label {
-      font-size: 0.65rem;
+      font-size: 0.65rem !important;
     }
   }
   .p-select {
-    padding: 0 0.2rem;
-    font-size: 0.65rem;
+    padding: 0 0.2rem !important;
+    font-size: 0.65rem !important;
   }
   input,
   select,
   textarea {
-    padding: 0.5rem 0.65rem;
-    font-size: 0.65rem;
+    padding: 0.5rem 0.65rem !important;
+    font-size: 0.65rem !important;
   }
   .profile-preview-section p {
     font-size: 10px;
@@ -313,48 +313,48 @@ span {
     margin-bottom: 10px !important;
   }
   .skill {
-    font-size: 10px;
+    font-size: 10px !important;
   }
 }
 @media (min-width: 1024px) and (max-width: 1436px) {
   .profile-preview-header {
-    font-size: 1rem;
+    font-size: 1rem !important;
     .profile-icon {
-      height: 1.5rem;
+      height: 1.5rem !important;
     }
   }
   .profile-preview-cancel-btn {
-    padding: 0.3rem 1rem;
-    font-size: 0.6rem;
+    padding: 0.3rem 1rem !important;
+    font-size: 0.6rem !important;
   }
   .profile-preview-save-btn {
-    padding: 0.3rem 1rem;
-    font-size: 0.6rem;
+    padding: 0.3rem 1rem !important;
+    font-size: 0.6rem !important;
   }
   .profile-preview-subheader {
-    font-size: 0.9rem;
+    font-size: 0.9rem !important;
   }
   .blue-line::before {
-    height: 13px;
+    height: 13px !important;
   }
   .subheader {
-    font-size: 0.8rem;
+    font-size: 0.8rem !important;
   }
 
   .profile-preview-form-group {
     label {
-      font-size: 0.65rem;
+      font-size: 0.65rem !important;
     }
   }
   .p-select {
-    padding: 0 0.2rem;
-    font-size: 0.65rem;
+    padding: 0 0.2rem !important;
+    font-size: 0.65rem !important;
   }
   input,
   select,
   textarea {
-    padding: 0.5rem 0.65rem;
-    font-size: 0.65rem;
+    padding: 0.5rem 0.65rem !important;
+    font-size: 0.65rem !important;
   }
   .profile-preview-section p {
     font-size: 10px;
@@ -362,6 +362,6 @@ span {
     margin-bottom: 10px !important;
   }
   .skill {
-    font-size: 10px;
+    font-size: 10px !important;
   }
 }

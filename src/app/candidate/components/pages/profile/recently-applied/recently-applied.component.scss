@@ -160,29 +160,29 @@
   .recently-applied {
     .heading {
       .icon {
-        height: 1.5rem;
+        height: 1.5rem !important;
       }
-      font-size: 1rem;
+      font-size: 1rem !important;
     }
     .cards {
       .card-container {
-        padding: 12px;
+        padding: 12px !important;
         .role-title {
-          font-size: 0.8rem;
+          font-size: 0.8rem !important;
         }
         .status {
           span {
-            font-size: 0.6rem;
+            font-size: 0.6rem !important;
           }
           .status-tag {
-            font-size: 0.5rem;
+            font-size: 0.5rem !important;
           }
         }
         .action {
-          margin-top: 15px;
+          margin-top: 15px !important;
           .take-test-btn {
-            padding: 0.2rem 0.5rem;
-            font-size: 0.6rem;
+            padding: 0.2rem 0.5rem !important;
+            font-size: 0.6rem !important;
           }
         }
       }
@@ -194,29 +194,29 @@
   .recently-applied {
     .heading {
       .icon {
-        height: 1.5rem;
+        height: 1.5rem !important;
       }
-      font-size: 1rem;
+      font-size: 1rem !important;
     }
     .cards {
       .card-container {
-        padding: 12px;
+        padding: 12px !important;
         .role-title {
-          font-size: 0.8rem;
+          font-size: 0.8rem !important;
         }
         .status {
           span {
-            font-size: 0.6rem;
+            font-size: 0.6rem !important;
           }
           .status-tag {
-            font-size: 0.5rem;
+            font-size: 0.5rem !important;
           }
         }
         .action {
-          margin-top: 15px;
+          margin-top: 15px !important;
           .take-test-btn {
-            padding: 0.2rem 0.5rem;
-            font-size: 0.6rem;
+            padding: 0.2rem 0.5rem !important;
+            font-size: 0.6rem !important;
           }
         }
       }

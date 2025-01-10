@@ -83,14 +83,15 @@
         </div>
         <div class="skills">
           <div
-            *ngFor="
-              let skill of candidate?.skills?.split(',') | slice : 0 : 2;
-              let i = index
-            "
+            *ngFor="let skill of limitedSkills; let i = index"
             class="skill"
+            [title]="skill"
+            pTooltip="{{ skill }}"
+            tooltipPosition="top"
           >
-            {{ skill }}
+            {{ skill.length > 10 ? skill?.substring(0, 10) + "..." : skill }}
           </div>
+
           <!-- <div
             *ngIf="candidate?.skills?.split(',').length > 2"
             class="skill-pill2"

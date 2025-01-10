@@ -41,6 +41,7 @@ export class CandidatesComponent {
   status: any;
   selectedCandidate: any = null;
   jobId: any;
+  limitedSkills: string[] = [];
   constructor(
     private hiringManagerService: HiringManagerService,
     private messageService: MessageService,
@@ -158,6 +159,7 @@ export class CandidatesComponent {
   }
 
   isCandidateSelected(candidate: any): boolean {
+    this.limitedSkills = candidate.skills.split(',').slice(0, 2);
     return this.selectedCandidate === candidate;
   }
 

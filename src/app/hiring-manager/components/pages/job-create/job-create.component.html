@@ -69,6 +69,7 @@
                         placeholder="Select"
                         name="experience"
                         [filter]="true"
+                        appendTo="body"
                         class="w-100"
                       ></p-dropdown>
                       <small
@@ -94,6 +95,7 @@
                         placeholder="Select"
                         name="location"
                         [filter]="true"
+                        appendTo="body"
                         class="w-100"
                         (onFilter)="onFilterLocation($event)"
                       >
@@ -133,6 +135,7 @@
                         placeholder="Select"
                         name="role"
                         [filter]="true"
+                        appendTo="body"
                         class="w-100"
                         (onFilter)="onFilterRole($event)"
                       >
@@ -176,6 +179,7 @@
                           [options]="primarySkills"
                           placeholder="Select"
                           name="primarySkills"
+                          appendTo="body"
                           class="w-100"
                           (onFilter)="onFilterPrimarySkill($event)"
                         >
@@ -231,6 +235,7 @@
                           [options]="secondarySkills"
                           placeholder="Select"
                           name="secondarySkills"
+                          appendTo="body"
                           class="w-100"
                           (onFilter)="onFilterSecondarySkill($event)"
                         >

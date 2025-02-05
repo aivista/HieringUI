@@ -28,4 +28,10 @@ export class AppComponent {
       }
     });
   }
+
+  showChat = false;
+
+  toggleChatbot() {
+    this.showChat = !this.showChat;
+  }
 }

@@ -13,11 +13,11 @@
         <img src="assets/icons/darkUser.svg" alt="" class="user-icon" />
       </div>
     </div>
-
+  </div>
+  <div *ngIf="showChatModal">
     <button class="open-chatbot" (click)="toggleChatbot()">
       <img src="assets/icons/ANULogo1.svg" alt="" class="anu-logo" />
     </button>
-
     <div class="chatbot-modal" *ngIf="showChat">
       <div class="chatbot-container">
         <button class="close-btn" (click)="toggleChatbot()">✖</button>
@@ -30,7 +30,6 @@
       </div>
     </div>
   </div>
-
   <!-- Main Content -->
 
   <div class="main">

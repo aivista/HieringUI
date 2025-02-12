@@ -10,6 +10,8 @@ import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   showHeader: boolean = true;
+  showChatModal: boolean = false;
+  showChat = false;
 
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
@@ -25,11 +27,15 @@ export class AppComponent {
         this.showHeader = loginPages.some((path) =>
           event.urlAfterRedirects.includes(path)
         );
+
+        const candidateRoutes = ['/job-details', '/job-create'];
+
+        this.showChatModal = candidateRoutes.some((path) =>
+          event.urlAfterRedirects.includes(path)
+        );
       }
     });
   }
-
-  showChat = false;
 
   toggleChatbot() {
     this.showChat = !this.showChat;

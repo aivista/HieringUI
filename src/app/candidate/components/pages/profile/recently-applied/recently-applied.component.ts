@@ -23,20 +23,20 @@ export class RecentlyAppliedComponent {
   ) {}
   jobs = [
     {
-      headerImage: 'assets/icons/adanicon.svg',
+      headerImage: 'assets/icons/adanicon1.svg',
       roleTitle: 'Chief Operating Officer - Data Center',
       status: 'AI Based Screening',
       buttonVisible: true,
     },
     {
-      headerImage: 'assets/icons/adanicon.svg',
+      headerImage: 'assets/icons/adanicon1.svg',
       roleTitle: 'Digital Marketing Officer',
       status: 'Inactive',
       buttonVisible: false,
     },
 
     {
-      headerImage: 'assets/icons/adanicon.svg',
+      headerImage: 'assets/icons/adanicon1.svg',
       roleTitle: 'Digital Marketing Officer',
       status: 'Inactive',
       buttonVisible: false,

@@ -1,6 +1,10 @@
 <div *ngIf="!loaderflag" class="loader_position">
   <div class="flex justify-center">
-    <p-progress-spinner strokeWidth="2" fill="transparent" [style]="{ width: '100px', height: '100px', }" />
+    <p-progress-spinner
+      strokeWidth="2"
+      fill="transparent"
+      [style]="{ width: '100px', height: '100px', }"
+    />
   </div>
 </div>
 
@@ -19,7 +23,7 @@
       }"
     >
       <div class="header">
-        <img src="assets/icons/adanicon.svg" alt="" height="22" width="98" />
+        <img src="assets/icons/adanicon1.svg" alt="" height="22" width="98" />
       </div>
 
       <div class="role-title">{{ job.Title }}</div>

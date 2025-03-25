@@ -278,6 +278,9 @@ export class JobCreateComponent {
           }
         },
         (error) => {
+          // console.log('json body', JSON.stringify(jsonBody));
+          this.jdloader = false;
+          this.router.navigate(['/job-details']);
           console.log(`something is error${error}`);
         },
         () => {

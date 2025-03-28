@@ -53,6 +53,7 @@ export class RecentlyAppliedComponent {
         this.storedCandidateId = candidateId;
         this.fetchRecentlyAppliedJobs(candidateId);
       }
+      sessionStorage.setItem('candidateId', this.storedCandidateId);
     });
   }
 

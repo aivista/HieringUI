@@ -31,7 +31,7 @@
           </div>
           <div class="profile-preview-form-group first-width">
             <label>First Name <span>*</span></label>
-            <input type="text" [value]="profileData?.fname"  disabled/>
+            <input type="text" [value]="profileData?.fname" disabled />
           </div>
         </div>
 
@@ -39,11 +39,17 @@
         <div class="profile-preview-row">
           <div class="profile-preview-form-group middle-width">
             <label>Middle Name</label>
-            <input type="text" placeholder="Enter your middle name" [value]="profileData?.mnane == undefined ? '': profileData?.mnane"/>
+            <input
+              type="text"
+              placeholder="Enter your middle name"
+              [value]="
+                profileData?.mnane == undefined ? '' : profileData?.mnane
+              "
+            />
           </div>
           <div class="profile-preview-form-group last-width">
             <label>Last Name <span>*</span></label>
-            <input type="text" [value]="profileData?.lname" disabled/>
+            <input type="text" [value]="profileData?.lname" disabled />
           </div>
         </div>
 
@@ -51,11 +57,11 @@
         <div class="profile-preview-row">
           <div class="profile-preview-form-group middle-width">
             <label>Email ID <span>*</span></label>
-            <input type="email" [value]="profileData?.email" disabled/>
+            <input type="email" [value]="profileData?.email" disabled />
           </div>
           <div class="profile-preview-form-group last-width">
             <label>Phone No. <span>*</span></label>
-            <input type="text" [value]="profileData?.phone" disabled/>
+            <input type="text" [value]="profileData?.phone" disabled />
           </div>
         </div>
       </div>
@@ -64,21 +70,28 @@
       <div class="profile-preview-section">
         <h3 class="profile-preview-subheader subheader">Address</h3>
         <p>Please enter your home address</p>
-        <textarea rows="2">{{profileData?.location}}</textarea>
+        <textarea rows="2" [(ngModel)]="profileData.location">{{
+          profileData?.location
+        }}</textarea>
       </div>
 
       <!-- Experience Details Section -->
       <div class="profile-preview-section">
         <h3 class="profile-preview-subheader blue-line">Experience Details</h3>
-        <textarea rows="2">{{profileData?.latestExperience.company + '('+profileData?.latestExperience.position +')'}}</textarea
-        >
+        <textarea rows="2" [(ngModel)]="formattedExperience">{{
+          profileData?.latestExperience.company +
+            "(" +
+            profileData?.latestExperience.position +
+            ")"
+        }}</textarea>
       </div>
 
       <!-- Educational Details Section -->
       <div class="profile-preview-section">
         <h3 class="profile-preview-subheader blue-line">Educational Details</h3>
-        <textarea rows="2">{{profileData?.latestEducation.degree}}</textarea
-        >
+        <textarea rows="2" [(ngModel)]="profileData.latestEducation.degree">{{
+          profileData?.latestEducation.degree
+        }}</textarea>
       </div>
 
       <!-- Certification & Skills Section -->
@@ -88,7 +101,11 @@
       <div class="profile-preview-section">
         <div class="profile-preview-form-group">
           <h4 class="subheader">Certification</h4>
-          <textarea placeholder="Details goes here">{{profileData?.cert}}</textarea>
+          <textarea
+            placeholder="Details goes here"
+            [(ngModel)]="profileData.cert"
+            >{{ profileData?.cert }}</textarea
+          >
         </div>
         <div class="profile-preview-form-group">
           <h4 class="subheader">Skills</h4>
@@ -98,10 +115,11 @@
             rows="2"
             id="skillsInput"
             type="text"
-            [value]="profileData?.skill"
+            [(ngModel)]="profileData.skill"
+            (ngModelChange)="updateSkills($event)"
             placeholder="Type and add skills"
             autocomplete="off"
-          disabled></textarea>
+          ></textarea>
           <!-- Dropdown Suggestions -->
           <!-- <ul *ngIf="filteredSkills.length" class="skills-dropdown">
             <li

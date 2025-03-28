@@ -33,3 +33,7 @@ export const POSTurl = {
   interviewSechudle: JobServiceUrl + 'jobs/getInterViewSechdule',
   notificationUrl: NotificationServoces + '/api/NotificationService/sendMail',
 };
+
+export const PUTurl = {
+  updateProfileUrl: ProfileServicesUrl + 'LoginServices/candidate/edit',
+};

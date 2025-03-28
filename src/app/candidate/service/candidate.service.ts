@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { POSTurl } from '../../config';
+import { POSTurl, PUTurl } from '../../config';
 import { GETurl } from '../../config';
 import { environment } from '../../../environments/environment';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
@@ -69,5 +69,9 @@ export class CandidateService {
   }
   getcandidateInterviewtime(jsonBody: any) {
     return this.http.post(POSTurl.interviewSechudle, jsonBody);
+  }
+
+  updateProfile(jsonBody: any) {
+    return this.http.put(PUTurl.updateProfileUrl, jsonBody);
   }
 }

@@ -22,7 +22,7 @@ export class EditProfileComponent {
     { label: 'Ms.', value: 'Ms.' },
     { label: 'Mrs.', value: 'Mrs.' },
   ];
-
+  candidateId: any;
   selectedTitle: string = 'Mr.';
   ngOnInit() {
     // console.log('ok all are data in ngOn');
@@ -32,7 +32,30 @@ export class EditProfileComponent {
       this.profileData['cert'] =
         this.profileData.certificationsAndTraining.join(',');
       this.profileData['skill'] = this.profileData.certifications.join(',');
+      this.selectedSkills = this.profileData['skill']
+        ? this.profileData['skill'].split(',')
+        : [];
     });
+    this.candidateId = sessionStorage.getItem('candidateId');
+  }
+  get formattedExperience(): string {
+    return (
+      this.profileData?.latestExperience?.company +
+      ' (' +
+      this.profileData?.latestExperience?.position +
+      ')'
+    );
+  }
+
+  set formattedExperience(value: string) {
+    const match = value.match(/^(.*?)\s*\((.*?)\)$/);
+    if (match) {
+      this.profileData.latestExperience.company = match[1];
+      this.profileData.latestExperience.position = match[2];
+    }
+  }
+  updateSkills(value: string): void {
+    this.selectedSkills = value.split(',').map((skill) => skill.trim());
   }
 
   onCancel(): void {
@@ -40,8 +63,25 @@ export class EditProfileComponent {
   }
 
   onSave(): void {
-    // Logic to save profile changes
-    this.cancelEdit.emit(); // Exit edit mode after saving
+    const payload = {
+      id: this.candidateId,
+      address: this.profileData?.location || '',
+      latestrole: this.profileData?.latestExperience?.company || '',
+      education: this.profileData?.latestEducation?.degree || '',
+      designation: this.profileData?.latestExperience?.position || '',
+      certification: this.profileData?.cert || '',
+      skills: this.selectedSkills.join(','),
+    };
+    console.log('payload', payload);
+    this.services.updateProfile(payload).subscribe(
+      (response) => {
+        console.log('Profile updated successfully:', response);
+        this.cancelEdit.emit();
+      },
+      (error) => {
+        console.error('Error updating profile:', error);
+      }
+    );
   }
 
   allSkills: string[] = [

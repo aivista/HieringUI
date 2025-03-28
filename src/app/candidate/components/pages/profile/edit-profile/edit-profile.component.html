@@ -27,6 +27,7 @@
               [(ngModel)]="selectedTitle"
               [autoWidth]="false"
               class="profile-preview-dropdown"
+              [disabled]="true"
             ></p-dropdown>
           </div>
           <div class="profile-preview-form-group first-width">
@@ -45,6 +46,7 @@
               [value]="
                 profileData?.mnane == undefined ? '' : profileData?.mnane
               "
+              disabled
             />
           </div>
           <div class="profile-preview-form-group last-width">

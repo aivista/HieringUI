@@ -77,13 +77,16 @@ export class CandidatesComponent {
         this.jobId = res.id;
         this.hiringManagerService.getShortlistedJobs(res.id).subscribe(
           (result: any) => {
-            if (result.isSuccess) {
+            if (result.isSuccess && result.result) {
               this.shortlistedCandidates = result.result.map(
                 (candidate: any) => ({
                   ...candidate,
                   showHiddenSkills: false, // Add hover state for each candidate
                 })
               );
+              console.log('shortlisted', this.shortlistedCandidates);
+            } else {
+              this.shortlistedCandidates = [];
             }
           },
           () => {},
